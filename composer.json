@@ -1,0 +1,22 @@
+{
+    "name": "baethon/phln",
+    "description": "Functional PHP foundation",
+    "type": "library",
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "files": [
+            "src/bundle.php"
+        ]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@radmen.info"
+        }
+    ]
+}
