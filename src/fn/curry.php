@@ -5,6 +5,8 @@ namespace phln\fn;
 
 const curry = '\\phln\\fn\\curry';
 
+const nil = '_phln_nil_argument';
+
 /**
  * Returns a curried equivalent of the provided function.
  *
@@ -23,6 +25,10 @@ const curry = '\\phln\\fn\\curry';
  */
 function curry(callable $fn, ...$args)
 {
+    $args = array_filter($args, function ($value) {
+        return $value !== nil;
+    });
+
     $argumentsLength = (new \ReflectionFunction($fn))->getNumberOfParameters();
     $argumentsLengthMatch = function (array $arguments) use ($argumentsLength) {
         return count($arguments) >= $argumentsLength;
