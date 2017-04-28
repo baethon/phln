@@ -10,3 +10,4 @@ require __DIR__.'/math/median.php';
 require __DIR__.'/math/modulo.php';
 require __DIR__.'/math/multiply.php';
 require __DIR__.'/math/negate.php';
+require __DIR__.'/math/product.php';
