@@ -2,6 +2,7 @@
 
 require __DIR__.'/fn/curry.php';
 require __DIR__.'/fn/partial.php';
+require __DIR__.'/fn/always.php';
 
 require __DIR__.'/math/add.php';
 require __DIR__.'/math/dec.php';
