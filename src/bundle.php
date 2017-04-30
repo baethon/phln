@@ -17,3 +17,5 @@ require __DIR__.'/math/negate.php';
 require __DIR__.'/math/product.php';
 require __DIR__.'/math/subtract.php';
 require __DIR__.'/math/sum.php';
+
+require __DIR__.'/collection/all.php';
