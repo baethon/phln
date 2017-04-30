@@ -19,3 +19,4 @@ require __DIR__.'/math/subtract.php';
 require __DIR__.'/math/sum.php';
 
 require __DIR__.'/collection/all.php';
+require __DIR__.'/collection/any.php';
