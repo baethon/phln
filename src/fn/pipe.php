@@ -7,6 +7,8 @@ namespace phln\fn;
  * Performs left-to-right function composition.
  * The leftmost function may have any arity; the remaining functions must be unary.
  *
+ * **Note**: The result of pipe is not automatically curried.
+ *
  * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
  * @phlnCategory function
  * @param \callable[] ...$fns
