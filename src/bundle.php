@@ -24,3 +24,4 @@ require __DIR__.'/collection/any.php';
 require __DIR__.'/collection/chunk.php';
 require __DIR__.'/collection/append.php';
 require __DIR__.'/collection/map.php';
+require __DIR__.'/collection/collapse.php';
