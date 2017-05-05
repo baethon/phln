@@ -34,5 +34,6 @@ require __DIR__.'/collection/head.php';
 require __DIR__.'/collection/tail.php';
 require __DIR__.'/collection/init.php';
 require __DIR__.'/collection/last.php';
+require __DIR__.'/collection/join.php';
 
 require __DIR__.'/relation/equals.php';
