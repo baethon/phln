@@ -32,5 +32,6 @@ require __DIR__.'/collection/filter.php';
 require __DIR__.'/collection/find.php';
 require __DIR__.'/collection/head.php';
 require __DIR__.'/collection/tail.php';
+require __DIR__.'/collection/init.php';
 
 require __DIR__.'/relation/equals.php';
