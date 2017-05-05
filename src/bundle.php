@@ -15,7 +15,6 @@ require __DIR__.'/math/mean.php';
 require __DIR__.'/math/median.php';
 require __DIR__.'/math/modulo.php';
 require __DIR__.'/math/multiply.php';
-require __DIR__.'/math/negate.php';
 require __DIR__.'/math/product.php';
 require __DIR__.'/math/subtract.php';
 require __DIR__.'/math/sum.php';
