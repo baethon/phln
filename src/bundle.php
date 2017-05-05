@@ -29,5 +29,6 @@ require __DIR__.'/collection/flatMap.php';
 require __DIR__.'/collection/concat.php';
 require __DIR__.'/collection/contains.php';
 require __DIR__.'/collection/filter.php';
+require __DIR__.'/collection/find.php';
 
 require __DIR__.'/relation/equals.php';
