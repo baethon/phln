@@ -27,5 +27,6 @@ require __DIR__.'/collection/map.php';
 require __DIR__.'/collection/collapse.php';
 require __DIR__.'/collection/flatMap.php';
 require __DIR__.'/collection/concat.php';
+require __DIR__.'/collection/contains.php';
 
 require __DIR__.'/relation/equals.php';

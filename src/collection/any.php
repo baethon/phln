@@ -15,7 +15,7 @@ const any = '\\phln\\collection\\𝑓any';
  * @phlnCategory collection
  * @param string $predicate
  * @param string $list
- * @return \Closure|mixed
+ * @return \Closure|bool
  * @example
  *      $hasTwos = \phln\collection\any(\phln\relation\equals(2));
  *      $hasTwos([1, 2, 3, 4]); // true
