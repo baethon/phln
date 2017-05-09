@@ -37,5 +37,6 @@ require __DIR__.'/collection/last.php';
 require __DIR__.'/collection/join.php';
 require __DIR__.'/collection/none.php';
 require __DIR__.'/collection/nth.php';
+require __DIR__.'/collection/pluck.php';
 
 require __DIR__.'/relation/equals.php';
