@@ -5,6 +5,7 @@ namespace phln\collection;
 
 use const phln\fn\nil;
 use function phln\fn\curry;
+use function phln\object\prop;
 
 const pluck = '\\phln\\collection\\𝑓pluck';
 
@@ -27,9 +28,5 @@ function pluck($key = nil, $list = nil)
 
 function 𝑓pluck($key, array $list): array
 {
-    $prop = function ($item) use ($key) {
-        return $item[$key];
-    };
-
-    return map($prop, $list);
+    return map(prop($key), $list);
 }

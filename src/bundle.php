@@ -40,3 +40,5 @@ require __DIR__.'/collection/nth.php';
 require __DIR__.'/collection/pluck.php';
 
 require __DIR__.'/relation/equals.php';
+
+require __DIR__.'/object/prop.php';
