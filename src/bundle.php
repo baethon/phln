@@ -42,6 +42,7 @@ require __DIR__.'/collection/prepend.php';
 require __DIR__.'/collection/range.php';
 require __DIR__.'/collection/reduce.php';
 require __DIR__.'/collection/reject.php';
+require __DIR__.'/collection/slice.php';
 
 require __DIR__.'/relation/equals.php';
 
