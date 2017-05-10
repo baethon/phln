@@ -44,6 +44,7 @@ require __DIR__.'/collection/reduce.php';
 require __DIR__.'/collection/reject.php';
 require __DIR__.'/collection/slice.php';
 require __DIR__.'/collection/reverse.php';
+require __DIR__.'/collection/sort.php';
 
 require __DIR__.'/relation/equals.php';
 
