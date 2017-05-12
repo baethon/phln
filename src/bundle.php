@@ -49,6 +49,7 @@ require __DIR__.'/collection/sortBy.php';
 require __DIR__.'/collection/unique.php';
 
 require __DIR__.'/string/concatString.php';
+require __DIR__.'/string/match.php';
 
 require __DIR__.'/relation/equals.php';
 
