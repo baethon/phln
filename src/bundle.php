@@ -5,6 +5,7 @@ require __DIR__.'/fn/partial.php';
 require __DIR__.'/fn/always.php';
 require __DIR__.'/fn/ap.php';
 require __DIR__.'/fn/pipe.php';
+require __DIR__.'/fn/compose.php';
 require __DIR__.'/fn/negate.php';
 
 require __DIR__.'/math/add.php';

@@ -6,7 +6,7 @@ namespace phln\string;
 use const phln\collection\head;
 use function phln\fn\curry;
 use const phln\fn\nil;
-use function phln\fn\pipe;
+use function phln\fn\compose;
 
 const matchFirst = '\\phln\\string\\𝑓matchFirst';
 
@@ -30,5 +30,5 @@ function matchFirst($regexp = nil, $test = nil)
 
 function 𝑓matchFirst(string $regexp, string $test)
 {
-    return pipe(match, head)($regexp, $test);
+    return compose(head, match)($regexp, $test);
 }
