@@ -3,7 +3,7 @@
 use function phln\string\concatString;
 use const phln\string\concatString;
 
-class StringConcatTestConcatTest extends \PHPUnit_Framework_TestCase
+class ConcatStringTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function it_concatenates_two_values()
