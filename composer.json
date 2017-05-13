@@ -5,12 +5,20 @@
     "require": {
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "symfony/console": "^3.2",
+        "illuminate/view": "^5.4",
+        "illuminate/console": "^5.4"
     },
     "autoload": {
         "files": [
             "src/bundle.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phln\\Build\\": "build"
+        }
     },
     "license": "MIT",
     "authors": [
