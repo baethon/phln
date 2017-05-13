@@ -5,6 +5,8 @@ namespace Phln\Build\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\View\Factory;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 class CreateFunctionCommand extends Command
 {
@@ -35,6 +37,9 @@ class CreateFunctionCommand extends Command
             'Test created at: <info>%s</info>',
             $this->createTestSource($ns, $name)
         ));
+
+        $this->reloadBundlesFile();
+        $this->output->writeln('Bundle file reloaded');
     }
 
     private function createFunctionSource($ns, $name)
@@ -69,5 +74,33 @@ class CreateFunctionCommand extends Command
         file_put_contents($path, $contents);
 
         return realpath($path);
+    }
+
+    private function reloadBundlesFile()
+    {
+        $finder = Finder::create()->in([__DIR__.'/../../src'])
+            ->name('*.php')
+            ->depth(1);
+
+        $files = collect($finder)
+            ->map(function (SplFileInfo $file) {
+                $pathname = $file->getRelativePathname();
+                list ($ns, $name) = explode(DIRECTORY_SEPARATOR, $pathname);
+
+                return compact('ns', 'name');
+            })
+            ->values()
+            ->sort(function ($a, $b) {
+                $byNs = strcmp($a['ns'], $b['ns']);
+                $byName = strcmp($a['name'], $b['name']);
+
+                return (0 === $byNs) ? $byName : $byNs;
+            });
+
+        $contents = $this->view->make('bundle')
+            ->with(compact('files'))
+            ->render();
+
+        file_put_contents(__DIR__.'/../../src/bundle.php', $contents);
     }
 }
