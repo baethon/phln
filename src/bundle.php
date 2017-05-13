@@ -54,3 +54,4 @@ require __DIR__.'/string/matchAll.php';
 require __DIR__.'/string/replace.php';
 require __DIR__.'/string/replaceAll.php';
 require __DIR__.'/string/split.php';
+require __DIR__.'/string/splitRegexp.php';
