@@ -3,31 +3,32 @@ declare(strict_types=1);
 
 namespace phln\string;
 
+use const phln\collection\head;
 use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\compose;
 
 const match = '\\phln\\string\\𝑓match';
 
 /**
- * Tests a regular expression against a String. Note that this function will return an empty array when there are no matches.
+ * Tests a regular expression against a String.
  *
- * All matching strings will be returned.
+ * Unlike `matchAll()` this function will return first matching string or `null` when there is no match.
  *
- * @phlnSignature RegExp -> String -> [String]
+ * @phlnSignature RegExp -> String -> String|Null
+ * @phlnCategory string
  * @param string $regexp
  * @param string $test
- * @return \Closure|array
+ * @return \Closure|mixed
  * @example
- *      \phln\string\match('/([a-z](o))/i', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
+ *      \phln\string\matchFirst('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
  */
 function match($regexp = nil, $test = nil)
 {
     return curry(match, $regexp, $test);
 }
 
-function 𝑓match(string $regexp, string $test): array
+function 𝑓match(string $regexp, string $test)
 {
-    $matches = [];
-    preg_match_all($regexp, $test, $matches);
-    return isset($matches[0]) ? $matches[0] : [];
+    return compose(head, matchAll)($regexp, $test);
 }
