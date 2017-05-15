@@ -30,6 +30,7 @@ require __DIR__.'/collection/tail.php';
 require __DIR__.'/collection/unique.php';
 require __DIR__.'/fn/always.php';
 require __DIR__.'/fn/ap.php';
+require __DIR__.'/fn/apply.php';
 require __DIR__.'/fn/compose.php';
 require __DIR__.'/fn/curry.php';
 require __DIR__.'/fn/negate.php';
