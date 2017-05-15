@@ -15,7 +15,7 @@ const equals = '\\phln\\relation\\𝑓equals';
  * @phlnCategory relation
  * @param string $a
  * @param string $b
- * @return \Closure|mixed
+ * @return \Closure|bool
  * @example
  *      \phln\relation\equals(1, 1); // true
  *      \phln\relation\equals(1, '1'); // false
