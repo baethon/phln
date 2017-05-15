@@ -48,6 +48,7 @@ require __DIR__.'/math/product.php';
 require __DIR__.'/math/subtract.php';
 require __DIR__.'/math/sum.php';
 require __DIR__.'/object/eqProps.php';
+require __DIR__.'/object/keys.php';
 require __DIR__.'/object/prop.php';
 require __DIR__.'/relation/equals.php';
 require __DIR__.'/string/concatString.php';
