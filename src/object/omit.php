@@ -3,11 +3,8 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\__;
 use const phln\fn\nil;
-use function phln\collection\reject;
 use function phln\fn\curry;
-use function phln\fn\partial;
 
 const omit = '\\phln\\object\\𝑓omit';
 
