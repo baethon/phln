@@ -51,6 +51,7 @@ require __DIR__.'/object/eqProps.php';
 require __DIR__.'/object/keys.php';
 require __DIR__.'/object/merge.php';
 require __DIR__.'/object/omit.php';
+require __DIR__.'/object/path.php';
 require __DIR__.'/object/pick.php';
 require __DIR__.'/object/prop.php';
 require __DIR__.'/relation/equals.php';
