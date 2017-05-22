@@ -55,6 +55,7 @@ require __DIR__.'/object/path.php';
 require __DIR__.'/object/pathOr.php';
 require __DIR__.'/object/pick.php';
 require __DIR__.'/object/prop.php';
+require __DIR__.'/object/props.php';
 require __DIR__.'/relation/equals.php';
 require __DIR__.'/string/concatString.php';
 require __DIR__.'/string/match.php';
