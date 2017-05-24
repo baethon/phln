@@ -60,6 +60,7 @@ require __DIR__.'/object/props.php';
 require __DIR__.'/object/values.php';
 require __DIR__.'/object/where.php';
 require __DIR__.'/object/whereEq.php';
+require __DIR__.'/relation/clamp.php';
 require __DIR__.'/relation/equals.php';
 require __DIR__.'/relation/max.php';
 require __DIR__.'/relation/min.php';
