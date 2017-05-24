@@ -6,7 +6,8 @@ namespace phln\math;
 use const phln\fn\nil;
 use function phln\fn\curry;
 
-const modulo = '\\phln\\math\\𝑓modulo';
+const modulo = '\\phln\\math\\modulo';
+const 𝑓modulo = '\\phln\\math\\𝑓modulo';
 
 /**
  * Divides the first parameter by the second and returns the remainder.
@@ -21,7 +22,7 @@ const modulo = '\\phln\\math\\𝑓modulo';
  */
 function modulo($a = nil, $b = nil)
 {
-    return curry(modulo, $a, $b);
+    return curry(𝑓modulo, $a, $b);
 }
 
 function 𝑓modulo($a, $b)

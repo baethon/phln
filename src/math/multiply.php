@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const multiply = '\\phln\\math\\𝑓multiply';
+const multiply = '\\phln\\math\\multiply';
+const 𝑓multiply = '\\phln\\math\\𝑓multiply';
 
 /**
  * Multiplies two numbers
@@ -22,7 +23,7 @@ const multiply = '\\phln\\math\\𝑓multiply';
  */
 function multiply($a = nil, $b = nil)
 {
-    return curry(multiply, $a, $b);
+    return curry(𝑓multiply, $a, $b);
 }
 
 function 𝑓multiply($a, $b)

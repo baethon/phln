@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const subtract = '\\phln\\math\\𝑓subtract';
+const subtract = '\\phln\\math\\subtract';
+const 𝑓subtract = '\\phln\\math\\𝑓subtract';
 
 /**
  * Subtracts its second argument from its first argument.
@@ -22,7 +23,7 @@ const subtract = '\\phln\\math\\𝑓subtract';
  */
 function subtract($a = nil, $b = nil)
 {
-    return curry(subtract, $a, $b);
+    return curry(𝑓subtract, $a, $b);
 }
 
 function 𝑓subtract($a, $b)

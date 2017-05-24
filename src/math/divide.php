@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const divide = '\\phln\\math\\𝑓divide';
+const divide = '\\phln\\math\\divide';
+const 𝑓divide = '\\phln\\math\\𝑓divide';
 
 /**
  * Divide numbers. Equivalent of `a / b`
@@ -19,7 +20,7 @@ const divide = '\\phln\\math\\𝑓divide';
  */
 function divide($a = nil, $b = nil)
 {
-    return curry(divide, $a, $b);
+    return curry(𝑓divide, $a, $b);
 }
 
 function 𝑓divide($a, $b)

@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const add = '\\phln\\math\\𝑓add';
+const add = '\\phln\\math\\add';
+const 𝑓add = '\\phln\\math\\𝑓add';
 
 /**
  * Add two values
@@ -19,7 +20,7 @@ const add = '\\phln\\math\\𝑓add';
  */
 function add($a = nil, $b = nil)
 {
-    return curry(add, $a, $b);
+    return curry(𝑓add, $a, $b);
 }
 
 function 𝑓add($a, $b)

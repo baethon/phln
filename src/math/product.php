@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const product = '\\phln\\math\\𝑓product';
+const product = '\\phln\\math\\product';
+const 𝑓product = '\\phln\\math\\𝑓product';
 
 /**
  * Multiplies together all the elements of a list.
@@ -20,7 +21,7 @@ const product = '\\phln\\math\\𝑓product';
  */
 function product($numbers = nil)
 {
-    return curry(product, $numbers);
+    return curry(𝑓product, $numbers);
 }
 
 function 𝑓product(array $numbers)

@@ -6,19 +6,20 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const inc = '\\phln\\math\\𝑓inc';
+const inc = '\\phln\\math\\inc';
+const 𝑓inc = '\\phln\\math\\𝑓inc';
 
 /**
  * Increment its argument
  *
  * @phlnSignature Int a => a -> a
  * @phlnCategory math
- * @param integer $number
+ * @param string|integer $number
  * @return \Closure|integer
  */
 function inc($number = nil)
 {
-    return curry(inc, $number);
+    return curry(𝑓inc, $number);
 }
 
 function 𝑓inc(int $number): int
