@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const all = '\\phln\\collection\\𝑓all';
+const all = '\\phln\\collection\\all';
+const 𝑓all = '\\phln\\collection\\𝑓all';
 
 /**
  * Returns `true` if all elements of array match the predicate, `false` otherwise.
@@ -22,7 +23,7 @@ const all = '\\phln\\collection\\𝑓all';
  */
 function all($predicate = nil, $list = nil)
 {
-    return curry(all, $predicate, $list);
+    return curry(𝑓all, $predicate, $list);
 }
 
 function 𝑓all(callable $predicate, array $list): bool

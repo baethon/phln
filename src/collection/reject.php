@@ -6,6 +6,8 @@ namespace phln\collection;
 use function phln\fn\negate;
 use const phln\fn\nil;
 
+const reject = '\\phln\\collection\\reject';
+
 /**
  * The negation of `filter`.
  *

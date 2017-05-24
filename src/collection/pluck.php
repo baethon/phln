@@ -7,7 +7,8 @@ use const phln\fn\nil;
 use function phln\fn\curry;
 use function phln\object\prop;
 
-const pluck = '\\phln\\collection\\𝑓pluck';
+const pluck = '\\phln\\collection\\pluck';
+const 𝑓pluck = '\\phln\\collection\\𝑓pluck';
 
 /**
  * Returns a new list by plucking the same named property off all objects in the list supplied.
@@ -23,7 +24,7 @@ const pluck = '\\phln\\collection\\𝑓pluck';
  */
 function pluck($key = nil, $list = nil)
 {
-    return curry(pluck, $key, $list);
+    return curry(𝑓pluck, $key, $list);
 }
 
 function 𝑓pluck($key, array $list): array

@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const any = '\\phln\\collection\\𝑓any';
+const any = '\\phln\\collection\\any';
+const 𝑓any = '\\phln\\collection\\𝑓any';
 
 /**
  * Returns `true` if at least one of array elements match the predicate, `false` otherwise.
@@ -22,7 +23,7 @@ const any = '\\phln\\collection\\𝑓any';
  */
 function any($predicate = nil, $list = nil)
 {
-    return curry(any, $predicate, $list);
+    return curry(𝑓any, $predicate, $list);
 }
 
 function 𝑓any(callable $predicate, array $list): bool

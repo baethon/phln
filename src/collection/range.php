@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const range = '\\phln\\collection\\𝑓range';
+const range = '\\phln\\collection\\range';
+const 𝑓range = '\\phln\\collection\\𝑓range';
 
 /**
  * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
@@ -21,7 +22,7 @@ const range = '\\phln\\collection\\𝑓range';
  */
 function range($start = nil, $end = nil)
 {
-    return curry(range, $start, $end);
+    return curry(𝑓range, $start, $end);
 }
 
 function 𝑓range(int $from, int $to): array

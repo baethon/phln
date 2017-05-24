@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const concat = '\\phln\\collection\\𝑓concat';
+const concat = '\\phln\\collection\\concat';
+const 𝑓concat = '\\phln\\collection\\𝑓concat';
 
 /**
  * Returns the result of concatenating the given arrays.
@@ -22,7 +23,7 @@ const concat = '\\phln\\collection\\𝑓concat';
  */
 function concat($a = nil, $b = nil)
 {
-    return curry(concat, $a, $b);
+    return curry(𝑓concat, $a, $b);
 }
 
 function 𝑓concat(array $a, array $b): array

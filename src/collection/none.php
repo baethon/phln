@@ -7,7 +7,8 @@ use function phln\fn\curry;
 use function phln\fn\negate;
 use const phln\fn\nil;
 
-const none = '\\phln\\collection\\𝑓none';
+const none = '\\phln\\collection\\none';
+const 𝑓none = '\\phln\\collection\\𝑓none';
 
 /**
  * Returns `true` if no elements of the list match the predicate, `false` otherwise.
@@ -27,7 +28,7 @@ const none = '\\phln\\collection\\𝑓none';
  */
 function none($predicate = nil, $list = nil)
 {
-    return curry(none, $predicate, $list);
+    return curry(𝑓none, $predicate, $list);
 }
 
 function 𝑓none(callable $predicate, array $list): bool

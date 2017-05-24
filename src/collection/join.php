@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const join = '\\join';
+const join = '\\phln\\collection\\join';
+const 𝑓join = '\\join';
 
 /**
  * Returns a string made by inserting the separator between each element and concatenating all the elements into a single string.
@@ -22,5 +23,5 @@ const join = '\\join';
  */
 function join($separator = nil, $list = nil)
 {
-    return curry(join, $separator, $list);
+    return curry(𝑓join, $separator, $list);
 }
