@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const replace = '\\phln\\string\\𝑓replace';
+const replace = '\\phln\\string\\replace';
+const 𝑓replace = '\\phln\\string\\𝑓replace';
 
 /**
  * Replace a regex match in a string with a replacement.
@@ -25,7 +26,7 @@ const replace = '\\phln\\string\\𝑓replace';
  */
 function replace($regexp = nil, $replacement = nil, $text = nil)
 {
-    return curry(replace, $regexp, $replacement, $text);
+    return curry(𝑓replace, $regexp, $replacement, $text);
 }
 
 function 𝑓replace(string $regexp, string $replacement, string $text): string

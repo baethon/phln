@@ -8,7 +8,8 @@ use function phln\fn\curry;
 use const phln\fn\nil;
 use function phln\fn\compose;
 
-const match = '\\phln\\string\\𝑓match';
+const match = '\\phln\\string\\match';
+const 𝑓match = '\\phln\\string\\𝑓match';
 
 /**
  * Tests a regular expression against a String.
@@ -19,13 +20,13 @@ const match = '\\phln\\string\\𝑓match';
  * @phlnCategory string
  * @param string $regexp
  * @param string $test
- * @return \Closure|mixed
+ * @return \Closure|string
  * @example
  *      \phln\string\matchFirst('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
  */
 function match($regexp = nil, $test = nil)
 {
-    return curry(match, $regexp, $test);
+    return curry(𝑓match, $regexp, $test);
 }
 
 function 𝑓match(string $regexp, string $test)

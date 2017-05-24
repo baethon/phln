@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const replaceAll = '\\phln\\string\\𝑓replaceAll';
+const replaceAll = '\\phln\\string\\replaceAll';
+const 𝑓replaceAll = '\\phln\\string\\𝑓replaceAll';
 
 /**
  * Replace regex match in a string with a replacement.
@@ -22,7 +23,7 @@ const replaceAll = '\\phln\\string\\𝑓replaceAll';
  */
 function replaceAll($regexp = nil, $replacement = nil, $text = nil)
 {
-    return curry(replaceAll, $regexp, $replacement, $text);
+    return curry(𝑓replaceAll, $regexp, $replacement, $text);
 }
 
 function 𝑓replaceAll(string $regexp, string $replacement, string $text): string

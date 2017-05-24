@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const splitRegexp = '\\phln\\string\\𝑓splitRegexp';
+const splitRegexp = '\\phln\\string\\splitRegexp';
+const 𝑓splitRegexp = '\\phln\\string\\𝑓splitRegexp';
 
 /**
  * Splits a string into an array of strings based on the given regular expression.
@@ -18,7 +19,7 @@ const splitRegexp = '\\phln\\string\\𝑓splitRegexp';
  */
 function splitRegexp($regexp = nil, $text = nil)
 {
-    return curry(splitRegexp, $regexp, $text);
+    return curry(𝑓splitRegexp, $regexp, $text);
 }
 
 function 𝑓splitRegexp(string $regexp, string $text): array

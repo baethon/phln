@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const matchAll = '\\phln\\string\\𝑓matchAll';
+const matchAll = '\\phln\\string\\matchAll';
+const 𝑓matchAll = '\\phln\\string\\𝑓matchAll';
 
 /**
  * Tests a regular expression against a String. Note that this function will return an empty array when there are no matches.
@@ -22,7 +23,7 @@ const matchAll = '\\phln\\string\\𝑓matchAll';
  */
 function matchAll($regexp = nil, $test = nil)
 {
-    return curry(matchAll, $regexp, $test);
+    return curry(𝑓matchAll, $regexp, $test);
 }
 
 function 𝑓matchAll(string $regexp, string $test): array

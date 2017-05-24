@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const split = '\\phln\\string\\𝑓split';
+const split = '\\phln\\string\\split';
+const 𝑓split = '\\phln\\string\\𝑓split';
 
 /**
  * Splits a string into an array of strings based on the given separator.
@@ -21,7 +22,7 @@ const split = '\\phln\\string\\𝑓split';
  */
 function split($delimiter = nil, $text = nil)
 {
-    return curry(split, $delimiter, $text);
+    return curry(𝑓split, $delimiter, $text);
 }
 
 function 𝑓split(string $delimiter, string $text): array
