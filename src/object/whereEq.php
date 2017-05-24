@@ -8,7 +8,8 @@ use function phln\collection\map;
 use function phln\fn\curry;
 use function phln\relation\equals;
 
-const whereEq = '\\phln\\object\\𝑓whereEq';
+const whereEq = '\\phln\\object\\whereEq';
+const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
 
 /**
  * Takes a spec object and a test object; returns `true` if the test satisfies the spec, false otherwise. An object satisfies the spec if, for each of the spec's properties, accessing that property of the object gives the same value (in `\phln\relation\equals()` terms) as accessing that property of the spec.
@@ -24,7 +25,7 @@ const whereEq = '\\phln\\object\\𝑓whereEq';
  */
 function whereEq($predicates = nil, $object = nil)
 {
-    return curry(whereEq, $predicates, $object);
+    return curry(𝑓whereEq, $predicates, $object);
 }
 
 function 𝑓whereEq(array $predicates, array $object): bool

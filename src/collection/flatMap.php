@@ -7,7 +7,8 @@ use function phln\fn\pipe;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const flatMap = '\\phln\\collection\\𝑓flatMap';
+const flatMap = '\\phln\\collection\\flatMap';
+const 𝑓flatMap = '\\phln\\collection\\𝑓flatMap';
 
 /**
  * Maps a function over list and concatenates results
@@ -26,7 +27,7 @@ const flatMap = '\\phln\\collection\\𝑓flatMap';
  */
 function flatMap($mapper = nil, $list = nil)
 {
-    return curry(flatMap, $mapper, $list);
+    return curry(𝑓flatMap, $mapper, $list);
 }
 
 function 𝑓flatMap(callable $mapper, array $list): array

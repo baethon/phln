@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const append = '\\phln\\collection\\𝑓append';
+const append = '\\phln\\collection\\append';
+const 𝑓append = '\\phln\\collection\\𝑓append';
 
 /**
  * Returns a new list containing the contents of the given list, followed by the given element.
@@ -22,7 +23,7 @@ const append = '\\phln\\collection\\𝑓append';
  */
 function append($value = nil, $list = nil)
 {
-    return curry(append, $value, $list);
+    return curry(𝑓append, $value, $list);
 }
 
 function 𝑓append($value, array $list): array

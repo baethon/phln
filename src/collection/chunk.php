@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const chunk = '\\phln\\collection\\𝑓chunk';
+const chunk = '\\phln\\collection\\chunk';
+const 𝑓chunk = '\\phln\\collection\\𝑓chunk';
 
 /**
  * Chunks an array into arrays with `size` elements.
@@ -22,7 +23,7 @@ const chunk = '\\phln\\collection\\𝑓chunk';
  */
 function chunk($size = nil, $list = nil)
 {
-    return curry(chunk, $size, $list);
+    return curry(𝑓chunk, $size, $list);
 }
 
 function 𝑓chunk(int $size, array $list): array

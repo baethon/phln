@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const slice = '\\phln\\collection\\𝑓slice';
+const slice = '\\phln\\collection\\slice';
+const 𝑓slice = '\\phln\\collection\\𝑓slice';
 
 /**
  * Extracts a slice of the array
@@ -24,7 +25,7 @@ const slice = '\\phln\\collection\\𝑓slice';
  */
 function slice($offset = nil, $length = nil, $list = nil)
 {
-    return curry(slice, $offset, $length, $list);
+    return curry(𝑓slice, $offset, $length, $list);
 }
 
 function 𝑓slice(int $offset, int $length, array $list): array

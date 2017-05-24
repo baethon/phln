@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const filter = '\\phln\\collection\\𝑓filter';
+const filter = '\\phln\\collection\\filter';
+const 𝑓filter = '\\phln\\collection\\𝑓filter';
 
 /**
  * Filters elements of an array using a callback function
@@ -21,7 +22,7 @@ const filter = '\\phln\\collection\\𝑓filter';
  */
 function filter($predicate = nil, $list = nil)
 {
-    return curry(filter, $predicate, $list);
+    return curry(𝑓filter, $predicate, $list);
 }
 
 function 𝑓filter(callable $predicate, array $list): array

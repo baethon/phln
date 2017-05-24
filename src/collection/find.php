@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const find = '\\phln\\collection\\𝑓find';
+const find = '\\phln\\collection\\find';
+const 𝑓find = '\\phln\\collection\\𝑓find';
 
 /**
  * Returns the first element of the list which matches the predicate,
@@ -23,7 +24,7 @@ const find = '\\phln\\collection\\𝑓find';
  */
 function find($predicate = nil, $list = nil)
 {
-    return curry(find, $predicate, $list);
+    return curry(𝑓find, $predicate, $list);
 }
 
 function 𝑓find(callable $predicate, array $list)

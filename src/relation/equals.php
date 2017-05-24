@@ -6,15 +6,16 @@ namespace phln\relation;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const equals = '\\phln\\relation\\𝑓equals';
+const equals = '\\phln\\relation\\equals';
+const 𝑓equals = '\\phln\\relation\\𝑓equals';
 
 /**
  * Returns `true` if its arguments are equivalent, `false` otherwise.
  *
  * @phlnSignature a -> b -> Boolean
  * @phlnCategory relation
- * @param string $a
- * @param string $b
+ * @param mixed $a
+ * @param mixed $b
  * @return \Closure|bool
  * @example
  *      \phln\relation\equals(1, 1); // true
@@ -23,7 +24,7 @@ const equals = '\\phln\\relation\\𝑓equals';
  */
 function equals($a = nil, $b = nil)
 {
-    return curry(equals, $a, $b);
+    return curry(𝑓equals, $a, $b);
 }
 
 function 𝑓equals($a, $b): bool

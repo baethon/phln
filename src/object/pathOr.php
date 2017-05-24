@@ -6,7 +6,8 @@ namespace phln\object;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const pathOr = '\\phln\\object\\𝑓pathOr';
+const pathOr = '\\phln\\object\\pathOr';
+const 𝑓pathOr = '\\phln\\object\\𝑓pathOr';
 
 /**
  * Returns nested value using "dot notation". If key is not defined, or value is NULL default value will be returned.
@@ -15,7 +16,7 @@ const pathOr = '\\phln\\object\\𝑓pathOr';
  * @phlnCategory object
  * @param string $path
  * @param string $default
- * @param string $object
+ * @param string|array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\pathOr('a.b', 'foo', ['a' => ['b' => 1]]); // 1
@@ -25,7 +26,7 @@ const pathOr = '\\phln\\object\\𝑓pathOr';
  */
 function pathOr($path = nil, $default = nil, $object = nil)
 {
-    return curry(pathOr, $path, $default, $object);
+    return curry(𝑓pathOr, $path, $default, $object);
 }
 
 function 𝑓pathOr(string $path, $default, array $object)

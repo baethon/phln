@@ -6,7 +6,8 @@ namespace phln\math;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const sum = '\\phln\\math\\𝑓sum';
+const sum = '\\phln\\math\\sum';
+const 𝑓sum = '\\phln\\math\\𝑓sum';
 
 /**
  * Adds together all the elements of a list.
@@ -20,7 +21,7 @@ const sum = '\\phln\\math\\𝑓sum';
  */
 function sum($numbers = nil)
 {
-    return curry(sum, $numbers);
+    return curry(𝑓sum, $numbers);
 }
 
 function 𝑓sum(array $numbers)

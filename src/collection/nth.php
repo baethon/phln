@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const nth = '\\phln\\collection\\𝑓nth';
+const nth = '\\phln\\collection\\nth';
+const 𝑓nth = '\\phln\\collection\\𝑓nth';
 
 /**
  * Returns the nth element of the given list or string.
@@ -23,7 +24,7 @@ const nth = '\\phln\\collection\\𝑓nth';
  */
 function nth($n = nil, $list = nil)
 {
-    return curry(nth, $n, $list);
+    return curry(𝑓nth, $n, $list);
 }
 
 function 𝑓nth(int $n, array $list)

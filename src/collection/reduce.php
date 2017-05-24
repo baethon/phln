@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const reduce = '\\phln\\collection\\𝑓reduce';
+const reduce = '\\phln\\collection\\reduce';
+const 𝑓reduce = '\\phln\\collection\\𝑓reduce';
 
 /**
  * Returns a single item by iterating through the list, successively calling the iterator function and passing it an accumulator value and the current value from the array, and then passing the result to the next call.
@@ -25,7 +26,7 @@ const reduce = '\\phln\\collection\\𝑓reduce';
  */
 function reduce($reducer = nil, $initialValue = nil, $list = nil)
 {
-    return curry(reduce, $reducer, $initialValue, $list);
+    return curry(𝑓reduce, $reducer, $initialValue, $list);
 }
 
 function 𝑓reduce(callable $reducer, $initialValue, array $list)

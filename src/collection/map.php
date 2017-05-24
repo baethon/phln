@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const map = '\\phln\\collection\\𝑓map';
+const map = '\\phln\\collection\\map';
+const 𝑓map = '\\phln\\collection\\𝑓map';
 
 /**
  * Applies the callback to the elements of the given arrays
@@ -21,7 +22,7 @@ const map = '\\phln\\collection\\𝑓map';
  */
 function map($fn = nil, $list = nil)
 {
-    return curry(map, $fn, $list);
+    return curry(𝑓map, $fn, $list);
 }
 
 function 𝑓map(callable $fn, array $list): array

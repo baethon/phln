@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const prepend = '\\phln\\collection\\𝑓prepend';
+const prepend = '\\phln\\collection\\prepend';
+const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
 
 /**
  * Returns a new list with the given element at the front, followed by the contents of the list.
@@ -22,7 +23,7 @@ const prepend = '\\phln\\collection\\𝑓prepend';
  */
 function prepend($value = nil, $list = nil)
 {
-    return curry(prepend, $value, $list);
+    return curry(𝑓prepend, $value, $list);
 }
 
 function 𝑓prepend($value, array $list): array

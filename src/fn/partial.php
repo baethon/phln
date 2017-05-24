@@ -5,7 +5,8 @@ namespace phln\fn;
 
 const __ = '_phln_fn_partial_placeholder';
 
-const partial = '\\phln\\fn\\𝑓partial';
+const partial = '\\phln\\fn\\partial';
+const 𝑓partial = '\\phln\\fn\\𝑓partial';
 
 /**
  * Takes a function `f` and a list of arguments, and returns a function `g`.
@@ -14,8 +15,8 @@ const partial = '\\phln\\fn\\𝑓partial';
  * Special placeholder value `\phln\fn\__` may be used to specify "gaps", allowing partial application of any combination of arguments, regardless of their positions.
  *
  * @phlnSignature ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
- * @param callable $fn
- * @param array ...$args
+ * @param string|callable $fn
+ * @param string|array ...$args
  * @return \Closure
  * @example
  *      $subtractFive = \phln\fn\partial(\phln\math\subtract, \phln\fn\__, 5);
@@ -23,7 +24,7 @@ const partial = '\\phln\\fn\\𝑓partial';
  */
 function partial($fn = nil, $args = nil): \Closure
 {
-    return curry(partial, $fn, $args);
+    return curry(𝑓partial, $fn, $args);
 }
 
 function 𝑓partial(callable $fn, array $args): \Closure

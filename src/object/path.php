@@ -8,7 +8,8 @@ use function phln\collection\reduce;
 use function phln\collection\tail;
 use function phln\fn\curry;
 
-const path = '\\phln\\object\\𝑓path';
+const path = '\\phln\\object\\path';
+const 𝑓path = '\\phln\\object\\𝑓path';
 
 /**
  * Returns nested value using "dot notation".
@@ -16,7 +17,7 @@ const path = '\\phln\\object\\𝑓path';
  * @phlnSignature String -> {k: v} -> v|Null
  * @phlnCategory object
  * @param string $path
- * @param string $object
+ * @param string|array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
@@ -24,7 +25,7 @@ const path = '\\phln\\object\\𝑓path';
  */
 function path($path = nil, $object = nil)
 {
-    return curry(path, $path, $object);
+    return curry(𝑓path, $path, $object);
 }
 
 function 𝑓path(string $path, array $object)

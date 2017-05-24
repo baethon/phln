@@ -6,7 +6,8 @@ namespace phln\string;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const concatString = '\\phln\\string\\𝑓concatString';
+const concatString = '\\phln\\string\\concatString';
+const 𝑓concatString = '\\phln\\string\\𝑓concatString';
 
 /**
  * Returns the result of concatenating the given strings.
@@ -15,13 +16,13 @@ const concatString = '\\phln\\string\\𝑓concatString';
  * @phlnCategory string
  * @param string $a
  * @param string $b
- * @return \Closure|mixed
+ * @return \Closure|string
  * @example
  *      \phln\string\concatString('a', 'B'); // aB
  */
 function concatString($a = nil, $b = nil)
 {
-    return curry(concatString, $a, $b);
+    return curry(𝑓concatString, $a, $b);
 }
 
 function 𝑓concatString(string $a, string $b): string

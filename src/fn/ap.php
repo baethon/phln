@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 namespace phln\fn;
 
-const ap = '\\phln\\fn\\𝑓ap';
+const ap = '\\phln\\fn\\ap';
+const 𝑓ap = '\\phln\\fn\\𝑓ap';
 
 /**
  * Applies function to functor.
@@ -19,7 +20,7 @@ const ap = '\\phln\\fn\\𝑓ap';
  */
 function ap($applicative = nil, $fn = nil)
 {
-    return curry(ap, $applicative, $fn);
+    return curry(𝑓ap, $applicative, $fn);
 }
 
 function 𝑓ap($applicative, callable $fn)

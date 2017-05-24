@@ -6,7 +6,8 @@ namespace phln\collection;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const sort = '\\phln\\collection\\𝑓sort';
+const sort = '\\phln\\collection\\sort';
+const 𝑓sort = '\\phln\\collection\\𝑓sort';
 
 /**
  * Returns a copy of the list, sorted according to the comparator function, which should accept two values at a time and return a negative number if the first value is smaller, a positive number if it's larger, and zero if they are equal.
@@ -26,7 +27,7 @@ const sort = '\\phln\\collection\\𝑓sort';
  */
 function sort($comparator = nil, $list = nil)
 {
-    return curry(sort, $comparator, $list);
+    return curry(𝑓sort, $comparator, $list);
 }
 
 function 𝑓sort(callable $comparator, array $list): array
