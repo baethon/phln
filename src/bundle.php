@@ -61,6 +61,7 @@ require __DIR__.'/object/values.php';
 require __DIR__.'/object/where.php';
 require __DIR__.'/object/whereEq.php';
 require __DIR__.'/relation/equals.php';
+require __DIR__.'/relation/min.php';
 require __DIR__.'/string/concatString.php';
 require __DIR__.'/string/match.php';
 require __DIR__.'/string/matchAll.php';
