@@ -6,7 +6,8 @@ namespace phln\object;
 use function phln\fn\curry;
 use const phln\fn\nil;
 
-const prop = '\\phln\\object\\𝑓prop';
+const prop = '\\phln\\object\\prop';
+const 𝑓prop = '\\phln\\object\\𝑓prop';
 
 /**
  * Returns a function that when supplied an array returns the indicated key of that key, if it exists.
@@ -19,7 +20,7 @@ const prop = '\\phln\\object\\𝑓prop';
  */
 function prop($key = nil, $array = nil)
 {
-    return curry(prop, $key, $array);
+    return curry(𝑓prop, $key, $array);
 }
 
 function 𝑓prop($key, array $array)
