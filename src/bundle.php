@@ -65,6 +65,7 @@ require __DIR__.'/relation/difference.php';
 require __DIR__.'/relation/equals.php';
 require __DIR__.'/relation/gt.php';
 require __DIR__.'/relation/gte.php';
+require __DIR__.'/relation/intersection.php';
 require __DIR__.'/relation/max.php';
 require __DIR__.'/relation/min.php';
 require __DIR__.'/string/concatString.php';
