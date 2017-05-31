@@ -43,6 +43,7 @@ require __DIR__.'/fn/partial.php';
 require __DIR__.'/fn/pipe.php';
 require __DIR__.'/fn/swap.php';
 require __DIR__.'/fn/tap.php';
+require __DIR__.'/logic/allPass.php';
 require __DIR__.'/math/add.php';
 require __DIR__.'/math/dec.php';
 require __DIR__.'/math/divide.php';
