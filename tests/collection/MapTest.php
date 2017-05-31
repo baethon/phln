@@ -36,13 +36,12 @@ class MapTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_passes_keys_to_callback()
+    public function it_passes_only_value()
     {
-        $fn = function ($i, $k) {
-            return compact('i', 'k');
+        $fn = function ($a, $b = null) {
+            return compact('a', 'b');
         };
 
-        $expected = [['i' => 1, 'k' => 0]];
-        $this->assertEquals($expected, map($fn, [1]));
+        $this->assertEquals([['a' => 1, 'b' => null]], map($fn, [1]));
     }
 }
