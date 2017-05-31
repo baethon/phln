@@ -34,6 +34,7 @@ require __DIR__.'/fn/apply.php';
 require __DIR__.'/fn/arity.php';
 require __DIR__.'/fn/compose.php';
 require __DIR__.'/fn/curry.php';
+require __DIR__.'/fn/curryN.php';
 require __DIR__.'/fn/negate.php';
 require __DIR__.'/fn/of.php';
 require __DIR__.'/fn/once.php';

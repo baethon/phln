@@ -25,20 +25,5 @@ const nil = '_phln_nil_argument';
  */
 function curry(callable $fn, ...$args)
 {
-    $args = array_filter($args, function ($value) {
-        return $value !== nil;
-    });
-
-    $argumentsLength = (new \ReflectionFunction($fn))->getNumberOfParameters();
-    $argumentsLengthMatch = function (array $arguments) use ($argumentsLength) {
-        return count($arguments) >= $argumentsLength;
-    };
-
-    $wrapper = function (...$wrapperArguments) use ($fn, $args, $argumentsLengthMatch) {
-        $combined = array_merge($args, $wrapperArguments);
-        return $argumentsLengthMatch($combined) ? $fn(...$combined) : curry($fn, ...$combined);
-    };
-
-    return $argumentsLengthMatch($args) ? $fn(...$args) : $wrapper;
+    return curryN(arity($fn), $fn, ...$args);
 }
-
