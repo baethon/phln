@@ -48,6 +48,7 @@ require __DIR__.'/logic/allPass.php';
 require __DIR__.'/logic/both.php';
 require __DIR__.'/logic/either.php';
 require __DIR__.'/logic/ifElse.php';
+require __DIR__.'/logic/isEmpty.php';
 require __DIR__.'/math/add.php';
 require __DIR__.'/math/dec.php';
 require __DIR__.'/math/divide.php';
