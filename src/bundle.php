@@ -94,3 +94,4 @@ require __DIR__.'/string/replace.php';
 require __DIR__.'/string/replaceAll.php';
 require __DIR__.'/string/split.php';
 require __DIR__.'/string/splitRegexp.php';
+require __DIR__.'/type/is.php';
