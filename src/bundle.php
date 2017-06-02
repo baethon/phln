@@ -29,6 +29,8 @@ require __DIR__.'/collection/sort.php';
 require __DIR__.'/collection/sortBy.php';
 require __DIR__.'/collection/tail.php';
 require __DIR__.'/collection/unique.php';
+require __DIR__.'/fn/F.php';
+require __DIR__.'/fn/T.php';
 require __DIR__.'/fn/always.php';
 require __DIR__.'/fn/ap.php';
 require __DIR__.'/fn/apply.php';
