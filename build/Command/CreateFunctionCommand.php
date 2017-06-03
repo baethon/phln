@@ -10,7 +10,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class CreateFunctionCommand extends Command
 {
-    protected $signature = 'create:function {ns} {name}';
+    protected $signature = 'create:fn {ns} {name}';
 
     /**
      * @var Factory
