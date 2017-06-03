@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace phln\type;
 
-use function phln\fn\compose;
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curry;
 
 const is = '\\phln\\type\\is';
 const 𝑓is = '\\phln\\type\\𝑓is';
@@ -17,7 +16,6 @@ const 𝑓is = '\\phln\\type\\𝑓is';
  * * `bool` - alias for `boolean` type
  * * `float` - alias for `double` type
  * * class FQN - will check if supplied object is instance of given class
- *              *Note*: currently it **does not** support object inheritance
  *
  * @phlnSignature String -> a -> Boolean
  * @phlnCategory type
@@ -36,26 +34,21 @@ function is($type = nil, $value = nil)
 
 function 𝑓is(string $type, $value): bool
 {
-    $getType = compose('\\strtolower', '\\gettype');
-    $typeOfValue = $getType($value);
+    $typeOfValue = strtolower(gettype($value));
+    $expectedType = strtolower($type);
 
     switch ($typeOfValue) {
         case 'object':
-            $validTypes = ['object', get_class($value)];
-            break;
+            return $value instanceof $type || 'object' === $typeOfValue;
 
         case 'boolean':
-            $validTypes = ['bool', 'boolean'];
-            break;
+            return in_array($expectedType, ['bool', 'boolean'], true);
 
         case 'double':
-            $validTypes = ['double', 'float'];
-            break;
+            return in_array($expectedType, ['double', 'float'], true);
 
         default:
-            $validTypes = [$typeOfValue];
+            return $typeOfValue === $expectedType;
     }
-
-    return in_array(strtolower($type), $validTypes, true);
 }
 
