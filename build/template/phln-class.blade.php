@@ -9,8 +9,10 @@ use const phln\fn\nil;
 class phln
 {
 @foreach($functions as $item)
-    public static function {{ $item['name'] }}({{ $item['parametersDefinition'] }}){{ $item['returnType'] }}
+{!! $item['doc'] !!}
+    public static function {{ $item['name'] }}({{ $item['parameters']['definition'] }}){{ $item['returnType'] }}
     {
+        return \{{ $item['fqn'] }}({{ $item['parameters']['invoke'] }});
     }
 
 @endforeach
