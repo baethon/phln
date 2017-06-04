@@ -20,6 +20,7 @@ use function phln\object\prop;
 use function phln\string\match;
 use function phln\string\replaceAll;
 use function phln\string\split;
+use Symfony\Component\Process\ProcessBuilder;
 
 class CreateBundleCommand extends Command
 {
@@ -54,9 +55,37 @@ class CreateBundleCommand extends Command
         $constants = $this->getConstants();
 
         $this->output->writeln('Rendering..');
-        file_put_contents($this->destFile, $this->renderClass($functions, $constants));
 
-        $this->output->writeln('Done');
+        try {
+            $this->saveFile($functions, $constants);
+            $this->output->writeln('Done');
+        } catch (\Exception $e) {
+            $this->output->writeln('<error>Failed to create bundle</error>');
+            $this->output->writeln($e->getMessage());
+        }
+    }
+
+    private function saveFile(array $functions, array $constants)
+    {
+        $tmpFile = $this->destFile.'.tmp';
+
+        file_put_contents($tmpFile, $this->renderClass($functions, $constants));
+
+        try {
+            $this->validateGeneratedSources($tmpFile);
+            rename($tmpFile, $this->destFile);
+        } finally {
+            if (file_exists($tmpFile)) {
+                unlink($tmpFile);
+            }
+        }
+    }
+
+    private function validateGeneratedSources(string $filePath)
+    {
+        ProcessBuilder::create(['php', '-l', realpath($filePath)])
+            ->getProcess()
+            ->mustRun();
     }
 
     private function renderClass(array $functions, array $constants)
