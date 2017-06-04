@@ -96,7 +96,13 @@ class CreateBundleCommand extends Command
         $f = pipe(
             compose(keys, prop('user'), '\\get_defined_constants', T),
             $this->filters['phln_all'],
-            $this->filters['phln_noncurried']
+            $this->filters['phln_noncurried'],
+            map(function ($constName) {
+                return [
+                    'fqn' => $constName,
+                    'name' => compose(last, split('\\'))($constName),
+                ];
+            })
         );
 
         return $f();
