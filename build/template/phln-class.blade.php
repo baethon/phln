@@ -6,7 +6,7 @@ namespace phln;
 use Closure;
 use const phln\fn\nil;
 
-class phln
+class Phln
 {
 @foreach($constants as $item)
     const {{ $item['name'] }} = \{{ $item['fqn'] }};

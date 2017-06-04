@@ -32,7 +32,7 @@ class CreateBundleCommand extends Command
      */
     private $view;
 
-    private $destFile = __DIR__.'/../../dist/phln.php';
+    private $destFile = __DIR__.'/../../src/Phln.php';
 
     public function __construct(Factory $view)
     {
@@ -169,8 +169,8 @@ class CreateBundleCommand extends Command
         $getDoc = pipe(
             [$function, 'getDocComment'],
             replaceAll('/^/m', '    '),
-            replaceAll('/\\\\phln\\\\\w+\\\\(\w+)(\()?/', 'p::$1$2'),
-            replaceAll('/phln\\\\\w+\\\\(\w+)/', 'p::$1')
+            replaceAll('/\\\\phln\\\\\w+\\\\(\w+)(\()?/', 'P::$1$2'),
+            replaceAll('/phln\\\\\w+\\\\(\w+)/', 'P::$1')
         );
 
         return $getDoc();
