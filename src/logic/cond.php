@@ -25,13 +25,16 @@ const cond = '\\phln\\logic\\cond';
  * @return \Closure
  * @example
  *      $fn = \phln\logic\cond([
- *          [R.equals(0),   R.always('water freezes at 0°C')],
- *          [R.equals(100), R.always('water boils at 100°C')],
- *          [R.T,           temp => 'nothing special happens at ' + temp + '°C']
- *          ]);
- *          fn(0); //=> 'water freezes at 0°C'
- *          fn(50); //=> 'nothing special happens at 50°C'
- *          fn(100); //=> 'water boils at 100°C'
+ *          [\phln\relation\equals(0), \phln\fn\always('water freezes at 0°C')],
+ *          [\phln\relation\equals(100), \phln\fn\always('water boils at 100°C')],
+ *          [\phln\fn\T, function(temp) {
+ *              return 'nothing special happens at ' + temp + '°C';
+ *          }]
+ *      ]);
+ *
+ *      $fn(0); //=> 'water freezes at 0°C'
+ *      $fn(50); //=> 'nothing special happens at 50°C'
+ *      $fn(100); //=> 'water boils at 100°C'
  */
 function cond(array $pairs): \Closure
 {
