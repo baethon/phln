@@ -5,14 +5,15 @@ namespace Phln\Build\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\View\Factory;
+use Symfony\Component\Process\ProcessBuilder;
 use const phln\collection\last;
-use function phln\collection\pluck;
-use function phln\collection\join;
 use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
 use function phln\collection\filter;
+use function phln\collection\join;
 use function phln\collection\map;
+use function phln\collection\pluck;
 use function phln\collection\reject;
 use function phln\fn\compose;
 use function phln\fn\pipe;
@@ -20,7 +21,6 @@ use function phln\object\prop;
 use function phln\string\match;
 use function phln\string\replaceAll;
 use function phln\string\split;
-use Symfony\Component\Process\ProcessBuilder;
 
 class CreateBundleCommand extends Command
 {
