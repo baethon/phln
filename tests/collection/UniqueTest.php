@@ -1,23 +1,19 @@
 <?php
 
-use function phln\collection\unique;
 use const phln\collection\unique;
 
-class UniqueTest extends \PHPUnit_Framework_TestCase
+class UniqueTest extends \Phln\Build\PhpUnit\TestCase
 {
-    /** @test */
-    public function it_returns_unique_elements()
+    public function getTestedFn(): string
     {
-        $this->assertEquals([1, 3, 2], unique([1, 3, 3, 2, 1, 1]));
-        $this->assertEquals([1, '1'], unique([1, '1', 1]));
-        $this->assertEquals([[42]], unique([[42], [42]]));
+        return unique;
     }
 
     /** @test */
-    public function it_can_be_used_as_callback()
+    public function it_returns_unique_elements()
     {
-        $range = range(0, 10);
-
-        $this->assertEquals($range, call_user_func(unique, array_merge($range, $range)));
+        $this->assertEquals([1, 3, 2], $this->callFn([1, 3, 3, 2, 1, 1]));
+        $this->assertEquals([1, '1'], $this->callFn([1, '1', 1]));
+        $this->assertEquals([[42]], $this->callFn([[42], [42]]));
     }
 }

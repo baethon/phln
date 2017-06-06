@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\reduce;
+use const phln\collection\reduce;
 
-class ReduceTest extends \PHPUnit_Framework_TestCase
+class ReduceTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return reduce;
+    }
+
     /** @test */
     public function it_reduces_value()
     {
@@ -11,13 +16,13 @@ class ReduceTest extends \PHPUnit_Framework_TestCase
             return $a - $b;
         };
 
-        $this->assertEquals(-10, reduce($f, 0, [1, 2, 3, 4]));
+        $this->assertEquals(-10, $this->callFn($f, 0, [1, 2, 3, 4]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $f = reduce(function ($a, $b) {
+        $f = $this->callFn(function ($a, $b) {
             return $a - $b;
         }, 0);
 

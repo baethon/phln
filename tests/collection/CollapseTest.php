@@ -3,18 +3,17 @@
 use function phln\collection\collapse;
 use const phln\collection\collapse;
 
-class CollapseTest extends \PHPUnit_Framework_TestCase
+class CollapseTest extends \Phln\Build\PhpUnit\TestCase
 {
-    /** @test */
-    public function it_flattens_array_by_one_level()
+    public function getTestedFn(): string
     {
-        $this->assertEquals([1, 2, [3]], collapse([[1], [2], [[3]]]));
-        $this->assertEquals([1, 2, [3]], collapse([[1, 2], [[3]]]));
+        return collapse;
     }
 
     /** @test */
-    public function it_can_be_used_as_callback()
+    public function it_flattens_array_by_one_level()
     {
-        $this->assertEquals([1], call_user_func(collapse, [[1]]));
+        $this->assertEquals([1, 2, [3]], $this->callFn([[1], [2], [[3]]]));
+        $this->assertEquals([1, 2, [3]], $this->callFn([[1, 2], [[3]]]));
     }
 }

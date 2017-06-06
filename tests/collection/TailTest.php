@@ -1,21 +1,19 @@
 <?php
 
-use function phln\collection\tail;
 use const phln\collection\tail;
 
-class TailTest extends \PHPUnit_Framework_TestCase
+class TailTest extends \Phln\Build\PhpUnit\TestCase
 {
-    /** @test */
-    public function it_returns_tail_of_array()
+    public function getTestedFn(): string
     {
-        $this->assertEquals([2, 3, 4], tail([1, 2, 3, 4]));
-        $this->assertEquals([], tail([1]));
-        $this->assertEquals([], tail([]));
+        return tail;
     }
 
     /** @test */
-    public function it_can_be_used_as_callback()
+    public function it_returns_tail_of_array()
     {
-        $this->assertEquals([2, 3], call_user_func(tail, [1, 2, 3]));
+        $this->assertEquals([2, 3, 4], $this->callFn([1, 2, 3, 4]));
+        $this->assertEquals([], $this->callFn([1]));
+        $this->assertEquals([], $this->callFn([]));
     }
 }
