@@ -1,19 +1,23 @@
 <?php
 
-use function phln\object\keys;
 use const phln\object\keys;
 
-class KeysTest extends \PHPUnit_Framework_TestCase
+class KeysTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return keys;
+    }
+
     /** @test */
     public function it_returns_keys_from_array()
     {
-        $this->assertEquals(['a', 'b'], keys(['a' => 1, 'b' => 1]));
+        $this->assertEquals(['a', 'b'], $this->callFn(['a' => 1, 'b' => 1]));
     }
 
     /** @test */
     public function it_can_be_used_as_callback()
     {
-        $this->assertEquals(['a', 'b'], call_user_func(keys, ['a' => 1, 'b' => 1]));
+        $this->assertEquals(['a', 'b'], call_user_func($this->getResolvedFn(), ['a' => 1, 'b' => 1]));
     }
 }

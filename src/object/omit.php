@@ -6,7 +6,8 @@ namespace phln\object;
 use const phln\fn\nil;
 use function phln\fn\curry;
 
-const omit = '\\phln\\object\\𝑓omit';
+const omit = '\\phln\\object\\omit';
+const 𝑓omit = '\\phln\\object\\𝑓omit';
 
 /**
  * Returns a partial copy of an object omitting the keys specified.
@@ -21,7 +22,7 @@ const omit = '\\phln\\object\\𝑓omit';
  */
 function omit($omitKeys = nil, $object = nil)
 {
-    return curry(omit, $omitKeys, $object);
+    return curry(𝑓omit, $omitKeys, $object);
 }
 
 function 𝑓omit(array $omitKeys, array $object): array

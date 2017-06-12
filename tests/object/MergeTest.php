@@ -1,17 +1,21 @@
 <?php
 
-use function phln\object\merge;
 use const phln\object\merge;
 
-class MergeTest extends \PHPUnit_Framework_TestCase
+class MergeTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return merge;
+    }
+
     /** @test */
     public function it_merges_two_objects()
     {
         $left = ['a' => 1];
         $right = ['b' => 2];
 
-        $this->assertEquals(array_merge($left, $right), merge($left, $right));
+        $this->assertEquals(array_merge($left, $right), $this->callFn($left, $right));
     }
 
     /** @test */
@@ -19,7 +23,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
     {
         $left = ['a' => 1];
         $right = ['b' => 2];
-        $merge = merge($left);
+        $merge = $this->callFn($left);
 
         $this->assertEquals(array_merge($left, $right), $merge($right));
     }
@@ -27,7 +31,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_can_be_used_as_callback()
     {
-        $reset = \phln\fn\partial(merge, [\phln\fn\__, ['x' => 0]]);
+        $reset = \phln\fn\partial($this->getResolvedFn(), [\phln\fn\__, ['x' => 0]]);
         $this->assertEquals(['x' => 0, 'y' => 1], $reset(['x' => 2, 'y' => 1]));
     }
 }

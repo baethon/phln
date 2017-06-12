@@ -1,9 +1,14 @@
 <?php
 
-use function phln\object\whereEq;
+use const phln\object\whereEq;
 
-class WhereEqTest extends \PHPUnit_Framework_TestCase
+class WhereEqTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return whereEq;
+    }
+
     /** @test */
     public function it_validates_object()
     {
@@ -12,14 +17,14 @@ class WhereEqTest extends \PHPUnit_Framework_TestCase
             'lastName' => 'Snow',
         ];
 
-        $this->assertTrue(whereEq($predicates, ['firstName' => 'Jon', 'lastName' => 'Snow']));
-        $this->assertFalse(whereEq($predicates, ['firstName' => 'Jon', 'lastName' => 'Stark']));
+        $this->assertTrue($this->callFn($predicates, ['firstName' => 'Jon', 'lastName' => 'Snow']));
+        $this->assertFalse($this->callFn($predicates, ['firstName' => 'Jon', 'lastName' => 'Stark']));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $whereEq = whereEq([
+        $whereEq = $this->callFn([
             'firstName' => 'Jon',
             'lastName' => 'Snow',
         ]);
