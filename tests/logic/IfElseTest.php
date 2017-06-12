@@ -1,13 +1,18 @@
 <?php
 
-use function phln\logic\ifElse;
+use const phln\logic\ifElse;
 
-class IfElseTest extends \PHPUnit_Framework_TestCase
+class IfElseTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return ifElse;
+    }
+
     /** @test */
     public function it_runs_callback_on_met_condition()
     {
-        $f = ifElse(
+        $f = $this->callFn(
             function ($a, $b) {
                 return $a + $b === 6;
             },
@@ -26,7 +31,7 @@ class IfElseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_is_curried()
     {
-        $p = ifElse(function ($i) {
+        $p = $this->callFn(function ($i) {
             return $i % 15 === 0;
         });
 

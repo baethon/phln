@@ -1,9 +1,14 @@
 <?php
 
-use function phln\logic\both;
+use const phln\logic\both;
 
-class BothTest extends \PHPUnit_Framework_TestCase
+class BothTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return both;
+    }
+
     /** @test */
     public function it_checks_if_two_predicates_are_true()
     {
@@ -14,14 +19,14 @@ class BothTest extends \PHPUnit_Framework_TestCase
             return $i < 20;
         };
 
-        $this->assertTrue(both($p, $p2)(11));
-        $this->assertFalse(both($p, $p2)(10));
+        $this->assertTrue($this->callFn($p, $p2)(11));
+        $this->assertFalse($this->callFn($p, $p2)(10));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $p = both(function ($i) {
+        $p = $this->callFn(function ($i) {
             return $i > 10;
         });
 

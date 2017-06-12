@@ -10,7 +10,7 @@ use function phln\fn\curryN;
 use function phln\fn\pipe;
 use const phln\relation\max;
 
-const allPass = '\\phln\\login\\allPass';
+const allPass = '\\phln\\logic\\allPass';
 
 /**
  * Takes a list of predicates and returns a predicate that returns `true` for a given list of arguments if every one of the provided predicates is satisfied by those arguments.

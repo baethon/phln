@@ -1,13 +1,18 @@
 <?php
 
-use function phln\logic\cond;
+use const phln\logic\cond;
 
-class CondTest extends \PHPUnit_Framework_TestCase
+class CondTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return cond;
+    }
+
     /** @test */
     public function it_fn_which_encapsulates_if_else_logic()
     {
-        $f = cond([
+        $f = $this->callFn([
             [\phln\relation\equals('foo'), \phln\fn\always('bar')],
             [\phln\type\is('bool'), \phln\fn\identity],
             [\phln\fn\T, \phln\fn\always('none')],
@@ -21,7 +26,7 @@ class CondTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_returns_null_when_no_match()
     {
-        $f = cond([
+        $f = $this->callFn([
             [\phln\relation\equals('foo'), \phln\fn\always('bar')],
         ]);
 

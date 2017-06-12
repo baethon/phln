@@ -1,22 +1,27 @@
 <?php
 
-use function phln\logic\ƛand;
+use const phln\logic\ƛand;
 
-class AndTest extends \PHPUnit_Framework_TestCase
+class AndTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return ƛand;
+    }
+
     /** @test */
     public function it_checks_if_both_values_are_true()
     {
-        $this->assertTrue(ƛand(true, true));
-        $this->assertFalse(ƛand(true, false));
-        $this->assertTrue(ƛand(true, 1));
-        $this->assertFalse(ƛand(false, false));
+        $this->assertTrue($this->callFn(true, true));
+        $this->assertFalse($this->callFn(true, false));
+        $this->assertTrue($this->callFn(true, 1));
+        $this->assertFalse($this->callFn(false, false));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $f = ƛand(true);
+        $f = $this->callFn(true);
         $this->assertTrue($f(true));
         $this->assertFalse($f(false));
     }
