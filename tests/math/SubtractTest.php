@@ -1,20 +1,24 @@
 <?php
 
-use function phln\math\subtract;
 use const phln\math\subtract;
 
-class SubtractTest extends \PHPUnit_Framework_TestCase
+class SubtractTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return subtract;
+    }
+
     /** @test */
     public function it_subtracts_number()
     {
-        $this->assertEquals(4, subtract(7, 3));
+        $this->assertEquals(4, $this->callFn(7, 3));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $complementaryAngle = subtract(90);
+        $complementaryAngle = $this->callFn(90);
         $this->assertEquals(30, $complementaryAngle(60));
     }
 
@@ -22,7 +26,7 @@ class SubtractTest extends \PHPUnit_Framework_TestCase
     public function it_can_be_used_as_callback()
     {
         $numbers = [10, 4, 2];
-        $result = array_reduce($numbers, subtract, 0);
+        $result = array_reduce($numbers, $this->getResolvedFn(), 0);
         $this->assertEquals(-16, $result);
     }
 }

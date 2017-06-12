@@ -45,7 +45,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         return $buffer . $this->getDataSetAsString();
     }
 
-    private function getResolvedFn(): string
+    protected function getResolvedFn(): string
     {
         return $this->testedFnOverwrite ?? $this->getTestedFn();
     }
