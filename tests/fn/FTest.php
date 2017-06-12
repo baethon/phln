@@ -1,12 +1,17 @@
 <?php
 
-use function phln\fn\F;
+use const phln\fn\F;
 
-class FTest extends \PHPUnit_Framework_TestCase
+class FTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return F;
+    }
+
     /** @test */
     public function it_returns_false()
     {
-        $this->assertFalse(F());
+        $this->assertFalse($this->callFn());
     }
 }

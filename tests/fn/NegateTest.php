@@ -1,10 +1,14 @@
 <?php
 
-use function phln\fn\negate;
 use const phln\fn\negate;
 
-class NegateTest extends \PHPUnit_Framework_TestCase
+class NegateTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return negate;
+    }
+
     /** @test */
     public function it_negates_predicate()
     {
@@ -12,18 +16,7 @@ class NegateTest extends \PHPUnit_Framework_TestCase
             return $i % 2 === 0;
         };
 
-        $g = negate($isEven);
-        $this->assertTrue($g(1));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $onlyZero = function ($i) {
-            return $i === 0;
-        };
-
-        $g = call_user_func(negate, $onlyZero);
+        $g = $this->callFn($isEven);
         $this->assertTrue($g(1));
     }
 }

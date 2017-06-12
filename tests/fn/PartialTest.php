@@ -1,10 +1,15 @@
 <?php
 
-use function phln\fn\partial;
+use const phln\fn\partial;
 use const phln\fn\__;
 
-class PartialTest extends \PHPUnit_Framework_TestCase
+class PartialTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return partial;
+    }
+
     /** @test */
     public function it_builds_partial_of_function()
     {
@@ -12,7 +17,7 @@ class PartialTest extends \PHPUnit_Framework_TestCase
             return join(',', [$a, $b, $c]);
         };
 
-        $g = partial($f, [2, 3]);
+        $g = $this->callFn($f, [2, 3]);
 
         $this->assertEquals('2,3,4', $g(4));
     }
@@ -23,7 +28,7 @@ class PartialTest extends \PHPUnit_Framework_TestCase
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = partial($f, [1, 2]);
+        $g = $this->callFn($f, [1, 2]);
 
         $this->assertEquals(3, $g());
     }
@@ -34,7 +39,7 @@ class PartialTest extends \PHPUnit_Framework_TestCase
         $f = function ($a, $b) {
             return "$a-$b";
         };
-        $g = partial($f, [__, 2]);
+        $g = $this->callFn($f, [__, 2]);
 
         $this->assertEquals('1-2', $g(1));
     }
@@ -45,7 +50,7 @@ class PartialTest extends \PHPUnit_Framework_TestCase
         $f = function ($a, $b, $c) {
             return compact('a', 'b', 'c');
         };
-        $g = partial($f, [__, 'b', __]);
+        $g = $this->callFn($f, [__, 'b', __]);
         $expected = ['a' => 'A', 'b' => 'b', 'c' => 'C'];
 
         $this->assertEquals($expected, $g('A', 'C'));
@@ -54,7 +59,7 @@ class PartialTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_can_be_curried()
     {
-        $factory = partial(\phln\math\add);
+        $factory = $this->callFn(\phln\math\add);
         $g = $factory([1]);
         $this->assertEquals(3, $g(2));
     }

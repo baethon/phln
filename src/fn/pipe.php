@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace phln\fn;
 
+const pipe = '\\phln\\fn\\pipe';
+
 /**
  * Performs left-to-right function composition.
  * The leftmost function may have any arity; the remaining functions must be unary.
@@ -11,7 +13,7 @@ namespace phln\fn;
  *
  * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
  * @phlnCategory function
- * @param \callable[] ...$fns
+ * @param callable[] ...$fns
  * @return \Closure
  * @throws \UnderflowException
  */
@@ -21,7 +23,7 @@ function pipe(callable ...$fns): \Closure
         throw new \UnderflowException('pipe requires at least one argument');
     }
 
-    return function (... $args) use ($fns) {
+    return function (...$args) use ($fns) {
         $head = $fns[0];
         $tail = array_slice($fns, 1);
 

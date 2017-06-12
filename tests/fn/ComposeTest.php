@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\compose;
+use const phln\fn\compose;
 
-class ComposeTest extends \PHPUnit_Framework_TestCase
+class ComposeTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return compose;
+    }
+
     /** @test */
     public function it_composes_functions()
     {
@@ -13,7 +18,7 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
         $g = function ($a, $b) {
             return $a + $b;
         };
-        $h = compose($f, $g);
+        $h = $this->callFn($f, $g);
 
         $expected = $f($g(2, 3));
         $this->assertEquals($expected, $h(2, 3));
@@ -25,7 +30,7 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = compose($f);
+        $g = $this->callFn($f);
 
         $this->assertEquals($f(2, 3), $g(2, 3));
     }
@@ -34,6 +39,6 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
     public function it_fails_when_composing_without_functions()
     {
         $this->expectException(\UnderflowException::class);
-        compose();
+        $this->callFn();
     }
 }

@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\curry;
+use const phln\fn\curry;
 
-class CurryTest extends \PHPUnit_Framework_TestCase
+class CurryTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return curry;
+    }
+
     /** @test */
     public function it_curries_function()
     {
@@ -12,7 +17,7 @@ class CurryTest extends \PHPUnit_Framework_TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = curry($sum);
+        $g = $this->callFn($sum);
 
         $this->assertEquals($expected, $g(1, 2, 3));
         $this->assertEquals($expected, $g(1)(2, 3));
@@ -27,7 +32,7 @@ class CurryTest extends \PHPUnit_Framework_TestCase
             return $a + $b + $c;
         };
         $expected = $sum(1, 2, 3);
-        $g = curry($sum, 1, 2, 3);
+        $g = $this->callFn($sum, 1, 2, 3);
 
         $this->assertEquals($expected, $g);
     }
@@ -40,7 +45,7 @@ class CurryTest extends \PHPUnit_Framework_TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = curry($sum, \phln\fn\nil, \phln\fn\nil, 1);
+        $g = $this->callFn($sum, \phln\fn\nil, \phln\fn\nil, 1);
 
         $this->assertEquals($expected, $g(2, 3));
     }

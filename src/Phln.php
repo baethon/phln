@@ -47,6 +47,7 @@ class Phln
     const ap = \phln\fn\ap;
     const apply = \phln\fn\apply;
     const arity = \phln\fn\arity;
+    const compose = \phln\fn\compose;
     const curry = \phln\fn\curry;
     const nil = \phln\fn\nil;
     const curryN = \phln\fn\curryN;
@@ -56,6 +57,7 @@ class Phln
     const once = \phln\fn\once;
     const __ = \phln\fn\__;
     const partial = \phln\fn\partial;
+    const pipe = \phln\fn\pipe;
     const swap = \phln\fn\swap;
     const tap = \phln\fn\tap;
     const allPass = \phln\logic\allPass;
@@ -713,7 +715,7 @@ class Phln
      *
      * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
      * @phlnCategory function
-     * @param \callable[] ...$fns
+     * @param callable[] ...$fns
      * @return \Closure
      * @throws \UnderflowException
      */
@@ -857,7 +859,7 @@ class Phln
      *
      * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
      * @phlnCategory function
-     * @param \callable[] ...$fns
+     * @param callable[] ...$fns
      * @return \Closure
      * @throws \UnderflowException
      */

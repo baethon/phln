@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\apply;
+use const phln\fn\apply;
 
-class ApplyTest extends \PHPUnit_Framework_TestCase
+class ApplyTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return apply;
+    }
+
     /** @test */
     public function it_applies_array_to_function()
     {
@@ -11,13 +16,13 @@ class ApplyTest extends \PHPUnit_Framework_TestCase
             return $a + $b;
         };
 
-        $this->assertEquals(42, apply($f, [40, 2]));
+        $this->assertEquals(42, $this->callFn($f, [40, 2]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $f = apply(function ($a, $b) {
+        $f = $this->callFn(function ($a, $b) {
             return $a + $b;
         });
 

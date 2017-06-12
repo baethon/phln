@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\curryN;
+use const phln\fn\curryN;
 
-class CurryNTest extends \PHPUnit_Framework_TestCase
+class CurryNTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return curryN;
+    }
+
     /** @test */
     public function it_curries_function()
     {
@@ -12,7 +17,7 @@ class CurryNTest extends \PHPUnit_Framework_TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = curryN(3, $sum);
+        $g = $this->callFn(3, $sum);
 
         $this->assertEquals($expected, $g(1, 2, 3));
         $this->assertEquals($expected, $g(1)(2, 3));
@@ -27,7 +32,7 @@ class CurryNTest extends \PHPUnit_Framework_TestCase
             return $a + $b + $c;
         };
         $expected = $sum(1, 2, 3);
-        $g = curryN(3, $sum, 1, 2, 3);
+        $g = $this->callFn(3, $sum, 1, 2, 3);
 
         $this->assertEquals($expected, $g);
     }
@@ -40,7 +45,7 @@ class CurryNTest extends \PHPUnit_Framework_TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = curryN(3, $sum, \phln\fn\nil, \phln\fn\nil, 1);
+        $g = $this->callFn(3, $sum, \phln\fn\nil, \phln\fn\nil, 1);
 
         $this->assertEquals($expected, $g(2, 3));
     }
@@ -52,9 +57,9 @@ class CurryNTest extends \PHPUnit_Framework_TestCase
             return array_sum($args);
         };
 
-        $this->assertInstanceOf(\Closure::class, curryN(3, $sum));
-        $this->assertInstanceOf(\Closure::class, curryN(3, $sum, 1));
-        $this->assertInstanceOf(\Closure::class, curryN(3, $sum, 1, 2));
-        $this->assertEquals(6, curryN(3, $sum, 1, 2, 3));
+        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum));
+        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, 1));
+        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, 1, 2));
+        $this->assertEquals(6, $this->callFn(3, $sum, 1, 2, 3));
     }
 }
