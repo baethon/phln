@@ -1,10 +1,14 @@
 <?php
 
-use function phln\type\is;
 use const phln\type\is;
 
-class IsTest extends \PHPUnit_Framework_TestCase
+class IsTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return is;
+    }
+
     /**
      * @param $type
      * @param $value
@@ -13,13 +17,13 @@ class IsTest extends \PHPUnit_Framework_TestCase
      */
     public function it_tests_given_type($type, $value)
     {
-        $this->assertTrue(is($type, $value));
+        $this->assertTrue($this->callFn($type, $value));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $isString = is('string');
+        $isString = $this->callFn('string');
         $this->assertTrue($isString('asd'));
     }
 
