@@ -47,6 +47,7 @@ class Phln
     const ap = \phln\fn\ap;
     const apply = \phln\fn\apply;
     const arity = \phln\fn\arity;
+    const compose = \phln\fn\compose;
     const curry = \phln\fn\curry;
     const nil = \phln\fn\nil;
     const curryN = \phln\fn\curryN;
@@ -56,6 +57,7 @@ class Phln
     const once = \phln\fn\once;
     const __ = \phln\fn\__;
     const partial = \phln\fn\partial;
+    const pipe = \phln\fn\pipe;
     const swap = \phln\fn\swap;
     const tap = \phln\fn\tap;
     const allPass = \phln\logic\allPass;
@@ -188,7 +190,7 @@ class Phln
      * @param array $list
      * @return array
      */
-    public static function collapse($list): array
+    public static function collapse(array $list): array
     {
         return \phln\collection\collapse($list);
     }
@@ -292,7 +294,7 @@ class Phln
      *      P::head([1, 2, 3]); // 1
      *      P::head([]); // null
      */
-    public static function head($list)
+    public static function head(array $list)
     {
         return \phln\collection\head($list);
     }
@@ -310,7 +312,7 @@ class Phln
      *      P::init([1]); // []
      *      P::init([]); // []
      */
-    public static function init($list): array
+    public static function init(array $list): array
     {
         return \phln\collection\init($list);
     }
@@ -343,7 +345,7 @@ class Phln
      *      P::last([1, 2, 3]); // 3
      *      P::last([]); // null
      */
-    public static function last($list)
+    public static function last(array $list)
     {
         return \phln\collection\last($list);
     }
@@ -517,7 +519,7 @@ class Phln
      * @example
      *      P::reverse([1, 2, 3]); // [3, 2, 1]
      */
-    public static function reverse($list): array
+    public static function reverse(array $list): array
     {
         return \phln\collection\reverse($list);
     }
@@ -596,7 +598,7 @@ class Phln
      *      P::tail([1]); // []
      *      P::tail([]); // []
      */
-    public static function tail($list): array
+    public static function tail(array $list): array
     {
         return \phln\collection\tail($list);
     }
@@ -611,7 +613,7 @@ class Phln
      * @example
      *      P::unique([3, 2, 1, 1, 3, 2]); // [3, 2, 1]
      */
-    public static function unique($list): array
+    public static function unique(array $list): array
     {
         return \phln\collection\unique($list);
     }
@@ -700,7 +702,7 @@ class Phln
      * @example
      *      P::arity('var_dump'); // 1
      */
-    public static function arity($fn): int
+    public static function arity(callable $fn): int
     {
         return \phln\fn\arity($fn);
     }
@@ -713,13 +715,13 @@ class Phln
      *
      * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
      * @phlnCategory function
-     * @param \callable[] ...$fns
+     * @param callable[] ...$fns
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function compose($fns): Closure
+    public static function compose(callable ...$fns): Closure
     {
-        return \phln\fn\compose($fns);
+        return \phln\fn\compose(...$fns);
     }
 
     /**
@@ -738,9 +740,9 @@ class Phln
      * @param array ...$args
      * @return \Closure|mixed
      */
-    public static function curry($fn, $args)
+    public static function curry(callable $fn, ...$args)
     {
-        return \phln\fn\curry($fn, $args);
+        return \phln\fn\curry($fn, ...$args);
     }
 
     /**
@@ -759,9 +761,9 @@ class Phln
      * @param array ...$args
      * @return \Closure|mixed
      */
-    public static function curryN($n, $fn, $args)
+    public static function curryN(int $n, callable $fn, ...$args)
     {
-        return \phln\fn\curryN($n, $fn, $args);
+        return \phln\fn\curryN($n, $fn, ...$args);
     }
 
     /**
@@ -793,7 +795,7 @@ class Phln
      *
      *      P::filter(P::negate($isEven), [1, 2, 3, 4, 5, 6]); // [1, 3, 5]
      */
-    public static function negate($predicate): Closure
+    public static function negate(callable $predicate): Closure
     {
         return \phln\fn\negate($predicate);
     }
@@ -825,7 +827,7 @@ class Phln
      *      $f(1, 100); // 4
      *      $f(1, 100); // 4
      */
-    public static function once($fn): Closure
+    public static function once(callable $fn): Closure
     {
         return \phln\fn\once($fn);
     }
@@ -857,13 +859,13 @@ class Phln
      *
      * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
      * @phlnCategory function
-     * @param \callable[] ...$fns
+     * @param callable[] ...$fns
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function pipe($fns): Closure
+    public static function pipe(callable ...$fns): Closure
     {
-        return \phln\fn\pipe($fns);
+        return \phln\fn\pipe(...$fns);
     }
 
     /**
@@ -879,7 +881,7 @@ class Phln
      *      };
      *      P::swap($serialize)(2, 1); // 'a:1,b:2'
      */
-    public static function swap($f): Closure
+    public static function swap(callable $f): Closure
     {
         return \phln\fn\swap($f);
     }
@@ -916,7 +918,7 @@ class Phln
      *      $aceOfSpades = P::allPass([$ace, $spades]);
      *      $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
      */
-    public static function allPass($predicates): callable
+    public static function allPass(array $predicates): callable
     {
         return \phln\logic\allPass($predicates);
     }
@@ -978,7 +980,7 @@ class Phln
      *      $fn(50); //=> 'nothing special happens at 50°C'
      *      $fn(100); //=> 'water boils at 100°C'
      */
-    public static function cond($pairs): Closure
+    public static function cond(array $pairs): Closure
     {
         return \phln\logic\cond($pairs);
     }
@@ -1293,7 +1295,7 @@ class Phln
      * @example
      *      P::keys(['a' => 1, 'b' => 1]); // ['a', 'b']
      */
-    public static function keys($object): array
+    public static function keys(array $object): array
     {
         return \phln\object\keys($object);
     }
@@ -1423,7 +1425,7 @@ class Phln
      * @param array $object
      * @return array
      */
-    public static function values($object): array
+    public static function values(array $object): array
     {
         return \phln\object\values($object);
     }

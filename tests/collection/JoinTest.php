@@ -1,19 +1,24 @@
 <?php
 
-use function phln\collection\join;
+use const phln\collection\join;
 
-class JoinTest extends \PHPUnit_Framework_TestCase
+class JoinTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return join;
+    }
+
     /** @test */
     public function it_joins_array_elements()
     {
-        $this->assertEquals('1,2,3', join(',', [1, 2, 3]));
+        $this->assertEquals('1,2,3', $this->callFn(',', [1, 2, 3]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $spacer = join(' ');
+        $spacer = $this->callFn(' ');
         $this->assertEquals('1 2 3', $spacer([1, 2, 3]));
     }
 }

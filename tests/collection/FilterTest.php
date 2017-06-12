@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\filter;
+use const phln\collection\filter;
 
-class FilterTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return filter;
+    }
+
     /** @test */
     public function it_filters_array()
     {
@@ -11,13 +16,13 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             return $i > 2;
         };
 
-        $this->assertEquals([3, 4], filter($p, [1, 2, 3, 4]));
+        $this->assertEquals([3, 4], $this->callFn($p, [1, 2, 3, 4]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $filter = filter(function ($i) {
+        $filter = $this->callFn(function ($i) {
             return $i > 2;
         });
 

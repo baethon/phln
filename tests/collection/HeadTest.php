@@ -3,18 +3,17 @@
 use function phln\collection\head;
 use const phln\collection\head;
 
-class HeadTest extends \PHPUnit_Framework_TestCase
+class HeadTest extends \Phln\Build\PhpUnit\TestCase
 {
-    /** @test */
-    public function it_returns_head_of_array()
+    public function getTestedFn(): string
     {
-        $this->assertEquals(1, head([1, 2, 3]));
-        $this->assertNull(head([]));
+        return head;
     }
 
     /** @test */
-    public function it_can_be_used_as_callback()
+    public function it_returns_head_of_array()
     {
-        $this->assertEquals('a', call_user_func(head, ['a', 'b', 'c']));
+        $this->assertEquals(1, $this->callFn([1, 2, 3]));
+        $this->assertNull($this->callFn([]));
     }
 }

@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\sortBy;
+use const phln\collection\sortBy;
 
-class SortByTest extends \PHPUnit_Framework_TestCase
+class SortByTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return sortBy;
+    }
+
     /** @test */
     public function it_sorts_by_supplied_function()
     {
@@ -14,7 +19,7 @@ class SortByTest extends \PHPUnit_Framework_TestCase
             return strtolower($item['name']);
         };
 
-        $this->assertEquals([$alice, $bob, $clara], sortBy($f, [$clara, $bob, $alice]));
+        $this->assertEquals([$alice, $bob, $clara], $this->callFn($f, [$clara, $bob, $alice]));
 
         return [$alice, $bob, $clara, $f];
     }
@@ -26,7 +31,7 @@ class SortByTest extends \PHPUnit_Framework_TestCase
     public function it_is_curried($payload)
     {
         list($alice, $bob, $clara, $f) = $payload;
-        $sort = sortBy($f);
+        $sort = $this->callFn($f);
 
         $this->assertEquals([$alice, $bob, $clara], $sort([$bob, $clara, $alice]));
     }

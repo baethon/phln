@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\none;
+use const phln\collection\none;
 
-class NoneTest extends \PHPUnit_Framework_TestCase
+class NoneTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return none;
+    }
+
     /** @test */
     public function it_checks_if_none_elements_match_predicament()
     {
@@ -11,8 +16,8 @@ class NoneTest extends \PHPUnit_Framework_TestCase
             return $i > 2;
         };
 
-        $this->assertTrue(none($p, [1, 2]));
-        $this->assertFalse(none($p, [1, 2, 3]));
+        $this->assertTrue($this->callFn($p, [1, 2]));
+        $this->assertFalse($this->callFn($p, [1, 2, 3]));
     }
 
     /** @test */
@@ -21,7 +26,7 @@ class NoneTest extends \PHPUnit_Framework_TestCase
         $p = function ($i) {
             return $i > 2;
         };
-        $g = none($p);
+        $g = $this->callFn($p);
         $this->assertTrue($g([1, 2]));
     }
 }

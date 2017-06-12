@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\find;
+use const phln\collection\find;
 
-class FindTest extends \PHPUnit_Framework_TestCase
+class FindTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return find;
+    }
+
     /** @test */
     public function it_finds_first_matching_element()
     {
@@ -11,14 +16,14 @@ class FindTest extends \PHPUnit_Framework_TestCase
             return $i['id'] === 1;
         };
 
-        $this->assertEquals(['id' => 1], find($p, [['id' => 1], ['id' => 2]]));
-        $this->assertNull(find($p, ['id' => 3]));
+        $this->assertEquals(['id' => 1], $this->callFn($p, [['id' => 1], ['id' => 2]]));
+        $this->assertNull($this->callFn($p, ['id' => 3]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $finder = find(function ($i) {
+        $finder = $this->callFn(function ($i) {
             return $i['id'] === 1;
         });
 

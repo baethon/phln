@@ -1,12 +1,17 @@
 <?php
 
-use function phln\fn\identity;
+use const phln\fn\identity;
 
-class IdentityTest extends \PHPUnit_Framework_TestCase
+class IdentityTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return identity;
+    }
+
     /** @test */
     public function it_returns_passed_value()
     {
-        $this->assertEquals(1, identity(1));
+        $this->assertEquals(1, $this->callFn(1));
     }
 }

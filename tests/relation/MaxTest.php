@@ -1,21 +1,25 @@
 <?php
 
-use function phln\relation\max;
 use const phln\relation\max;
 
-class MaxTest extends \PHPUnit_Framework_TestCase
+class MaxTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return max;
+    }
+
     /** @test */
     public function it_returns_bigger_value()
     {
-        $this->assertEquals(1, max(-1, 1));
-        $this->assertEquals(1, max(1, -1));
+        $this->assertEquals(1, $this->callFn(-1, 1));
+        $this->assertEquals(1, $this->callFn(1, -1));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $f = max(1);
+        $f = $this->callFn(1);
         $this->assertEquals(1, $f(-1));
     }
 }

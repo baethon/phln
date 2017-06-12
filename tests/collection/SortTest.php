@@ -1,9 +1,14 @@
 <?php
 
-use function phln\collection\sort;
+use const phln\collection\sort;
 
-class SortTest extends \PHPUnit_Framework_TestCase
+class SortTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return sort;
+    }
+
     /** @test */
     public function it_sorts_ascending()
     {
@@ -11,7 +16,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
             return $a - $b;
         };
 
-        $this->assertEquals([1, 2, 3], sort($f, [3, 1, 2]));
+        $this->assertEquals([1, 2, 3], $this->callFn($f, [3, 1, 2]));
     }
 
     /** @test */
@@ -21,7 +26,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
             return $b - $a;
         };
 
-        $this->assertEquals([3, 2, 1], sort($f, [1, 2, 3]));
+        $this->assertEquals([3, 2, 1], $this->callFn($f, [1, 2, 3]));
     }
 
     /** @test */
@@ -31,7 +36,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
             return 0;
         };
 
-        $this->assertEquals([3, 1, 2], sort($f, [3, 1, 2]));
+        $this->assertEquals([3, 1, 2], $this->callFn($f, [3, 1, 2]));
     }
 
     /** @test */
@@ -42,7 +47,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
         };
 
         $list = [3, 1, 2];
-        sort($f, $list);
+        $this->callFn($f, $list);
 
         $this->assertEquals([3, 1, 2], $list);
     }
@@ -50,7 +55,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_is_curried()
     {
-        $sort = sort(function ($a, $b) {
+        $sort = $this->callFn(function ($a, $b) {
             return $a - $b;
         });
 

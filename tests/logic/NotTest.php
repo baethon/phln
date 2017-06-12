@@ -1,9 +1,13 @@
 <?php
 
-use function phln\logic\not;
+use const phln\logic\not;
 
-class NotTest extends \PHPUnit_Framework_TestCase
+class NotTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return not;
+    }
 
     /**
      * @param $value
@@ -13,7 +17,7 @@ class NotTest extends \PHPUnit_Framework_TestCase
      */
     public function it_negates_passed_value($value, $expected)
     {
-        $this->assertEquals($expected, not($value));
+        $this->assertEquals($expected, $this->callFn($value));
     }
 
     public function notValueProvider()

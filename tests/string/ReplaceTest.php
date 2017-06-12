@@ -1,19 +1,24 @@
 <?php
 
-use function phln\string\replace;
+use const phln\string\replace;
 
-class ReplaceTest extends \PHPUnit_Framework_TestCase
+class ReplaceTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return replace;
+    }
+
     /** @test */
     public function it_replaces_first_matching_text()
     {
-        $this->assertEquals('bar foo foo', replace('/foo/', 'bar', 'foo foo foo'));
+        $this->assertEquals('bar foo foo', $this->callFn('/foo/', 'bar', 'foo foo foo'));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $replace = replace('/foo/', 'bar');
+        $replace = $this->callFn('/foo/', 'bar');
         $this->assertEquals('bar foo foo', $replace('foo foo foo'));
     }
 }

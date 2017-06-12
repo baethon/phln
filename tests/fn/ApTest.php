@@ -1,14 +1,19 @@
 <?php
 
-use function phln\fn\ap;
+use const phln\fn\ap;
 
-class ApTest extends \PHPUnit_Framework_TestCase
+class ApTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return ap;
+    }
+
     /** @test */
     public function it_applies_function()
     {
         $functor = $this->createApplyFunctor(1);
-        $applied = ap($functor, \phln\math\inc);
+        $applied = $this->callFn($functor, \phln\math\inc);
         $this->assertEquals($this->createApplyFunctor(2), $applied);
     }
 
@@ -16,7 +21,7 @@ class ApTest extends \PHPUnit_Framework_TestCase
     public function it_can_be_curried()
     {
         $functor = $this->createApplyFunctor(1);
-        $application = ap($functor);
+        $application = $this->callFn($functor);
         $applied = $application(\phln\math\dec);
         $this->assertEquals($this->createApplyFunctor(0), $applied);
     }

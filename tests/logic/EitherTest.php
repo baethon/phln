@@ -1,9 +1,14 @@
 <?php
 
-use function phln\logic\either;
+use const phln\logic\either;
 
-class EitherTest extends \PHPUnit_Framework_TestCase
+class EitherTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return either;
+    }
+
     /** @test */
     public function it_checks_if_one_of_predicates_returns_true()
     {
@@ -14,7 +19,7 @@ class EitherTest extends \PHPUnit_Framework_TestCase
             return 0 === $i % 2;
         };
 
-        $f = either($p, $p2);
+        $f = $this->callFn($p, $p2);
 
         $this->assertTrue($f(11));
         $this->assertTrue($f(2));
@@ -29,7 +34,7 @@ class EitherTest extends \PHPUnit_Framework_TestCase
             return 0 === $i % 2;
         };
 
-        $f = either(function ($i) {
+        $f = $this->callFn(function ($i) {
             return $i > 10;
         });
 

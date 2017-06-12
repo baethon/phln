@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\once;
+use const phln\fn\once;
 
-class OnceTest extends \PHPUnit_Framework_TestCase
+class OnceTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return once;
+    }
+
     /**
      * @test
      * @dataProvider onceValueProvider
@@ -17,7 +22,7 @@ class OnceTest extends \PHPUnit_Framework_TestCase
             return $returnValue;
         };
 
-        $f = once($fn);
+        $f = $this->callFn($fn);
 
         $this->assertEquals($returnValue, $f());
         $this->assertEquals($returnValue, $f());
@@ -31,7 +36,7 @@ class OnceTest extends \PHPUnit_Framework_TestCase
             return $a + $b;
         };
 
-        $f = once($sum);
+        $f = $this->callFn($sum);
 
         $this->assertEquals(5, $f(2, 3));
     }

@@ -1,9 +1,14 @@
 <?php
 
-use function phln\object\where;
+use const phln\object\where;
 
-class WhereTest extends \PHPUnit_Framework_TestCase
+class WhereTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return where;
+    }
+
     /** @test */
     public function it_validates_if_object_passes_predicates()
     {
@@ -12,15 +17,15 @@ class WhereTest extends \PHPUnit_Framework_TestCase
             'b' => \phln\collection\contains('foo'),
         ];
 
-        $this->assertTrue(where($predicates, ['a' => 'foo', 'b' => ['foo']]));
-        $this->assertTrue(where($predicates, ['a' => 'foo', 'b' => ['foo'], 'c' => 2]));
-        $this->assertFalse(where($predicates, ['a' => 'bar', 'b' => ['foo'], 'c' => 2]));
+        $this->assertTrue($this->callFn($predicates, ['a' => 'foo', 'b' => ['foo']]));
+        $this->assertTrue($this->callFn($predicates, ['a' => 'foo', 'b' => ['foo'], 'c' => 2]));
+        $this->assertFalse($this->callFn($predicates, ['a' => 'bar', 'b' => ['foo'], 'c' => 2]));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $where = where([
+        $where = $this->callFn([
             'a' => \phln\relation\equals('foo'),
             'b' => \phln\collection\contains('foo'),
         ]);

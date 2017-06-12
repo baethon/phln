@@ -144,7 +144,11 @@ class CreateBundleCommand extends Command
     private function getParametersSource(array $parameters): array
     {
         $mapParameters = function (\ReflectionParameter $parameter) {
-            $data = ['name' => $parameter->getName()];
+            $data = [
+                'name' => $parameter->getName(),
+                'variadic' => $parameter->isVariadic(),
+                'type' => $parameter->getType(),
+            ];
 
             try {
                 $data['defaultValue'] = $parameter->getDefaultValue();
@@ -173,7 +177,12 @@ class CreateBundleCommand extends Command
                 );
             }
 
-            return sprintf('$%s', $param['name']);
+            return sprintf(
+                '%s%s$%s',
+                empty($param['type']) ? '' : "{$param['type']} ",
+                $param['variadic'] ? '...' : '',
+                $param['name']
+            );
         };
 
         return pipe(
@@ -185,9 +194,12 @@ class CreateBundleCommand extends Command
     private function getParametersInvokeDefinition(array $parameters)
     {
         return pipe(
-            pluck('name'),
-            map(function ($name) {
-                return sprintf('$%s', $name);
+            map(function ($param) {
+                return sprintf(
+                    '%s$%s',
+                    $param['variadic'] ? '...' : '',
+                    $param['name']
+                );
             }),
             join(', ')
         )($parameters);

@@ -1,20 +1,25 @@
 <?php
 
-use function phln\logic\defaultTo;
+use const phln\logic\defaultTo;
 
-class DefaultToTest extends \PHPUnit_Framework_TestCase
+class DefaultToTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return defaultTo;
+    }
+
     /** @test */
     public function it_returns_default_value_on_null()
     {
-        $this->assertEquals(42, defaultTo(42, null));
-        $this->assertEquals('foo', defaultTo(42, 'foo'));
+        $this->assertEquals(42, $this->callFn(42, null));
+        $this->assertEquals('foo', $this->callFn(42, 'foo'));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $defaultTo42 = defaultTo(42);
+        $defaultTo42 = $this->callFn(42);
         $this->assertEquals(42, $defaultTo42(null));
     }
 }

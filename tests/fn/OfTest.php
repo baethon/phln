@@ -1,12 +1,17 @@
 <?php
 
-use function phln\fn\of;
+use const phln\fn\of;
 
-class OfTest extends \PHPUnit_Framework_TestCase
+class OfTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return of;
+    }
+
     /** @test */
     public function it_creates_array_of_value()
     {
-        $this->assertEquals(['a'], of('a'));
+        $this->assertEquals(['a'], $this->callFn('a'));
     }
 }

@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\pipe;
+use const phln\fn\pipe;
 
-class PipeTest extends \PHPUnit_Framework_TestCase
+class PipeTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return pipe;
+    }
+
     /** @test */
     public function it_composes_functions()
     {
@@ -13,7 +18,7 @@ class PipeTest extends \PHPUnit_Framework_TestCase
         $g = function ($i) {
             return $i * 2;
         };
-        $h = pipe($f, $g);
+        $h = $this->callFn($f, $g);
 
         $expected = $g($f(2, 3));
         $this->assertEquals($expected, $h(2, 3));
@@ -25,7 +30,7 @@ class PipeTest extends \PHPUnit_Framework_TestCase
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = pipe($f);
+        $g = $this->callFn($f);
 
         $this->assertEquals($f(2, 3), $g(2, 3));
     }
@@ -34,6 +39,6 @@ class PipeTest extends \PHPUnit_Framework_TestCase
     public function it_fails_when_composing_without_functions()
     {
         $this->expectException(\UnderflowException::class);
-        pipe();
+        $this->callFn();
     }
 }

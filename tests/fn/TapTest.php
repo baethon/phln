@@ -1,9 +1,14 @@
 <?php
 
-use function phln\fn\tap;
+use const phln\fn\tap;
 
-class TapTest extends \PHPUnit_Framework_TestCase
+class TapTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return tap;
+    }
+
     /** @test */
     public function it_calls_function_and_returns_passed_value()
     {
@@ -13,7 +18,7 @@ class TapTest extends \PHPUnit_Framework_TestCase
             return true;
         };
 
-        $this->assertEquals('foo', tap($fn, 'foo'));
+        $this->assertEquals('foo', $this->callFn($fn, 'foo'));
         $this->assertEquals('foo', $argument);
     }
 
@@ -21,7 +26,7 @@ class TapTest extends \PHPUnit_Framework_TestCase
     public function it_is_curried()
     {
         $called = false;
-        $f = tap(function () use (& $called) {
+        $f = $this->callFn(function () use (& $called) {
             $called = true;
         });
 

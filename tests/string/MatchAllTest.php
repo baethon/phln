@@ -1,26 +1,31 @@
 <?php
 
-use function phln\string\matchAll;
+use const phln\string\matchAll;
 
-class MatchAllTest extends \PHPUnit_Framework_TestCase
+class MatchAllTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return matchAll;
+    }
+
     /** @test */
     public function it_return_all_matches()
     {
-        $this->assertEquals(['ba', 'na', 'na'], matchAll('/([a-z]a)/', 'banana'));
-        $this->assertEquals(['Lo', 'do', 'lo'], matchAll('/([a-z](o))/i', 'Lorem ipsum dolor'));
+        $this->assertEquals(['ba', 'na', 'na'], $this->callFn('/([a-z]a)/', 'banana'));
+        $this->assertEquals(['Lo', 'do', 'lo'], $this->callFn('/([a-z](o))/i', 'Lorem ipsum dolor'));
     }
 
     /** @test */
     public function it_returns_empty_result_on_none_match()
     {
-        $this->assertEquals([], matchAll('/a/', 'b'));
+        $this->assertEquals([], $this->callFn('/a/', 'b'));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $batman = matchAll('/na/');
+        $batman = $this->callFn('/na/');
         $this->assertEquals(['na', 'na', 'na'], $batman('nanana batman!'));
     }
 }
