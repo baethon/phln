@@ -1,22 +1,27 @@
 <?php
 
-use function phln\collection\prepend;
+use const phln\collection\prepend;
 
-class PrependTest extends \PHPUnit_Framework_TestCase
+class PrependTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return prepend;
+    }
+
     /** @test */
     public function it_prepends_value_to_array()
     {
         $list = [1, 2];
-        $this->assertEquals(['a', 1, 2], prepend('a', $list));
-        $this->assertEquals([['a'], 1, 2], prepend(['a'], $list));
+        $this->assertEquals(['a', 1, 2], $this->callFn('a', $list));
+        $this->assertEquals([['a'], 1, 2], $this->callFn(['a'], $list));
         $this->assertEquals([1, 2], $list);
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $prependFoo = prepend('foo');
+        $prependFoo = $this->callFn('foo');
         $this->assertEquals(['foo', 1], $prependFoo([1]));
     }
 }
