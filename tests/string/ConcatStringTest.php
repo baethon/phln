@@ -1,27 +1,31 @@
 <?php
 
-use function phln\string\concatString;
 use const phln\string\concatString;
 
-class ConcatStringTest extends \PHPUnit_Framework_TestCase
+class ConcatStringTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return concatString;
+    }
+
     /** @test */
     public function it_concatenates_two_values()
     {
-        $this->assertEquals('ABCD', concatString('AB', 'CD'));
+        $this->assertEquals('ABCD', $this->callFn('AB', 'CD'));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $appendToA = concatString('A');
+        $appendToA = $this->callFn('A');
         $this->assertEquals('AB', $appendToA('B'));
     }
 
     /** @test */
     public function it_can_be_used_as_callback()
     {
-        $appendA = \phln\fn\partial(concatString, [\phln\fn\__, 'A']);
+        $appendA = \phln\fn\partial($this->getResolvedFn(), [\phln\fn\__, 'A']);
         $this->assertEquals('BA', $appendA('B'));
     }
 }

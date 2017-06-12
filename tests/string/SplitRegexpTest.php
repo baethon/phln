@@ -1,20 +1,24 @@
 <?php
 
-use function phln\string\splitRegexp;
 use const phln\string\splitRegexp;
 
-class SplitRegexpTest extends \PHPUnit_Framework_TestCase
+class SplitRegexpTest extends \Phln\Build\PhpUnit\TestCase
 {
+    public function getTestedFn(): string
+    {
+        return splitRegexp;
+    }
+
     /** @test */
     public function it_splits_by_regexp()
     {
-        $this->assertEquals(['a', 'b', 'c'], splitRegexp('/[,.]/', 'a,b.c'));
+        $this->assertEquals(['a', 'b', 'c'], $this->callFn('/[,.]/', 'a,b.c'));
     }
 
     /** @test */
     public function it_is_curried()
     {
-        $split = splitRegexp('/[,.]/');
+        $split = $this->callFn('/[,.]/');
         $this->assertEquals(['a', 'b', 'c'], $split('a,b.c'));
     }
 }
