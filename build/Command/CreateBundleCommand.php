@@ -65,6 +65,19 @@ class CreateBundleCommand extends Command
         }
     }
 
+    private function getReturnTypeSource(\ReflectionType $reflectionType = null): string
+    {
+        if (true === is_null($reflectionType)) {
+            return '';
+        }
+
+        return sprintf(
+            ': %s%s',
+            $reflectionType->isBuiltin() ? '' : '\\',
+            $reflectionType
+        );
+    }
+
     private function saveFile(array $functions, array $constants)
     {
         $tmpFile = $this->destFile.'.tmp';
@@ -105,7 +118,7 @@ class CreateBundleCommand extends Command
                 'name' => compose(last, split('\\'))($reflection->getName()),
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
-                'returnType' => $reflection->hasReturnType() ? sprintf(': %s', $reflection->getReturnType()) : '',
+                'returnType' => $this->getReturnTypeSource($reflection->getReturnType()),
                 'doc' => $this->getFunctionDocumentation($reflection),
             ];
         };
