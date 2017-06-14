@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace phln;
 
-use Closure;
 use const phln\fn\nil;
 
 class Phln
@@ -108,6 +107,7 @@ class Phln
     const concatString = \phln\string\concatString;
     const match = \phln\string\match;
     const matchAll = \phln\string\matchAll;
+    const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
     const replaceAll = \phln\string\replaceAll;
     const split = \phln\string\split;
@@ -654,7 +654,7 @@ class Phln
      *      $foo = P::always('foo');
      *      $foo(); // 'foo'
      */
-    public static function always($value): Closure
+    public static function always($value): \Closure
     {
         return \phln\fn\always($value);
     }
@@ -719,7 +719,7 @@ class Phln
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function compose(callable ...$fns): Closure
+    public static function compose(callable ...$fns): \Closure
     {
         return \phln\fn\compose(...$fns);
     }
@@ -795,7 +795,7 @@ class Phln
      *
      *      P::filter(P::negate($isEven), [1, 2, 3, 4, 5, 6]); // [1, 3, 5]
      */
-    public static function negate(callable $predicate): Closure
+    public static function negate(callable $predicate): \Closure
     {
         return \phln\fn\negate($predicate);
     }
@@ -827,7 +827,7 @@ class Phln
      *      $f(1, 100); // 4
      *      $f(1, 100); // 4
      */
-    public static function once(callable $fn): Closure
+    public static function once(callable $fn): \Closure
     {
         return \phln\fn\once($fn);
     }
@@ -846,7 +846,7 @@ class Phln
      *      $subtractFive = P::partial(P::subtract, P::__, 5);
      *      $subtractFive(10); // 5
      */
-    public static function partial($fn = nil, $args = nil): Closure
+    public static function partial($fn = nil, $args = nil): \Closure
     {
         return \phln\fn\partial($fn, $args);
     }
@@ -863,7 +863,7 @@ class Phln
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function pipe(callable ...$fns): Closure
+    public static function pipe(callable ...$fns): \Closure
     {
         return \phln\fn\pipe(...$fns);
     }
@@ -881,7 +881,7 @@ class Phln
      *      };
      *      P::swap($serialize)(2, 1); // 'a:1,b:2'
      */
-    public static function swap(callable $f): Closure
+    public static function swap(callable $f): \Closure
     {
         return \phln\fn\swap($f);
     }
@@ -980,7 +980,7 @@ class Phln
      *      $fn(50); //=> 'nothing special happens at 50°C'
      *      $fn(100); //=> 'water boils at 100°C'
      */
-    public static function cond(array $pairs): Closure
+    public static function cond(array $pairs): \Closure
     {
         return \phln\logic\cond($pairs);
     }
@@ -1017,7 +1017,7 @@ class Phln
      *      $f(9); // true
      *      $f(21); // true
      */
-    public static function either($left = nil, $right = nil): Closure
+    public static function either($left = nil, $right = nil): \Closure
     {
         return \phln\logic\either($left, $right);
     }
@@ -1042,7 +1042,7 @@ class Phln
      *      $fizzbuzz(15); // 'fizzbuzz'
      *      $fizzbuzz(1); // 1
      */
-    public static function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): Closure
+    public static function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): \Closure
     {
         return \phln\logic\ifElse($predicate, $onTrue, $onFalse);
     }
@@ -1720,6 +1720,22 @@ class Phln
     public static function matchAll($regexp = nil, $test = nil)
     {
         return \phln\string\matchAll($regexp, $test);
+    }
+
+    /**
+     * Wraps given pattern (and modifiers) in `\phln\RegExp` object
+     *
+     * @phlnSignature (String, String) -> RegExp
+     * @phlnCategory string
+     * @param string $pattern
+     * @param string $modifiers
+     * @return RegExp
+     * @example
+     *      P::regexp('foo', 'ig'); // => new \phln\RegExp('foo', 'ig');
+     */
+    public static function regexp(string $pattern, $modifiers = ''): \phln\RegExp
+    {
+        return \phln\string\regexp($pattern, $modifiers);
     }
 
     /**
