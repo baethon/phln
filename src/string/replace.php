@@ -29,7 +29,7 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
  */
 function replace($regexp = nil, $replacement = nil, $text = nil)
 {
-    return curryN(3, 𝑓replace, $regexp, $replacement, $text);
+    return curryN(3, 𝑓replace, [$regexp, $replacement, $text]);
 }
 
 function 𝑓replace($regexp, string $replacement, string $text): string

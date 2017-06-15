@@ -5,9 +5,9 @@ namespace phln\string;
 
 use phln\RegExp;
 use const phln\fn\nil;
+use function phln\collection\head;
 use function phln\fn\curryN;
 use function phln\type\𝑓is;
-use function phln\collection\head;
 
 const match = '\\phln\\string\\match';
 const 𝑓match = '\\phln\\string\\𝑓match';
@@ -27,7 +27,7 @@ const 𝑓match = '\\phln\\string\\𝑓match';
  */
 function match($regexp = nil, $test = nil)
 {
-    return curryN(2, 𝑓match, $regexp, $test);
+    return curryN(2, 𝑓match, [$regexp, $test]);
 }
 
 function 𝑓match($regexp, string $test)
