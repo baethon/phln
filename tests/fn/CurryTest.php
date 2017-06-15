@@ -32,7 +32,7 @@ class CurryTest extends \Phln\Build\PhpUnit\TestCase
             return $a + $b + $c;
         };
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn($sum, 1, 2, 3);
+        $g = $this->callFn($sum, [1, 2, 3]);
 
         $this->assertEquals($expected, $g);
     }
@@ -45,7 +45,7 @@ class CurryTest extends \Phln\Build\PhpUnit\TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn($sum, \phln\fn\nil, \phln\fn\nil, 1);
+        $g = $this->callFn($sum, [\phln\fn\nil, \phln\fn\nil, 1]);
 
         $this->assertEquals($expected, $g(2, 3));
     }

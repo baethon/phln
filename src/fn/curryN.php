@@ -19,11 +19,12 @@ use const phln\fn\nil;
  *
  * @phlnSignature Number -> (* → a) → (* → a)
  * @phlnCategory function
+ * @param int $n
  * @param callable $fn
- * @param array ...$args
+ * @param array $args
  * @return \Closure|mixed
  */
-function curryN(int $n, callable $fn, ...$args)
+function curryN(int $n, callable $fn, array $args = [])
 {
     $args = array_filter($args, function ($value) {
         return $value !== nil;
@@ -35,7 +36,7 @@ function curryN(int $n, callable $fn, ...$args)
 
     $wrapper = function (...$wrapperArguments) use ($fn, $args, $argumentsLengthMatch, $n) {
         $combined = array_merge($args, $wrapperArguments);
-        return $argumentsLengthMatch($combined) ? $fn(...$combined) : curryN($n, $fn, ...$combined);
+        return $argumentsLengthMatch($combined) ? $fn(...$combined) : curryN($n, $fn, $combined);
     };
 
     return $argumentsLengthMatch($args) ? $fn(...$args) : $wrapper;
