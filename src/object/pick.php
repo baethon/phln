@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const pick = '\\phln\\object\\pick';
 const 𝑓pick = '\\phln\\object\\𝑓pick';
@@ -22,7 +22,7 @@ const 𝑓pick = '\\phln\\object\\𝑓pick';
  */
 function pick($useKeys = nil, $object = nil)
 {
-    return curry(𝑓pick, $useKeys, $object);
+    return curryN(2, 𝑓pick, [$useKeys, $object]);
 }
 
 function 𝑓pick(array $useKeys, array $object): array

@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\collection\map;
-use function phln\fn\apply;
-use function phln\fn\curry;
 use const phln\fn\nil;
-use function phln\fn\pipe;
 use const phln\relation\equals;
+use function phln\collection\map;
+use function phln\fn\{
+    apply, curryN, pipe
+};
 
 const eqProps = '\\phln\\object\\eqProps';
 const 𝑓eqProps = '\\phln\\object\\𝑓eqProps';
@@ -27,7 +27,7 @@ const 𝑓eqProps = '\\phln\\object\\𝑓eqProps';
  */
 function eqProps($prop = nil, $a = nil, $b = nil)
 {
-    return curry(𝑓eqProps, $prop, $a, $b);
+    return curryN(3, 𝑓eqProps, [$prop, $a, $b]);
 }
 
 function 𝑓eqProps(string $prop, array $a, array $b): bool

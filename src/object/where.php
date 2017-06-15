@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\collection\all;
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\collection\all;
+use function phln\fn\curryN;
 
 const where = '\\phln\\object\\where';
 const 𝑓where = '\\phln\\object\\𝑓where';
@@ -30,7 +30,7 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  */
 function where($predicates = nil, $object = nil)
 {
-    return curry(𝑓where, $predicates, $object);
+    return curryN(2, 𝑓where, [$predicates, $object]);
 }
 
 function 𝑓where(array $predicates, array $object): bool

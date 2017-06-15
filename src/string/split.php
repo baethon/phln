@@ -27,7 +27,7 @@ const 𝑓split = '\\phln\\string\\𝑓split';
  */
 function split($delimiter = nil, $text = nil)
 {
-    return curryN(2, 𝑓split, $delimiter, $text);
+    return curryN(2, 𝑓split, [$delimiter, $text]);
 }
 
 function 𝑓split($delimiter, string $text): array

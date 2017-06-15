@@ -6,7 +6,7 @@ namespace phln\object;
 use const phln\fn\nil;
 use function phln\collection\reduce;
 use function phln\collection\tail;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const path = '\\phln\\object\\path';
 const 𝑓path = '\\phln\\object\\𝑓path';
@@ -25,7 +25,7 @@ const 𝑓path = '\\phln\\object\\𝑓path';
  */
 function path($path = nil, $object = nil)
 {
-    return curry(𝑓path, $path, $object);
+    return curryN(2, 𝑓path, [$path, $object]);
 }
 
 function 𝑓path(string $path, array $object)
