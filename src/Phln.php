@@ -737,8 +737,7 @@ class Phln
      * @param array $args
      * @return \Closure|mixed
      */
-    public static function curry(callable $fn, $args = array (
-))
+    public static function curry(callable $fn, array $args = [])
     {
         return \phln\fn\curry($fn, $args);
     }
@@ -760,8 +759,7 @@ class Phln
      * @param array $args
      * @return \Closure|mixed
      */
-    public static function curryN(int $n, callable $fn, $args = array (
-))
+    public static function curryN(int $n, callable $fn, array $args = [])
     {
         return \phln\fn\curryN($n, $fn, $args);
     }

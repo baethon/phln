@@ -10,13 +10,16 @@ use const phln\collection\last;
 use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
+use const phln\relation\𝑓equals;
 use function phln\collection\{
     filter, join, map, reject
 };
 use function phln\fn\{
-    compose, pipe
+    always, compose, partial, pipe
 };
+use function phln\logic\cond;
 use function phln\object\prop;
+use function phln\relation\equals;
 use function phln\string\{
     match, replace, split
 };
@@ -179,22 +182,28 @@ class CreateBundleCommand extends Command
 
     private function getParametersDefinition(array $parameters)
     {
-        $toSrc = function ($param) {
-            if (true === array_key_exists('defaultValue', $param)) {
-                $defaultValue = $param['defaultValue'];
-                return sprintf(
-                    '$%s = %s',
-                    $param['name'],
-                    ($defaultValue === nil) ? 'nil' : var_export($defaultValue, true)
-                );
-            }
+        $exportDefaultValue = cond([
+            [partial(𝑓equals, [nil]), always('nil')],
+            [equals([]), always('[]')],
+            [T, function ($value) {
+                return var_export($value, true);
+            }],
+        ]);
 
-            return sprintf(
+        $toSrc = function ($param) use ($exportDefaultValue) {
+            $base = sprintf(
                 '%s%s$%s',
                 empty($param['type']) ? '' : "{$param['type']} ",
                 $param['variadic'] ? '...' : '',
                 $param['name']
             );
+
+            if (true === array_key_exists('defaultValue', $param)) {
+                $defaultValue = $param['defaultValue'];
+                $base .= sprintf(' = %s', $exportDefaultValue($defaultValue));
+            }
+
+            return $base;
         };
 
         return pipe([
