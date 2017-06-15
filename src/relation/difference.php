@@ -29,5 +29,5 @@ function difference($a = nil, $b = nil)
 
 function 𝑓difference(array $a, array $b): array
 {
-    return compose(values, '\\array_diff')($a, $b);
+    return compose([values, '\\array_diff'])($a, $b);
 }

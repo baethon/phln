@@ -114,7 +114,7 @@ class CreateBundleCommand extends Command
             $parameters = $reflection->getParameters();
 
             return [
-                'name' => compose(last, split('\\'))($reflection->getName()),
+                'name' => compose([last, split('\\')])($reflection->getName()),
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
                 'returnType' => $this->getReturnTypeSource($reflection->getReturnType()),
@@ -122,29 +122,29 @@ class CreateBundleCommand extends Command
             ];
         };
 
-        $f = pipe(
-            compose(prop('user'), '\\get_defined_functions'),
+        $f = pipe([
+            compose([prop('user'), '\\get_defined_functions']),
             $this->filters['phln_all'],
             $this->filters['phln_noncurried'],
-            map($getName)
-        );
+            map($getName),
+        ]);
 
         return $f();
     }
 
     private function getConstants(): array
     {
-        $f = pipe(
-            compose(keys, prop('user'), '\\get_defined_constants', T),
+        $f = pipe([
+            compose([keys, prop('user'), '\\get_defined_constants', T]),
             $this->filters['phln_all'],
             $this->filters['phln_noncurried'],
             map(function ($constName) {
                 return [
                     'fqn' => $constName,
-                    'name' => compose(last, split('\\'))($constName),
+                    'name' => compose([last, split('\\')])($constName),
                 ];
-            })
-        );
+            }),
+        ]);
 
         return $f();
     }
@@ -197,15 +197,15 @@ class CreateBundleCommand extends Command
             );
         };
 
-        return pipe(
+        return pipe([
             map($toSrc),
-            join(', ')
-        )($parameters);
+            join(', '),
+        ])($parameters);
     }
 
     private function getParametersInvokeDefinition(array $parameters)
     {
-        return pipe(
+        return pipe([
             map(function ($param) {
                 return sprintf(
                     '%s$%s',
@@ -213,18 +213,18 @@ class CreateBundleCommand extends Command
                     $param['name']
                 );
             }),
-            join(', ')
-        )($parameters);
+            join(', '),
+        ])($parameters);
     }
 
     private function getFunctionDocumentation(\ReflectionFunction $function): string
     {
-        $getDoc = pipe(
+        $getDoc = pipe([
             [$function, 'getDocComment'],
             replace('/^/gm', '    '),
             replace('/\\\\phln\\\\\w+\\\\(\w+)(\()?/g', 'P::$1$2'),
-            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1')
-        );
+            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1'),
+        ]);
 
         return $getDoc();
     }

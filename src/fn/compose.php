@@ -14,27 +14,17 @@ const compose = '\\phln\\fn\\compose';
  *
  * **Note**: The result of pipe is not automatically curried.
  *
- * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+ * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
  * @phlnCategory function
  * @param callable[] ...$fns
  * @return \Closure
  * @throws \UnderflowException
  */
-function compose(callable ...$fns): \Closure
+function compose(array $fns): \Closure
 {
     if (0 === count($fns)) {
         throw new \UnderflowException('compose requires at least one argument');
     }
 
-    $reversed = array_reverse($fns);
-
-    return function (...$args) use ($reversed) {
-        return array_reduce(
-            tail($reversed),
-            function ($carry, callable $fn) {
-                return $fn($carry);
-            },
-            head($reversed)(... $args)
-        );
-    };
+    return pipe(array_reverse($fns));
 }

@@ -32,10 +32,10 @@ function flatMap($mapper = nil, $list = nil)
 
 function 𝑓flatMap(callable $mapper, array $list): array
 {
-    $f = pipe(
+    $f = pipe([
         map($mapper),
-        collapse
-    );
+        collapse,
+    ]);
 
     return $f($list);
 }

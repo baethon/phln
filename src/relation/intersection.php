@@ -29,5 +29,5 @@ function intersection($a = nil, $b = nil)
 
 function 𝑓intersection(array $a, array $b): array
 {
-    return compose(values, '\\array_intersect')($a, $b);
+    return compose([values, '\\array_intersect'])($a, $b);
 }

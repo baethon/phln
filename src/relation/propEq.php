@@ -30,10 +30,10 @@ function propEq($prop = nil, $value = nil, $object = nil)
 
 function 𝑓propEq($prop, $value, array $object): bool
 {
-    $f = pipe(
+    $f = pipe([
         prop($prop),
-        equals($value)
-    );
+        equals($value),
+    ]);
 
     return $f($object);
 }

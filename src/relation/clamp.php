@@ -31,10 +31,10 @@ function clamp($min = nil, $max = nil, $value = nil)
 
 function 𝑓clamp($min, $max, $value)
 {
-    $f = pipe(
+    $f = pipe([
         min($max),
-        max($min)
-    );
+        max($min),
+    ]);
 
     return $f($value);
 }

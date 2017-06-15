@@ -32,10 +32,10 @@ function eqProps($prop = nil, $a = nil, $b = nil)
 
 function 𝑓eqProps(string $prop, array $a, array $b): bool
 {
-    $f = pipe(
+    $f = pipe([
         map(prop($prop)),
-        apply(equals)
-    );
+        apply(equals),
+    ]);
 
     return $f([$a, $b]);
 }

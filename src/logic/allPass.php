@@ -29,10 +29,10 @@ const allPass = '\\phln\\logic\\allPass';
  */
 function allPass(array $predicates): callable
 {
-    $getArity = pipe(
+    $getArity = pipe([
         map(arity),
-        reduce(max, 0)
-    );
+        reduce(max, 0),
+    ]);
 
     return curryN($getArity($predicates), function (... $values) use ($predicates) {
         return reduce(

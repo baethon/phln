@@ -30,10 +30,10 @@ function pathEq($path = nil, $value = nil, $object = nil)
 
 function 𝑓pathEq(string $path, $value, array $object): bool
 {
-    $f = pipe(
+    $f = pipe([
         path($path),
-        equals($value)
-    );
+        equals($value),
+    ]);
 
     return $f($object);
 }

@@ -11,13 +11,13 @@ const pipe = '\\phln\\fn\\pipe';
  *
  * **Note**: The result of pipe is not automatically curried.
  *
- * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+ * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
  * @phlnCategory function
- * @param callable[] ...$fns
+ * @param callable[] $fns
  * @return \Closure
  * @throws \UnderflowException
  */
-function pipe(callable ...$fns): \Closure
+function pipe(array $fns): \Closure
 {
     if (0 === count($fns)) {
         throw new \UnderflowException('pipe requires at least one argument');

@@ -40,12 +40,12 @@ function cond(array $pairs): \Closure
 {
     return function (... $args) use ($pairs) {
         $callPredicate = partial(apply, [__, $args]);
-        $pairMatchingArgs = compose($callPredicate, head);
-        $getTransformer = pipe(
+        $pairMatchingArgs = compose([$callPredicate, head]);
+        $getTransformer = pipe([
             append([T, always(null)]),
             find($pairMatchingArgs),
-            nth(1)
-        );
+            nth(1),
+        ]);
 
         return $getTransformer($pairs)(...$args);
     };
