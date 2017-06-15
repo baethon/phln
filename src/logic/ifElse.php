@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const ifElse = '\\phln\\logic\\ifElse';
 const 𝑓ifElse = '\\phln\\logic\\𝑓ifElse';
@@ -31,7 +31,7 @@ const 𝑓ifElse = '\\phln\\logic\\𝑓ifElse';
  */
 function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): \Closure
 {
-    return curry(𝑓ifElse, $predicate, $onTrue, $onFalse);
+    return curryN(3, 𝑓ifElse, [$predicate, $onTrue, $onFalse]);
 }
 
 function 𝑓ifElse(callable $predicate, callable $onTrue, callable $onFalse): \Closure

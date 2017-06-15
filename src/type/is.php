@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\type;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const is = '\\phln\\type\\is';
 const 𝑓is = '\\phln\\type\\𝑓is';
@@ -29,7 +29,7 @@ const 𝑓is = '\\phln\\type\\𝑓is';
  */
 function is($type = nil, $value = nil)
 {
-    return curry(𝑓is, $type, $value);
+    return curryN(2, 𝑓is, [$type, $value]);
 }
 
 function 𝑓is(string $type, $value): bool

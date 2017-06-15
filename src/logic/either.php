@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\logic;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const either = '\\phln\\logic\\either';
 const 𝑓either = '\\phln\\logic\\𝑓either';
@@ -26,7 +26,7 @@ const 𝑓either = '\\phln\\logic\\𝑓either';
  */
 function either($left = nil, $right = nil): \Closure
 {
-    return curry(𝑓either, $left, $right);
+    return curryN(2, 𝑓either, [$left, $right]);
 }
 
 function 𝑓either(callable $left, callable $right): \Closure

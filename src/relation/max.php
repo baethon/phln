@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const max = '\\phln\\relation\\max';
 const 𝑓max = '\\phln\\relation\\𝑓max';
@@ -20,7 +20,7 @@ const 𝑓max = '\\phln\\relation\\𝑓max';
  */
 function max($left = nil, $right = nil)
 {
-    return curry(𝑓max, $left, $right);
+    return curryN(2, 𝑓max, [$left, $right]);
 }
 
 function 𝑓max($left, $right)

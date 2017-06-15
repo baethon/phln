@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\logic;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const ƛand = '\\phln\\logic\\ƛand';
 const 𝑓and = '\\phln\\logic\\𝑓and';
@@ -24,7 +24,7 @@ const 𝑓and = '\\phln\\logic\\𝑓and';
  */
 function ƛand($left = nil, $right = nil)
 {
-    return curry(𝑓and, $left, $right);
+    return curryN(2, 𝑓and, [$left, $right]);
 }
 
 function 𝑓and($left, $right): bool

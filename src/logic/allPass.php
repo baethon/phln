@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
+use const phln\fn\arity;
+use const phln\relation\max;
 use function phln\collection\map;
 use function phln\collection\reduce;
-use const phln\fn\arity;
 use function phln\fn\curryN;
 use function phln\fn\pipe;
-use const phln\relation\max;
 
 const allPass = '\\phln\\logic\\allPass';
 
