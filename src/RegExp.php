@@ -95,4 +95,12 @@ final class RegExp
 
         return new static($pattern, $modifiers);
     }
+
+    public function matchAll(string $test): array
+    {
+        $matches = [];
+        preg_match_all((string) $this, $test, $matches);
+
+        return isset($matches[0]) ? $matches[0] : [];
+    }
 }

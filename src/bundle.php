@@ -93,7 +93,6 @@ require __DIR__.'/relation/pathEq.php';
 require __DIR__.'/relation/propEq.php';
 require __DIR__.'/string/concatString.php';
 require __DIR__.'/string/match.php';
-require __DIR__.'/string/matchAll.php';
 require __DIR__.'/string/regexp.php';
 require __DIR__.'/string/replace.php';
 require __DIR__.'/string/replaceAll.php';

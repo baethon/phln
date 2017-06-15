@@ -106,7 +106,6 @@ class Phln
     const propEq = \phln\relation\propEq;
     const concatString = \phln\string\concatString;
     const match = \phln\string\match;
-    const matchAll = \phln\string\matchAll;
     const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
     const replaceAll = \phln\string\replaceAll;
@@ -1688,17 +1687,17 @@ class Phln
     }
 
     /**
-     * Tests a regular expression against a String.
-     *
-     * Unlike `matchAll()` this function will return first matching string or `null` when there is no match.
+     * Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
      *
      * @phlnSignature RegExp -> String -> String|Null
+     * @phlnSignature RegExp -> String -> [String]
      * @phlnCategory string
-     * @param string $regexp
+     * @param string|RegExp $regexp
      * @param string $test
-     * @return \Closure|string
+     * @return \Closure|array|string
      * @example
-     *      P::matchFirst('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+     *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+     *      P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
      */
     public static function match($regexp = nil, $test = nil)
     {
@@ -1706,36 +1705,18 @@ class Phln
     }
 
     /**
-     * Tests a regular expression against a String. Note that this function will return an empty array when there are no matches.
+     * Converts given string to RegExp object
      *
-     * All matching strings will be returned.
-     *
-     * @phlnSignature RegExp -> String -> [String]
-     * @param string $regexp
-     * @param string $test
-     * @return \Closure|array
-     * @example
-     *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
-     */
-    public static function matchAll($regexp = nil, $test = nil)
-    {
-        return \phln\string\matchAll($regexp, $test);
-    }
-
-    /**
-     * Wraps given pattern (and modifiers) in `\phln\RegExp` object
-     *
-     * @phlnSignature (String, String) -> RegExp
+     * @phlnSignature String -> RegExp
      * @phlnCategory string
-     * @param string $pattern
-     * @param string $modifiers
+     * @param string $regexp
      * @return RegExp
      * @example
-     *      P::regexp('foo', 'ig'); // => new \phln\RegExp('foo', 'ig');
+     *      P::regexp('/foo/ig'); // => new \phln\RegExp('/foo/', 'ig');
      */
-    public static function regexp(string $pattern, $modifiers = ''): \phln\RegExp
+    public static function regexp(string $regexp): \phln\RegExp
     {
-        return \phln\string\regexp($pattern, $modifiers);
+        return \phln\string\regexp($regexp);
     }
 
     /**
