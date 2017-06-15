@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\negate;
 use const phln\fn\nil;
+use function phln\fn\curryN;
+use function phln\fn\negate;
 
 const reject = '\\phln\\collection\\reject';
+const 𝑓reject = '\\phln\\collection\\𝑓reject';
 
 /**
  * The negation of `filter`.
@@ -24,5 +26,10 @@ const reject = '\\phln\\collection\\reject';
  */
 function reject($predicate = nil, $list = nil)
 {
-    return filter(negate($predicate), $list);
+    return curryN(2, 𝑓reject, $predicate, $list);
+}
+
+function 𝑓reject(callable $predicate, array $list): array
+{
+    return 𝑓filter(negate($predicate), $list);
 }
