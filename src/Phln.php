@@ -108,7 +108,6 @@ class Phln
     const match = \phln\string\match;
     const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
-    const replaceAll = \phln\string\replaceAll;
     const split = \phln\string\split;
     const splitRegexp = \phln\string\splitRegexp;
     const is = \phln\type\is;
@@ -1722,8 +1721,8 @@ class Phln
     /**
      * Replace a regex match in a string with a replacement.
      *
-     * Note: this function replaces only first matching string.
-     * To replace all matches `replaceAll()` should be used.
+     * When regular expression has 'global' modifier all matching strings will be replaced.
+     * Otherwise only first matching string will be replaced.
      *
      * @phlnSignature RegExp -> String -> String -> String
      * @phlnCategory string
@@ -1733,27 +1732,11 @@ class Phln
      * @return \Closure|string
      * @example
      *      P::replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
+     *      P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
      */
     public static function replace($regexp = nil, $replacement = nil, $text = nil)
     {
         return \phln\string\replace($regexp, $replacement, $text);
-    }
-
-    /**
-     * Replace regex match in a string with a replacement.
-     *
-     * Note: this will replace all matches.
-     *
-     * @param string $regexp
-     * @param string $replacement
-     * @param string $text
-     * @return \Closure|string
-     * @example
-     *      P::replaceAll('/foo/', 'bar', 'foo foo foo'); // 'bar bar bar'
-     */
-    public static function replaceAll($regexp = nil, $replacement = nil, $text = nil)
-    {
-        return \phln\string\replaceAll($regexp, $replacement, $text);
     }
 
     /**

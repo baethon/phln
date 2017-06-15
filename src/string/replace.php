@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace phln\string;
 
-use function phln\fn\curry;
+use phln\RegExp;
 use const phln\fn\nil;
+use function phln\fn\curryN;
+use function phln\type\𝑓is;
 
 const replace = '\\phln\\string\\replace';
 const 𝑓replace = '\\phln\\string\\𝑓replace';
@@ -12,8 +14,8 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
 /**
  * Replace a regex match in a string with a replacement.
  *
- * Note: this function replaces only first matching string.
- * To replace all matches `replaceAll()` should be used.
+ * When regular expression has 'global' modifier all matching strings will be replaced.
+ * Otherwise only first matching string will be replaced.
  *
  * @phlnSignature RegExp -> String -> String -> String
  * @phlnCategory string
@@ -23,13 +25,17 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
  * @return \Closure|string
  * @example
  *      \phln\string\replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
+ *      \phln\string\replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
  */
 function replace($regexp = nil, $replacement = nil, $text = nil)
 {
-    return curry(𝑓replace, $regexp, $replacement, $text);
+    return curryN(3, 𝑓replace, $regexp, $replacement, $text);
 }
 
-function 𝑓replace(string $regexp, string $replacement, string $text): string
+function 𝑓replace($regexp, string $replacement, string $text): string
 {
-    return preg_replace($regexp, $replacement, $text, 1);
+    $r = 𝑓is(RegExp::class, $regexp) ? $regexp : RegExp::fromString($regexp);
+    $limit = $r->isGlobal() ? -1 : 1;
+
+    return preg_replace((string) $r, $replacement, $text, $limit);
 }

@@ -95,7 +95,6 @@ require __DIR__.'/string/concatString.php';
 require __DIR__.'/string/match.php';
 require __DIR__.'/string/regexp.php';
 require __DIR__.'/string/replace.php';
-require __DIR__.'/string/replaceAll.php';
 require __DIR__.'/string/split.php';
 require __DIR__.'/string/splitRegexp.php';
 require __DIR__.'/type/is.php';

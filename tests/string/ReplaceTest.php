@@ -16,6 +16,12 @@ class ReplaceTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_replaces_all_matches()
+    {
+        $this->assertEquals('bar bar bar', $this->callFn('/foo/g', 'bar', 'foo foo foo'));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $replace = $this->callFn('/foo/', 'bar');
