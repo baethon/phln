@@ -24,13 +24,6 @@ class MedianTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn();
-        $this->assertEquals(7, $f([7, 2, 9]));
-    }
-
-    /** @test */
     public function it_can_be_used_as_callback()
     {
         $result = call_user_func($this->getResolvedFn(), [7, 2, 9]);

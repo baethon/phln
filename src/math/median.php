@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use function phln\fn\curry;
-use const phln\fn\nil;
-
 const median = '\\phln\\math\\median';
 const 𝑓median = '\\phln\\math\\𝑓median';
 
@@ -15,17 +12,12 @@ const 𝑓median = '\\phln\\math\\𝑓median';
  * @phlnSignature Number a => [a] -> a
  * @phlnCategory math
  * @param string|array $numbers
- * @return \Closure|mixed
+ * @return mixed
  * @example
  *      \\phln\\math\\median([7, 2, 9]) // 7
  *      \\phln\\math\\median([7, 2, 10, 9]) // 8
  */
-function median($numbers = nil)
-{
-    return curry(𝑓median, $numbers);
-}
-
-function 𝑓median(array $numbers)
+function median(array $numbers)
 {
     sort($numbers, SORT_NUMERIC);
     $middle = count($numbers) / 2;

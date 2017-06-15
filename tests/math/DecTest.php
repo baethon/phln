@@ -16,13 +16,6 @@ class DecTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
-    public function it_can_be_curried()
-    {
-        $g = $this->callFn();
-        $this->assertEquals(1, $g(2));
-    }
-
-    /** @test */
     public function it_can_be_used_as_callback()
     {
         $numbers = [1, 2, 3];

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const divide = '\\phln\\math\\divide';
 const 𝑓divide = '\\phln\\math\\𝑓divide';
@@ -20,7 +20,7 @@ const 𝑓divide = '\\phln\\math\\𝑓divide';
  */
 function divide($a = nil, $b = nil)
 {
-    return curry(𝑓divide, $a, $b);
+    return curryN(2, 𝑓divide, [$a, $b]);
 }
 
 function 𝑓divide($a, $b)

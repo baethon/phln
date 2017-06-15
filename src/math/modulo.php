@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\math;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const modulo = '\\phln\\math\\modulo';
 const 𝑓modulo = '\\phln\\math\\𝑓modulo';
@@ -22,7 +22,7 @@ const 𝑓modulo = '\\phln\\math\\𝑓modulo';
  */
 function modulo($a = nil, $b = nil)
 {
-    return curry(𝑓modulo, $a, $b);
+    return curryN(2, 𝑓modulo, [$a, $b]);
 }
 
 function 𝑓modulo($a, $b)

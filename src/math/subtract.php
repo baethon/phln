@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const subtract = '\\phln\\math\\subtract';
 const 𝑓subtract = '\\phln\\math\\𝑓subtract';
@@ -23,7 +23,7 @@ const 𝑓subtract = '\\phln\\math\\𝑓subtract';
  */
 function subtract($a = nil, $b = nil)
 {
-    return curry(𝑓subtract, $a, $b);
+    return curryN(2, 𝑓subtract, [$a, $b]);
 }
 
 function 𝑓subtract($a, $b)

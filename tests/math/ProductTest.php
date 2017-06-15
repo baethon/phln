@@ -17,14 +17,6 @@ class ProductTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
-    public function it_is_curried()
-    {
-        $product = $this->callFn();
-        $numbers = [2, 4, 6, 8, 100, 1];
-        $this->assertEquals(38400, $product($numbers));
-    }
-
-    /** @test */
     public function it_can_be_used_as_callback()
     {
         $numbers = [2, 4, 6, 8, 100, 1];
