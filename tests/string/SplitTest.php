@@ -1,5 +1,6 @@
 <?php
 
+use phln\RegExp;
 use const phln\string\split;
 
 class SplitTest extends \Phln\Build\PhpUnit\TestCase
@@ -20,5 +21,11 @@ class SplitTest extends \Phln\Build\PhpUnit\TestCase
     {
         $split = $this->callFn('/');
         $this->assertEquals(['a', 'b'], $split('a/b'));
+    }
+
+    /** @test */
+    public function it_splits_by_regex()
+    {
+        $this->assertEquals(['a', 'b'], $this->callFn(RegExp::fromString('|'), 'a|b'));
     }
 }

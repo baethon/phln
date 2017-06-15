@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace phln;
 
-use Closure;
 use const phln\fn\nil;
 
 class Phln
@@ -107,11 +106,9 @@ class Phln
     const propEq = \phln\relation\propEq;
     const concatString = \phln\string\concatString;
     const match = \phln\string\match;
-    const matchAll = \phln\string\matchAll;
+    const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
-    const replaceAll = \phln\string\replaceAll;
     const split = \phln\string\split;
-    const splitRegexp = \phln\string\splitRegexp;
     const is = \phln\type\is;
 
     /**
@@ -654,7 +651,7 @@ class Phln
      *      $foo = P::always('foo');
      *      $foo(); // 'foo'
      */
-    public static function always($value): Closure
+    public static function always($value): \Closure
     {
         return \phln\fn\always($value);
     }
@@ -719,7 +716,7 @@ class Phln
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function compose(callable ...$fns): Closure
+    public static function compose(callable ...$fns): \Closure
     {
         return \phln\fn\compose(...$fns);
     }
@@ -795,7 +792,7 @@ class Phln
      *
      *      P::filter(P::negate($isEven), [1, 2, 3, 4, 5, 6]); // [1, 3, 5]
      */
-    public static function negate(callable $predicate): Closure
+    public static function negate(callable $predicate): \Closure
     {
         return \phln\fn\negate($predicate);
     }
@@ -827,7 +824,7 @@ class Phln
      *      $f(1, 100); // 4
      *      $f(1, 100); // 4
      */
-    public static function once(callable $fn): Closure
+    public static function once(callable $fn): \Closure
     {
         return \phln\fn\once($fn);
     }
@@ -846,7 +843,7 @@ class Phln
      *      $subtractFive = P::partial(P::subtract, P::__, 5);
      *      $subtractFive(10); // 5
      */
-    public static function partial($fn = nil, $args = nil): Closure
+    public static function partial($fn = nil, $args = nil): \Closure
     {
         return \phln\fn\partial($fn, $args);
     }
@@ -863,7 +860,7 @@ class Phln
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function pipe(callable ...$fns): Closure
+    public static function pipe(callable ...$fns): \Closure
     {
         return \phln\fn\pipe(...$fns);
     }
@@ -881,7 +878,7 @@ class Phln
      *      };
      *      P::swap($serialize)(2, 1); // 'a:1,b:2'
      */
-    public static function swap(callable $f): Closure
+    public static function swap(callable $f): \Closure
     {
         return \phln\fn\swap($f);
     }
@@ -980,7 +977,7 @@ class Phln
      *      $fn(50); //=> 'nothing special happens at 50°C'
      *      $fn(100); //=> 'water boils at 100°C'
      */
-    public static function cond(array $pairs): Closure
+    public static function cond(array $pairs): \Closure
     {
         return \phln\logic\cond($pairs);
     }
@@ -1017,7 +1014,7 @@ class Phln
      *      $f(9); // true
      *      $f(21); // true
      */
-    public static function either($left = nil, $right = nil): Closure
+    public static function either($left = nil, $right = nil): \Closure
     {
         return \phln\logic\either($left, $right);
     }
@@ -1042,7 +1039,7 @@ class Phln
      *      $fizzbuzz(15); // 'fizzbuzz'
      *      $fizzbuzz(1); // 1
      */
-    public static function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): Closure
+    public static function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): \Closure
     {
         return \phln\logic\ifElse($predicate, $onTrue, $onFalse);
     }
@@ -1688,17 +1685,17 @@ class Phln
     }
 
     /**
-     * Tests a regular expression against a String.
-     *
-     * Unlike `matchAll()` this function will return first matching string or `null` when there is no match.
+     * Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
      *
      * @phlnSignature RegExp -> String -> String|Null
+     * @phlnSignature RegExp -> String -> [String]
      * @phlnCategory string
-     * @param string $regexp
+     * @param string|RegExp $regexp
      * @param string $test
-     * @return \Closure|string
+     * @return \Closure|array|string
      * @example
-     *      P::matchFirst('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+     *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+     *      P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
      */
     public static function match($regexp = nil, $test = nil)
     {
@@ -1706,27 +1703,25 @@ class Phln
     }
 
     /**
-     * Tests a regular expression against a String. Note that this function will return an empty array when there are no matches.
+     * Converts given string to RegExp object
      *
-     * All matching strings will be returned.
-     *
-     * @phlnSignature RegExp -> String -> [String]
+     * @phlnSignature String -> RegExp
+     * @phlnCategory string
      * @param string $regexp
-     * @param string $test
-     * @return \Closure|array
+     * @return RegExp
      * @example
-     *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
+     *      P::regexp('/foo/ig'); // => new \phln\RegExp('/foo/', 'ig');
      */
-    public static function matchAll($regexp = nil, $test = nil)
+    public static function regexp(string $regexp): \phln\RegExp
     {
-        return \phln\string\matchAll($regexp, $test);
+        return \phln\string\regexp($regexp);
     }
 
     /**
      * Replace a regex match in a string with a replacement.
      *
-     * Note: this function replaces only first matching string.
-     * To replace all matches `replaceAll()` should be used.
+     * When regular expression has 'global' modifier all matching strings will be replaced.
+     * Otherwise only first matching string will be replaced.
      *
      * @phlnSignature RegExp -> String -> String -> String
      * @phlnCategory string
@@ -1736,6 +1731,7 @@ class Phln
      * @return \Closure|string
      * @example
      *      P::replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
+     *      P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
      */
     public static function replace($regexp = nil, $replacement = nil, $text = nil)
     {
@@ -1743,26 +1739,12 @@ class Phln
     }
 
     /**
-     * Replace regex match in a string with a replacement.
+     * Splits a string into an array of strings based on the given regular expression or separator.
      *
-     * Note: this will replace all matches.
-     *
-     * @param string $regexp
-     * @param string $replacement
-     * @param string $text
-     * @return \Closure|string
-     * @example
-     *      P::replaceAll('/foo/', 'bar', 'foo foo foo'); // 'bar bar bar'
-     */
-    public static function replaceAll($regexp = nil, $replacement = nil, $text = nil)
-    {
-        return \phln\string\replaceAll($regexp, $replacement, $text);
-    }
-
-    /**
-     * Splits a string into an array of strings based on the given separator.
+     * It's possible to split string
      *
      * @phlnSignature String -> String -> [String]
+     * @phlnSignature RegExp -> String -> [String]
      * @phlnCategory string
      * @param string $delimiter
      * @param string $text
@@ -1773,19 +1755,6 @@ class Phln
     public static function split($delimiter = nil, $text = nil)
     {
         return \phln\string\split($delimiter, $text);
-    }
-
-    /**
-     * Splits a string into an array of strings based on the given regular expression.
-     *
-     * @phlnSignature RegExp -> String -> [String]
-     * @param string $regexp
-     * @param string $text
-     * @return \Closure|array
-     */
-    public static function splitRegexp($regexp = nil, $text = nil)
-    {
-        return \phln\string\splitRegexp($regexp, $text);
     }
 
     /**

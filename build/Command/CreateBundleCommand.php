@@ -10,17 +10,16 @@ use const phln\collection\last;
 use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
-use function phln\collection\filter;
-use function phln\collection\join;
-use function phln\collection\map;
-use function phln\collection\pluck;
-use function phln\collection\reject;
-use function phln\fn\compose;
-use function phln\fn\pipe;
+use function phln\collection\{
+    filter, join, map, reject
+};
+use function phln\fn\{
+    compose, pipe
+};
 use function phln\object\prop;
-use function phln\string\match;
-use function phln\string\replaceAll;
-use function phln\string\split;
+use function phln\string\{
+    match, replace, split
+};
 
 class CreateBundleCommand extends Command
 {
@@ -65,6 +64,19 @@ class CreateBundleCommand extends Command
         }
     }
 
+    private function getReturnTypeSource(\ReflectionType $reflectionType = null): string
+    {
+        if (true === is_null($reflectionType)) {
+            return '';
+        }
+
+        return sprintf(
+            ': %s%s',
+            $reflectionType->isBuiltin() ? '' : '\\',
+            $reflectionType
+        );
+    }
+
     private function saveFile(array $functions, array $constants)
     {
         $tmpFile = $this->destFile.'.tmp';
@@ -105,7 +117,7 @@ class CreateBundleCommand extends Command
                 'name' => compose(last, split('\\'))($reflection->getName()),
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
-                'returnType' => $reflection->hasReturnType() ? sprintf(': %s', $reflection->getReturnType()) : '',
+                'returnType' => $this->getReturnTypeSource($reflection->getReturnType()),
                 'doc' => $this->getFunctionDocumentation($reflection),
             ];
         };
@@ -209,9 +221,9 @@ class CreateBundleCommand extends Command
     {
         $getDoc = pipe(
             [$function, 'getDocComment'],
-            replaceAll('/^/m', '    '),
-            replaceAll('/\\\\phln\\\\\w+\\\\(\w+)(\()?/', 'P::$1$2'),
-            replaceAll('/phln\\\\\w+\\\\(\w+)/', 'P::$1')
+            replace('/^/gm', '    '),
+            replace('/\\\\phln\\\\\w+\\\\(\w+)(\()?/g', 'P::$1$2'),
+            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1')
         );
 
         return $getDoc();

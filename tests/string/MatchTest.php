@@ -17,9 +17,22 @@ class MatchTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_return_all_matches()
+    {
+        $this->assertEquals(['ba', 'na', 'na'], $this->callFn('/([a-z]a)/g', 'banana'));
+        $this->assertEquals(['Lo', 'do', 'lo'], $this->callFn('/([a-z](o))/gi', 'Lorem ipsum dolor'));
+    }
+
+    /** @test */
     public function it_returns_null_on_no_match()
     {
         $this->assertNull($this->callFn('/a/', 'b'));
+    }
+
+    /** @test */
+    public function it_returns_empty_result_on_none_match()
+    {
+        $this->assertEquals([], $this->callFn('/a/g', 'b'));
     }
 
     /** @test */

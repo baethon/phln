@@ -3,33 +3,37 @@ declare(strict_types=1);
 
 namespace phln\string;
 
-use const phln\collection\head;
-use function phln\fn\curry;
+use phln\RegExp;
 use const phln\fn\nil;
-use function phln\fn\compose;
+use function phln\fn\curryN;
+use function phln\type\𝑓is;
+use function phln\collection\head;
 
 const match = '\\phln\\string\\match';
 const 𝑓match = '\\phln\\string\\𝑓match';
 
 /**
- * Tests a regular expression against a String.
- *
- * Unlike `matchAll()` this function will return first matching string or `null` when there is no match.
+ * Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
  *
  * @phlnSignature RegExp -> String -> String|Null
+ * @phlnSignature RegExp -> String -> [String]
  * @phlnCategory string
- * @param string $regexp
+ * @param string|RegExp $regexp
  * @param string $test
- * @return \Closure|string
+ * @return \Closure|array|string
  * @example
- *      \phln\string\matchFirst('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+ *      \phln\string\match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
+ *      \phln\string\match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
  */
 function match($regexp = nil, $test = nil)
 {
-    return curry(𝑓match, $regexp, $test);
+    return curryN(2, 𝑓match, $regexp, $test);
 }
 
-function 𝑓match(string $regexp, string $test)
+function 𝑓match($regexp, string $test)
 {
-    return compose(head, matchAll)($regexp, $test);
+    $r = 𝑓is(RegExp::class, $regexp) ? $regexp : RegExp::fromString($regexp);
+    $matches = $r->matchAll($test);
+
+    return $r->isGlobal() ? $matches : head($matches);
 }
