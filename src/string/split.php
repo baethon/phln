@@ -3,16 +3,21 @@ declare(strict_types=1);
 
 namespace phln\string;
 
-use function phln\fn\curry;
+use phln\RegExp;
 use const phln\fn\nil;
+use function phln\fn\curryN;
+use function phln\type\𝑓is;
 
 const split = '\\phln\\string\\split';
 const 𝑓split = '\\phln\\string\\𝑓split';
 
 /**
- * Splits a string into an array of strings based on the given separator.
+ * Splits a string into an array of strings based on the given regular expression or separator.
+ *
+ * It's possible to split string
  *
  * @phlnSignature String -> String -> [String]
+ * @phlnSignature RegExp -> String -> [String]
  * @phlnCategory string
  * @param string $delimiter
  * @param string $text
@@ -22,10 +27,12 @@ const 𝑓split = '\\phln\\string\\𝑓split';
  */
 function split($delimiter = nil, $text = nil)
 {
-    return curry(𝑓split, $delimiter, $text);
+    return curryN(2, 𝑓split, $delimiter, $text);
 }
 
-function 𝑓split(string $delimiter, string $text): array
+function 𝑓split($delimiter, string $text): array
 {
-    return explode($delimiter, $text);
+    $r = 𝑓is(RegExp::class, $delimiter) ? $delimiter : RegExp::fromString($delimiter);
+
+    return preg_split((string) $r, $text);
 }

@@ -109,7 +109,6 @@ class Phln
     const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
     const split = \phln\string\split;
-    const splitRegexp = \phln\string\splitRegexp;
     const is = \phln\type\is;
 
     /**
@@ -1740,9 +1739,12 @@ class Phln
     }
 
     /**
-     * Splits a string into an array of strings based on the given separator.
+     * Splits a string into an array of strings based on the given regular expression or separator.
+     *
+     * It's possible to split string
      *
      * @phlnSignature String -> String -> [String]
+     * @phlnSignature RegExp -> String -> [String]
      * @phlnCategory string
      * @param string $delimiter
      * @param string $text
@@ -1753,19 +1755,6 @@ class Phln
     public static function split($delimiter = nil, $text = nil)
     {
         return \phln\string\split($delimiter, $text);
-    }
-
-    /**
-     * Splits a string into an array of strings based on the given regular expression.
-     *
-     * @phlnSignature RegExp -> String -> [String]
-     * @param string $regexp
-     * @param string $text
-     * @return \Closure|array
-     */
-    public static function splitRegexp($regexp = nil, $text = nil)
-    {
-        return \phln\string\splitRegexp($regexp, $text);
     }
 
     /**
