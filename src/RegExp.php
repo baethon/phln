@@ -39,7 +39,10 @@ final class RegExp
 
     private function wrapInDelimiters(string $pattern): string
     {
-        return $this->hasDelimiters($pattern) ? $pattern : "/{$pattern}/";
+        return $this->hasDelimiters($pattern) ? $pattern : sprintf(
+            '/%s/',
+            str_replace('/', '\\/', $pattern)
+        );
     }
 
     /**

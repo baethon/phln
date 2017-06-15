@@ -69,4 +69,11 @@ class RegExpTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new RegExp('/foo/', 'gi'), RegExp::fromString('/foo/gi'));
         $this->assertEquals(new RegExp('/+/'), RegExp::fromString('+'));
     }
+
+    /** @test */
+    public function it_escapes_delimiter_for_non_regex_pattern()
+    {
+        $str = 'foo / bar';
+        $this->assertTrue((bool) preg_match(RegExp::fromString('/'), $str));
+    }
 }
