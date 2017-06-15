@@ -8,17 +8,16 @@ use phln\RegExp;
 const regexp = '\\phln\\string\\regexp';
 
 /**
- * Wraps given pattern (and modifiers) in `\phln\RegExp` object
+ * Converts given string to RegExp object
  *
- * @phlnSignature (String, String) -> RegExp
+ * @phlnSignature String -> RegExp
  * @phlnCategory string
- * @param string $pattern
- * @param string $modifiers
+ * @param string $regexp
  * @return RegExp
  * @example
- *      \phln\string\regexp('foo', 'ig'); // => new \phln\RegExp('foo', 'ig');
+ *      \phln\string\regexp('/foo/ig'); // => new \phln\RegExp('/foo/', 'ig');
  */
-function regexp(string $pattern, string $modifiers = ''): RegExp
+function regexp(string $regexp): RegExp
 {
-    return new RegExp($pattern, $modifiers);
+    return RegExp::fromString($regexp);
 }

@@ -12,6 +12,6 @@ class RegexpFnTest extends \Phln\Build\PhpUnit\TestCase
     /** @test  */
     public function it_works()
     {
-        $this->assertEquals(new \phln\RegExp('foo', 'ig'), $this->callFn('foo', 'ig'));
+        $this->assertEquals(new \phln\RegExp('/foo/', 'ig'), $this->callFn('/foo/ig'));
     }
 }
