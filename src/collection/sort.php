@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const sort = '\\phln\\collection\\sort';
 const 𝑓sort = '\\phln\\collection\\𝑓sort';
@@ -27,7 +27,7 @@ const 𝑓sort = '\\phln\\collection\\𝑓sort';
  */
 function sort($comparator = nil, $list = nil)
 {
-    return curry(𝑓sort, $comparator, $list);
+    return curryN(2, 𝑓sort, [$comparator, $list]);
 }
 
 function 𝑓sort(callable $comparator, array $list): array

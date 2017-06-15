@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const slice = '\\phln\\collection\\slice';
 const 𝑓slice = '\\phln\\collection\\𝑓slice';
@@ -25,7 +25,7 @@ const 𝑓slice = '\\phln\\collection\\𝑓slice';
  */
 function slice($offset = nil, $length = nil, $list = nil)
 {
-    return curry(𝑓slice, $offset, $length, $list);
+    return curryN(3, 𝑓slice, [$offset, $length, $list]);
 }
 
 function 𝑓slice(int $offset, int $length, array $list): array

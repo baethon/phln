@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const all = '\\phln\\collection\\all';
 const 𝑓all = '\\phln\\collection\\𝑓all';
@@ -23,7 +23,7 @@ const 𝑓all = '\\phln\\collection\\𝑓all';
  */
 function all($predicate = nil, $list = nil)
 {
-    return curry(𝑓all, $predicate, $list);
+    return curryN(2, 𝑓all, [$predicate, $list]);
 }
 
 function 𝑓all(callable $predicate, array $list): bool

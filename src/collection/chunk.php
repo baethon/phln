@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
+use function phln\fn\curryN;
 use const phln\fn\nil;
 
 const chunk = '\\phln\\collection\\chunk';
@@ -23,7 +23,7 @@ const 𝑓chunk = '\\phln\\collection\\𝑓chunk';
  */
 function chunk($size = nil, $list = nil)
 {
-    return curry(𝑓chunk, $size, $list);
+    return curryN(2, 𝑓chunk, [$size, $list]);
 }
 
 function 𝑓chunk(int $size, array $list): array

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const mapIndexed = '\\phln\\collection\\mapIndexed';
 const 𝑓mapIndexed = '\\phln\\collection\\𝑓mapIndexed';
@@ -22,7 +22,7 @@ const 𝑓mapIndexed = '\\phln\\collection\\𝑓mapIndexed';
  */
 function mapIndexed($fn = nil, $list = nil)
 {
-    return curry(𝑓mapIndexed, $fn, $list);
+    return curryN(2, 𝑓mapIndexed, [$fn, $list]);
 }
 
 function 𝑓mapIndexed(callable $fn, array $list): array

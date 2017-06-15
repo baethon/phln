@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const concat = '\\phln\\collection\\concat';
 const 𝑓concat = '\\phln\\collection\\𝑓concat';
@@ -23,7 +23,7 @@ const 𝑓concat = '\\phln\\collection\\𝑓concat';
  */
 function concat($a = nil, $b = nil)
 {
-    return curry(𝑓concat, $a, $b);
+    return curryN(2, 𝑓concat, [$a, $b]);
 }
 
 function 𝑓concat(array $a, array $b): array

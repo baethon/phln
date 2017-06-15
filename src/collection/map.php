@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
-use function phln\fn\curryN;
 use const phln\fn\nil;
-use function phln\object\values;
+use function phln\fn\curryN;
 
 const map = '\\phln\\collection\\map';
 
@@ -21,5 +19,5 @@ const map = '\\phln\\collection\\map';
  */
 function map($fn = nil, $list = nil)
 {
-    return curryN(2, '\\array_map', $fn, $list);
+    return curryN(2, '\\array_map', [$fn, $list]);
 }

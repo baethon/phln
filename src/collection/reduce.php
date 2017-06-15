@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
+use function phln\fn\curryN;
 use const phln\fn\nil;
 
 const reduce = '\\phln\\collection\\reduce';
@@ -26,7 +26,7 @@ const 𝑓reduce = '\\phln\\collection\\𝑓reduce';
  */
 function reduce($reducer = nil, $initialValue = nil, $list = nil)
 {
-    return curry(𝑓reduce, $reducer, $initialValue, $list);
+    return curryN(3, 𝑓reduce, [$reducer, $initialValue, $list]);
 }
 
 function 𝑓reduce(callable $reducer, $initialValue, array $list)

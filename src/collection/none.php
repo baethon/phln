@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
-use function phln\fn\negate;
 use const phln\fn\nil;
+use function phln\fn\curryN;
+use function phln\fn\negate;
 
 const none = '\\phln\\collection\\none';
 const 𝑓none = '\\phln\\collection\\𝑓none';
@@ -28,7 +28,7 @@ const 𝑓none = '\\phln\\collection\\𝑓none';
  */
 function none($predicate = nil, $list = nil)
 {
-    return curry(𝑓none, $predicate, $list);
+    return curryN(2, 𝑓none, [$predicate, $list]);
 }
 
 function 𝑓none(callable $predicate, array $list): bool
