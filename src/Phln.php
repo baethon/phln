@@ -710,7 +710,7 @@ class Phln
      *
      * **Note**: The result of pipe is not automatically curried.
      *
-     * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+     * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
      * @phlnCategory function
      * @param callable[] ...$fns
      * @return \Closure
@@ -857,7 +857,7 @@ class Phln
      *
      * **Note**: The result of pipe is not automatically curried.
      *
-     * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+     * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
      * @phlnCategory function
      * @param callable[] $fns
      * @return \Closure
