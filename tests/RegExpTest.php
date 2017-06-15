@@ -40,7 +40,7 @@ class RegExpTest extends \PHPUnit_Framework_TestCase
     public function delimiterWrapperProvider()
     {
         return [
-            ['^foo', '/^foo/'],
+            ['^foo', '/\^foo/'],
             ['/foo/', '/foo/'],
             ['#foo#', '#foo#'],
             ['~foo~', '~foo~'],
@@ -67,7 +67,7 @@ class RegExpTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new RegExp('foo'), RegExp::fromString('foo'));
         $this->assertEquals(new RegExp('|foo|'), RegExp::fromString('|foo|'));
         $this->assertEquals(new RegExp('/foo/', 'gi'), RegExp::fromString('/foo/gi'));
-        $this->assertEquals(new RegExp('/+/'), RegExp::fromString('+'));
+        $this->assertEquals(new RegExp('/\+/'), RegExp::fromString('+'));
     }
 
     /** @test */

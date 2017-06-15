@@ -41,7 +41,7 @@ final class RegExp
     {
         return $this->hasDelimiters($pattern) ? $pattern : sprintf(
             '/%s/',
-            str_replace('/', '\\/', $pattern)
+            preg_quote($pattern, '/')
         );
     }
 
