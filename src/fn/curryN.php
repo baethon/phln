@@ -5,8 +5,6 @@ namespace phln\fn;
 
 const curryN = '\\phln\\fn\\curryN';
 
-use const phln\fn\nil;
-
 /**
  * Returns a curried equivalent of the provided function, with the specified arity.
  *

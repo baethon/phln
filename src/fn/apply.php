@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace phln\fn;
 
-use function phln\fn\curry;
-use const phln\fn\nil;
-
 const apply = '\\phln\\fn\\apply';
 const 𝑓apply = '\\phln\\fn\\𝑓apply';
 
@@ -22,7 +19,7 @@ const 𝑓apply = '\\phln\\fn\\𝑓apply';
  */
 function apply($fn = nil, $arguments = nil)
 {
-    return curry(𝑓apply, $fn, $arguments);
+    return curryN(2, 𝑓apply, [$fn, $arguments]);
 }
 
 function 𝑓apply(callable $fn, array $arguments)

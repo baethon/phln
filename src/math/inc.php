@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const inc = '\\phln\\math\\inc';
 const 𝑓inc = '\\phln\\math\\𝑓inc';
@@ -19,7 +19,7 @@ const 𝑓inc = '\\phln\\math\\𝑓inc';
  */
 function inc($number = nil)
 {
-    return curry(𝑓inc, $number);
+    return curryN(1, 𝑓inc, [$number]);
 }
 
 function 𝑓inc(int $number): int

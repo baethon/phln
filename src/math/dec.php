@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const dec = '\\phln\\math\\dec';
 const 𝑓dec = '\\phln\\math\\𝑓dec';
@@ -19,7 +19,7 @@ const 𝑓dec = '\\phln\\math\\𝑓dec';
  */
 function dec($number = nil)
 {
-    return curry(𝑓dec, $number);
+    return curryN(1, 𝑓dec, [$number]);
 }
 
 function 𝑓dec(int $number): int
