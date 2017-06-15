@@ -59,4 +59,14 @@ class RegExpTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue((new RegExp('foo', 'g'))->isGlobal());
         $this->assertFalse((new RegExp('foo', 'i'))->isGlobal());
     }
+
+    /** @test */
+    public function it_can_be_created_from_string()
+    {
+        $this->assertEquals(new RegExp('/foo/', 'i'), RegExp::fromString('/foo/i'));
+        $this->assertEquals(new RegExp('foo'), RegExp::fromString('foo'));
+        $this->assertEquals(new RegExp('|foo|'), RegExp::fromString('|foo|'));
+        $this->assertEquals(new RegExp('/foo/', 'gi'), RegExp::fromString('/foo/gi'));
+        $this->assertEquals(new RegExp('/+/'), RegExp::fromString('+'));
+    }
 }

@@ -62,6 +62,34 @@ final class RegExp
             return false;
         }
 
-        return (bool) preg_match('/^[^a-z0-9\s]+$/', $start.$end);
+        return static::isValidDelimiter($start) && static::isValidDelimiter($end);
+    }
+
+    private static function isValidDelimiter(string $char): bool
+    {
+        return (bool) preg_match('/^[^a-z0-9\s]$/', $char);
+    }
+
+    /**
+     * Creates RegExp instance based on passed regular expression.
+     *
+     * @param string $regexp
+     * @return RegExp
+     * @example
+     *      RegExp::fromString('/foo/gi'); // -> new RegExp('/foo/', 'gi');
+     */
+    public static function fromString(string $regexp): RegExp
+    {
+        $start = substr($regexp, 0, 1);
+
+        if (false === static::isValidDelimiter($start)) {
+            return new static($regexp);
+        }
+
+        $endPosition = strrpos($regexp, $start);
+        $pattern = substr($regexp, 0, $endPosition + 1);
+        $modifiers = substr($regexp, $endPosition + 1);
+
+        return new static($pattern, $modifiers);
     }
 }
