@@ -710,15 +710,15 @@ class Phln
      *
      * **Note**: The result of pipe is not automatically curried.
      *
-     * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+     * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
      * @phlnCategory function
      * @param callable[] ...$fns
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function compose(callable ...$fns): \Closure
+    public static function compose(array $fns): \Closure
     {
-        return \phln\fn\compose(...$fns);
+        return \phln\fn\compose($fns);
     }
 
     /**
@@ -734,12 +734,12 @@ class Phln
      * @phlnSignature (* → a) → (* → a)
      * @phlnCategory function
      * @param callable $fn
-     * @param array ...$args
+     * @param array $args
      * @return \Closure|mixed
      */
-    public static function curry(callable $fn, ...$args)
+    public static function curry(callable $fn, array $args = [])
     {
-        return \phln\fn\curry($fn, ...$args);
+        return \phln\fn\curry($fn, $args);
     }
 
     /**
@@ -754,13 +754,14 @@ class Phln
      *
      * @phlnSignature Number -> (* → a) → (* → a)
      * @phlnCategory function
+     * @param int $n
      * @param callable $fn
-     * @param array ...$args
+     * @param array $args
      * @return \Closure|mixed
      */
-    public static function curryN(int $n, callable $fn, ...$args)
+    public static function curryN(int $n, callable $fn, array $args = [])
     {
-        return \phln\fn\curryN($n, $fn, ...$args);
+        return \phln\fn\curryN($n, $fn, $args);
     }
 
     /**
@@ -854,15 +855,15 @@ class Phln
      *
      * **Note**: The result of pipe is not automatically curried.
      *
-     * @phlnSignature (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) -> z)
+     * @phlnSignature [((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)
      * @phlnCategory function
-     * @param callable[] ...$fns
+     * @param callable[] $fns
      * @return \Closure
      * @throws \UnderflowException
      */
-    public static function pipe(callable ...$fns): \Closure
+    public static function pipe(array $fns): \Closure
     {
-        return \phln\fn\pipe(...$fns);
+        return \phln\fn\pipe($fns);
     }
 
     /**
@@ -1118,10 +1119,10 @@ class Phln
      *
      * @phlnSignature Int a => a -> a
      * @phlnCategory math
-     * @param string|integer $number
-     * @return \Closure|integer
+     * @param mixed $number
+     * @return mixed
      */
-    public static function dec($number = nil)
+    public static function dec($number)
     {
         return \phln\math\dec($number);
     }
@@ -1145,10 +1146,10 @@ class Phln
      *
      * @phlnSignature Int a => a -> a
      * @phlnCategory math
-     * @param string|integer $number
-     * @return \Closure|integer
+     * @param mixed $number
+     * @return mixed
      */
-    public static function inc($number = nil)
+    public static function inc($number)
     {
         return \phln\math\inc($number);
     }
@@ -1158,12 +1159,12 @@ class Phln
      *
      * @phlnSignature Number a => [a] -> a
      * @phlnCategory math
-     * @param string|array $numbers
+     * @param array $numbers
      * @example
      *      P::mean([2, 7, 9]) // 6
      * @return \Closure|mixed
      */
-    public static function mean($numbers = nil)
+    public static function mean(array $numbers)
     {
         return \phln\math\mean($numbers);
     }
@@ -1174,12 +1175,12 @@ class Phln
      * @phlnSignature Number a => [a] -> a
      * @phlnCategory math
      * @param string|array $numbers
-     * @return \Closure|mixed
+     * @return mixed
      * @example
      *      \\phln\\math\\median([7, 2, 9]) // 7
      *      \\phln\\math\\median([7, 2, 10, 9]) // 8
      */
-    public static function median($numbers = nil)
+    public static function median(array $numbers)
     {
         return \phln\math\median($numbers);
     }
@@ -1222,12 +1223,12 @@ class Phln
      *
      * @phlnSignature Number a => [a] -> a
      * @phlnCategory math
-     * @param string $numbers
-     * @return \Closure|mixed
+     * @param array $numbers
+     * @return mixed
      * @example
      *      P::product([2, 4, 6, 8, 100, 1]); // 38400
      */
-    public static function product($numbers = nil)
+    public static function product(array $numbers)
     {
         return \phln\math\product($numbers);
     }
@@ -1254,12 +1255,12 @@ class Phln
      *
      * @phlnSignature [Number] -> Number
      * @phlnCategory math
-     * @param string $numbers
-     * @return \Closure|mixed
+     * @param array $numbers
+     * @return mixed
      * @example
      *      P::sum([1, 2, 3, 4]); // 10
      */
-    public static function sum($numbers = nil)
+    public static function sum(array $numbers)
     {
         return \phln\math\sum($numbers);
     }

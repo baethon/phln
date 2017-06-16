@@ -10,13 +10,16 @@ use const phln\collection\last;
 use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
+use const phln\relation\𝑓equals;
 use function phln\collection\{
     filter, join, map, reject
 };
 use function phln\fn\{
-    compose, pipe
+    always, compose, partial, pipe
 };
+use function phln\logic\cond;
 use function phln\object\prop;
+use function phln\relation\equals;
 use function phln\string\{
     match, replace, split
 };
@@ -114,7 +117,7 @@ class CreateBundleCommand extends Command
             $parameters = $reflection->getParameters();
 
             return [
-                'name' => compose(last, split('\\'))($reflection->getName()),
+                'name' => compose([last, split('\\')])($reflection->getName()),
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
                 'returnType' => $this->getReturnTypeSource($reflection->getReturnType()),
@@ -122,29 +125,29 @@ class CreateBundleCommand extends Command
             ];
         };
 
-        $f = pipe(
-            compose(prop('user'), '\\get_defined_functions'),
+        $f = pipe([
+            compose([prop('user'), '\\get_defined_functions']),
             $this->filters['phln_all'],
             $this->filters['phln_noncurried'],
-            map($getName)
-        );
+            map($getName),
+        ]);
 
         return $f();
     }
 
     private function getConstants(): array
     {
-        $f = pipe(
-            compose(keys, prop('user'), '\\get_defined_constants', T),
+        $f = pipe([
+            compose([keys, prop('user'), '\\get_defined_constants', T]),
             $this->filters['phln_all'],
             $this->filters['phln_noncurried'],
             map(function ($constName) {
                 return [
                     'fqn' => $constName,
-                    'name' => compose(last, split('\\'))($constName),
+                    'name' => compose([last, split('\\')])($constName),
                 ];
-            })
-        );
+            }),
+        ]);
 
         return $f();
     }
@@ -179,33 +182,39 @@ class CreateBundleCommand extends Command
 
     private function getParametersDefinition(array $parameters)
     {
-        $toSrc = function ($param) {
-            if (true === array_key_exists('defaultValue', $param)) {
-                $defaultValue = $param['defaultValue'];
-                return sprintf(
-                    '$%s = %s',
-                    $param['name'],
-                    ($defaultValue === nil) ? 'nil' : var_export($defaultValue, true)
-                );
-            }
+        $exportDefaultValue = cond([
+            [partial(𝑓equals, [nil]), always('nil')],
+            [equals([]), always('[]')],
+            [T, function ($value) {
+                return var_export($value, true);
+            }],
+        ]);
 
-            return sprintf(
+        $toSrc = function ($param) use ($exportDefaultValue) {
+            $base = sprintf(
                 '%s%s$%s',
                 empty($param['type']) ? '' : "{$param['type']} ",
                 $param['variadic'] ? '...' : '',
                 $param['name']
             );
+
+            if (true === array_key_exists('defaultValue', $param)) {
+                $defaultValue = $param['defaultValue'];
+                $base .= sprintf(' = %s', $exportDefaultValue($defaultValue));
+            }
+
+            return $base;
         };
 
-        return pipe(
+        return pipe([
             map($toSrc),
-            join(', ')
-        )($parameters);
+            join(', '),
+        ])($parameters);
     }
 
     private function getParametersInvokeDefinition(array $parameters)
     {
-        return pipe(
+        return pipe([
             map(function ($param) {
                 return sprintf(
                     '%s$%s',
@@ -213,18 +222,18 @@ class CreateBundleCommand extends Command
                     $param['name']
                 );
             }),
-            join(', ')
-        )($parameters);
+            join(', '),
+        ])($parameters);
     }
 
     private function getFunctionDocumentation(\ReflectionFunction $function): string
     {
-        $getDoc = pipe(
+        $getDoc = pipe([
             [$function, 'getDocComment'],
             replace('/^/gm', '    '),
             replace('/\\\\phln\\\\\w+\\\\(\w+)(\()?/g', 'P::$1$2'),
-            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1')
-        );
+            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1'),
+        ]);
 
         return $getDoc();
     }

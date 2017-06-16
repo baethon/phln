@@ -20,7 +20,7 @@ const 𝑓ap = '\\phln\\fn\\𝑓ap';
  */
 function ap($applicative = nil, $fn = nil)
 {
-    return curry(𝑓ap, $applicative, $fn);
+    return curryN(2, 𝑓ap, [$applicative, $fn]);
 }
 
 function 𝑓ap($applicative, callable $fn)

@@ -24,7 +24,7 @@ const 𝑓partial = '\\phln\\fn\\𝑓partial';
  */
 function partial($fn = nil, $args = nil): \Closure
 {
-    return curry(𝑓partial, $fn, $args);
+    return curryN(2, 𝑓partial, [$fn, $args]);
 }
 
 function 𝑓partial(callable $fn, array $args): \Closure

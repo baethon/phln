@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace phln\object;
 
 use const phln\fn\nil;
+use const phln\relation\equals;
 use function phln\collection\map;
-use function phln\fn\curry;
-use function phln\relation\equals;
+use function phln\fn\curryN;
 
 const whereEq = '\\phln\\object\\whereEq';
 const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
@@ -25,17 +25,13 @@ const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
  */
 function whereEq($predicates = nil, $object = nil)
 {
-    return curry(𝑓whereEq, $predicates, $object);
+    return curryN(2, 𝑓whereEq, [$predicates, $object]);
 }
 
 function 𝑓whereEq(array $predicates, array $object): bool
 {
-    // @TODO maybe map() should be split to mapIndexed(value, key, object) and map(value)?
-
     return where(
-        map(function ($value) {
-            return equals($value);
-        }, $predicates),
+        map(equals, $predicates),
         $object
     );
 }

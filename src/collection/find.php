@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
+use function phln\fn\curryN;
 use const phln\fn\nil;
 
 const find = '\\phln\\collection\\find';
@@ -24,7 +24,7 @@ const 𝑓find = '\\phln\\collection\\𝑓find';
  */
 function find($predicate = nil, $list = nil)
 {
-    return curry(𝑓find, $predicate, $list);
+    return curryN(2, 𝑓find, [$predicate, $list]);
 }
 
 function 𝑓find(callable $predicate, array $list)

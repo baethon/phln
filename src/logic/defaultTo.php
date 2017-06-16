@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use function phln\fn\curryN;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const defaultTo = '\\phln\\logic\\defaultTo';
 const 𝑓defaultTo = '\\phln\\logic\\𝑓defaultTo';
@@ -23,7 +23,7 @@ const 𝑓defaultTo = '\\phln\\logic\\𝑓defaultTo';
  */
 function defaultTo($default = nil, $value = nil)
 {
-    return curryN(2, 𝑓defaultTo, $default, $value);
+    return curryN(2, 𝑓defaultTo, [$default, $value]);
 }
 
 function 𝑓defaultTo($default, $value)

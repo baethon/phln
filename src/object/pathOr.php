@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const pathOr = '\\phln\\object\\pathOr';
 const 𝑓pathOr = '\\phln\\object\\𝑓pathOr';
@@ -26,7 +26,7 @@ const 𝑓pathOr = '\\phln\\object\\𝑓pathOr';
  */
 function pathOr($path = nil, $default = nil, $object = nil)
 {
-    return curry(𝑓pathOr, $path, $default, $object);
+    return curryN(3, 𝑓pathOr, [$path, $default, $object]);
 }
 
 function 𝑓pathOr(string $path, $default, array $object)

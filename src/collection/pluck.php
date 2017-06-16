@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 use function phln\object\prop;
 
 const pluck = '\\phln\\collection\\pluck';
@@ -24,7 +24,7 @@ const 𝑓pluck = '\\phln\\collection\\𝑓pluck';
  */
 function pluck($key = nil, $list = nil)
 {
-    return curry(𝑓pluck, $key, $list);
+    return curryN(2, 𝑓pluck, [$key, $list]);
 }
 
 function 𝑓pluck($key, array $list): array

@@ -17,15 +17,6 @@ class MeanTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
-    public function it_can_is_curried()
-    {
-        $numbers = [2, 7, 9];
-        $f = $this->callFn();
-
-        $this->assertEquals(6, $f($numbers));
-    }
-
-    /** @test */
     public function it_can_be_used_as_callback()
     {
         $numbers = [2, 7, 9];

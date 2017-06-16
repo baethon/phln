@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const min = '\\phln\\relation\\min';
 const 𝑓min = '\\phln\\relation\\𝑓min';
@@ -22,7 +22,7 @@ const 𝑓min = '\\phln\\relation\\𝑓min';
  */
 function min($left = nil, $right = nil)
 {
-    return curry(𝑓min, $left, $right);
+    return curryN(2, 𝑓min, [$left, $right]);
 }
 
 function 𝑓min($left, $right)

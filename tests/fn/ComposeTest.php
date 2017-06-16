@@ -18,7 +18,7 @@ class ComposeTest extends \Phln\Build\PhpUnit\TestCase
         $g = function ($a, $b) {
             return $a + $b;
         };
-        $h = $this->callFn($f, $g);
+        $h = $this->callFn([$f, $g]);
 
         $expected = $f($g(2, 3));
         $this->assertEquals($expected, $h(2, 3));
@@ -30,7 +30,7 @@ class ComposeTest extends \Phln\Build\PhpUnit\TestCase
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = $this->callFn($f);
+        $g = $this->callFn([$f]);
 
         $this->assertEquals($f(2, 3), $g(2, 3));
     }
@@ -39,6 +39,6 @@ class ComposeTest extends \Phln\Build\PhpUnit\TestCase
     public function it_fails_when_composing_without_functions()
     {
         $this->expectException(\UnderflowException::class);
-        $this->callFn();
+        $this->callFn([]);
     }
 }

@@ -20,7 +20,7 @@ const 𝑓tap = '\\phln\\fn\\𝑓tap';
  */
 function tap($fn = nil, $value = nil)
 {
-    return curry(𝑓tap, $fn, $value);
+    return curryN(2, 𝑓tap, [$fn, $value]);
 }
 
 function 𝑓tap(callable $fn, $value)

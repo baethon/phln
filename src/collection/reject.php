@@ -26,7 +26,7 @@ const 𝑓reject = '\\phln\\collection\\𝑓reject';
  */
 function reject($predicate = nil, $list = nil)
 {
-    return curryN(2, 𝑓reject, $predicate, $list);
+    return curryN(2, 𝑓reject, [$predicate, $list]);
 }
 
 function 𝑓reject(callable $predicate, array $list): array

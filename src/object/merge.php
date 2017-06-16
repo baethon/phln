@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const merge = '\\phln\\object\\merge';
 const 𝑓merge = '\\phln\\object\\𝑓merge';
@@ -23,7 +23,7 @@ const 𝑓merge = '\\phln\\object\\𝑓merge';
  */
 function merge($left = nil, $right = nil)
 {
-    return curry(𝑓merge, $left, $right);
+    return curryN(2, 𝑓merge, [$left, $right]);
 }
 
 function 𝑓merge(array $left, array $right): array

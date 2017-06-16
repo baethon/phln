@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\logic;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const both = '\\phln\\logic\\both';
 const 𝑓both = '\\phln\\logic\\𝑓both';
@@ -25,7 +25,7 @@ const 𝑓both = '\\phln\\logic\\𝑓both';
  */
 function both($a = nil, $b = nil)
 {
-    return curry(𝑓both, $a, $b);
+    return curryN(2, 𝑓both, [$a, $b]);
 }
 
 function 𝑓both(callable $a, callable $b): \Closure

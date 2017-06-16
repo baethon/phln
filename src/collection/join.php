@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const join = '\\phln\\collection\\join';
 const 𝑓join = '\\join';
@@ -23,5 +23,5 @@ const 𝑓join = '\\join';
  */
 function join($separator = nil, $list = nil)
 {
-    return curry(𝑓join, $separator, $list);
+    return curryN(2, 𝑓join, [$separator, $list]);
 }

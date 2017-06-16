@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\logic;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 
 const ƛor = '\\phln\\logic\\ƛor';
 const 𝑓or = '\\phln\\logic\\𝑓or';
@@ -22,7 +22,7 @@ const 𝑓or = '\\phln\\logic\\𝑓or';
  */
 function ƛor($left = nil, $right = nil)
 {
-    return curry(𝑓or, $left, $right);
+    return curryN(2, 𝑓or, [$left, $right]);
 }
 
 function 𝑓or($left, $right): bool

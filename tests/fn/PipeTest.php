@@ -18,7 +18,7 @@ class PipeTest extends \Phln\Build\PhpUnit\TestCase
         $g = function ($i) {
             return $i * 2;
         };
-        $h = $this->callFn($f, $g);
+        $h = $this->callFn([$f, $g]);
 
         $expected = $g($f(2, 3));
         $this->assertEquals($expected, $h(2, 3));
@@ -30,7 +30,7 @@ class PipeTest extends \Phln\Build\PhpUnit\TestCase
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = $this->callFn($f);
+        $g = $this->callFn([$f]);
 
         $this->assertEquals($f(2, 3), $g(2, 3));
     }
@@ -39,6 +39,6 @@ class PipeTest extends \Phln\Build\PhpUnit\TestCase
     public function it_fails_when_composing_without_functions()
     {
         $this->expectException(\UnderflowException::class);
-        $this->callFn();
+        $this->callFn([]);
     }
 }

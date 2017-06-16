@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace phln\object;
 
+use const phln\fn\__;
+use const phln\fn\nil;
 use function phln\collection\append;
 use function phln\collection\reduce;
-use const phln\fn\__;
-use function phln\fn\curry;
-use const phln\fn\nil;
+use function phln\fn\curryN;
 use function phln\fn\partial;
 
 const props = '\\phln\\object\\props';
@@ -27,7 +27,7 @@ const 𝑓props = '\\phln\\object\\𝑓props';
  */
 function props($props = nil, $object = nil)
 {
-    return curry(𝑓props, $props, $object);
+    return curryN(2, 𝑓props, [$props, $object]);
 }
 
 function 𝑓props(array $props, array $object): array

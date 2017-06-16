@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 use function phln\fn\pipe;
 
 const clamp = '\\phln\\relation\\clamp';
@@ -26,15 +26,15 @@ const 𝑓clamp = '\\phln\\relation\\𝑓clamp';
  */
 function clamp($min = nil, $max = nil, $value = nil)
 {
-    return curry(𝑓clamp, $min, $max, $value);
+    return curryN(3, 𝑓clamp, [$min, $max, $value]);
 }
 
 function 𝑓clamp($min, $max, $value)
 {
-    $f = pipe(
+    $f = pipe([
         min($max),
-        max($min)
-    );
+        max($min),
+    ]);
 
     return $f($value);
 }

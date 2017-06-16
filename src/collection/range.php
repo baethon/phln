@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const range = '\\phln\\collection\\range';
 const 𝑓range = '\\phln\\collection\\𝑓range';
@@ -22,7 +22,7 @@ const 𝑓range = '\\phln\\collection\\𝑓range';
  */
 function range($start = nil, $end = nil)
 {
-    return curry(𝑓range, $start, $end);
+    return curryN(2, 𝑓range, [$start, $end]);
 }
 
 function 𝑓range(int $from, int $to): array

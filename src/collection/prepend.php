@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const prepend = '\\phln\\collection\\prepend';
 const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
@@ -23,7 +23,7 @@ const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
  */
 function prepend($value = nil, $list = nil)
 {
-    return curry(𝑓prepend, $value, $list);
+    return curryN(2, 𝑓prepend, [$value, $list]);
 }
 
 function 𝑓prepend($value, array $list): array

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const nth = '\\phln\\collection\\nth';
 const 𝑓nth = '\\phln\\collection\\𝑓nth';
@@ -24,7 +24,7 @@ const 𝑓nth = '\\phln\\collection\\𝑓nth';
  */
 function nth($n = nil, $list = nil)
 {
-    return curry(𝑓nth, $n, $list);
+    return curryN(2, 𝑓nth, [$n, $list]);
 }
 
 function 𝑓nth(int $n, array $list)

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\pipe;
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
+use function phln\fn\pipe;
 
 const flatMap = '\\phln\\collection\\flatMap';
 const 𝑓flatMap = '\\phln\\collection\\𝑓flatMap';
@@ -27,15 +27,15 @@ const 𝑓flatMap = '\\phln\\collection\\𝑓flatMap';
  */
 function flatMap($mapper = nil, $list = nil)
 {
-    return curry(𝑓flatMap, $mapper, $list);
+    return curryN(2, 𝑓flatMap, [$mapper, $list]);
 }
 
 function 𝑓flatMap(callable $mapper, array $list): array
 {
-    $f = pipe(
+    $f = pipe([
         map($mapper),
-        collapse
-    );
+        collapse,
+    ]);
 
     return $f($list);
 }

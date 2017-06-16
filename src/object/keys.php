@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\fn\curry;
-use const phln\fn\nil;
-
 const keys = '\\phln\\object\\keys';
 
 /**

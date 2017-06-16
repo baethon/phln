@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const any = '\\phln\\collection\\any';
 const 𝑓any = '\\phln\\collection\\𝑓any';
@@ -23,7 +23,7 @@ const 𝑓any = '\\phln\\collection\\𝑓any';
  */
 function any($predicate = nil, $list = nil)
 {
-    return curry(𝑓any, $predicate, $list);
+    return curryN(2, 𝑓any, [$predicate, $list]);
 }
 
 function 𝑓any(callable $predicate, array $list): bool

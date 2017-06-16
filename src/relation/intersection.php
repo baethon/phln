@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use function phln\fn\compose;
-use function phln\fn\curry;
 use const phln\fn\nil;
 use const phln\object\values;
+use function phln\fn\compose;
+use function phln\fn\curryN;
 
 const intersection = '\\phln\\relation\\intersection';
 const 𝑓intersection = '\\phln\\relation\\𝑓intersection';
@@ -24,10 +24,10 @@ const 𝑓intersection = '\\phln\\relation\\𝑓intersection';
  */
 function intersection($a = nil, $b = nil)
 {
-    return curry(𝑓intersection, $a, $b);
+    return curryN(2, 𝑓intersection, [$a, $b]);
 }
 
 function 𝑓intersection(array $a, array $b): array
 {
-    return compose(values, '\\array_intersect')($a, $b);
+    return compose([values, '\\array_intersect'])($a, $b);
 }

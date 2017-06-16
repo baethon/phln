@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\string;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const concatString = '\\phln\\string\\concatString';
 const 𝑓concatString = '\\phln\\string\\𝑓concatString';
@@ -22,7 +22,7 @@ const 𝑓concatString = '\\phln\\string\\𝑓concatString';
  */
 function concatString($a = nil, $b = nil)
 {
-    return curry(𝑓concatString, $a, $b);
+    return curryN(2, 𝑓concatString, [$a, $b]);
 }
 
 function 𝑓concatString(string $a, string $b): string

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use function phln\fn\curry;
 use const phln\fn\nil;
+use function phln\fn\curryN;
 
 const prop = '\\phln\\object\\prop';
 const 𝑓prop = '\\phln\\object\\𝑓prop';
@@ -20,7 +20,7 @@ const 𝑓prop = '\\phln\\object\\𝑓prop';
  */
 function prop($key = nil, $array = nil)
 {
-    return curry(𝑓prop, $key, $array);
+    return curryN(2, 𝑓prop, [$key, $array]);
 }
 
 function 𝑓prop($key, array $array)

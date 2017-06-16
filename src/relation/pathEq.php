@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\relation;
 
 use const phln\fn\nil;
-use function phln\fn\curry;
+use function phln\fn\curryN;
 use function phln\fn\pipe;
 use function phln\object\path;
 
@@ -25,15 +25,15 @@ const 𝑓pathEq = '\\phln\\relation\\𝑓pathEq';
  */
 function pathEq($path = nil, $value = nil, $object = nil)
 {
-    return curry(𝑓pathEq, $path, $value, $object);
+    return curryN(3, 𝑓pathEq, [$path, $value, $object]);
 }
 
 function 𝑓pathEq(string $path, $value, array $object): bool
 {
-    $f = pipe(
+    $f = pipe([
         path($path),
-        equals($value)
-    );
+        equals($value),
+    ]);
 
     return $f($object);
 }

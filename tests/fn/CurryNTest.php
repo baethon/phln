@@ -32,7 +32,7 @@ class CurryNTest extends \Phln\Build\PhpUnit\TestCase
             return $a + $b + $c;
         };
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn(3, $sum, 1, 2, 3);
+        $g = $this->callFn(3, $sum, [1, 2, 3]);
 
         $this->assertEquals($expected, $g);
     }
@@ -45,7 +45,7 @@ class CurryNTest extends \Phln\Build\PhpUnit\TestCase
         };
 
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn(3, $sum, \phln\fn\nil, \phln\fn\nil, 1);
+        $g = $this->callFn(3, $sum, [\phln\fn\nil, \phln\fn\nil, 1]);
 
         $this->assertEquals($expected, $g(2, 3));
     }
@@ -58,8 +58,8 @@ class CurryNTest extends \Phln\Build\PhpUnit\TestCase
         };
 
         $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum));
-        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, 1));
-        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, 1, 2));
-        $this->assertEquals(6, $this->callFn(3, $sum, 1, 2, 3));
+        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, [1]));
+        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, [1, 2]));
+        $this->assertEquals(6, $this->callFn(3, $sum, [1, 2, 3]));
     }
 }

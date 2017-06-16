@@ -20,10 +20,10 @@ const nil = '_phln_nil_argument';
  * @phlnSignature (* → a) → (* → a)
  * @phlnCategory function
  * @param callable $fn
- * @param array ...$args
+ * @param array $args
  * @return \Closure|mixed
  */
-function curry(callable $fn, ...$args)
+function curry(callable $fn, array $args = [])
 {
-    return curryN(arity($fn), $fn, ...$args);
+    return curryN(arity($fn), $fn, $args);
 }
