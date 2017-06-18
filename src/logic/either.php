@@ -13,6 +13,7 @@ const 𝑓either = '\\phln\\logic\\𝑓either';
  * A function wrapping calls to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
  *
  * @phlnSignature (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
+ * @phlnCategory logic
  * @param string|callable $left
  * @param string|callable $right
  * @return \Closure
