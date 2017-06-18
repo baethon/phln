@@ -7,12 +7,15 @@
 @endforeach
 
 {!! $item['summary'] !!}
+@if ($item['description'])
 
 {!! $item['description'] !!}
-
+@endif
 @if ($item['example'])
+
 ```php
 {!! $item['example'] !!}
 ```
 @endif
+
 @endforeach

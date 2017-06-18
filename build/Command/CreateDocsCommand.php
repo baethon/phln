@@ -23,7 +23,10 @@ class CreateDocsCommand extends Command
 
     private $docBlockFactory;
 
-    private $docsDir = __DIR__.'/../../docs/functions';
+    private $paths = [
+        'functions' => __DIR__.'/../../docs/functions.md',
+        'summary' => __DIR__.'/../../docs/SUMMARY.md',
+    ];
 
     /**
      * @var Factory
@@ -46,7 +49,7 @@ class CreateDocsCommand extends Command
     public function handle()
     {
         $this->output->writeln('Preparing directories');
-        $this->prepareOutputDirectory();
+        $this->cleanup();
 
         $this->output->writeln('Extracting contents');
         $phlnReflection = new \ReflectionClass(Phln::class);
@@ -57,17 +60,15 @@ class CreateDocsCommand extends Command
             $this->exportCategoryDocs($category, $methods);
         }
 
+        $this->output->writeln('Generating summary');
+        $this->exportSummary($docBlocks);
+
         $this->output->writeln('<info>Done</info>');
     }
 
-    private function prepareOutputDirectory()
+    private function cleanup()
     {
-        if (false === $this->filesystem->exists($this->docsDir)) {
-            $this->filesystem->makeDirectory($this->docsDir, 0755, true);
-            return;
-        }
-
-        $this->filesystem->cleanDirectory($this->docsDir);
+        $this->filesystem->delete($this->paths);
     }
 
     /**
@@ -98,7 +99,7 @@ class CreateDocsCommand extends Command
                     }
 
                     return array_merge($carry, [
-                        $category => array_merge(pathOr($category, [], $carry), [$method]),
+                        $category => array_merge(pathOr($category, [], $carry), [$this->getMethodToView($method)]),
                     ]);
                 }, [])
             ]),
@@ -129,16 +130,11 @@ class CreateDocsCommand extends Command
      */
     private function exportCategoryDocs(string $category, array $methods)
     {
-        $outputFile = $this->docsDir."/{$category}.md";
-
-        $rendered = $this->view->make('docs-category')
-            ->with([
-                'category' => $category,
-                'methods' => map([$this, 'getMethodToView'], $methods),
-            ])
+        $rendered = $this->view->make('docs.category')
+            ->with(compact('category', 'methods'))
             ->render();
 
-        $this->filesystem->put($outputFile, $rendered);
+        $this->filesystem->append($this->paths['functions'], $rendered);
     }
 
     public function getMethodToView(array $method): array
@@ -153,5 +149,14 @@ class CreateDocsCommand extends Command
         $description = $docBlock->getDescription();
 
         return compact('name', 'signatures', 'example', 'summary', 'description');
+    }
+
+    private function exportSummary($functions)
+    {
+        $contents = $this->view->make('docs.summary')
+            ->with(compact('functions'))
+            ->render();
+
+        $this->filesystem->put($this->paths['summary'], $contents);
     }
 }
