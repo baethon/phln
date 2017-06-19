@@ -2,7 +2,7 @@
 
 ### Phln
 
-### Functions
+### Documentation
 
 @foreach ($functions as $category => $list)
 * [{{ $category }}](functions.md#{{ $category }})

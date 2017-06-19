@@ -2,7 +2,7 @@
 
 ### Phln
 
-### Functions
+### Documentation
 
 * [collection](functions.md#collection)
     * [all](functions.md#all)
