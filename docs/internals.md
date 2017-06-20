@@ -4,10 +4,10 @@
 
 Function should be defined in it's own file. In fact this file stores definition of two functions:
 
-1. *main* function (the one which is exprted) - a simple wrapper for curried version of *𝑓 function*
+1. *main function* (the one which is exprted) - a simple wrapper for curried version of *𝑓 function*
 2. *𝑓 function* - holds the main logic and typehinting of the function.
 
-This structure is maintened only for *𝑓 functions* with arity > 1.
+This structure is maintened only for *𝑓 function* with arity > 1.
 
 For example, definition of `sum()` could look like this:
 
@@ -25,7 +25,7 @@ function 𝑓sum(int $a, int $b): int
 
 Example has missing function constants. In such case there are also two defined constants:
 
-1. *main* const - points to the wrapper
+1. *main const* - points to the wrapper
 2. *𝑓 const* - points to *𝑓 function*; it's used mostly internally
 
 ```php

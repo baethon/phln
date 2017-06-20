@@ -132,11 +132,11 @@ P::sum(4, 3); // 7
 
 Due to internal organization and some PHP limitations `phln` exports functions and consts with special prefixes.
 
-### 𝑓* functions
+### 𝑓 function
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
 
-### ƛ* functions
+### ƛ function
 
 PHP has restricted keywords (such as `class`, `and`, `or` etc). It's unable to use them as a function name. Yet there're some cases where it made sense to use them.
 
