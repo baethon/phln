@@ -149,8 +149,8 @@ function sum($a = nil, $b = nil)
 
 ### ƛ* functions
 
-PHP has restricted keywords (such as `class`, `and`, `or` etc). It's unable to use them as a function name. Yet there're some valid cases where it made sense to use them.
+PHP has restricted keywords (such as `class`, `and`, `or` etc). It's unable to use them as a function name. Yet there're some cases where it made sense to use them.
 
-Those special functions are prefixed with lambda character (eg. `ƛsum()`).
+Those special functions are prefixed with lambda character (eg. `ƛand()`).
 
 It's possible that in future those names should be changed for something that does not require this silly prefix. I'm open for suggestions :)
