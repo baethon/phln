@@ -1,6 +1,6 @@
 {
     "name": "baethon/phln",
-    "description": "Functional PHP foundation",
+    "description": "A practical functional library for PHP developers",
     "type": "library",
     "require": {
     },
