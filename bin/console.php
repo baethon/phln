@@ -18,5 +18,6 @@ $app->alias('view', \Illuminate\View\Factory::class);
 
 $console->resolve(\Phln\Build\Command\CreateFunctionCommand::class);
 $console->resolve(\Phln\Build\Command\CreateBundleCommand::class);
+$console->resolve(\Phln\Build\Command\CreateDocsCommand::class);
 
 $console->run();

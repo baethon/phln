@@ -15,6 +15,7 @@ const 𝑓partial = '\\phln\\fn\\𝑓partial';
  * Special placeholder value `\phln\fn\__` may be used to specify "gaps", allowing partial application of any combination of arguments, regardless of their positions.
  *
  * @phlnSignature ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
+ * @phlnCategory function
  * @param string|callable $fn
  * @param string|array ...$args
  * @return \Closure

@@ -817,6 +817,8 @@ class Phln
     /**
      * Accepts a function `fn` and returns a function that guards invocation of `fn` such that `fn` can only ever be called once, no matter how many times the returned function is invoked. The first value calculated is returned in subsequent invocations.
      *
+     * @phlnSignature (a... -> b) -> (a... -> b)
+     * @phlnCategory function
      * @param callable $fn
      * @return \Closure
      * @example
@@ -837,6 +839,7 @@ class Phln
      * Special placeholder value `P::__` may be used to specify "gaps", allowing partial application of any combination of arguments, regardless of their positions.
      *
      * @phlnSignature ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
+     * @phlnCategory function
      * @param string|callable $fn
      * @param string|array ...$args
      * @return \Closure
@@ -1004,6 +1007,7 @@ class Phln
      * A function wrapping calls to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
      *
      * @phlnSignature (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
+     * @phlnCategory logic
      * @param string|callable $left
      * @param string|callable $right
      * @return \Closure
