@@ -1,6 +1,8 @@
 # baethon/phln
 
-Functional PHP foundation
+A practical functional library for PHP developers.
+
+Heavily inspired by [Ramda.js](http://ramdajs.com/), adapted for PHP needs.
 
 # Installation
 
@@ -26,7 +28,7 @@ $fooBars = cond([
 $fooBars(5); // foo
 ```
 
-For convenience it's possible to use `Phln` static wrapper which simplifies code:
+... or through `phln\Phln` static wrapper:
 
 ```php
 use phln\Phln as P;
@@ -37,57 +39,11 @@ $fooBars = P::cond([
 ]);
 ```
 
-## About function references
-
-Many of `phln` functions accept `callable` type. PHP does not allow to pass imported function as a callable reference. Instead it's required to pass a string reference (functions fully qualified name) as a "callback":
-
-```php
-use function phln\math\sum;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // WRONG
-array_reduce($collection, 'phln\\math\\sum'); // 10
-```
-
-`phln` covers this problem by exporting string constants "pointing" to corresponding functions:
-
-```php
-use const phln\math\sum; // Notice `const` keyword
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
-```
-
-It's possible to import *both* function and constant:
-
-```php
-use const phln\math\sum;
-use function phln\math\sum;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
-
-sum(4, 3); // 7
-```
-
-Unfortunatelly this approach generates some overhead of `use` statements. For this reason I suggest using `phln\Phln` static wrapper which solves this problem.
-
-```php
-use phln\Phln as P;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, P::sum); // 10
-
-P::sum(4, 3); // 7
-```
-
 Later in docs every `P::` reference will be used as a mental shortcut to `phln\Phln::`.
 
 ## Currying
 
 By default **most** of functions defined in `phln` namespace are loosly curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.
-
-Both `curry` and `curryN` accept third (optional) argument - an array of arguments which should be passed to wrapped callable.
 
 ```php
 $foo = P::curryN(2, function ($left, $right) {
@@ -126,6 +82,51 @@ $firstFoo = P::compose([P::head, $allFoos]);
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
 ```
+
+## About function references
+
+Many of `phln` functions accept `callable` type. PHP does not allow to pass imported function as a callable reference. Instead it's required to pass a string reference (functions fully qualified name) as a "callback":
+
+```php
+use function phln\math\sum;
+
+$collection = [1, 2, 3, 4];
+array_reduce($collection, sum); // WRONG
+array_reduce($collection, 'phln\\math\\sum'); // 10
+```
+
+`phln` covers this problem by exporting string constants "pointing" to corresponding functions:
+
+```php
+use const phln\math\sum; // Notice `const` keyword
+
+$collection = [1, 2, 3, 4];
+array_reduce($collection, sum); // 10
+```
+
+It's possible to import *both* function and constant:
+
+```php
+use const phln\math\sum;
+use function phln\math\sum;
+
+$collection = [1, 2, 3, 4];
+array_reduce($collection, sum); // 10
+
+sum(4, 3); // 7
+```
+
+Unfortunatelly this approach generates overhead of import statements. For this reason I suggest using `phln\Phln` static wrapper.
+
+```php
+use phln\Phln as P;
+
+$collection = [1, 2, 3, 4];
+array_reduce($collection, P::sum); // 10
+
+P::sum(4, 3); // 7
+```
+
 
 ## Prefixed functions
 
