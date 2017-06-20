@@ -135,18 +135,6 @@ Due to internal organization and some PHP limitations `phln` exports functions a
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
 
-```php
-function 𝑓sum(int $a, int $b): int
-{
-    return $a + $b;
-}
-
-function sum($a = nil, $b = nil)
-{
-    return curryN(2, 𝑓sum, [$a, $b]);
-}
-```
-
 ### ƛ* functions
 
 PHP has restricted keywords (such as `class`, `and`, `or` etc). It's unable to use them as a function name. Yet there're some cases where it made sense to use them.
