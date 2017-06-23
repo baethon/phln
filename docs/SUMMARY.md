@@ -9,11 +9,6 @@
 * [Currying](README.md#currying)
 * [Partial application](README.md#partial-application)
 * [Function composition](README.md#function-composition)
-* [Internals](internals.md)
-    * [Function file](internals.md#function-file)
-    * [Adding new function](internals.md#adding-new-function---build-pipeline)
-    * [Testing](internals.md#testing)
-    * [Structure of PHPDoc](internals.md#structure-of-phpdoc)
 
 ### Documentation
 
@@ -130,3 +125,10 @@
 * [type](functions.md#type)
     * [is](functions.md#is)
 
+
+### [Internals](internals.md)
+
+* [Function file](internals.md#function-file)
+* [Adding new function](internals.md#adding-new-function---build-pipeline)
+* [Testing](internals.md#testing)
+* [Structure of PHPDoc](internals.md#structure-of-phpdoc)
