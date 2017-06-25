@@ -110,6 +110,7 @@ class Phln
     const replace = \phln\string\replace;
     const split = \phln\string\split;
     const is = \phln\type\is;
+    const typeCond = \phln\type\typeCond;
 
     /**
      * Returns `true` if all elements of array match the predicate, `false` otherwise.
@@ -1783,6 +1784,29 @@ class Phln
     public static function is($type = nil, $value = nil)
     {
         return \phln\type\is($type, $value);
+    }
+
+    /**
+     * Returns a function, `fn`, which encapsulates `if/else`, `if/else`, ... logic. `P::typeCond` takes a list of [`type`, `transformer`] pairs. Type is converted to `predicate` matching type of variable (in terms of `P::is()`). All of the arguments to `fn` are applied to each of the `predicates` in turn until one returns a truth-y value, at which point `fn` returns the result of applying its arguments to the corresponding `transformer`. If none of the `predicates` matches, `fn` returns null.
+     *
+     * @phlnSignature [[String, (*... -> *)]] -> (*... -> *)
+     * @phlnCategory type
+     * @phlnSee P::cond
+     * @param array $pairs
+     * @return \Closure
+     * @example
+     *      $count = P::typeCond([
+     *          ['string', '\\mb_strlen'],
+     *          ['array', '\\count'],
+     *          [P::T, P::always(0)],
+     *      ]);
+     *      $count('foo'); // 3
+     *      $count(['f', 'o', 'o']); // 3
+     *      $count(new stdClass); // 0
+     */
+    public static function typeCond(array $pairs): \Closure
+    {
+        return \phln\type\typeCond($pairs);
     }
 
 }

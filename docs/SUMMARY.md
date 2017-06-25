@@ -124,6 +124,7 @@
 
 * [type](functions.md#type)
     * [is](functions.md#is)
+    * [typeCond](functions.md#typecond)
 
 
 ### [Internals](internals.md)
