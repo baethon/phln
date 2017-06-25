@@ -39,7 +39,7 @@ function 𝑓is(string $type, $value): bool
 
     switch ($typeOfValue) {
         case 'object':
-            return $value instanceof $type || 'object' === $typeOfValue;
+            return $value instanceof $type || 'object' === $expectedType;
 
         case 'boolean':
             return in_array($expectedType, ['bool', 'boolean'], true);

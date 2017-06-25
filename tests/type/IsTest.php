@@ -21,6 +21,12 @@ class IsTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_tests_object_type()
+    {
+        $this->assertFalse($this->callFn('array', new stdClass()));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $isString = $this->callFn('string');
