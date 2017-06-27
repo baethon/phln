@@ -42,6 +42,7 @@ class Phln
     const unique = \phln\collection\unique;
     const F = \phln\fn\F;
     const T = \phln\fn\T;
+    const otherwise = \phln\fn\otherwise;
     const always = \phln\fn\always;
     const ap = \phln\fn\ap;
     const apply = \phln\fn\apply;
