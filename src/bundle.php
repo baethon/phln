@@ -46,6 +46,7 @@ require __DIR__.'/fn/partial.php';
 require __DIR__.'/fn/pipe.php';
 require __DIR__.'/fn/swap.php';
 require __DIR__.'/fn/tap.php';
+require __DIR__.'/fn/throwException.php';
 require __DIR__.'/logic/allPass.php';
 require __DIR__.'/logic/and.php';
 require __DIR__.'/logic/both.php';
