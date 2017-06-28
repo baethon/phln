@@ -20,6 +20,12 @@ class AppendTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_appends_value_to_string()
+    {
+        $this->assertEquals('foobar', $this->callFn('bar', 'foo'));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $appendFoo = $this->callFn('foo');

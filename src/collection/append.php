@@ -3,31 +3,48 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
-use function phln\fn\curryN;
+use const phln\fn\{
+    __, nil, otherwise
+};
+use function phln\fn\{
+    curryN, partial, throwException
+};
+use function phln\type\typeCond;
 
 const append = '\\phln\\collection\\append';
 const 𝑓append = '\\phln\\collection\\𝑓append';
 
 /**
- * Returns a new list containing the contents of the given list, followed by the given element.
+ * Returns a new list containing the contents of the given list or string, followed by the given element.
  *
  * @phlnSignature a -> [a] -> [a]
+ * @phlnSignature String -> String -> String
  * @phlnCategory collection
- * @param string $value
- * @param string $list
- * @return \Closure|mixed
+ * @param mixed $value
+ * @param string|array $collection
+ * @return \Closure|string|array
  * @example
  *      \phln\collection\append(3, [1, 2]); // [1, 2, 3]
  *      \phln\collection\append([3], [1, 2]); // [1, 2, [3]]
+ *      \phln\collection\append('foo', 'bar'); // 'barfoo'
  */
-function append($value = nil, $list = nil)
+function append($value = nil, $collection = nil)
 {
-    return curryN(2, 𝑓append, [$value, $list]);
+    return curryN(2, 𝑓append, [$value, $collection]);
 }
 
-function 𝑓append($value, array $list): array
+function 𝑓append($value, $collection)
 {
-    array_push($list, $value);
-    return $list;
+    $pushToArray = function (array $copy) use ($value) {
+        array_push($copy, $value);
+        return $copy;
+    };
+
+    $f = typeCond([
+        ['array', $pushToArray],
+        ['string', partial('\\sprintf', ['%s%s', __, $value])],
+        [otherwise, throwException(\InvalidArgumentException::class)]
+    ]);
+
+    return $f($collection);
 }
