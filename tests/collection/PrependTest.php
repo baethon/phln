@@ -19,6 +19,12 @@ class PrependTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_prepends_value_to_string()
+    {
+        $this->assertEquals('foobar', $this->callFn('foo', 'bar'));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $prependFoo = $this->callFn('foo');
