@@ -344,7 +344,7 @@ class Phln
      *      P::last([1, 2, 3]); // 3
      *      P::last([]); // null
      */
-    public static function last(array $list)
+    public static function last($list)
     {
         return \phln\collection\last($list);
     }

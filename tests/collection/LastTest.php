@@ -17,6 +17,14 @@ class LastTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_returns_last_character_of_string()
+    {
+        $this->assertEquals('o', $this->callFn('foo'));
+        $this->assertEquals('f', $this->callFn('f'));
+        $this->assertEquals('', $this->callFn(''));
+    }
+
+    /** @test */
     public function it_can_be_used_as_callback()
     {
         $this->assertEquals(3, call_user_func($this->getResolvedFn(), [1, 2, 3]));
