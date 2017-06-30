@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use const phln\collection\head;
 use const phln\fn\{
     __, apply, T
 };
@@ -40,7 +39,7 @@ function cond(array $pairs): \Closure
 {
     return function (... $args) use ($pairs) {
         $callPredicate = partial(apply, [__, $args]);
-        $pairMatchingArgs = compose([$callPredicate, head]);
+        $pairMatchingArgs = compose([$callPredicate, nth(0)]);
         $getTransformer = pipe([
             find($pairMatchingArgs),
             nth(1),

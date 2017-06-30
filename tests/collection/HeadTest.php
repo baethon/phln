@@ -16,4 +16,11 @@ class HeadTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals(1, $this->callFn([1, 2, 3]));
         $this->assertNull($this->callFn([]));
     }
+
+    /** @test */
+    public function it_returs_head_of_string()
+    {
+        $this->assertEquals('f', $this->callFn('foo'));
+        $this->assertEquals('', $this->callFn('f'));
+    }
 }

@@ -293,7 +293,7 @@ class Phln
      *      P::head([1, 2, 3]); // 1
      *      P::head([]); // null
      */
-    public static function head(array $list)
+    public static function head($list)
     {
         return \phln\collection\head($list);
     }
