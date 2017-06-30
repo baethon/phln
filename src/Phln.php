@@ -518,7 +518,7 @@ class Phln
      * @example
      *      P::reverse([1, 2, 3]); // [3, 2, 1]
      */
-    public static function reverse(array $list): array
+    public static function reverse($list)
     {
         return \phln\collection\reverse($list);
     }
