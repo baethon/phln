@@ -18,4 +18,13 @@ class InitTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals([], $this->callFn([1]));
         $this->assertEquals([], $this->callFn([]));
     }
+
+    /** @test */
+    public function it_returns_string_without_last_character()
+    {
+        $this->assertEquals('lore', $this->callFn('lorem'));
+        $this->assertEquals('l', $this->callFn('lo'));
+        $this->assertEquals('', $this->callFn('l'));
+        $this->assertEquals('', $this->callFn(''));
+    }
 }

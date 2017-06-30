@@ -6,19 +6,25 @@ namespace phln\collection;
 const init = '\\phln\\collection\\init';
 
 /**
- * Returns all but the last element of the given list.
+ * Returns all but the last element of the given array or string.
  *
  * @phlnSignature [a] -> [a]
+ * @phlnSignature String -> String
  * @phlnCategory collection
- * @param array $list
- * @return array
+ * @param array|string $collection
+ * @return array|string
  * @example
  *      \phln\collection\init([1, 2, 3]); // [1, 2]
  *      \phln\collection\init([1, 2]); // [1]
  *      \phln\collection\init([1]); // []
  *      \phln\collection\init([]); // []
+ *
+ *      \phln\collection\init('lorem'); // 'lore'
+ *      \phln\collection\init('lo'); // 'l'
+ *      \phln\collection\init('l'); // ''
+ *      \phln\collection\init(''); // ''
  */
-function init(array $list): array
+function init($collection)
 {
-    return array_slice($list, 0, -1);
+    return 𝑓slice(0, -1, $collection);
 }

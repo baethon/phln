@@ -311,7 +311,7 @@ class Phln
      *      P::init([1]); // []
      *      P::init([]); // []
      */
-    public static function init(array $list): array
+    public static function init($list)
     {
         return \phln\collection\init($list);
     }
