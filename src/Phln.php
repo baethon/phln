@@ -597,7 +597,7 @@ class Phln
      *      P::tail([1]); // []
      *      P::tail([]); // []
      */
-    public static function tail(array $list): array
+    public static function tail($list)
     {
         return \phln\collection\tail($list);
     }
