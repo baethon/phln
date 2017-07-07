@@ -3,7 +3,7 @@
 @foreach ($methods as $item)
 ## {{ $item['name'] }}
 @foreach ($item['signatures'] as $sig)
-`{!! $sig !!}`
+`{!! $sig !!}`  
 @endforeach
 
 {!! $item['summary'] !!}

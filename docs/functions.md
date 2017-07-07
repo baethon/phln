@@ -1,7 +1,7 @@
 # collection
 
 ## all
-`(a -> Boolean) -> [a] -> Boolean`
+`(a -> Boolean) -> [a] -> Boolean`  
 
 Returns `true` if all elements of array match the predicate, `false` otherwise.
 
@@ -13,7 +13,7 @@ $onlyTwos([1, 2, 2]); // false
 ```
 
 ## any
-`(a -> Boolean) -> [a] -> Boolean`
+`(a -> Boolean) -> [a] -> Boolean`  
 
 Returns `true` if at least one of array elements match the predicate, `false` otherwise.
 
@@ -25,8 +25,8 @@ $hasTwos([1, 2, 3, 4]); // true
 ```
 
 ## append
-`a -> [a] -> [a]`
-`String -> String -> String`
+`a -> [a] -> [a]`  
+`String -> String -> String`  
 
 Returns a new list containing the contents of the given list or string, followed by the given element.
 
@@ -39,8 +39,8 @@ P::append('foo', 'bar'); // 'barfoo'
 ```
 
 ## chunk
-`Number -> [a] -> [[a]]`
-`Number -> String -> [String]`
+`Number -> [a] -> [[a]]`  
+`Number -> String -> [String]`  
 
 Chunks an array or string into arrays with `size` elements.
 
@@ -52,15 +52,15 @@ P::chunk(2, 'hello'); // ['he', 'll', 'o']
 ```
 
 ## collapse
-`[[*], [*]] -> [*, *]`
+`[[*], [*]] -> [*, *]`  
 
 Flattens array elements by one level
 
 
 
 ## concat
-`[a] -> [a] -> [a]`
-`String -> String -> String`
+`[a] -> [a] -> [a]`  
+`String -> String -> String`  
 
 Returns the result of concatenating the given lists or strings.
 
@@ -72,8 +72,8 @@ P::concat('foo', 'bar'); // 'foobar'
 ```
 
 ## contains
-`a -> [a] -> Boolean`
-`String -> String -> Boolean`
+`a -> [a] -> Boolean`  
+`String -> String -> Boolean`  
 
 Returns `true` if the specified value is equal, `P::equals` terms,
 to at least one element of the given collection; `false` otherwise.
@@ -86,7 +86,7 @@ P::contains('foo', 'foobar'); // true
 ```
 
 ## filter
-`(a -> Boolean) -> [a] -> Boolean`
+`(a -> Boolean) -> [a] -> Boolean`  
 
 Filters elements of an array using a callback function
 
@@ -97,7 +97,7 @@ P::filter(equals(1), [1, 2, 3]); // [1]
 ```
 
 ## find
-`(a -> Boolean) -> [a] -> a`
+`(a -> Boolean) -> [a] -> a`  
 
 Returns the first element of the list which matches the predicate,
 or `null` if no element matches.
@@ -110,7 +110,7 @@ P::find(equals(['a' => 1]), $xs); // ['a' => 1]
 ```
 
 ## flatMap
-`(a -> b) -> [a] -> [b]`
+`(a -> b) -> [a] -> [b]`  
 
 Maps a function over list and concatenates results
 
@@ -125,8 +125,8 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 ```
 
 ## head
-`[a] -> a | Null`
-`String -> String`
+`[a] -> a | Null`  
+`String -> String`  
 
 Returns the first element of a given list or string
 
@@ -140,8 +140,8 @@ P::head('f'); // ''
 ```
 
 ## init
-`[a] -> [a]`
-`String -> String`
+`[a] -> [a]`  
+`String -> String`  
 
 Returns all but the last element of the given array or string.
 
@@ -160,7 +160,7 @@ P::init(''); // ''
 ```
 
 ## join
-`String -> [a] -> String`
+`String -> [a] -> String`  
 
 Returns a string made by inserting the separator between each element and concatenating all the elements into a single string.
 
@@ -172,8 +172,8 @@ $spacer([1, 2, 3]); // '1 2 3'
 ```
 
 ## last
-`[a] -> a`
-`String -> String`
+`[a] -> a`  
+`String -> String`  
 
 Returns the last element of the given list or string.
 
@@ -187,8 +187,8 @@ P::last('f'); // 'f'
 ```
 
 ## length
-`[a] -> Number`
-`String -> Number`
+`[a] -> Number`  
+`String -> Number`  
 
 Returns the number of elements in the array or string
 
@@ -199,21 +199,21 @@ P::length('lorem'); // 5
 ```
 
 ## map
-`(a -> b) -> [a] -> [b]`
+`(a -> b) -> [a] -> [b]`  
 
 Applies the callback to the elements of the given arrays
 
 
 
 ## mapIndexed
-`((a, i) -> b) -> [a] -> [b]`
+`((a, i) -> b) -> [a] -> [b]`  
 
 Applies the callback to the elements of the given arrays
 
 Callback will receive index of iterated value as a second argument.
 
 ## none
-`(a -> Boolean) -> [a] -> Boolean`
+`(a -> Boolean) -> [a] -> Boolean`  
 
 Returns `true` if no elements of the list match the predicate, `false` otherwise.
 
@@ -229,7 +229,7 @@ P::none($isEven, [1, 3, 5, 6]); // false
 ```
 
 ## nth
-`Number -> [a] -> a | Null`
+`Number -> [a] -> a | Null`  
 
 Returns the nth element of the given list or string.
 
@@ -241,7 +241,7 @@ P::nth(-1, [1, 2, 3]); // 3
 ```
 
 ## pluck
-`k -> [{k: v}] -> v`
+`k -> [{k: v}] -> v`  
 
 Returns a new list by plucking the same named property off all objects in the list supplied.
 
@@ -253,8 +253,8 @@ P::pluck('a', $list); // [1, 2]
 ```
 
 ## prepend
-`a -> [a] -> [a]`
-`String -> String -> String`
+`a -> [a] -> [a]`  
+`String -> String -> String`  
 
 Returns a new collection with the given element at the front, followed by the contents of the list or string.
 
@@ -267,7 +267,7 @@ P::prepend('foo', 'bar'); // [[3], 1, 2]
 ```
 
 ## range
-`Integer a => a -> a -> [a]`
+`Integer a => a -> a -> [a]`  
 
 Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
 
@@ -278,7 +278,7 @@ P::range(0, 3); // [0, 1, 2]
 ```
 
 ## reduce
-`((a, b) -> a) -> a -> [b] -> a`
+`((a, b) -> a) -> a -> [b] -> a`  
 
 Returns a single item by iterating through the list, successively calling the iterator function and passing it an accumulator value and the current value from the array, and then passing the result to the next call.
 
@@ -290,7 +290,7 @@ P::reduce(P::subtract, 0, [1, 2, 3, 4]);
 ```
 
 ## reject
-`(a -> Boolean) -> [a] -> [a]`
+`(a -> Boolean) -> [a] -> [a]`  
 
 The negation of `filter`.
 
@@ -304,8 +304,8 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 ```
 
 ## reverse
-`[a] -> [a]`
-`String -> String`
+`[a] -> [a]`  
+`String -> String`  
 
 Returns a new list or string with the elements in reverse order.
 
@@ -317,8 +317,8 @@ P::reverse('foo'); // 'oof'
 ```
 
 ## slice
-`Integer -> Integer -> [a] -> [a]`
-`Integer -> Integer -> String -> String`
+`Integer -> Integer -> [a] -> [a]`  
+`Integer -> Integer -> String -> String`  
 
 Extracts a slice of the array or string
 
@@ -330,7 +330,7 @@ $takeTwo([1, 2, 3]); // [1, 2]
 ```
 
 ## sort
-`((a, a) -> Number) -> [a] -> [a]`
+`((a, a) -> Number) -> [a] -> [a]`  
 
 Returns a copy of the list, sorted according to the comparator function, which should accept two values at a time and return a negative number if the first value is smaller, a positive number if it's larger, and zero if they are equal.
 
@@ -345,7 +345,7 @@ P::sort($diff, [3, 2, 1]); // [1, 2, 3]
 ```
 
 ## sortBy
-`(a -> b) -> [a] -> [a]`
+`(a -> b) -> [a] -> [a]`  
 
 Sorts the list according to the supplied function.
 
@@ -361,8 +361,8 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 ```
 
 ## tail
-`[a] -> [a]`
-`String -> String`
+`[a] -> [a]`  
+`String -> String`  
 
 Returns all but the first element of the given array or string
 
@@ -378,7 +378,7 @@ P::tail(''); // ''
 ```
 
 ## unique
-`[a] -> [a]`
+`[a] -> [a]`  
 
 Returns a new list containing only one copy of each element in the original list. Strict comparision is used to determine equality.
 
@@ -391,21 +391,21 @@ P::unique([3, 2, 1, 1, 3, 2]); // [3, 2, 1]
 # function
 
 ## F
-`* -> Boolean`
+`* -> Boolean`  
 
 A function that always returns `false`. Any passed in parameters are ignored.
 
 
 
 ## T
-`* -> Boolean`
+`* -> Boolean`  
 
 A function that always returns `true`. Any passed in parameters are ignored.
 
 
 
 ## always
-`a -> (* -> a)`
+`a -> (* -> a)`  
 
 Returns a function that always returns the given value.
 
@@ -417,7 +417,7 @@ $foo(); // 'foo'
 ```
 
 ## apply
-`(*... -> a) -> [*] -> a`
+`(*... -> a) -> [*] -> a`  
 
 Applies function `fn` to the argument list. This is useful for creating a fixed-arity function from a variadic function.
 
@@ -428,7 +428,7 @@ P::apply(P::sum, [1, 2]); // 3
 ```
 
 ## arity
-`(*... -> *) -> Number`
+`(*... -> *) -> Number`  
 
 Takes a function and returns its arity.
 
@@ -439,7 +439,7 @@ P::arity('var_dump'); // 1
 ```
 
 ## compose
-`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
+`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`  
 
 Performs left-to-right function composition.
 
@@ -448,7 +448,7 @@ The leftmost function may have any arity; the remaining functions must be unary.
 **Note**: The result of pipe is not automatically curried.
 
 ## curry
-`(* → a) → (* → a)`
+`(* → a) → (* → a)`  
 
 Returns a curried equivalent of the provided function.
 
@@ -460,7 +460,7 @@ If `f` is a ternary function and `g` is `P::curry(f)`, the following are equival
      * g(1, 2, 3)
 
 ## curryN
-`Number -> (* → a) → (* → a)`
+`Number -> (* → a) → (* → a)`  
 
 Returns a curried equivalent of the provided function, with the specified arity.
 
@@ -472,7 +472,7 @@ If `f` is a ternary function and `g` is `P::curryN(3, f)`, the following are equ
      * g(1, 2, 3)
 
 ## identity
-`a -> a`
+`a -> a`  
 
 A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.
 
@@ -483,7 +483,7 @@ P::identity(1) === 1; // 'true'
 ```
 
 ## negate
-`(*... -> *) -> (*... -> Boolean)`
+`(*... -> *) -> (*... -> Boolean)`  
 
 Creates a function that negates the result of the predicate.
 
@@ -498,7 +498,7 @@ P::filter(P::negate($isEven), [1, 2, 3, 4, 5, 6]); // [1, 3, 5]
 ```
 
 ## of
-`a -> [a]`
+`a -> [a]`  
 
 Returns a singleton array containing the value provided.
 
@@ -510,7 +510,7 @@ P::of('a'); // ['a']
 ```
 
 ## once
-`(a... -> b) -> (a... -> b)`
+`(a... -> b) -> (a... -> b)`  
 
 Accepts a function `fn` and returns a function that guards invocation of `fn` such that `fn` can only ever be called once, no matter how many times the returned function is invoked. The first value calculated is returned in subsequent invocations.
 
@@ -524,7 +524,7 @@ $f(1, 100); // 4
 ```
 
 ## partial
-`((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)`
+`((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)`  
 
 Takes a function `f` and a list of arguments, and returns a function `g`.
 
@@ -538,7 +538,7 @@ $subtractFive(10); // 5
 ```
 
 ## pipe
-`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
+`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`  
 
 Performs left-to-right function composition.
 
@@ -547,7 +547,7 @@ The leftmost function may have any arity; the remaining functions must be unary.
 **Note**: The result of pipe is not automatically curried.
 
 ## swap
-`(a -> b -> c -> ... -> z) -> (b -> a -> c -> ... -> z)`
+`(a -> b -> c -> ... -> z) -> (b -> a -> c -> ... -> z)`  
 
 Returns a new function much like the supplied one, except that the first two arguments' order is reversed.
 
@@ -561,7 +561,7 @@ P::swap($serialize)(2, 1); // 'a:1,b:2'
 ```
 
 ## tap
-`(a -> *) -> a -> a`
+`(a -> *) -> a -> a`  
 
 Runs the given function with the supplied object, then returns the object.
 
@@ -573,7 +573,7 @@ $dump('foo'); // var_dumps('foo'); returns 'foo'
 ```
 
 ## throwException
-`(String, [*]) -> (*... -> Null)`
+`(String, [*]) -> (*... -> Null)`  
 
 Returns callback which throws given exception.
 
@@ -585,7 +585,7 @@ $break(); // -> throw new \LogicException()
 ```
 
 ## unapply
-`([*...] -> a) -> (*... -> a)`
+`([*...] -> a) -> (*... -> a)`  
 
 Takes a function `fn`, which takes a single array argument, and returns a function which:
 * takes any number of positional arguments;
@@ -600,7 +600,7 @@ P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
 # logic
 
 ## allPass
-`[(*... -> Boolean) -> *... -> Boolean`
+`[(*... -> Boolean) -> *... -> Boolean`  
 
 Takes a list of predicates and returns a predicate that returns `true` for a given list of arguments if every one of the provided predicates is satisfied by those arguments.
 
@@ -614,7 +614,7 @@ $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
 ```
 
 ## ƛand
-`a -> b -> Boolean`
+`a -> b -> Boolean`  
 
 Returns `true` if both arguments are `true`-thy; `false` otherwise.
 
@@ -625,7 +625,7 @@ Sadly `and` keyword is reserved so this function has to be prefixed with `ƛ`
 ```
 
 ## both
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
 
 A function which calls the two provided functions and returns the `&&` of the results.
 
@@ -639,7 +639,7 @@ $f(12); // true
 ```
 
 ## cond
-`[[(*… → Boolean),(*… → *)]] → (*… → *)`
+`[[(*… → Boolean),(*… → *)]] → (*… → *)`  
 
 Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
 
@@ -660,7 +660,7 @@ $fn(100); //=> 'water boils at 100°C'
 ```
 
 ## defaultTo
-`a -> b -> b | a`
+`a -> b -> b | a`  
 
 Returns the second argument if it is not `null`; otherwise the first argument is returned.
 
@@ -672,7 +672,7 @@ P::defaultTo(42, 'life'); // 'life'
 ```
 
 ## either
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
 
 A function wrapping calls to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
 
@@ -688,7 +688,7 @@ $f(21); // true
 ```
 
 ## ifElse
-`(*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)`
+`(*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)`  
 
 Creates a function that will process either the `onTrue` or the `onFalse` function depending upon the result of the condition predicate.
 
@@ -707,7 +707,7 @@ $fizzbuzz(1); // 1
 ```
 
 ## isEmpty
-`a -> Boolean`
+`a -> Boolean`  
 
 Returns `true` if the given value is its type's empty value; `false` otherwise.
 
@@ -724,7 +724,7 @@ P::isEmpty(true); // false
 ```
 
 ## not
-`* -> Boolean`
+`* -> Boolean`  
 
 A function that returns the `!` of its argument. It will return `true` when passed false-y value, and `false` when passed a truth-y one.
 
@@ -736,7 +736,7 @@ P::not(true); // false
 ```
 
 ## ƛor
-`a -> b -> Boolean`
+`a -> b -> Boolean`  
 
 Returns `true` if one or both of its arguments are trueth-y. Returns `false` if both arguments are false-y.
 
@@ -749,35 +749,35 @@ Returns `true` if one or both of its arguments are trueth-y. Returns `false` if 
 # math
 
 ## add
-`Number a => a -> a -> a`
+`Number a => a -> a -> a`  
 
 Add two values
 
 
 
 ## dec
-`Int a => a -> a`
+`Int a => a -> a`  
 
 Decrement its argument
 
 
 
 ## divide
-`Number a => a -> a -> a`
+`Number a => a -> a -> a`  
 
 Divide numbers. Equivalent of `a / b`
 
 
 
 ## inc
-`Int a => a -> a`
+`Int a => a -> a`  
 
 Increment its argument
 
 
 
 ## mean
-`Number a => [a] -> a`
+`Number a => [a] -> a`  
 
 Returns the mean of the given list of numbers.
 
@@ -788,7 +788,7 @@ P::mean([2, 7, 9]) // 6
 ```
 
 ## median
-`Number a => [a] -> a`
+`Number a => [a] -> a`  
 
 Returns the median of the given list of numbers.
 
@@ -800,7 +800,7 @@ Returns the median of the given list of numbers.
 ```
 
 ## modulo
-`Number a => a -> a -> a`
+`Number a => a -> a -> a`  
 
 Divides the first parameter by the second and returns the remainder.
 
@@ -811,7 +811,7 @@ Divides the first parameter by the second and returns the remainder.
 ```
 
 ## multiply
-`Number a => a -> a -> a`
+`Number a => a -> a -> a`  
 
 Multiplies two numbers
 
@@ -823,7 +823,7 @@ $triple(7); // 21
 ```
 
 ## product
-`Number a => [a] -> a`
+`Number a => [a] -> a`  
 
 Multiplies together all the elements of a list.
 
@@ -834,7 +834,7 @@ P::product([2, 4, 6, 8, 100, 1]); // 38400
 ```
 
 ## subtract
-`Number a => a -> a -> a`
+`Number a => a -> a -> a`  
 
 Subtracts its second argument from its first argument.
 
@@ -846,7 +846,7 @@ $complementaryAngle(30); //=> 60
 ```
 
 ## sum
-`[Number] -> Number`
+`[Number] -> Number`  
 
 Adds together all the elements of a list.
 
@@ -859,7 +859,7 @@ P::sum([1, 2, 3, 4]); // 10
 # object
 
 ## eqProps
-`k -> {k: v} -> {k: v} -> Boolean`
+`k -> {k: v} -> {k: v} -> Boolean`  
 
 Reports whether two objects have the same value, in `P::equals` terms, for the specified property.
 
@@ -870,7 +870,7 @@ P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
 ```
 
 ## keys
-`{k: v} -> [k]`
+`{k: v} -> [k]`  
 
 Returns a list containing the names of array keys.
 
@@ -881,7 +881,7 @@ P::keys(['a' => 1, 'b' => 1]); // ['a', 'b']
 ```
 
 ## merge
-`{k: v} -> {k: v} -> {k: v}`
+`{k: v} -> {k: v} -> {k: v}`  
 
 Create a new object with the keys of the first object merged with the keys of the second object. If a key exists in both objects, the value from the second object will be used.
 
@@ -893,7 +893,7 @@ $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
 ```
 
 ## omit
-`[String] -> {String: *} -> {String: *}`
+`[String] -> {String: *} -> {String: *}`  
 
 Returns a partial copy of an object omitting the keys specified.
 
@@ -904,7 +904,7 @@ P::omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
 ```
 
 ## path
-`String -> {k: v} -> v|Null`
+`String -> {k: v} -> v|Null`  
 
 Returns nested value using "dot notation".
 
@@ -916,7 +916,7 @@ P::path('a.b.c', ['a' => ['b' => 'foo']]); // null
 ```
 
 ## pathOr
-`String -> a -> {k: v} -> v | a`
+`String -> a -> {k: v} -> v | a`  
 
 Returns nested value using "dot notation". If key is not defined, or value is NULL default value will be returned.
 
@@ -930,7 +930,7 @@ P::pathOr('a.b', 'foo', ['a' => 1]); // 'foo'
 ```
 
 ## pick
-`[String] -> {String: *} -> {String: *}`
+`[String] -> {String: *} -> {String: *}`  
 
 Returns a partial copy of an object containing only the keys specified. If the key does not exist, the property is ignored.
 
@@ -941,14 +941,14 @@ P::pick(['a'], ['a' => 1, 'b' => 2]); // ['a' => 1]
 ```
 
 ## prop
-`k -> {k: v} -> v`
+`k -> {k: v} -> v`  
 
 Returns a function that when supplied an array returns the indicated key of that key, if it exists.
 
 
 
 ## props
-`[k] -> {k: v} -> [v]`
+`[k] -> {k: v} -> [v]`  
 
 Acts as multiple `prop`: array of keys in, array of values out. Preserves order.
 
@@ -960,14 +960,14 @@ $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
 ```
 
 ## values
-`{k: v} -> [v]`
+`{k: v} -> [v]`  
 
 Returns values of supplied object
 
 
 
 ## where
-`{String: (* -> Boolean)} -> {String: *} -> Boolean`
+`{String: (* -> Boolean)} -> {String: *} -> Boolean`  
 
 Takes a spec object and a test object; returns `true` if the test satisfies the spec. Each of the spec's properties must be a predicate function. Each predicate is applied to the value of the corresponding property of the test object. where returns `true` if all the predicates return true, false otherwise.
 
@@ -983,7 +983,7 @@ $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); //
 ```
 
 ## whereEq
-`{String: *} -> {String: *} -> Boolean`
+`{String: *} -> {String: *} -> Boolean`  
 
 Takes a spec object and a test object; returns `true` if the test satisfies the spec, false otherwise. An object satisfies the spec if, for each of the spec's properties, accessing that property of the object gives the same value (in `P::equals()` terms) as accessing that property of the spec.
 
@@ -997,7 +997,7 @@ $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
 # relation
 
 ## clamp
-`Number a => a -> a -> a -> a`
+`Number a => a -> a -> a -> a`  
 
 Restricts a number to be within a range.
 
@@ -1010,7 +1010,7 @@ P::clamp(-1, 1, 0); // 0
 ```
 
 ## difference
-`[*] -> [*] -> [*]`
+`[*] -> [*] -> [*]`  
 
 Finds the set (i.e. no duplicates) of all elements in the first list not contained in the second list.
 
@@ -1021,7 +1021,7 @@ P::difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
 ```
 
 ## equals
-`a -> b -> Boolean`
+`a -> b -> Boolean`  
 
 Returns `true` if its arguments are equivalent, `false` otherwise.
 
@@ -1034,7 +1034,7 @@ P::equals(1, 2); // false
 ```
 
 ## gt
-`Ord a => a -> a -> Boolean`
+`Ord a => a -> a -> Boolean`  
 
 Returns `true` if the first argument is greater than the second; `false` otherwise.
 
@@ -1045,7 +1045,7 @@ P::gt(2, 1); // true
 ```
 
 ## gte
-`Ord a => a -> a -> Boolean`
+`Ord a => a -> a -> Boolean`  
 
 Returns `true` if the first argument is greater than or equal to the second; `false` otherwise.
 
@@ -1058,7 +1058,7 @@ P::gte(2, 3); // false
 ```
 
 ## intersection
-`[*] -> [*] -> [*]`
+`[*] -> [*] -> [*]`  
 
 Combines two lists into a set composed of those elements common to both lists.
 
@@ -1069,7 +1069,7 @@ P::intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
 ```
 
 ## lt
-`Ord a => a -> a -> Boolean`
+`Ord a => a -> a -> Boolean`  
 
 Returns `true` if the first argument is less than the second; `false` otherwise.
 
@@ -1082,7 +1082,7 @@ P::lt(2, 2); // false
 ```
 
 ## lte
-`Ord a => a -> a -> Boolean`
+`Ord a => a -> a -> Boolean`  
 
 Returns `true` if the first argument is less than or equal to the second; `false` otherwise.
 
@@ -1093,14 +1093,14 @@ P::lte(1, 2); // true
 ```
 
 ## max
-`a -> a -> a`
+`a -> a -> a`  
 
 Returns the larger of its two arguments.
 
 
 
 ## min
-`a -> a -> a`
+`a -> a -> a`  
 
 Returns the smaller of its two arguments.
 
@@ -1111,7 +1111,7 @@ P::min(1, -1); // -1
 ```
 
 ## pathEq
-`String -> a -> {a} -> Boolean`
+`String -> a -> {a} -> Boolean`  
 
 Determines whether a nested path on an object has a specific value, in `equals()` terms.
 
@@ -1122,7 +1122,7 @@ P::pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
 ```
 
 ## propEq
-`k -> a -> {k: a} -> Boolean`
+`k -> a -> {k: a} -> Boolean`  
 
 Returns `true` if the specified object property is equal, in `equals()` terms, to the given value; `false` otherwise.
 
@@ -1135,8 +1135,8 @@ P::propEq('name', 'Jon', ['name' => 'Jon']); // true
 # string
 
 ## match
-`RegExp -> String -> String|Null`
-`RegExp -> String -> [String]`
+`RegExp -> String -> String|Null`  
+`RegExp -> String -> [String]`  
 
 Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
 
@@ -1148,7 +1148,7 @@ P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
 ```
 
 ## regexp
-`String -> RegExp`
+`String -> RegExp`  
 
 Converts given string to RegExp object
 
@@ -1159,7 +1159,7 @@ P::regexp('/foo/ig'); // => new \phln\RegExp('/foo/', 'ig');
 ```
 
 ## replace
-`RegExp -> String -> String -> String`
+`RegExp -> String -> String -> String`  
 
 Replace a regex match in a string with a replacement.
 
@@ -1172,8 +1172,8 @@ P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
 ```
 
 ## split
-`String -> String -> [String]`
-`RegExp -> String -> [String]`
+`String -> String -> [String]`  
+`RegExp -> String -> [String]`  
 
 Splits a string into an array of strings based on the given regular expression or separator.
 
@@ -1186,7 +1186,7 @@ P::split('/', 'a/b'); // ['a', 'b']
 # type
 
 ## is
-`String -> a -> Boolean`
+`String -> a -> Boolean`  
 
 See if `value` is of given `type`.
 
@@ -1202,7 +1202,7 @@ P::is(float, 1.1); // true
 ```
 
 ## typeCond
-`[[String, (*... -> *)]] -> (*... -> *)`
+`[[String, (*... -> *)]] -> (*... -> *)`  
 
 Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
 
