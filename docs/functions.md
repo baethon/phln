@@ -26,25 +26,29 @@ $hasTwos([1, 2, 3, 4]); // true
 
 ## append
 `a -> [a] -> [a]`
+`String -> String -> String`
 
-Returns a new list containing the contents of the given list, followed by the given element.
+Returns a new list containing the contents of the given list or string, followed by the given element.
 
 
 
 ```php
 P::append(3, [1, 2]); // [1, 2, 3]
 P::append([3], [1, 2]); // [1, 2, [3]]
+P::append('foo', 'bar'); // 'barfoo'
 ```
 
 ## chunk
 `Number -> [a] -> [[a]]`
+`Number -> String -> [String]`
 
-Chunks an array into arrays with `size` elements.
+Chunks an array or string into arrays with `size` elements.
 
 The last chunk may contain less than `size` elements.
 
 ```php
 P::chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
+P::chunk(2, 'hello'); // ['he', 'll', 'o']
 ```
 
 ## collapse
@@ -56,25 +60,29 @@ Flattens array elements by one level
 
 ## concat
 `[a] -> [a] -> [a]`
+`String -> String -> String`
 
-Returns the result of concatenating the given arrays.
+Returns the result of concatenating the given lists or strings.
 
-
+Note: `P::concat` expects both arguments to be of the same type, otherwise it will throw an exception.
 
 ```php
 P::concat([1, 2], [3]); // [1, 2, 3]
+P::concat('foo', 'bar'); // 'foobar'
 ```
 
 ## contains
 `a -> [a] -> Boolean`
+`String -> String -> Boolean`
 
 Returns `true` if the specified value is equal, `P::equals` terms,
-to at least one element of the given list; `false` otherwise.
+to at least one element of the given collection; `false` otherwise.
 
 
 
 ```php
 P::contains(1, [1, 2, 3]); // true
+P::contains('foo', 'foobar'); // true
 ```
 
 ## filter
@@ -118,20 +126,24 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 
 ## head
 `[a] -> a | Null`
+`String -> String`
 
-Returns the first element of a given list
+Returns the first element of a given list or string
 
 
 
 ```php
 P::head([1, 2, 3]); // 1
 P::head([]); // null
+P::head('foo'); // 'f'
+P::head('f'); // ''
 ```
 
 ## init
 `[a] -> [a]`
+`String -> String`
 
-Returns all but the last element of the given list.
+Returns all but the last element of the given array or string.
 
 
 
@@ -140,6 +152,11 @@ P::init([1, 2, 3]); // [1, 2]
 P::init([1, 2]); // [1]
 P::init([1]); // []
 P::init([]); // []
+
+P::init('lorem'); // 'lore'
+P::init('lo'); // 'l'
+P::init('l'); // ''
+P::init(''); // ''
 ```
 
 ## join
@@ -156,14 +173,29 @@ $spacer([1, 2, 3]); // '1 2 3'
 
 ## last
 `[a] -> a`
+`String -> String`
 
-Returns the last element of the given list.
+Returns the last element of the given list or string.
 
 
 
 ```php
 P::last([1, 2, 3]); // 3
 P::last([]); // null
+P::last('foo'); // 'o'
+P::last('f'); // 'f'
+```
+
+## length
+`[a] -> Number`
+`String -> Number`
+
+Returns the number of elements in the array or string
+
+
+
+```php
+P::length('lorem'); // 5
 ```
 
 ## map
@@ -222,14 +254,16 @@ P::pluck('a', $list); // [1, 2]
 
 ## prepend
 `a -> [a] -> [a]`
+`String -> String -> String`
 
-Returns a new list with the given element at the front, followed by the contents of the list.
+Returns a new collection with the given element at the front, followed by the contents of the list or string.
 
 
 
 ```php
 P::prepend(3, [1, 2]); // [3, 1, 2]
 P::prepend([3], [1, 2]); // [[3], 1, 2]
+P::prepend('foo', 'bar'); // [[3], 1, 2]
 ```
 
 ## range
@@ -271,19 +305,22 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 
 ## reverse
 `[a] -> [a]`
+`String -> String`
 
-Returns a new list with the elements in reverse order.
+Returns a new list or string with the elements in reverse order.
 
 
 
 ```php
 P::reverse([1, 2, 3]); // [3, 2, 1]
+P::reverse('foo'); // 'oof'
 ```
 
 ## slice
 `Integer -> Integer -> [a] -> [a]`
+`Integer -> Integer -> String -> String`
 
-Extracts a slice of the array
+Extracts a slice of the array or string
 
 
 
@@ -325,8 +362,9 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 
 ## tail
 `[a] -> [a]`
+`String -> String`
 
-Returns all but the first element of the given list
+Returns all but the first element of the given array or string
 
 
 
@@ -334,6 +372,9 @@ Returns all but the first element of the given list
 P::tail([1, 2, 3]); // [2, 3]
 P::tail([1]); // []
 P::tail([]); // []
+P::tail('lorem'); // 'orem'
+P::tail('l'); // ''
+P::tail(''); // ''
 ```
 
 ## unique
@@ -541,6 +582,31 @@ Runs the given function with the supplied object, then returns the object.
 ```php
 $dump = P::tap('var_dump');
 $dump('foo'); // var_dumps('foo'); returns 'foo'
+```
+
+## throwException
+`(String, [*]) -> (*... -> Null)`
+
+Returns callback which throws given exception.
+
+*Note:* exceptions are considered as side-efects. Use it with caution.
+
+```php
+$break = P::throwException(\LogicException::class);
+$break(); // -> throw new \LogicException()
+```
+
+## unapply
+`([*...] -> a) -> (*... -> a)`
+
+Takes a function `fn`, which takes a single array argument, and returns a function which:
+* takes any number of positional arguments;
+* passes these arguments to `fn` as an array and returns the result
+
+In other words, `P::unapply` derives a variadic function from a function which takes an array. `P::unapply` is the inverse of `P::apply`.
+
+```php
+P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
 ```
 
 # logic
@@ -1079,17 +1145,6 @@ P::propEq('name', 'Jon', ['name' => 'Jon']); // true
 ```
 
 # string
-
-## concatString
-`String -> String -> String`
-
-Returns the result of concatenating the given strings.
-
-
-
-```php
-P::concatString('a', 'B'); // aB
-```
 
 ## match
 `RegExp -> String -> String|Null`

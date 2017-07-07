@@ -18,6 +18,12 @@ class ChunkTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_splits_text_into_chunks()
+    {
+        $this->assertEquals(['lo', 're', 'm ', 'ip', 'su', 'm'], $this->callFn(2, 'lorem ipsum'));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $split = $this->callFn(2);

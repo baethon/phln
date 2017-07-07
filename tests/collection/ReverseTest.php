@@ -15,4 +15,10 @@ class ReverseTest extends \Phln\Build\PhpUnit\TestCase
         $list = range(1, 10);
         $this->assertEquals(array_reverse($list), $this->callFn($list));
     }
+
+    /** @test */
+    public function it_reverses_string()
+    {
+        $this->assertEquals('oof', $this->callFn('foo'));
+    }
 }

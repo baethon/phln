@@ -23,4 +23,11 @@ class SliceTest extends \Phln\Build\PhpUnit\TestCase
         $slicer = $this->callFn(0, 5);
         $this->assertEquals(array_slice($list, 0, 5), $slicer($list));
     }
+
+    /** @test */
+    public function it_slices_text()
+    {
+        $string = 'lorem ipsum dolor sit amet';
+        $this->assertEquals('lorem', $this->callFn(0, 5, $string));
+    }
 }

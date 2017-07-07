@@ -18,6 +18,19 @@ class ContainsTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
+    public function it_checks_if_string_contains_value()
+    {
+        $this->assertTrue($this->callFn('foo', 'barfooasd'));
+        $this->assertFalse($this->callFn('foo', 'bar'));
+    }
+
+    /** @test */
+    public function it_returns_false_for_non_supported_types()
+    {
+        $this->assertFalse($this->callFn('foo', 1));
+    }
+
+    /** @test */
     public function it_is_curried()
     {
         $p = $this->callFn(1);

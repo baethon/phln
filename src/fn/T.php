@@ -5,6 +5,8 @@ namespace phln\fn;
 
 const T = '\\phln\\fn\\T';
 
+const otherwise = T;
+
 /**
  * A function that always returns `true`. Any passed in parameters are ignored.
  *

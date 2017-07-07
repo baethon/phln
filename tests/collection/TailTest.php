@@ -16,4 +16,12 @@ class TailTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals([], $this->callFn([1]));
         $this->assertEquals([], $this->callFn([]));
     }
+
+    /** @test */
+    public function it_returns_tail_of_string()
+    {
+        $this->assertEquals('orem', $this->callFn('lorem'));
+        $this->assertEquals('', $this->callFn('l'));
+        $this->assertEquals('', $this->callFn(''));
+    }
 }

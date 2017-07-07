@@ -27,6 +27,7 @@
     * [init](functions.md#init)
     * [join](functions.md#join)
     * [last](functions.md#last)
+    * [length](functions.md#length)
     * [map](functions.md#map)
     * [mapIndexed](functions.md#mapindexed)
     * [none](functions.md#none)
@@ -61,6 +62,8 @@
     * [pipe](functions.md#pipe)
     * [swap](functions.md#swap)
     * [tap](functions.md#tap)
+    * [throwException](functions.md#throwexception)
+    * [unapply](functions.md#unapply)
 
 * [logic](functions.md#logic)
     * [allPass](functions.md#allpass)
@@ -116,7 +119,6 @@
     * [propEq](functions.md#propeq)
 
 * [string](functions.md#string)
-    * [concatString](functions.md#concatstring)
     * [match](functions.md#match)
     * [regexp](functions.md#regexp)
     * [replace](functions.md#replace)

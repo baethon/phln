@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use const phln\collection\head;
 use const phln\fn\{
     __, apply, T
 };
 use function phln\collection\{
-    find, nth, append
+    find, nth
 };
 use function phln\fn\{
     always, compose, partial, pipe
@@ -40,13 +39,17 @@ function cond(array $pairs): \Closure
 {
     return function (... $args) use ($pairs) {
         $callPredicate = partial(apply, [__, $args]);
-        $pairMatchingArgs = compose([$callPredicate, head]);
+        $pairMatchingArgs = compose([$callPredicate, nth(0)]);
         $getTransformer = pipe([
-            append([T, always(null)]),
             find($pairMatchingArgs),
             nth(1),
         ]);
 
-        return $getTransformer($pairs)(...$args);
+        $pairsWithFallback = array_merge(
+            $pairs,
+            [[T, always(null)]]
+        );
+
+        return $getTransformer($pairsWithFallback)(...$args);
     };
 }
