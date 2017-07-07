@@ -48,7 +48,6 @@
     * [F](functions.md#f)
     * [T](functions.md#t)
     * [always](functions.md#always)
-    * [ap](functions.md#ap)
     * [apply](functions.md#apply)
     * [arity](functions.md#arity)
     * [compose](functions.md#compose)

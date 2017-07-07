@@ -416,18 +416,6 @@ $foo = P::always('foo');
 $foo(); // 'foo'
 ```
 
-## ap
-`Apply f => f a ~> (a -> b) -> f b`
-
-Applies function to functor.
-
-
-
-```php
-$some = Some(1);
-ap($some, P::inc); // Some(2)
-```
-
 ## apply
 `(*... -> a) -> [*] -> a`
 

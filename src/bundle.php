@@ -33,7 +33,6 @@ require __DIR__.'/collection/unique.php';
 require __DIR__.'/fn/F.php';
 require __DIR__.'/fn/T.php';
 require __DIR__.'/fn/always.php';
-require __DIR__.'/fn/ap.php';
 require __DIR__.'/fn/apply.php';
 require __DIR__.'/fn/arity.php';
 require __DIR__.'/fn/compose.php';

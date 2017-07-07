@@ -45,7 +45,6 @@ class Phln
     const T = \phln\fn\T;
     const otherwise = \phln\fn\otherwise;
     const always = \phln\fn\always;
-    const ap = \phln\fn\ap;
     const apply = \phln\fn\apply;
     const arity = \phln\fn\arity;
     const compose = \phln\fn\compose;
@@ -707,23 +706,6 @@ class Phln
     public static function always($value): \Closure
     {
         return \phln\fn\always($value);
-    }
-
-    /**
-     * Applies function to functor.
-     *
-     * @phlnSignature Apply f => f a ~> (a -> b) -> f b
-     * @phlnCategory function
-     * @param string $applicative
-     * @param string $fn
-     * @return \Closure|mixed
-     * @example
-     *      $some = Some(1);
-     *      ap($some, P::inc); // Some(2)
-     */
-    public static function ap($applicative = nil, $fn = nil)
-    {
-        return \phln\fn\ap($applicative, $fn);
     }
 
     /**
