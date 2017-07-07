@@ -25,6 +25,7 @@ class Phln
     const init = \phln\collection\init;
     const join = \phln\collection\join;
     const last = \phln\collection\last;
+    const length = \phln\collection\length;
     const map = \phln\collection\map;
     const mapIndexed = \phln\collection\mapIndexed;
     const none = \phln\collection\none;
@@ -60,6 +61,8 @@ class Phln
     const pipe = \phln\fn\pipe;
     const swap = \phln\fn\swap;
     const tap = \phln\fn\tap;
+    const throwException = \phln\fn\throwException;
+    const unapply = \phln\fn\unapply;
     const allPass = \phln\logic\allPass;
     const ƛand = \phln\logic\ƛand;
     const both = \phln\logic\both;
@@ -105,7 +108,6 @@ class Phln
     const min = \phln\relation\min;
     const pathEq = \phln\relation\pathEq;
     const propEq = \phln\relation\propEq;
-    const concatString = \phln\string\concatString;
     const match = \phln\string\match;
     const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
@@ -148,37 +150,41 @@ class Phln
     }
 
     /**
-     * Returns a new list containing the contents of the given list, followed by the given element.
+     * Returns a new list containing the contents of the given list or string, followed by the given element.
      *
      * @phlnSignature a -> [a] -> [a]
+     * @phlnSignature String -> String -> String
      * @phlnCategory collection
-     * @param string $value
-     * @param string $list
-     * @return \Closure|mixed
+     * @param mixed $value
+     * @param string|array $collection
+     * @return \Closure|string|array
      * @example
      *      P::append(3, [1, 2]); // [1, 2, 3]
      *      P::append([3], [1, 2]); // [1, 2, [3]]
+     *      P::append('foo', 'bar'); // 'barfoo'
      */
-    public static function append($value = nil, $list = nil)
+    public static function append($value = nil, $collection = nil)
     {
-        return \phln\collection\append($value, $list);
+        return \phln\collection\append($value, $collection);
     }
 
     /**
-     * Chunks an array into arrays with `size` elements.
+     * Chunks an array or string into arrays with `size` elements.
      * The last chunk may contain less than `size` elements.
      *
      * @phlnSignature Number -> [a] -> [[a]]
+     * @phlnSignature Number -> String -> [String]
      * @phlnCategory collection
-     * @param string $size
-     * @param string $list
-     * @return \Closure|mixed
+     * @param string|integer $size
+     * @param string|array $collection
+     * @return \Closure|array
      * @example
      *      P::chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
+     *      P::chunk(2, 'hello'); // ['he', 'll', 'o']
      */
-    public static function chunk($size = nil, $list = nil)
+    public static function chunk($size = nil, $collection = nil)
     {
-        return \phln\collection\chunk($size, $list);
+        return \phln\collection\chunk($size, $collection);
     }
 
     /**
@@ -195,16 +201,20 @@ class Phln
     }
 
     /**
-     * Returns the result of concatenating the given arrays.
+     * Returns the result of concatenating the given lists or strings.
+     *
+     * Note: `P::concat` expects both arguments to be of the same type, otherwise it will throw an exception.
      *
      * @phlnSignature [a] -> [a] -> [a]
+     * @phlnSignature String -> String -> String
      * @phlnCategory collection
-     * @param string $a
-     * @param string $b
-     * @return \Closure|mixed
+     * @param string|array $a
+     * @param string|array $b
+     * @return \Closure|string|array
      * @throws \InvalidArgumentException
      * @example
      *      P::concat([1, 2], [3]); // [1, 2, 3]
+     *      P::concat('foo', 'bar'); // 'foobar'
      */
     public static function concat($a = nil, $b = nil)
     {
@@ -213,19 +223,21 @@ class Phln
 
     /**
      * Returns `true` if the specified value is equal, `P::equals` terms,
-     * to at least one element of the given list; `false` otherwise.
+     * to at least one element of the given collection; `false` otherwise.
      *
      * @phlnSignature a -> [a] -> Boolean
+     * @phlnSignature String -> String -> Boolean
      * @phlnCategory collection
-     * @param string $value
-     * @param string $list
-     * @return \Closure|mixed
+     * @param mixed $value
+     * @param string|array $collection
+     * @return \Closure|bool
      * @example
      *      P::contains(1, [1, 2, 3]); // true
+     *      P::contains('foo', 'foobar'); // true
      */
-    public static function contains($value = nil, $list = nil)
+    public static function contains($value = nil, $collection = nil)
     {
-        return \phln\collection\contains($value, $list);
+        return \phln\collection\contains($value, $collection);
     }
 
     /**
@@ -283,37 +295,46 @@ class Phln
     }
 
     /**
-     * Returns the first element of a given list
+     * Returns the first element of a given list or string
      *
      * @phlnSignature [a] -> a | Null
+     * @phlnSignature String -> String
      * @phlnCategory collection
-     * @param array $list
+     * @param array $collection
      * @return mixed|null
      * @example
      *      P::head([1, 2, 3]); // 1
      *      P::head([]); // null
+     *      P::head('foo'); // 'f'
+     *      P::head('f'); // ''
      */
-    public static function head($list)
+    public static function head($collection)
     {
-        return \phln\collection\head($list);
+        return \phln\collection\head($collection);
     }
 
     /**
-     * Returns all but the last element of the given list.
+     * Returns all but the last element of the given array or string.
      *
      * @phlnSignature [a] -> [a]
+     * @phlnSignature String -> String
      * @phlnCategory collection
-     * @param array $list
-     * @return array
+     * @param array|string $collection
+     * @return array|string
      * @example
      *      P::init([1, 2, 3]); // [1, 2]
      *      P::init([1, 2]); // [1]
      *      P::init([1]); // []
      *      P::init([]); // []
+     *
+     *      P::init('lorem'); // 'lore'
+     *      P::init('lo'); // 'l'
+     *      P::init('l'); // ''
+     *      P::init(''); // ''
      */
-    public static function init($list)
+    public static function init($collection)
     {
-        return \phln\collection\init($list);
+        return \phln\collection\init($collection);
     }
 
     /**
@@ -334,19 +355,38 @@ class Phln
     }
 
     /**
-     * Returns the last element of the given list.
+     * Returns the last element of the given list or string.
      *
      * @phlnSignature [a] -> a
+     * @phlnSignature String -> String
      * @phlnCategory collection
-     * @param array $list
+     * @param array|string $list
      * @return mixed|null
      * @example
      *      P::last([1, 2, 3]); // 3
      *      P::last([]); // null
+     *      P::last('foo'); // 'o'
+     *      P::last('f'); // 'f'
      */
     public static function last($list)
     {
         return \phln\collection\last($list);
+    }
+
+    /**
+     * Returns the number of elements in the array or string
+     *
+     * @phlnSignature [a] -> Number
+     * @phlnSignature String -> Number
+     * @phlnCategory collection
+     * @param string|array $collection
+     * @return int
+     * @example
+     *      P::length('lorem'); // 5
+     */
+    public static function length($collection): int
+    {
+        return \phln\collection\length($collection);
     }
 
     /**
@@ -436,20 +476,22 @@ class Phln
     }
 
     /**
-     * Returns a new list with the given element at the front, followed by the contents of the list.
+     * Returns a new collection with the given element at the front, followed by the contents of the list or string.
      *
      * @phlnSignature a -> [a] -> [a]
+     * @phlnSignature String -> String -> String
      * @phlnCategory collection
      * @param string $value
-     * @param string|array $list
+     * @param string|array $collection
      * @return \Closure|array
      * @example
      *      P::prepend(3, [1, 2]); // [3, 1, 2]
      *      P::prepend([3], [1, 2]); // [[3], 1, 2]
+     *      P::prepend('foo', 'bar'); // [[3], 1, 2]
      */
-    public static function prepend($value = nil, $list = nil)
+    public static function prepend($value = nil, $collection = nil)
     {
-        return \phln\collection\prepend($value, $list);
+        return \phln\collection\prepend($value, $collection);
     }
 
     /**
@@ -508,38 +550,43 @@ class Phln
     }
 
     /**
-     * Returns a new list with the elements in reverse order.
+     * Returns a new list or string with the elements in reverse order.
      *
      * @phlnSignature [a] -> [a]
+     * @phlnSignature String -> String
      * @phlnCategory collection
-     * @param array $list
-     * @return array
+     * @param array|string $collection
+     * @return array|string
      * @see \array_reverse()
+     * @see \strrev()
      * @example
      *      P::reverse([1, 2, 3]); // [3, 2, 1]
+     *      P::reverse('foo'); // 'oof'
      */
-    public static function reverse($list)
+    public static function reverse($collection)
     {
-        return \phln\collection\reverse($list);
+        return \phln\collection\reverse($collection);
     }
 
     /**
-     * Extracts a slice of the array
+     * Extracts a slice of the array or string
      *
      * @phlnSignature Integer -> Integer -> [a] -> [a]
+     * @phlnSignature Integer -> Integer -> String -> String
      * @phlnCategory collection
-     * @param string $offset
-     * @param string $length
-     * @param string $list
-     * @return \Closure|mixed
-     * @see \array_slice
+     * @param string|integer $offset
+     * @param string|integer $length
+     * @param string|array $collection
+     * @return \Closure|array|string
+     * @see \array_slice()
+     * @see \substr()
      * @example
      *      $takeTwo = P::slice(0, 2);
      *      $takeTwo([1, 2, 3]); // [1, 2]
      */
-    public static function slice($offset = nil, $length = nil, $list = nil)
+    public static function slice($offset = nil, $length = nil, $collection = nil)
     {
-        return \phln\collection\slice($offset, $length, $list);
+        return \phln\collection\slice($offset, $length, $collection);
     }
 
     /**
@@ -586,20 +633,24 @@ class Phln
     }
 
     /**
-     * Returns all but the first element of the given list
+     * Returns all but the first element of the given array or string
      *
      * @phlnSignature [a] -> [a]
+     * @phlnSignature String -> String
      * @phlnCategory collection
-     * @param array $list
+     * @param array $collection
      * @return array
      * @example
      *      P::tail([1, 2, 3]); // [2, 3]
      *      P::tail([1]); // []
      *      P::tail([]); // []
+     *      P::tail('lorem'); // 'orem'
+     *      P::tail('l'); // ''
+     *      P::tail(''); // ''
      */
-    public static function tail($list)
+    public static function tail($collection)
     {
-        return \phln\collection\tail($list);
+        return \phln\collection\tail($collection);
     }
 
     /**
@@ -904,6 +955,45 @@ class Phln
     public static function tap($fn = nil, $value = nil)
     {
         return \phln\fn\tap($fn, $value);
+    }
+
+    /**
+     * Returns callback which throws given exception.
+     *
+     * *Note:* exceptions are considered as side-efects. Use it with caution.
+     *
+     * @phlnSignature (String, [*]) -> (*... -> Null)
+     * @phlnCategory fn
+     * @param string $exception
+     * @param array $args
+     * @return \Closure
+     * @example
+     *      $break = P::throwException(\LogicException::class);
+     *      $break(); // -> throw new \LogicException()
+     */
+    public static function throwException(string $exception = 'Exception', array $args = []): \Closure
+    {
+        return \phln\fn\throwException($exception, $args);
+    }
+
+    /**
+     * Takes a function `fn`, which takes a single array argument, and returns a function which:
+     * * takes any number of positional arguments;
+     * * passes these arguments to `fn` as an array and returns the result
+     *
+     * In other words, `P::unapply` derives a variadic function from a function which takes an array. `P::unapply` is the inverse of `P::apply`.
+     *
+     * @phlnSignature ([*...] -> a) -> (*... -> a)
+     * @phlnCategory function
+     * @param string|callable $fn
+     * @param array ...$args
+     * @return \Closure|mixed
+     * @example
+     *      P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
+     */
+    public static function unapply($fn = nil, ...$args)
+    {
+        return \phln\fn\unapply($fn, ...$args);
     }
 
     /**
@@ -1673,22 +1763,6 @@ class Phln
     public static function propEq($prop = nil, $value = nil, $object = nil)
     {
         return \phln\relation\propEq($prop, $value, $object);
-    }
-
-    /**
-     * Returns the result of concatenating the given strings.
-     *
-     * @phlnSignature String -> String -> String
-     * @phlnCategory string
-     * @param string $a
-     * @param string $b
-     * @return \Closure|string
-     * @example
-     *      P::concatString('a', 'B'); // aB
-     */
-    public static function concatString($a = nil, $b = nil)
-    {
-        return \phln\string\concatString($a, $b);
     }
 
     /**
