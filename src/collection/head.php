@@ -8,7 +8,7 @@ use function phln\fn\{
     always, compose, throwException
 };
 use function phln\logic\cond;
-use function phln\relation\lt;
+use function phln\relation\lte;
 use function phln\type\typeCond;
 
 const head = '\\phln\\collection\\head';
@@ -30,13 +30,13 @@ const head = '\\phln\\collection\\head';
 function head($collection)
 {
     $sliceFirst = slice(0, 1);
-    $moreThanOne = compose([lt(1), length]);
+    $moreThanZero = compose([lte(1), length]);
     $headOfArray = cond([
-        [$moreThanOne, compose(['\\current', $sliceFirst])],
+        [$moreThanZero, compose(['\\current', $sliceFirst])],
         [otherwise, always(null)],
     ]);
     $headOfString = cond([
-        [$moreThanOne, $sliceFirst],
+        [$moreThanZero, $sliceFirst],
         [otherwise, always('')],
     ]);
 

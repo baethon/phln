@@ -13,6 +13,7 @@ class LastTest extends \Phln\Build\PhpUnit\TestCase
     public function it_returns_last_element_of_array()
     {
         $this->assertEquals(3, $this->callFn([1, 2, 3]));
+        $this->assertEquals(1, $this->callFn([1]));
         $this->assertNull($this->callFn([]));
     }
 
