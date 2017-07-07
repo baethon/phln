@@ -62,10 +62,8 @@
     * [pipe](functions.md#pipe)
     * [swap](functions.md#swap)
     * [tap](functions.md#tap)
-    * [unapply](functions.md#unapply)
-
-* [fn](functions.md#fn)
     * [throwException](functions.md#throwexception)
+    * [unapply](functions.md#unapply)
 
 * [logic](functions.md#logic)
     * [allPass](functions.md#allpass)

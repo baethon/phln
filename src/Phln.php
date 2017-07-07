@@ -963,7 +963,7 @@ class Phln
      * *Note:* exceptions are considered as side-efects. Use it with caution.
      *
      * @phlnSignature (String, [*]) -> (*... -> Null)
-     * @phlnCategory fn
+     * @phlnCategory function
      * @param string $exception
      * @param array $args
      * @return \Closure

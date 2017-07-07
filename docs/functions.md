@@ -584,6 +584,18 @@ $dump = P::tap('var_dump');
 $dump('foo'); // var_dumps('foo'); returns 'foo'
 ```
 
+## throwException
+`(String, [*]) -> (*... -> Null)`
+
+Returns callback which throws given exception.
+
+*Note:* exceptions are considered as side-efects. Use it with caution.
+
+```php
+$break = P::throwException(\LogicException::class);
+$break(); // -> throw new \LogicException()
+```
+
 ## unapply
 `([*...] -> a) -> (*... -> a)`
 
@@ -595,20 +607,6 @@ In other words, `P::unapply` derives a variadic function from a function which t
 
 ```php
 P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
-```
-
-# fn
-
-## throwException
-`(String, [*]) -> (*... -> Null)`
-
-Returns callback which throws given exception.
-
-*Note:* exceptions are considered as side-efects. Use it with caution.
-
-```php
-$break = P::throwException(\LogicException::class);
-$break(); // -> throw new \LogicException()
 ```
 
 # logic
