@@ -63,7 +63,6 @@ class Phln
     const throwException = \phln\fn\throwException;
     const unapply = \phln\fn\unapply;
     const allPass = \phln\logic\allPass;
-    const ƛand = \phln\logic\ƛand;
     const both = \phln\logic\both;
     const cond = \phln\logic\cond;
     const defaultTo = \phln\logic\defaultTo;
@@ -71,7 +70,6 @@ class Phln
     const ifElse = \phln\logic\ifElse;
     const isEmpty = \phln\logic\isEmpty;
     const not = \phln\logic\not;
-    const ƛor = \phln\logic\ƛor;
     const add = \phln\math\add;
     const dec = \phln\math\dec;
     const divide = \phln\math\divide;
@@ -999,40 +997,28 @@ class Phln
     }
 
     /**
-     * Returns `true` if both arguments are `true`-thy; `false` otherwise.
+     * Returns `true` when both of two provided values are truthy.
      *
-     * Sadly `and` keyword is reserved so this function has to be prefixed with `ƛ`
-     *
-     * @phlnSignature a -> b -> Boolean
-     * @phlnCategory logic
-     * @param mixed $left
-     * @param mixed $right
-     * @return \Closure|bool
-     * @example
-     *      \phln\login\ƛand(true, true); // true
-     */
-    public static function ƛand($left = nil, $right = nil)
-    {
-        return \phln\logic\ƛand($left, $right);
-    }
-
-    /**
-     * A function which calls the two provided functions and returns the `&&` of the results.
+     * This function is polymorphic and supports two cases:
+     * 1. when both values are predicates it will return wrapper function which call to the two functions in an `&&` operation, returning `true` if both of the functions will return truthy value.
+     * 2. when both values are booleans it will return result of `&&` operation
      *
      * @phlnSignature (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
+     * @phlnSignature Boolean -> Boolean -> Boolean
      * @phlnCategory logic
-     * @param string|callable $a
-     * @param string|callable $b
-     * @return \Closure
+     * @param string|callable|bool $left
+     * @param string|callable|bool $right
+     * @return \Closure|bool
      * @example
      *      $gt10 = P::partial(P::gt, [P::__, 10]);
      *      $lt20 = P::partial(P::lt, [P::__, 20]);
      *      $f = P::both($gt10, $lt20);
      *      $f(12); // true
+     *      P::both(true, false); // false
      */
-    public static function both($a = nil, $b = nil)
+    public static function both($left = nil, $right = nil)
     {
-        return \phln\logic\both($a, $b);
+        return \phln\logic\both($left, $right);
     }
 
     /**
@@ -1078,13 +1064,18 @@ class Phln
     }
 
     /**
-     * A function wrapping calls to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
+     * Returns `true` when one of two provided values is truthy.
+     *
+     * This function is polymorphic and supports two cases:
+     * 1. when both values are predicates it will return wrapper function which call to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
+     * 2. when both values are booleans it will return result of `||` operation
      *
      * @phlnSignature (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
+     * @phlnSignature Boolean -> Boolean -> Boolean
      * @phlnCategory logic
-     * @param string|callable $left
-     * @param string|callable $right
-     * @return \Closure
+     * @param string|callable|bool $left
+     * @param string|callable|bool $right
+     * @return \Closure|bool
      * @example
      *      $lt10 = P::partial(P::lt, [P::__, 10]);
      *      $gt20 = P::partial(P::gt, [P::__, 20]);
@@ -1092,8 +1083,9 @@ class Phln
      *      $f(12); // false
      *      $f(9); // true
      *      $f(21); // true
+     *      P::either(true, false); // true
      */
-    public static function either($left = nil, $right = nil): \Closure
+    public static function either($left = nil, $right = nil)
     {
         return \phln\logic\either($left, $right);
     }
@@ -1160,22 +1152,6 @@ class Phln
     public static function not($value): bool
     {
         return \phln\logic\not($value);
-    }
-
-    /**
-     * Returns `true` if one or both of its arguments are trueth-y. Returns `false` if both arguments are false-y.
-     *
-     * @phlnSignature a -> b -> Boolean
-     * @phlnCategory logic
-     * @param string $left
-     * @param string $right
-     * @return \Closure|mixed
-     * @example
-     *      \phln\logic\ƛor(true, false); // true
-     */
-    public static function ƛor($left = nil, $right = nil)
-    {
-        return \phln\logic\ƛor($left, $right);
     }
 
     /**
@@ -1826,6 +1802,8 @@ class Phln
      * Internally this function uses `\gettype()` with few support of few aliases:
      * * `bool` - alias for `boolean` type
      * * `float` - alias for `double` type
+     * * `callable` - checks if $value is valid callback
+     * * `function` - same as `callable`
      * * class FQN - will check if supplied object is instance of given class
      *
      * @phlnSignature String -> a -> Boolean

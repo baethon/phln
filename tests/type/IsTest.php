@@ -46,6 +46,9 @@ class IsTest extends \Phln\Build\PhpUnit\TestCase
             ['object', new \stdClass()],
             [\stdClass::class, new \stdClass()],
             ['null', null],
+            ['callable', '\\strrev'],
+            ['function', '\\strrev'],
+            ['callable', function () {}],
         ];
     }
 }

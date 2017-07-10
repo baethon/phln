@@ -6,9 +6,6 @@ Wrapps in `curry()` appropriate *𝑓 function*. Should be treated as "default e
 ## 𝑓 function
 It's the *real* definition of main function. It's not curried and holds proper type hinting.
 
-## ƛ function
-Variation of main function which uses reserved keyword. `ƛ` character is used to "escape" the name.
-
 ## bundle
 `phln\Phln` class which holds static reference to all main functions and their string references.
 

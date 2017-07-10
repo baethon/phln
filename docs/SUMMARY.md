@@ -66,7 +66,6 @@
 
 * [logic](functions.md#logic)
     * [allPass](functions.md#allpass)
-    * [ƛand](functions.md#)
     * [both](functions.md#both)
     * [cond](functions.md#cond)
     * [defaultTo](functions.md#defaultto)
@@ -74,7 +73,6 @@
     * [ifElse](functions.md#ifelse)
     * [isEmpty](functions.md#isempty)
     * [not](functions.md#not)
-    * [ƛor](functions.md#)
 
 * [math](functions.md#math)
     * [add](functions.md#add)
