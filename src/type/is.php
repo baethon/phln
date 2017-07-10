@@ -15,6 +15,8 @@ const 𝑓is = '\\phln\\type\\𝑓is';
  * Internally this function uses `\gettype()` with few support of few aliases:
  * * `bool` - alias for `boolean` type
  * * `float` - alias for `double` type
+ * * `callable` - checks if $value is valid callback
+ * * `function` - same as `callable`
  * * class FQN - will check if supplied object is instance of given class
  *
  * @phlnSignature String -> a -> Boolean
@@ -37,18 +39,25 @@ function 𝑓is(string $type, $value): bool
     $typeOfValue = strtolower(gettype($value));
     $expectedType = strtolower($type);
 
-    switch ($typeOfValue) {
+    switch ($expectedType) {
         case 'object':
-            return $value instanceof $type || 'object' === $expectedType;
+            return 'object' === $typeOfValue;
 
+        case 'bool':
         case 'boolean':
-            return in_array($expectedType, ['bool', 'boolean'], true);
+            return 'boolean' === $typeOfValue;
 
         case 'double':
-            return in_array($expectedType, ['double', 'float'], true);
+        case 'float':
+            return 'double' === $typeOfValue;
+
+        case 'callable':
+        case 'function':
+            return is_callable($value);
 
         default:
-            return $typeOfValue === $expectedType;
+            return (is_object($value) && $value instanceof $type) ||
+                $typeOfValue === $expectedType;
     }
 }
 
