@@ -37,4 +37,11 @@ class BothTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertTrue($p($p2)(11));
         $this->assertFalse($p($p2)(10));
     }
+
+    /** @test */
+    public function it_supports_primitives()
+    {
+        $this->assertTrue($this->callFn(true, true));
+        $this->assertFalse($this->callFn(true, false));
+    }
 }
