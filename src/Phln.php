@@ -1093,7 +1093,7 @@ class Phln
      *      $f(9); // true
      *      $f(21); // true
      */
-    public static function either($left = nil, $right = nil): \Closure
+    public static function either($left = nil, $right = nil)
     {
         return \phln\logic\either($left, $right);
     }

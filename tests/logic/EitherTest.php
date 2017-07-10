@@ -41,4 +41,12 @@ class EitherTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertTrue($f($p2)(11));
         $this->assertTrue($f($p2)(2));
     }
+
+    /** @test */
+    public function it_supports_primitives()
+    {
+        $this->assertTrue($this->callFn(true, true));
+        $this->assertTrue($this->callFn(true, false));
+        $this->assertFalse($this->callFn(false, false));
+    }
 }
