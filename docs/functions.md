@@ -613,29 +613,22 @@ $aceOfSpades = P::allPass([$ace, $spades]);
 $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
 ```
 
-## ƛand
-`a -> b -> Boolean`  
-
-Returns `true` if both arguments are `true`-thy; `false` otherwise.
-
-Sadly `and` keyword is reserved so this function has to be prefixed with `ƛ`
-
-```php
-\phln\login\ƛand(true, true); // true
-```
-
 ## both
 `(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
+`Boolean -> Boolean -> Boolean`  
 
-A function which calls the two provided functions and returns the `&&` of the results.
+Returns `true` when both of two provided values are truthy.
 
-
+This function is polymorphic and supports two cases:
+1. when both values are predicates it will return wrapper function which call to the two functions in an `&&` operation, returning `true` if both of the functions will return truthy value.
+2. when both values are booleans it will return result of `&&` operation
 
 ```php
 $gt10 = P::partial(P::gt, [P::__, 10]);
 $lt20 = P::partial(P::lt, [P::__, 20]);
 $f = P::both($gt10, $lt20);
 $f(12); // true
+P::both(true, false); // false
 ```
 
 ## cond
@@ -673,10 +666,13 @@ P::defaultTo(42, 'life'); // 'life'
 
 ## either
 `(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
+`Boolean -> Boolean -> Boolean`  
 
-A function wrapping calls to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
+Returns `true` when one of two provided values is truthy.
 
-
+This function is polymorphic and supports two cases:
+1. when both values are predicates it will return wrapper function which call to the two functions in an `||` operation, returning `true` if at least one of the functions will return truthy value.
+2. when both values are booleans it will return result of `||` operation
 
 ```php
 $lt10 = P::partial(P::lt, [P::__, 10]);
@@ -685,6 +681,7 @@ $f = P::either($lt10, $gt20);
 $f(12); // false
 $f(9); // true
 $f(21); // true
+P::either(true, false); // true
 ```
 
 ## ifElse
@@ -733,17 +730,6 @@ A function that returns the `!` of its argument. It will return `true` when pass
 ```php
 P::not(0); // true
 P::not(true); // false
-```
-
-## ƛor
-`a -> b -> Boolean`  
-
-Returns `true` if one or both of its arguments are trueth-y. Returns `false` if both arguments are false-y.
-
-
-
-```php
-\phln\logic\ƛor(true, false); // true
 ```
 
 # math
@@ -1193,6 +1179,8 @@ See if `value` is of given `type`.
 Internally this function uses `\gettype()` with few support of few aliases:
 * `bool` - alias for `boolean` type
 * `float` - alias for `double` type
+* `callable` - checks if $value is valid callback
+* `function` - same as `callable`
 * class FQN - will check if supplied object is instance of given class
 
 ```php

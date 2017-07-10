@@ -135,11 +135,3 @@ Due to internal organization and some PHP limitations `phln` exports functions a
 ### 𝑓 function
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
-
-### ƛ function
-
-PHP has restricted keywords (such as `class`, `and`, `or` etc). It's unable to use them as a function name. Yet there're some cases where it made sense to use them.
-
-Those special functions are prefixed with lambda character (eg. `ƛand()`).
-
-It's possible that in future those names should be changed for something that does not require this silly prefix. I'm open for suggestions :)
