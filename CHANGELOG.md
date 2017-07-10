@@ -19,5 +19,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `phln\logic\ƛand()`
 - `phln\logic\ƛor()`
 
-[Unreleased]: https://github.com/baethon/phln/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/baethon/phln/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/baethon/phln/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/baethon/phln/compare/1.0.0...1.1.0
