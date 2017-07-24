@@ -35,7 +35,7 @@ use phln\Phln as P;
 
 $fooBars = P::cond([
     [P::equals(5), P::always('foo')],
-    [P::T, P::always('bar)],
+    [P::T, P::always('bar')],
 ]);
 ```
 
@@ -43,7 +43,7 @@ Later in docs every `P::` reference will be used as a mental shortcut to `phln\P
 
 ## Currying
 
-By default **most** of functions defined in `phln` namespace are loosly curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.
+By default **most** of functions defined in `phln` namespace are loosely curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.
 
 ```php
 $foo = P::curryN(2, function ($left, $right) {
