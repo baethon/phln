@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use const phln\object\values;
 use function phln\fn\compose;
 use function phln\fn\curryN;
@@ -22,7 +21,7 @@ const 𝑓difference = '\\phln\\relation\\𝑓difference';
  * @example
  *      \phln\relation\difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
  */
-function difference($a = nil, $b = nil)
+function difference($a = null, $b = null)
 {
     return curryN(2, 𝑓difference, [$a, $b]);
 }

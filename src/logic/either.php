@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use const phln\fn\nil;
 use const phln\fn\otherwise;
 use function phln\collection\all;
 use function phln\fn\{
@@ -36,7 +35,7 @@ const 𝑓either = '\\phln\\logic\\𝑓either';
  *      $f(21); // true
  *      \phln\login\either(true, false); // true
  */
-function either($left = nil, $right = nil)
+function either($left = null, $right = null)
 {
     return curryN(2, 𝑓either, [$left, $right]);
 }

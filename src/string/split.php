@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\string;
 
 use phln\RegExp;
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\type\𝑓is;
 
@@ -25,7 +24,7 @@ const 𝑓split = '\\phln\\string\\𝑓split';
  * @example
  *      \phln\string\split('/', 'a/b'); // ['a', 'b']
  */
-function split($delimiter = nil, $text = nil)
+function split($delimiter = null, $text = null)
 {
     return curryN(2, 𝑓split, [$delimiter, $text]);
 }

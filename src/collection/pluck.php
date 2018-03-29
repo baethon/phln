@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\object\prop;
 
@@ -22,7 +21,7 @@ const 𝑓pluck = '\\phln\\collection\\𝑓pluck';
  *      $list = [['a' => 1], ['a' => 2]];
  *      \phln\collection\pluck('a', $list); // [1, 2]
  */
-function pluck($key = nil, $list = nil)
+function pluck($key = null, $list = null)
 {
     return curryN(2, 𝑓pluck, [$key, $list]);
 }

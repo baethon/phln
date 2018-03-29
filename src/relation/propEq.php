@@ -23,7 +23,7 @@ const 𝑓propEq = '\\phln\\relation\\𝑓propEq';
  * @example
  *      \phln\relation\propEq('name', 'Jon', ['name' => 'Jon']); // true
  */
-function propEq($prop = nil, $value = nil, $object = nil)
+function propEq($prop = null, $value = null, $object = null)
 {
     return curryN(3, 𝑓propEq, [$prop, $value, $object]);
 }

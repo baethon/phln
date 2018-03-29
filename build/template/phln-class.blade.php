@@ -7,8 +7,6 @@ declare(strict_types=1);
 
 namespace phln;
 
-use const phln\fn\nil;
-
 class Phln
 {
 @foreach($constants as $item)

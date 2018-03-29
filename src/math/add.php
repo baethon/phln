@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const add = '\\phln\\math\\add';
@@ -18,7 +17,7 @@ const 𝑓add = '\\phln\\math\\𝑓add';
  * @param mixed $b
  * @return \Closure|mixed
  */
-function add($a = nil, $b = nil)
+function add($a = null, $b = null)
 {
     return curryN(2, 𝑓add, [$a, $b]);
 }

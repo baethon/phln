@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use const phln\object\values;
 use function phln\fn\compose;
 use function phln\fn\curryN;
@@ -22,7 +21,7 @@ const 𝑓intersection = '\\phln\\relation\\𝑓intersection';
  * @example
  *      \phln\relation\intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
  */
-function intersection($a = nil, $b = nil)
+function intersection($a = null, $b = null)
 {
     return curryN(2, 𝑓intersection, [$a, $b]);
 }

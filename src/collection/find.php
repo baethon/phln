@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use function phln\fn\curryN;
-use const phln\fn\nil;
 
 const find = '\\phln\\collection\\find';
 const 𝑓find = '\\phln\\collection\\𝑓find';
@@ -22,7 +21,7 @@ const 𝑓find = '\\phln\\collection\\𝑓find';
  *      $xs = [['a' => 1], ['a' => 2], ['a' => 3]];
  *      \phln\collection\find(equals(['a' => 1]), $xs); // ['a' => 1]
  */
-function find($predicate = nil, $list = nil)
+function find($predicate = null, $list = null)
 {
     return curryN(2, 𝑓find, [$predicate, $list]);
 }

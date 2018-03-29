@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\collection\reduce;
 use function phln\collection\tail;
 use function phln\fn\curryN;
@@ -23,7 +22,7 @@ const 𝑓path = '\\phln\\object\\𝑓path';
  *      \phln\object\path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
  *      \phln\object\path('a.b.c', ['a' => ['b' => 'foo']]); // null
  */
-function path($path = nil, $object = nil)
+function path($path = null, $object = null)
 {
     return curryN(2, 𝑓path, [$path, $object]);
 }

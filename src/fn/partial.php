@@ -23,7 +23,7 @@ const 𝑓partial = '\\phln\\fn\\𝑓partial';
  *      $subtractFive = \phln\fn\partial(\phln\math\subtract, \phln\fn\__, 5);
  *      $subtractFive(10); // 5
  */
-function partial($fn = nil, $args = nil): \Closure
+function partial($fn = null, $args = null): \Closure
 {
     return curryN(2, 𝑓partial, [$fn, $args]);
 }

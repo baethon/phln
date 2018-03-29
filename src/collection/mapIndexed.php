@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const mapIndexed = '\\phln\\collection\\mapIndexed';
@@ -20,7 +19,7 @@ const 𝑓mapIndexed = '\\phln\\collection\\𝑓mapIndexed';
  * @param string|array $list
  * @return \Closure|array
  */
-function mapIndexed($fn = nil, $list = nil)
+function mapIndexed($fn = null, $list = null)
 {
     return curryN(2, 𝑓mapIndexed, [$fn, $list]);
 }

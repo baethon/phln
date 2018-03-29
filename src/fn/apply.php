@@ -17,7 +17,7 @@ const 𝑓apply = '\\phln\\fn\\𝑓apply';
  * @example
  *      \phln\fn\apply(\phln\math\sum, [1, 2]); // 3
  */
-function apply($fn = nil, $arguments = nil)
+function apply($fn = null, $arguments = null)
 {
     return curryN(2, 𝑓apply, [$fn, $arguments]);
 }

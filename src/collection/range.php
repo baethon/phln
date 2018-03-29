@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const range = '\\phln\\collection\\range';
@@ -20,7 +19,7 @@ const 𝑓range = '\\phln\\collection\\𝑓range';
  * @example
  *      \phln\collection\range(0, 3); // [0, 1, 2]
  */
-function range($start = nil, $end = nil)
+function range($start = null, $end = null)
 {
     return curryN(2, 𝑓range, [$start, $end]);
 }

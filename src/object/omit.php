@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const omit = '\\phln\\object\\omit';
@@ -20,7 +19,7 @@ const 𝑓omit = '\\phln\\object\\𝑓omit';
  * @example
  *      \phln\object\omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
  */
-function omit($omitKeys = nil, $object = nil)
+function omit($omitKeys = null, $object = null)
 {
     return curryN(2, 𝑓omit, [$omitKeys, $object]);
 }

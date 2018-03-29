@@ -23,7 +23,7 @@ const 𝑓pathEq = '\\phln\\relation\\𝑓pathEq';
  * @example
  *      \phln\relation\pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
  */
-function pathEq($path = nil, $value = nil, $object = nil)
+function pathEq($path = null, $value = null, $object = null)
 {
     return curryN(3, 𝑓pathEq, [$path, $value, $object]);
 }

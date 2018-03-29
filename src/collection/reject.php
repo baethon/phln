@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\fn\negate;
 
@@ -24,7 +23,7 @@ const 𝑓reject = '\\phln\\collection\\𝑓reject';
  *      };
  *      \phln\collection\reject($isOdd, [1, 2, 3, 4]); // [2, 4]
  */
-function reject($predicate = nil, $list = nil)
+function reject($predicate = null, $list = null)
 {
     return curryN(2, 𝑓reject, [$predicate, $list]);
 }

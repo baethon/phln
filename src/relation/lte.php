@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const lte = '\\phln\\relation\\lte';
@@ -20,7 +19,7 @@ const 𝑓lte = '\\phln\\relation\\𝑓lte';
  * @example
  *      \phln\relation\lte(1, 2); // true
  */
-function lte($a = nil, $b = nil)
+function lte($a = null, $b = null)
 {
     return curryN(2, 𝑓lte, [$a, $b]);
 }

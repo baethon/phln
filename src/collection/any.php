@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const any = '\\phln\\collection\\any';
@@ -21,7 +20,7 @@ const 𝑓any = '\\phln\\collection\\𝑓any';
  *      $hasTwos = \phln\collection\any(\phln\relation\equals(2));
  *      $hasTwos([1, 2, 3, 4]); // true
  */
-function any($predicate = nil, $list = nil)
+function any($predicate = null, $list = null)
 {
     return curryN(2, 𝑓any, [$predicate, $list]);
 }

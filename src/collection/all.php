@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const all = '\\phln\\collection\\all';
@@ -21,7 +20,7 @@ const 𝑓all = '\\phln\\collection\\𝑓all';
  *      $onlyTwos = \phln\collection\all(\phln\relation\equals(2));
  *      $onlyTwos([1, 2, 2]); // false
  */
-function all($predicate = nil, $list = nil)
+function all($predicate = null, $list = null)
 {
     return curryN(2, 𝑓all, [$predicate, $list]);
 }

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const sortBy = '\\phln\\collection\\sortBy';
@@ -26,7 +25,7 @@ const 𝑓sortBy = '\\phln\\collection\\𝑓sortBy';
  *
  *      \phln\collection\soryBy(\phln\object\prop('name'), $people); // [$alice, $bob, $clara]
  */
-function sortBy($mapper = nil, $list = nil)
+function sortBy($mapper = null, $list = null)
 {
     return curryN(2, 𝑓sortBy, [$mapper, $list]);
 }

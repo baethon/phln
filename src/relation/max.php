@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const max = '\\phln\\relation\\max';
@@ -17,7 +16,7 @@ const max = '\\phln\\relation\\max';
  * @param string $right
  * @return \Closure|mixed
  */
-function max($left = nil, $right = nil)
+function max($left = null, $right = null)
 {
     return curryN(2, '\\max', [$left, $right]);
 }

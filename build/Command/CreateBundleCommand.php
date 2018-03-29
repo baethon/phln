@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 use Illuminate\View\Factory;
 use Symfony\Component\Process\ProcessBuilder;
 use const phln\collection\last;
-use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
 use const phln\relation\𝑓equals;
@@ -183,7 +182,7 @@ class CreateBundleCommand extends Command
     private function getParametersDefinition(array $parameters)
     {
         $exportDefaultValue = cond([
-            [partial(𝑓equals, [nil]), always('nil')],
+            // [partial(𝑓equals, [nil]), always('nil')],
             [equals([]), always('[]')],
             [T, function ($value) {
                 return var_export($value, true);

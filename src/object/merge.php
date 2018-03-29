@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const merge = '\\phln\\object\\merge';
@@ -21,7 +20,7 @@ const 𝑓merge = '\\phln\\object\\𝑓merge';
  *      $toDefaults = \phln\fn\partial(\phln\object\merge, [\phln\fn\__, ['x' => 0]);
  *      $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
  */
-function merge($left = nil, $right = nil)
+function merge($left = null, $right = null)
 {
     return curryN(2, 𝑓merge, [$left, $right]);
 }

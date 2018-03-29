@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\logic;
 
-use const phln\fn\nil;
 use const phln\fn\otherwise;
 use function phln\collection\all;
 use function phln\fn\{
@@ -34,7 +33,7 @@ const 𝑓both = '\\phln\\logic\\𝑓both';
  *      $f(12); // true
  *      \phln\logic\both(true, false); // false
  */
-function both($left = nil, $right = nil)
+function both($left = null, $right = null)
 {
     return curryN(2, 𝑓both, [$left, $right]);
 }

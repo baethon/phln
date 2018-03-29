@@ -39,7 +39,7 @@ function allPass(array $predicates): callable
             function ($carry, callable $p) use ($values) {
                 return (false === $carry) ? false : $p(...$values);
             },
-            null,
+            true,
             $predicates
         );
     });

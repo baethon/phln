@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\string;
 
 use phln\RegExp;
-use const phln\fn\nil;
 use function phln\collection\head;
 use function phln\fn\curryN;
 use function phln\type\𝑓is;
@@ -25,7 +24,7 @@ const 𝑓match = '\\phln\\string\\𝑓match';
  *      \phln\string\match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
  *      \phln\string\match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
  */
-function match($regexp = nil, $test = nil)
+function match($regexp = null, $test = null)
 {
     return curryN(2, 𝑓match, [$regexp, $test]);
 }

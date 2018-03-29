@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\type;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const is = '\\phln\\type\\is';
@@ -29,7 +28,7 @@ const 𝑓is = '\\phln\\type\\𝑓is';
  *      \phln\type\is(\stdClass::class, new \stdClass); // true
  *      \phln\type\is(float, 1.1); // true
  */
-function is($type = nil, $value = nil)
+function is($type = null, $value = null)
 {
     return curryN(2, 𝑓is, [$type, $value]);
 }

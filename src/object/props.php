@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\object;
 
 use const phln\fn\__;
-use const phln\fn\nil;
 use function phln\collection\append;
 use function phln\collection\reduce;
 use function phln\fn\curryN;
@@ -25,7 +24,7 @@ const 𝑓props = '\\phln\\object\\𝑓props';
  *      $fullName = \phln\fn\compose(\phln\string\join(' '), \phln\object\props(['firstName', 'lastName']));
  *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
  */
-function props($props = nil, $object = nil)
+function props($props = null, $object = null)
 {
     return curryN(2, 𝑓props, [$props, $object]);
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\{
-    __, F, nil, otherwise, T
+    __, F, otherwise, T
 };
 use function phln\fn\{
     curryN, partial
@@ -30,7 +30,7 @@ const 𝑓contains = '\\phln\\collection\\𝑓contains';
  *      \phln\collection\contains(1, [1, 2, 3]); // true
  *      \phln\collection\contains('foo', 'foobar'); // true
  */
-function contains($value = nil, $collection = nil)
+function contains($value = null, $collection = null)
 {
     return curryN(2, 𝑓contains, [$value, $collection]);
 }

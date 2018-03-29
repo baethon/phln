@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use const phln\relation\equals;
 use function phln\collection\map;
 use function phln\fn\curryN;
@@ -23,7 +22,7 @@ const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
  *      $verifyJon = \phln\object\whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
  *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
  */
-function whereEq($predicates = nil, $object = nil)
+function whereEq($predicates = null, $object = null)
 {
     return curryN(2, 𝑓whereEq, [$predicates, $object]);
 }

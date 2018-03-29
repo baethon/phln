@@ -25,7 +25,7 @@ const 𝑓eqProps = '\\phln\\object\\𝑓eqProps';
  * @example
  *      \phln\object\eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
  */
-function eqProps($prop = nil, $a = nil, $b = nil)
+function eqProps($prop = null, $a = null, $b = null)
 {
     return curryN(3, 𝑓eqProps, [$prop, $a, $b]);
 }

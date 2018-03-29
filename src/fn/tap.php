@@ -18,7 +18,7 @@ const 𝑓tap = '\\phln\\fn\\𝑓tap';
  *      $dump = \phln\fn\tap('var_dump');
  *      $dump('foo'); // var_dumps('foo'); returns 'foo'
  */
-function tap($fn = nil, $value = nil)
+function tap($fn = null, $value = null)
 {
     return curryN(2, 𝑓tap, [$fn, $value]);
 }

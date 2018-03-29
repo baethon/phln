@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\{
-    __, nil, otherwise
+    __, otherwise
 };
 use function phln\fn\{
     curryN, partial, throwException
@@ -28,7 +28,7 @@ const 𝑓chunk = '\\phln\\collection\\𝑓chunk';
  *      \phln\collection\chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
  *      \phln\collection\chunk(2, 'hello'); // ['he', 'll', 'o']
  */
-function chunk($size = nil, $collection = nil)
+function chunk($size = null, $collection = null)
 {
     return curryN(2, 𝑓chunk, [$size, $collection]);
 }

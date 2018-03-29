@@ -5,8 +5,6 @@ namespace phln\fn;
 
 const curry = '\\phln\\fn\\curry';
 
-const nil = '_phln_nil_argument';
-
 /**
  * Returns a curried equivalent of the provided function.
  *

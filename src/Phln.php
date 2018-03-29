@@ -7,8 +7,6 @@ declare(strict_types=1);
 
 namespace phln;
 
-use const phln\fn\nil;
-
 class Phln
 {
     const all = \phln\collection\all;
@@ -49,7 +47,6 @@ class Phln
     const arity = \phln\fn\arity;
     const compose = \phln\fn\compose;
     const curry = \phln\fn\curry;
-    const nil = \phln\fn\nil;
     const curryN = \phln\fn\curryN;
     const identity = \phln\fn\identity;
     const negate = \phln\fn\negate;
@@ -124,7 +121,7 @@ class Phln
      *      $onlyTwos = P::all(P::equals(2));
      *      $onlyTwos([1, 2, 2]); // false
      */
-    public static function all($predicate = nil, $list = nil)
+    public static function all($predicate = NULL, $list = NULL)
     {
         return \phln\collection\all($predicate, $list);
     }
@@ -141,7 +138,7 @@ class Phln
      *      $hasTwos = P::any(P::equals(2));
      *      $hasTwos([1, 2, 3, 4]); // true
      */
-    public static function any($predicate = nil, $list = nil)
+    public static function any($predicate = NULL, $list = NULL)
     {
         return \phln\collection\any($predicate, $list);
     }
@@ -160,7 +157,7 @@ class Phln
      *      P::append([3], [1, 2]); // [1, 2, [3]]
      *      P::append('foo', 'bar'); // 'barfoo'
      */
-    public static function append($value = nil, $collection = nil)
+    public static function append($value = NULL, $collection = NULL)
     {
         return \phln\collection\append($value, $collection);
     }
@@ -179,7 +176,7 @@ class Phln
      *      P::chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
      *      P::chunk(2, 'hello'); // ['he', 'll', 'o']
      */
-    public static function chunk($size = nil, $collection = nil)
+    public static function chunk($size = NULL, $collection = NULL)
     {
         return \phln\collection\chunk($size, $collection);
     }
@@ -213,7 +210,7 @@ class Phln
      *      P::concat([1, 2], [3]); // [1, 2, 3]
      *      P::concat('foo', 'bar'); // 'foobar'
      */
-    public static function concat($a = nil, $b = nil)
+    public static function concat($a = NULL, $b = NULL)
     {
         return \phln\collection\concat($a, $b);
     }
@@ -232,7 +229,7 @@ class Phln
      *      P::contains(1, [1, 2, 3]); // true
      *      P::contains('foo', 'foobar'); // true
      */
-    public static function contains($value = nil, $collection = nil)
+    public static function contains($value = NULL, $collection = NULL)
     {
         return \phln\collection\contains($value, $collection);
     }
@@ -248,7 +245,7 @@ class Phln
      * @example
      *      P::filter(equals(1), [1, 2, 3]); // [1]
      */
-    public static function filter($predicate = nil, $list = nil)
+    public static function filter($predicate = NULL, $list = NULL)
     {
         return \phln\collection\filter($predicate, $list);
     }
@@ -266,7 +263,7 @@ class Phln
      *      $xs = [['a' => 1], ['a' => 2], ['a' => 3]];
      *      P::find(equals(['a' => 1]), $xs); // ['a' => 1]
      */
-    public static function find($predicate = nil, $list = nil)
+    public static function find($predicate = NULL, $list = NULL)
     {
         return \phln\collection\find($predicate, $list);
     }
@@ -286,7 +283,7 @@ class Phln
      *
      *      $duplicateElements([1, 2]); // [1, 1, 2, 2]
      */
-    public static function flatMap($mapper = nil, $list = nil)
+    public static function flatMap($mapper = NULL, $list = NULL)
     {
         return \phln\collection\flatMap($mapper, $list);
     }
@@ -346,7 +343,7 @@ class Phln
      *      $spacer = P::join(' ');
      *      $spacer([1, 2, 3]); // '1 2 3'
      */
-    public static function join($separator = nil, $list = nil)
+    public static function join($separator = NULL, $list = NULL)
     {
         return \phln\collection\join($separator, $list);
     }
@@ -395,7 +392,7 @@ class Phln
      * @param string|array $list
      * @return \Closure|array
      */
-    public static function map($fn = nil, $list = nil)
+    public static function map($fn = NULL, $list = NULL)
     {
         return \phln\collection\map($fn, $list);
     }
@@ -411,7 +408,7 @@ class Phln
      * @param string|array $list
      * @return \Closure|array
      */
-    public static function mapIndexed($fn = nil, $list = nil)
+    public static function mapIndexed($fn = NULL, $list = NULL)
     {
         return \phln\collection\mapIndexed($fn, $list);
     }
@@ -432,7 +429,7 @@ class Phln
      *      P::none($isEven, [1, 3, 5]); // true
      *      P::none($isEven, [1, 3, 5, 6]); // false
      */
-    public static function none($predicate = nil, $list = nil)
+    public static function none($predicate = NULL, $list = NULL)
     {
         return \phln\collection\none($predicate, $list);
     }
@@ -450,7 +447,7 @@ class Phln
      *      P::nth(1, [1, 2, 3]); // 2
      *      P::nth(-1, [1, 2, 3]); // 3
      */
-    public static function nth($n = nil, $list = nil)
+    public static function nth($n = NULL, $list = NULL)
     {
         return \phln\collection\nth($n, $list);
     }
@@ -467,7 +464,7 @@ class Phln
      *      $list = [['a' => 1], ['a' => 2]];
      *      P::pluck('a', $list); // [1, 2]
      */
-    public static function pluck($key = nil, $list = nil)
+    public static function pluck($key = NULL, $list = NULL)
     {
         return \phln\collection\pluck($key, $list);
     }
@@ -486,7 +483,7 @@ class Phln
      *      P::prepend([3], [1, 2]); // [[3], 1, 2]
      *      P::prepend('foo', 'bar'); // [[3], 1, 2]
      */
-    public static function prepend($value = nil, $collection = nil)
+    public static function prepend($value = NULL, $collection = NULL)
     {
         return \phln\collection\prepend($value, $collection);
     }
@@ -502,7 +499,7 @@ class Phln
      * @example
      *      P::range(0, 3); // [0, 1, 2]
      */
-    public static function range($start = nil, $end = nil)
+    public static function range($start = NULL, $end = NULL)
     {
         return \phln\collection\range($start, $end);
     }
@@ -522,7 +519,7 @@ class Phln
      *      P::reduce(P::subtract, 0, [1, 2, 3, 4]);
      *      // ((((0 - 1) - 2) - 3) - 4) => -10
      */
-    public static function reduce($reducer = nil, $initialValue = nil, $list = nil)
+    public static function reduce($reducer = NULL, $initialValue = NULL, $list = NULL)
     {
         return \phln\collection\reduce($reducer, $initialValue, $list);
     }
@@ -541,7 +538,7 @@ class Phln
      *      };
      *      P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
      */
-    public static function reject($predicate = nil, $list = nil)
+    public static function reject($predicate = NULL, $list = NULL)
     {
         return \phln\collection\reject($predicate, $list);
     }
@@ -581,7 +578,7 @@ class Phln
      *      $takeTwo = P::slice(0, 2);
      *      $takeTwo([1, 2, 3]); // [1, 2]
      */
-    public static function slice($offset = nil, $length = nil, $collection = nil)
+    public static function slice($offset = NULL, $length = NULL, $collection = NULL)
     {
         return \phln\collection\slice($offset, $length, $collection);
     }
@@ -602,7 +599,7 @@ class Phln
      *
      *      P::sort($diff, [3, 2, 1]); // [1, 2, 3]
      */
-    public static function sort($comparator = nil, $list = nil)
+    public static function sort($comparator = NULL, $list = NULL)
     {
         return \phln\collection\sort($comparator, $list);
     }
@@ -624,7 +621,7 @@ class Phln
      *
      *      P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
      */
-    public static function sortBy($mapper = nil, $list = nil)
+    public static function sortBy($mapper = NULL, $list = NULL)
     {
         return \phln\collection\sortBy($mapper, $list);
     }
@@ -717,7 +714,7 @@ class Phln
      * @example
      *      P::apply(P::sum, [1, 2]); // 3
      */
-    public static function apply($fn = nil, $arguments = nil)
+    public static function apply($fn = NULL, $arguments = NULL)
     {
         return \phln\fn\apply($fn, $arguments);
     }
@@ -880,7 +877,7 @@ class Phln
      *      $subtractFive = P::partial(P::subtract, P::__, 5);
      *      $subtractFive(10); // 5
      */
-    public static function partial($fn = nil, $args = nil): \Closure
+    public static function partial($fn = NULL, $args = NULL): \Closure
     {
         return \phln\fn\partial($fn, $args);
     }
@@ -932,7 +929,7 @@ class Phln
      *      $dump = P::tap('var_dump');
      *      $dump('foo'); // var_dumps('foo'); returns 'foo'
      */
-    public static function tap($fn = nil, $value = nil)
+    public static function tap($fn = NULL, $value = NULL)
     {
         return \phln\fn\tap($fn, $value);
     }
@@ -971,7 +968,7 @@ class Phln
      * @example
      *      P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
      */
-    public static function unapply($fn = nil, ...$args)
+    public static function unapply($fn = NULL, ...$args)
     {
         return \phln\fn\unapply($fn, ...$args);
     }
@@ -1016,7 +1013,7 @@ class Phln
      *      $f(12); // true
      *      P::both(true, false); // false
      */
-    public static function both($left = nil, $right = nil)
+    public static function both($left = NULL, $right = NULL)
     {
         return \phln\logic\both($left, $right);
     }
@@ -1058,7 +1055,7 @@ class Phln
      *      P::defaultTo(42, null); // 42
      *      P::defaultTo(42, 'life'); // 'life'
      */
-    public static function defaultTo($default = nil, $value = nil)
+    public static function defaultTo($default = NULL, $value = NULL)
     {
         return \phln\logic\defaultTo($default, $value);
     }
@@ -1085,7 +1082,7 @@ class Phln
      *      $f(21); // true
      *      P::either(true, false); // true
      */
-    public static function either($left = nil, $right = nil)
+    public static function either($left = NULL, $right = NULL)
     {
         return \phln\logic\either($left, $right);
     }
@@ -1110,7 +1107,7 @@ class Phln
      *      $fizzbuzz(15); // 'fizzbuzz'
      *      $fizzbuzz(1); // 1
      */
-    public static function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): \Closure
+    public static function ifElse($predicate = NULL, $onTrue = NULL, $onFalse = NULL): \Closure
     {
         return \phln\logic\ifElse($predicate, $onTrue, $onFalse);
     }
@@ -1163,7 +1160,7 @@ class Phln
      * @param mixed $b
      * @return \Closure|mixed
      */
-    public static function add($a = nil, $b = nil)
+    public static function add($a = NULL, $b = NULL)
     {
         return \phln\math\add($a, $b);
     }
@@ -1190,7 +1187,7 @@ class Phln
      * @param mixed $b
      * @return \Closure|mixed
      */
-    public static function divide($a = nil, $b = nil)
+    public static function divide($a = NULL, $b = NULL)
     {
         return \phln\math\divide($a, $b);
     }
@@ -1250,7 +1247,7 @@ class Phln
      * @example
      *      \\phln\\math\\modulo(1, 2) // 1
      */
-    public static function modulo($a = nil, $b = nil)
+    public static function modulo($a = NULL, $b = NULL)
     {
         return \phln\math\modulo($a, $b);
     }
@@ -1267,7 +1264,7 @@ class Phln
      *      $triple = P::multiply(3);
      *      $triple(7); // 21
      */
-    public static function multiply($a = nil, $b = nil)
+    public static function multiply($a = NULL, $b = NULL)
     {
         return \phln\math\multiply($a, $b);
     }
@@ -1299,7 +1296,7 @@ class Phln
      *      $complementaryAngle = P::subtract(90);
      *      $complementaryAngle(30); //=> 60
      */
-    public static function subtract($a = nil, $b = nil)
+    public static function subtract($a = NULL, $b = NULL)
     {
         return \phln\math\subtract($a, $b);
     }
@@ -1331,7 +1328,7 @@ class Phln
      * @example
      *      P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
      */
-    public static function eqProps($prop = nil, $a = nil, $b = nil)
+    public static function eqProps($prop = NULL, $a = NULL, $b = NULL)
     {
         return \phln\object\eqProps($prop, $a, $b);
     }
@@ -1364,7 +1361,7 @@ class Phln
      *      $toDefaults = P::partial(P::merge, [P::__, ['x' => 0]);
      *      $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
      */
-    public static function merge($left = nil, $right = nil)
+    public static function merge($left = NULL, $right = NULL)
     {
         return \phln\object\merge($left, $right);
     }
@@ -1380,7 +1377,7 @@ class Phln
      * @example
      *      P::omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
      */
-    public static function omit($omitKeys = nil, $object = nil)
+    public static function omit($omitKeys = NULL, $object = NULL)
     {
         return \phln\object\omit($omitKeys, $object);
     }
@@ -1397,7 +1394,7 @@ class Phln
      *      P::path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
      *      P::path('a.b.c', ['a' => ['b' => 'foo']]); // null
      */
-    public static function path($path = nil, $object = nil)
+    public static function path($path = NULL, $object = NULL)
     {
         return \phln\object\path($path, $object);
     }
@@ -1417,7 +1414,7 @@ class Phln
      *      P::pathOr('a.b', 'foo', ['a' => ['b' => null]]); // 'foo'
      *      P::pathOr('a.b', 'foo', ['a' => 1]); // 'foo'
      */
-    public static function pathOr($path = nil, $default = nil, $object = nil)
+    public static function pathOr($path = NULL, $default = NULL, $object = NULL)
     {
         return \phln\object\pathOr($path, $default, $object);
     }
@@ -1433,7 +1430,7 @@ class Phln
      * @example
      *      P::pick(['a'], ['a' => 1, 'b' => 2]); // ['a' => 1]
      */
-    public static function pick($useKeys = nil, $object = nil)
+    public static function pick($useKeys = NULL, $object = NULL)
     {
         return \phln\object\pick($useKeys, $object);
     }
@@ -1447,7 +1444,7 @@ class Phln
      * @param string|array $array
      * @return \Closure|mixed
      */
-    public static function prop($key = nil, $array = nil)
+    public static function prop($key = NULL, $array = NULL)
     {
         return \phln\object\prop($key, $array);
     }
@@ -1464,7 +1461,7 @@ class Phln
      *      $fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
      *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
      */
-    public static function props($props = nil, $object = nil)
+    public static function props($props = NULL, $object = NULL)
     {
         return \phln\object\props($props, $object);
     }
@@ -1500,7 +1497,7 @@ class Phln
      *
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
      */
-    public static function where($predicates = nil, $object = nil)
+    public static function where($predicates = NULL, $object = NULL)
     {
         return \phln\object\where($predicates, $object);
     }
@@ -1517,7 +1514,7 @@ class Phln
      *      $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
      */
-    public static function whereEq($predicates = nil, $object = nil)
+    public static function whereEq($predicates = NULL, $object = NULL)
     {
         return \phln\object\whereEq($predicates, $object);
     }
@@ -1536,7 +1533,7 @@ class Phln
      *      P::clamp(-1, 1, 100); // 1
      *      P::clamp(-1, 1, 0); // 0
      */
-    public static function clamp($min = nil, $max = nil, $value = nil)
+    public static function clamp($min = NULL, $max = NULL, $value = NULL)
     {
         return \phln\relation\clamp($min, $max, $value);
     }
@@ -1552,7 +1549,7 @@ class Phln
      * @example
      *      P::difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
      */
-    public static function difference($a = nil, $b = nil)
+    public static function difference($a = NULL, $b = NULL)
     {
         return \phln\relation\difference($a, $b);
     }
@@ -1570,7 +1567,7 @@ class Phln
      *      P::equals(1, '1'); // false
      *      P::equals(1, 2); // false
      */
-    public static function equals($a = nil, $b = nil)
+    public static function equals($a = NULL, $b = NULL)
     {
         return \phln\relation\equals($a, $b);
     }
@@ -1586,7 +1583,7 @@ class Phln
      * @example
      *      P::gt(2, 1); // true
      */
-    public static function gt($a = nil, $b = nil)
+    public static function gt($a = NULL, $b = NULL)
     {
         return \phln\relation\gt($a, $b);
     }
@@ -1604,7 +1601,7 @@ class Phln
      *      P::gte(2, 2); // true
      *      P::gte(2, 3); // false
      */
-    public static function gte($a = nil, $b = nil)
+    public static function gte($a = NULL, $b = NULL)
     {
         return \phln\relation\gte($a, $b);
     }
@@ -1620,7 +1617,7 @@ class Phln
      * @example
      *      P::intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
      */
-    public static function intersection($a = nil, $b = nil)
+    public static function intersection($a = NULL, $b = NULL)
     {
         return \phln\relation\intersection($a, $b);
     }
@@ -1638,7 +1635,7 @@ class Phln
      *      P::lt(3, 2); // false
      *      P::lt(2, 2); // false
      */
-    public static function lt($a = nil, $b = nil)
+    public static function lt($a = NULL, $b = NULL)
     {
         return \phln\relation\lt($a, $b);
     }
@@ -1654,7 +1651,7 @@ class Phln
      * @example
      *      P::lte(1, 2); // true
      */
-    public static function lte($a = nil, $b = nil)
+    public static function lte($a = NULL, $b = NULL)
     {
         return \phln\relation\lte($a, $b);
     }
@@ -1668,7 +1665,7 @@ class Phln
      * @param string $right
      * @return \Closure|mixed
      */
-    public static function max($left = nil, $right = nil)
+    public static function max($left = NULL, $right = NULL)
     {
         return \phln\relation\max($left, $right);
     }
@@ -1684,7 +1681,7 @@ class Phln
      * @example
      *      P::min(1, -1); // -1
      */
-    public static function min($left = nil, $right = nil)
+    public static function min($left = NULL, $right = NULL)
     {
         return \phln\relation\min($left, $right);
     }
@@ -1701,7 +1698,7 @@ class Phln
      * @example
      *      P::pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
      */
-    public static function pathEq($path = nil, $value = nil, $object = nil)
+    public static function pathEq($path = NULL, $value = NULL, $object = NULL)
     {
         return \phln\relation\pathEq($path, $value, $object);
     }
@@ -1718,7 +1715,7 @@ class Phln
      * @example
      *      P::propEq('name', 'Jon', ['name' => 'Jon']); // true
      */
-    public static function propEq($prop = nil, $value = nil, $object = nil)
+    public static function propEq($prop = NULL, $value = NULL, $object = NULL)
     {
         return \phln\relation\propEq($prop, $value, $object);
     }
@@ -1736,7 +1733,7 @@ class Phln
      *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
      *      P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
      */
-    public static function match($regexp = nil, $test = nil)
+    public static function match($regexp = NULL, $test = NULL)
     {
         return \phln\string\match($regexp, $test);
     }
@@ -1772,7 +1769,7 @@ class Phln
      *      P::replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
      *      P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
      */
-    public static function replace($regexp = nil, $replacement = nil, $text = nil)
+    public static function replace($regexp = NULL, $replacement = NULL, $text = NULL)
     {
         return \phln\string\replace($regexp, $replacement, $text);
     }
@@ -1791,7 +1788,7 @@ class Phln
      * @example
      *      P::split('/', 'a/b'); // ['a', 'b']
      */
-    public static function split($delimiter = nil, $text = nil)
+    public static function split($delimiter = NULL, $text = NULL)
     {
         return \phln\string\split($delimiter, $text);
     }
@@ -1816,7 +1813,7 @@ class Phln
      *      P::is(\stdClass::class, new \stdClass); // true
      *      P::is(float, 1.1); // true
      */
-    public static function is($type = nil, $value = nil)
+    public static function is($type = NULL, $value = NULL)
     {
         return \phln\type\is($type, $value);
     }

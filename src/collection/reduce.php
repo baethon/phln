@@ -24,7 +24,7 @@ const 𝑓reduce = '\\phln\\collection\\𝑓reduce';
  *      \phln\collection\reduce(\phln\math\subtract, 0, [1, 2, 3, 4]);
  *      // ((((0 - 1) - 2) - 3) - 4) => -10
  */
-function reduce($reducer = nil, $initialValue = nil, $list = nil)
+function reduce($reducer = null, $initialValue = null, $list = null)
 {
     return curryN(3, 𝑓reduce, [$reducer, $initialValue, $list]);
 }

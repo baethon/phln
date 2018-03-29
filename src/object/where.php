@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\collection\all;
 use function phln\fn\curryN;
 
@@ -28,7 +27,7 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  *
  *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
  */
-function where($predicates = nil, $object = nil)
+function where($predicates = null, $object = null)
 {
     return curryN(2, 𝑓where, [$predicates, $object]);
 }

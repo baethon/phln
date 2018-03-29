@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\{
-    __, nil, otherwise
+    __, otherwise
 };
 use function phln\fn\{
     curryN, partial, throwException
@@ -28,7 +28,7 @@ const 𝑓append = '\\phln\\collection\\𝑓append';
  *      \phln\collection\append([3], [1, 2]); // [1, 2, [3]]
  *      \phln\collection\append('foo', 'bar'); // 'barfoo'
  */
-function append($value = nil, $collection = nil)
+function append($value = null, $collection = null)
 {
     return curryN(2, 𝑓append, [$value, $collection]);
 }

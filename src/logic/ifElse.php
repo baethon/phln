@@ -29,7 +29,7 @@ const 𝑓ifElse = '\\phln\\logic\\𝑓ifElse';
  *      $fizzbuzz(15); // 'fizzbuzz'
  *      $fizzbuzz(1); // 1
  */
-function ifElse($predicate = nil, $onTrue = nil, $onFalse = nil): \Closure
+function ifElse($predicate = null, $onTrue = null, $onFalse = null): \Closure
 {
     return curryN(3, 𝑓ifElse, [$predicate, $onTrue, $onFalse]);
 }

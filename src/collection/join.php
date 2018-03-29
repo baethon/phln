@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const join = '\\phln\\collection\\join';
@@ -21,7 +20,7 @@ const 𝑓join = '\\join';
  *      $spacer = \phln\collection\join(' ');
  *      $spacer([1, 2, 3]); // '1 2 3'
  */
-function join($separator = nil, $list = nil)
+function join($separator = null, $list = null)
 {
     return curryN(2, 𝑓join, [$separator, $list]);
 }

@@ -38,14 +38,14 @@ class CurryTest extends \Phln\Build\PhpUnit\TestCase
     }
 
     /** @test */
-    function it_filters_out_nil_arguments()
+    function it_filters_out_null_arguments()
     {
         $sum = function ($a, $b, $c) {
             return $a + $b + $c;
         };
 
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn($sum, [\phln\fn\nil, \phln\fn\nil, 1]);
+        $g = $this->callFn($sum, [null, null, 1]);
 
         $this->assertEquals($expected, $g(2, 3));
     }

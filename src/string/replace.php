@@ -27,7 +27,7 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
  *      \phln\string\replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
  *      \phln\string\replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
  */
-function replace($regexp = nil, $replacement = nil, $text = nil)
+function replace($regexp = null, $replacement = null, $text = null)
 {
     return curryN(3, 𝑓replace, [$regexp, $replacement, $text]);
 }
