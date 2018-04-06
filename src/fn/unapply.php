@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\fn;
 
 use function phln\fn\curryN;
-use const phln\fn\nil;
 
 const unapply = '\\phln\\fn\\unapply';
 const 𝑓unapply = '\\phln\\fn\\𝑓unapply';
@@ -24,9 +23,9 @@ const 𝑓unapply = '\\phln\\fn\\𝑓unapply';
  * @example
  *      \phln\fn\unapply('\\json_encode')(1, 2, 3); // [1,2,3]
  */
-function unapply($fn = nil, ...$args)
+function unapply(callable $fn = null, ...$args)
 {
-    return curryN(2, 𝑓unapply, array_merge([$fn], $args));
+    return curryN(2, 𝑓unapply, func_get_args());
 }
 
 function 𝑓unapply(callable $fn, ...$args)

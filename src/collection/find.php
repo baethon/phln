@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use function phln\fn\curryN;
-use const phln\fn\nil;
 
 const find = '\\phln\\collection\\find';
 const 𝑓find = '\\phln\\collection\\𝑓find';
@@ -15,16 +14,16 @@ const 𝑓find = '\\phln\\collection\\𝑓find';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> a
  * @phlnCategory collection
- * @param string $predicate
- * @param string $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      $xs = [['a' => 1], ['a' => 2], ['a' => 3]];
  *      \phln\collection\find(equals(['a' => 1]), $xs); // ['a' => 1]
  */
-function find($predicate = nil, $list = nil)
+function find(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓find, [$predicate, $list]);
+    return curryN(2, 𝑓find, func_get_args());
 }
 
 function 𝑓find(callable $predicate, array $list)

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\object\prop;
 
@@ -15,16 +14,16 @@ const 𝑓pluck = '\\phln\\collection\\𝑓pluck';
  *
  * @phlnSignature k -> [{k: v}] -> v
  * @phlnCategory collection
- * @param string $key
- * @param string|array $list
+ * @param string|integer $key
+ * @param array $list
  * @return \Closure|array
  * @example
  *      $list = [['a' => 1], ['a' => 2]];
  *      \phln\collection\pluck('a', $list); // [1, 2]
  */
-function pluck($key = nil, $list = nil)
+function pluck($key = '', array $list = [])
 {
-    return curryN(2, 𝑓pluck, [$key, $list]);
+    return curryN(2, 𝑓pluck, func_get_args());
 }
 
 function 𝑓pluck($key, array $list): array

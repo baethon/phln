@@ -533,7 +533,7 @@ When applied, `g` returns the result of applying `f` to the arguments provided i
 Special placeholder value `P::__` may be used to specify "gaps", allowing partial application of any combination of arguments, regardless of their positions.
 
 ```php
-$subtractFive = P::partial(P::subtract, P::__, 5);
+$subtractFive = P::partial(P::subtract, [P::__, 5]);
 $subtractFive(10); // 5
 ```
 

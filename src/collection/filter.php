@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const filter = '\\phln\\collection\\filter';
@@ -14,15 +13,15 @@ const 𝑓filter = '\\phln\\collection\\𝑓filter';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> Boolean
  * @phlnCategory collection
- * @param string $predicate
- * @param string $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      \phln\collection\filter(equals(1), [1, 2, 3]); // [1]
  */
-function filter($predicate = nil, $list = nil)
+function filter(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓filter, [$predicate, $list]);
+    return curryN(2, 𝑓filter, func_get_args());
 }
 
 function 𝑓filter(callable $predicate, array $list): array

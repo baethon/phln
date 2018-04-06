@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\fn\pipe;
 
@@ -15,8 +14,8 @@ const 𝑓flatMap = '\\phln\\collection\\𝑓flatMap';
  *
  * @phlnSignature (a -> b) -> [a] -> [b]
  * @phlnCategory collection
- * @param string $mapper
- * @param string $list
+ * @param callable $mapper
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      $duplicateElements = \phln\collection\flatMap(function ($i) {
@@ -25,9 +24,9 @@ const 𝑓flatMap = '\\phln\\collection\\𝑓flatMap';
  *
  *      $duplicateElements([1, 2]); // [1, 1, 2, 2]
  */
-function flatMap($mapper = nil, $list = nil)
+function flatMap(callable $mapper = null, array $list = [])
 {
-    return curryN(2, 𝑓flatMap, [$mapper, $list]);
+    return curryN(2, 𝑓flatMap, func_get_args());
 }
 
 function 𝑓flatMap(callable $mapper, array $list): array

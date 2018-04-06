@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const gte = '\\phln\\relation\\gte';
@@ -22,9 +21,9 @@ const 𝑓gte = '\\phln\\relation\\𝑓gte';
  *      \phln\relation\gte(2, 2); // true
  *      \phln\relation\gte(2, 3); // false
  */
-function gte($a = nil, $b = nil)
+function gte($a = null, $b = null)
 {
-    return curryN(2, 𝑓gte, [$a, $b]);
+    return curryN(2, 𝑓gte, func_get_args());
 }
 
 function 𝑓gte($a, $b): bool

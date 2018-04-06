@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\{
-    __, nil, otherwise
+    __, otherwise
 };
 use function phln\fn\{
     curryN, partial, throwException
@@ -21,16 +21,16 @@ const 𝑓append = '\\phln\\collection\\𝑓append';
  * @phlnSignature String -> String -> String
  * @phlnCategory collection
  * @param mixed $value
- * @param string|array $collection
+ * @param array|string $collection
  * @return \Closure|string|array
  * @example
  *      \phln\collection\append(3, [1, 2]); // [1, 2, 3]
  *      \phln\collection\append([3], [1, 2]); // [1, 2, [3]]
  *      \phln\collection\append('foo', 'bar'); // 'barfoo'
  */
-function append($value = nil, $collection = nil)
+function append($value = null, $collection = null)
 {
-    return curryN(2, 𝑓append, [$value, $collection]);
+    return curryN(2, 𝑓append, func_get_args());
 }
 
 function 𝑓append($value, $collection)

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const gt = '\\phln\\relation\\gt';
@@ -20,9 +19,9 @@ const 𝑓gt = '\\phln\\relation\\𝑓gt';
  * @example
  *      \phln\relation\gt(2, 1); // true
  */
-function gt($a = nil, $b = nil)
+function gt($a = null, $b = null)
 {
-    return curryN(2, 𝑓gt, [$a, $b]);
+    return curryN(2, 𝑓gt, func_get_args());
 }
 
 function 𝑓gt($a, $b): bool

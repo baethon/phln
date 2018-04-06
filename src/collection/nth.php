@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const nth = '\\phln\\collection\\nth';
@@ -15,16 +14,16 @@ const 𝑓nth = '\\phln\\collection\\𝑓nth';
  *
  * @phlnSignature Number -> [a] -> a | Null
  * @phlnCategory collection
- * @param string $n
- * @param string $list
+ * @param integer $n
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      \phln\collection\nth(1, [1, 2, 3]); // 2
  *      \phln\collection\nth(-1, [1, 2, 3]); // 3
  */
-function nth($n = nil, $list = nil)
+function nth(int $n = 0, array $list = [])
 {
-    return curryN(2, 𝑓nth, [$n, $list]);
+    return curryN(2, 𝑓nth, func_get_args());
 }
 
 function 𝑓nth(int $n, array $list)

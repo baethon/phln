@@ -16,16 +16,16 @@ const 𝑓partial = '\\phln\\fn\\𝑓partial';
  *
  * @phlnSignature ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
  * @phlnCategory function
- * @param string|callable $fn
- * @param string|array ...$args
+ * @param callable $fn
+ * @param array $args
  * @return \Closure
  * @example
- *      $subtractFive = \phln\fn\partial(\phln\math\subtract, \phln\fn\__, 5);
+ *      $subtractFive = \phln\fn\partial(\phln\math\subtract, [\phln\fn\__, 5]);
  *      $subtractFive(10); // 5
  */
-function partial($fn = nil, $args = nil): \Closure
+function partial(callable $fn = null, array $args = []): \Closure
 {
-    return curryN(2, 𝑓partial, [$fn, $args]);
+    return curryN(2, 𝑓partial, func_get_args());
 }
 
 function 𝑓partial(callable $fn, array $args): \Closure

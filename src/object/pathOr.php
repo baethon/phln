@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const pathOr = '\\phln\\object\\pathOr';
@@ -15,8 +14,8 @@ const 𝑓pathOr = '\\phln\\object\\𝑓pathOr';
  * @phlnSignature String -> a -> {k: v} -> v | a
  * @phlnCategory object
  * @param string $path
- * @param string $default
- * @param string|array $object
+ * @param mixed $default
+ * @param array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\pathOr('a.b', 'foo', ['a' => ['b' => 1]]); // 1
@@ -24,9 +23,9 @@ const 𝑓pathOr = '\\phln\\object\\𝑓pathOr';
  *      \phln\object\pathOr('a.b', 'foo', ['a' => ['b' => null]]); // 'foo'
  *      \phln\object\pathOr('a.b', 'foo', ['a' => 1]); // 'foo'
  */
-function pathOr($path = nil, $default = nil, $object = nil)
+function pathOr(string $path = '', $default = null, array $object = [])
 {
-    return curryN(3, 𝑓pathOr, [$path, $default, $object]);
+    return curryN(3, 𝑓pathOr, func_get_args());
 }
 
 function 𝑓pathOr(string $path, $default, array $object)

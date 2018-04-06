@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use const phln\fn\otherwise;
 use function phln\fn\curryN;
 use function phln\fn\throwException;
@@ -18,7 +17,7 @@ const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
  * @phlnSignature a -> [a] -> [a]
  * @phlnSignature String -> String -> String
  * @phlnCategory collection
- * @param string $value
+ * @param mixed $value
  * @param string|array $collection
  * @return \Closure|array
  * @example
@@ -26,9 +25,9 @@ const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
  *      \phln\collection\prepend([3], [1, 2]); // [[3], 1, 2]
  *      \phln\collection\prepend('foo', 'bar'); // [[3], 1, 2]
  */
-function prepend($value = nil, $collection = nil)
+function prepend($value = null, $collection = null)
 {
-    return curryN(2, 𝑓prepend, [$value, $collection]);
+    return curryN(2, 𝑓prepend, func_get_args());
 }
 
 function 𝑓prepend($value, $collection)

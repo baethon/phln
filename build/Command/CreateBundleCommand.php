@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 use Illuminate\View\Factory;
 use Symfony\Component\Process\ProcessBuilder;
 use const phln\collection\last;
-use const phln\fn\nil;
 use const phln\fn\T;
 use const phln\object\keys;
 use const phln\relation\𝑓equals;
@@ -175,15 +174,13 @@ class CreateBundleCommand extends Command
 
         $mappedParams = map($mapParameters, $parameters);
         $definition = $this->getParametersDefinition($mappedParams);
-        $invoke = $this->getParametersInvokeDefinition($mappedParams);
 
-        return compact('definition', 'invoke');
+        return compact('definition');
     }
 
     private function getParametersDefinition(array $parameters)
     {
         $exportDefaultValue = cond([
-            [partial(𝑓equals, [nil]), always('nil')],
             [equals([]), always('[]')],
             [T, function ($value) {
                 return var_export($value, true);
@@ -208,20 +205,6 @@ class CreateBundleCommand extends Command
 
         return pipe([
             map($toSrc),
-            join(', '),
-        ])($parameters);
-    }
-
-    private function getParametersInvokeDefinition(array $parameters)
-    {
-        return pipe([
-            map(function ($param) {
-                return sprintf(
-                    '%s$%s',
-                    $param['variadic'] ? '...' : '',
-                    $param['name']
-                );
-            }),
             join(', '),
         ])($parameters);
     }

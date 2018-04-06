@@ -11,15 +11,15 @@ const 𝑓apply = '\\phln\\fn\\𝑓apply';
  *
  * @phlnSignature (*... -> a) -> [*] -> a
  * @phlnCategory function
- * @param string|callable $fn
- * @param string|array $arguments
+ * @param callable $fn
+ * @param array $arguments
  * @return \Closure|mixed
  * @example
  *      \phln\fn\apply(\phln\math\sum, [1, 2]); // 3
  */
-function apply($fn = nil, $arguments = nil)
+function apply(callable $fn = null, array $arguments = [])
 {
-    return curryN(2, 𝑓apply, [$fn, $arguments]);
+    return curryN(2, 𝑓apply, func_get_args());
 }
 
 function 𝑓apply(callable $fn, array $arguments)

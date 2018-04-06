@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\math;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const multiply = '\\phln\\math\\multiply';
@@ -21,9 +20,9 @@ const 𝑓multiply = '\\phln\\math\\𝑓multiply';
  *      $triple = \phln\math\multiply(3);
  *      $triple(7); // 21
  */
-function multiply($a = nil, $b = nil)
+function multiply($a = null, $b = null)
 {
-    return curryN(2, 𝑓multiply, [$a, $b]);
+    return curryN(2, 𝑓multiply, func_get_args());
 }
 
 function 𝑓multiply($a, $b)

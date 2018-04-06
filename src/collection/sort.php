@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const sort = '\\phln\\collection\\sort';
@@ -14,8 +13,8 @@ const 𝑓sort = '\\phln\\collection\\𝑓sort';
  *
  * @phlnSignature ((a, a) -> Number) -> [a] -> [a]
  * @phlnCategory collection
- * @param string|callable $comparator
- * @param string|array $list
+ * @param callable $comparator
+ * @param array $list
  * @return \Closure|array
  * @see \usort()
  * @example
@@ -25,9 +24,9 @@ const 𝑓sort = '\\phln\\collection\\𝑓sort';
  *
  *      \phln\collection\sort($diff, [3, 2, 1]); // [1, 2, 3]
  */
-function sort($comparator = nil, $list = nil)
+function sort(callable $comparator = null, array $list = [])
 {
-    return curryN(2, 𝑓sort, [$comparator, $list]);
+    return curryN(2, 𝑓sort, func_get_args());
 }
 
 function 𝑓sort(callable $comparator, array $list): array

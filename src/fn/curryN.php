@@ -24,10 +24,6 @@ const curryN = '\\phln\\fn\\curryN';
  */
 function curryN(int $n, callable $fn, array $args = [])
 {
-    $args = array_filter($args, function ($value) {
-        return $value !== nil;
-    });
-
     $argumentsLengthMatch = function (array $arguments) use ($n) {
         return count($arguments) >= $n;
     };

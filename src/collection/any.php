@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const any = '\\phln\\collection\\any';
@@ -14,16 +13,16 @@ const 𝑓any = '\\phln\\collection\\𝑓any';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> Boolean
  * @phlnCategory collection
- * @param string $predicate
- * @param string $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|bool
  * @example
  *      $hasTwos = \phln\collection\any(\phln\relation\equals(2));
  *      $hasTwos([1, 2, 3, 4]); // true
  */
-function any($predicate = nil, $list = nil)
+function any(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓any, [$predicate, $list]);
+    return curryN(2, 𝑓any, func_get_args());
 }
 
 function 𝑓any(callable $predicate, array $list): bool

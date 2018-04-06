@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\fn\negate;
 
@@ -15,8 +14,8 @@ const 𝑓reject = '\\phln\\collection\\𝑓reject';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> [a]
  * @phlnCategory collection
- * @param string|callable $predicate
- * @param string|array $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|array
  * @example
  *      $isOdd = function ($i) {
@@ -24,9 +23,9 @@ const 𝑓reject = '\\phln\\collection\\𝑓reject';
  *      };
  *      \phln\collection\reject($isOdd, [1, 2, 3, 4]); // [2, 4]
  */
-function reject($predicate = nil, $list = nil)
+function reject(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓reject, [$predicate, $list]);
+    return curryN(2, 𝑓reject, func_get_args());
 }
 
 function 𝑓reject(callable $predicate, array $list): array

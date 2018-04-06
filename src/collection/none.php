@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 use function phln\fn\negate;
 
@@ -15,8 +14,8 @@ const 𝑓none = '\\phln\\collection\\𝑓none';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> Boolean
  * @phlnCategory collection
- * @param string $predicate
- * @param string $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      $isEven = function ($i) {
@@ -26,9 +25,9 @@ const 𝑓none = '\\phln\\collection\\𝑓none';
  *      \phln\collection\none($isEven, [1, 3, 5]); // true
  *      \phln\collection\none($isEven, [1, 3, 5, 6]); // false
  */
-function none($predicate = nil, $list = nil)
+function none(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓none, [$predicate, $list]);
+    return curryN(2, 𝑓none, func_get_args());
 }
 
 function 𝑓none(callable $predicate, array $list): bool

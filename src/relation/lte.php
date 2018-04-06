@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const lte = '\\phln\\relation\\lte';
@@ -14,18 +13,18 @@ const 𝑓lte = '\\phln\\relation\\𝑓lte';
  *
  * @phlnSignature Ord a => a -> a -> Boolean
  * @phlnCategory relation
- * @param string $a
- * @param string $b
+ * @param mixed $left
+ * @param mixed $right
  * @return \Closure|mixed
  * @example
  *      \phln\relation\lte(1, 2); // true
  */
-function lte($a = nil, $b = nil)
+function lte($left = null, $right = null)
 {
-    return curryN(2, 𝑓lte, [$a, $b]);
+    return curryN(2, 𝑓lte, func_get_args());
 }
 
-function 𝑓lte($a, $b): bool
+function 𝑓lte($left, $right): bool
 {
-    return $a <= $b;
+    return $left <= $right;
 }

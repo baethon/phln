@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const sortBy = '\\phln\\collection\\sortBy';
@@ -14,8 +13,8 @@ const 𝑓sortBy = '\\phln\\collection\\𝑓sortBy';
  *
  * @phlnSignature (a -> b) -> [a] -> [a]
  * @phlnCategory collection
- * @param string|callable $mapper
- * @param string|array $list
+ * @param callable $mapper
+ * @param array $list
  * @return \Closure|array
  * @see \array_multisort()
  * @example
@@ -26,9 +25,9 @@ const 𝑓sortBy = '\\phln\\collection\\𝑓sortBy';
  *
  *      \phln\collection\soryBy(\phln\object\prop('name'), $people); // [$alice, $bob, $clara]
  */
-function sortBy($mapper = nil, $list = nil)
+function sortBy(callable $mapper = null, array $list = [])
 {
-    return curryN(2, 𝑓sortBy, [$mapper, $list]);
+    return curryN(2, 𝑓sortBy, func_get_args());
 }
 
 function 𝑓sortBy(callable $mapper, array $list): array

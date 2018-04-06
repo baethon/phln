@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\relation;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const equals = '\\phln\\relation\\equals';
@@ -22,9 +21,9 @@ const 𝑓equals = '\\phln\\relation\\𝑓equals';
  *      \phln\relation\equals(1, '1'); // false
  *      \phln\relation\equals(1, 2); // false
  */
-function equals($a = nil, $b = nil)
+function equals($a = null, $b = null)
 {
-    return curryN(2, 𝑓equals, [$a, $b]);
+    return curryN(2, 𝑓equals, func_get_args());
 }
 
 function 𝑓equals($a, $b): bool

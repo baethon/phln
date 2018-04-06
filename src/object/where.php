@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\collection\all;
 use function phln\fn\curryN;
 
@@ -17,8 +16,8 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  *
  * @phlnSignature {String: (* -> Boolean)} -> {String: *} -> Boolean
  * @phlnCategory object
- * @param string|array $predicates
- * @param string|array $object
+ * @param array $predicates
+ * @param array $object
  * @return \Closure|bool
  * @example
  *      $verifyJon = \phln\object\where([
@@ -28,9 +27,9 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  *
  *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
  */
-function where($predicates = nil, $object = nil)
+function where(array $predicates = [], array $object = [])
 {
-    return curryN(2, 𝑓where, [$predicates, $object]);
+    return curryN(2, 𝑓where, func_get_args());
 }
 
 function 𝑓where(array $predicates, array $object): bool

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace phln\collection;
 
 use const phln\fn\{
-    __, nil, otherwise
+    __, otherwise
 };
 use function phln\fn\{
     curryN, partial, throwException
@@ -20,8 +20,8 @@ const 𝑓slice = '\\phln\\collection\\𝑓slice';
  * @phlnSignature Integer -> Integer -> [a] -> [a]
  * @phlnSignature Integer -> Integer -> String -> String
  * @phlnCategory collection
- * @param string|integer $offset
- * @param string|integer $length
+ * @param integer $offset
+ * @param integer $length
  * @param string|array $collection
  * @return \Closure|array|string
  * @see \array_slice()
@@ -30,9 +30,9 @@ const 𝑓slice = '\\phln\\collection\\𝑓slice';
  *      $takeTwo = \phln\collection\slice(0, 2);
  *      $takeTwo([1, 2, 3]); // [1, 2]
  */
-function slice($offset = nil, $length = nil, $collection = nil)
+function slice(int $offset = 0, int $length = 0, $collection = null)
 {
-    return curryN(3, 𝑓slice, [$offset, $length, $collection]);
+    return curryN(3, 𝑓slice, func_get_args());
 }
 
 function 𝑓slice(int $offset, int $length, $collection)

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use const phln\fn\otherwise;
 use function phln\fn\{
     compose, curryN, throwException, unapply
@@ -30,9 +29,9 @@ const 𝑓concat = '\\phln\\collection\\𝑓concat';
  *      \phln\collection\concat([1, 2], [3]); // [1, 2, 3]
  *      \phln\collection\concat('foo', 'bar'); // 'foobar'
  */
-function concat($a = nil, $b = nil)
+function concat($a = null, $b = null)
 {
-    return curryN(2, 𝑓concat, [$a, $b]);
+    return curryN(2, 𝑓concat, func_get_args());
 }
 
 function 𝑓concat($a, $b)

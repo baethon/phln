@@ -16,17 +16,17 @@ const 𝑓reduce = '\\phln\\collection\\𝑓reduce';
  *
  * @phlnSignature ((a, b) -> a) -> a -> [b] -> a
  * @phlnCategory collection
- * @param string|callable $reducer
+ * @param callable $reducer
  * @param mixed $initialValue
- * @param string|array $list
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      \phln\collection\reduce(\phln\math\subtract, 0, [1, 2, 3, 4]);
  *      // ((((0 - 1) - 2) - 3) - 4) => -10
  */
-function reduce($reducer = nil, $initialValue = nil, $list = nil)
+function reduce(callable $reducer = null, $initialValue = null, array $list = [])
 {
-    return curryN(3, 𝑓reduce, [$reducer, $initialValue, $list]);
+    return curryN(3, 𝑓reduce, func_get_args());
 }
 
 function 𝑓reduce(callable $reducer, $initialValue, array $list)

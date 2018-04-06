@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\object;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const omit = '\\phln\\object\\omit';
@@ -14,15 +13,15 @@ const 𝑓omit = '\\phln\\object\\𝑓omit';
  *
  * @phlnSignature [String] -> {String: *} -> {String: *}
  * @phlnCategory object
- * @param string $omitKeys
- * @param string $object
+ * @param array $omitKeys
+ * @param array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
  */
-function omit($omitKeys = nil, $object = nil)
+function omit(array $omitKeys = [], array $object = [])
 {
-    return curryN(2, 𝑓omit, [$omitKeys, $object]);
+    return curryN(2, 𝑓omit, func_get_args());
 }
 
 function 𝑓omit(array $omitKeys, array $object): array

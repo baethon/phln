@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const range = '\\phln\\collection\\range';
@@ -14,15 +13,15 @@ const 𝑓range = '\\phln\\collection\\𝑓range';
  *
  * @phlnSignature Integer a => a -> a -> [a]
  * @phlnCategory collection
- * @param string|int $start
- * @param string|int $end
+ * @param int $start
+ * @param int $end
  * @return \Closure|array
  * @example
  *      \phln\collection\range(0, 3); // [0, 1, 2]
  */
-function range($start = nil, $end = nil)
+function range(int $start = 0, int $end = 0)
 {
-    return curryN(2, 𝑓range, [$start, $end]);
+    return curryN(2, 𝑓range, func_get_args());
 }
 
 function 𝑓range(int $from, int $to): array

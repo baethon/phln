@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\nil;
 use function phln\fn\curryN;
 
 const join = '\\phln\\collection\\join';
@@ -15,13 +14,13 @@ const 𝑓join = '\\join';
  * @phlnSignature String -> [a] -> String
  * @phlnCategory collection
  * @param string $separator
- * @param string $list
+ * @param array $list
  * @return \Closure|mixed
  * @example
  *      $spacer = \phln\collection\join(' ');
  *      $spacer([1, 2, 3]); // '1 2 3'
  */
-function join($separator = nil, $list = nil)
+function join(string $separator = '', array $list = [])
 {
-    return curryN(2, 𝑓join, [$separator, $list]);
+    return curryN(2, 𝑓join, func_get_args());
 }
