@@ -18,15 +18,15 @@ const 𝑓split = '\\phln\\string\\𝑓split';
  * @phlnSignature String -> String -> [String]
  * @phlnSignature RegExp -> String -> [String]
  * @phlnCategory string
- * @param string $delimiter
+ * @param string|RegExp $delimiter
  * @param string $text
  * @return \Closure|array
  * @example
  *      \phln\string\split('/', 'a/b'); // ['a', 'b']
  */
-function split($delimiter = null, $text = null)
+function split($delimiter = null, string $text = '')
 {
-    return curryN(2, 𝑓split, [$delimiter, $text]);
+    return curryN(2, 𝑓split, func_get_args());
 }
 
 function 𝑓split($delimiter, string $text): array

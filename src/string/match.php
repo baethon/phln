@@ -24,9 +24,9 @@ const 𝑓match = '\\phln\\string\\𝑓match';
  *      \phln\string\match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
  *      \phln\string\match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
  */
-function match($regexp = null, $test = null)
+function match($regexp = null, string $test = '')
 {
-    return curryN(2, 𝑓match, [$regexp, $test]);
+    return curryN(2, 𝑓match, func_get_args());
 }
 
 function 𝑓match($regexp, string $test)

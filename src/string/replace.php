@@ -19,7 +19,7 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
  *
  * @phlnSignature RegExp -> String -> String -> String
  * @phlnCategory string
- * @param string $regexp
+ * @param string|RegExp $regexp
  * @param string $replacement
  * @param string $text
  * @return \Closure|string
@@ -27,9 +27,9 @@ const 𝑓replace = '\\phln\\string\\𝑓replace';
  *      \phln\string\replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
  *      \phln\string\replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
  */
-function replace($regexp = null, $replacement = null, $text = null)
+function replace($regexp = null, string $replacement = '', string $text = '')
 {
-    return curryN(3, 𝑓replace, [$regexp, $replacement, $text]);
+    return curryN(3, 𝑓replace, func_get_args());
 }
 
 function 𝑓replace($regexp, string $replacement, string $text): string
