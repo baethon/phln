@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace phln\fn;
 
-use function phln\fn\curryN;
-
 const throwException = '\\phln\\fn\\throwException';
 
 /**
