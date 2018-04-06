@@ -174,9 +174,8 @@ class CreateBundleCommand extends Command
 
         $mappedParams = map($mapParameters, $parameters);
         $definition = $this->getParametersDefinition($mappedParams);
-        $invoke = $this->getParametersInvokeDefinition($mappedParams);
 
-        return compact('definition', 'invoke');
+        return compact('definition');
     }
 
     private function getParametersDefinition(array $parameters)
@@ -207,20 +206,6 @@ class CreateBundleCommand extends Command
 
         return pipe([
             map($toSrc),
-            join(', '),
-        ])($parameters);
-    }
-
-    private function getParametersInvokeDefinition(array $parameters)
-    {
-        return pipe([
-            map(function ($param) {
-                return sprintf(
-                    '%s$%s',
-                    $param['variadic'] ? '...' : '',
-                    $param['name']
-                );
-            }),
             join(', '),
         ])($parameters);
     }

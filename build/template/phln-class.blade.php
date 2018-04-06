@@ -17,7 +17,7 @@ class Phln
 {!! $item['doc'] !!}
     public static function {{ $item['name'] }}({!! $item['parameters']['definition'] !!}){{ $item['returnType'] }}
     {
-        return \{{ $item['fqn'] }}({{ $item['parameters']['invoke'] }});
+        return \{{ $item['fqn'] }}(...func_get_args());
     }
 
 @endforeach
