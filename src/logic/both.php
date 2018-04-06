@@ -35,7 +35,7 @@ const 𝑓both = '\\phln\\logic\\𝑓both';
  */
 function both($left = null, $right = null)
 {
-    return curryN(2, 𝑓both, [$left, $right]);
+    return curryN(2, 𝑓both, func_get_args());
 }
 
 function 𝑓both($left, $right)

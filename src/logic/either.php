@@ -37,7 +37,7 @@ const 𝑓either = '\\phln\\logic\\𝑓either';
  */
 function either($left = null, $right = null)
 {
-    return curryN(2, 𝑓either, [$left, $right]);
+    return curryN(2, 𝑓either, func_get_args());
 }
 
 function 𝑓either($left, $right)

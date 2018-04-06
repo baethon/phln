@@ -22,7 +22,7 @@ const 𝑓defaultTo = '\\phln\\logic\\𝑓defaultTo';
  */
 function defaultTo($default = null, $value = null)
 {
-    return curryN(2, 𝑓defaultTo, [$default, $value]);
+    return curryN(2, 𝑓defaultTo, func_get_args());
 }
 
 function 𝑓defaultTo($default, $value)

@@ -14,9 +14,9 @@ const 𝑓ifElse = '\\phln\\logic\\𝑓ifElse';
  *
  * @phlnSignature (*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)
  * @phlnCategory logic
- * @param string|callable $predicate
- * @param string|callable $onTrue
- * @param string|callable $onFalse
+ * @param callable $predicate
+ * @param callable $onTrue
+ * @param callable $onFalse
  * @return \Closure
  * @example
  *      $modulo15 = \phln\fn\swap(\phln\math\modulo)(15);
@@ -29,9 +29,9 @@ const 𝑓ifElse = '\\phln\\logic\\𝑓ifElse';
  *      $fizzbuzz(15); // 'fizzbuzz'
  *      $fizzbuzz(1); // 1
  */
-function ifElse($predicate = null, $onTrue = null, $onFalse = null): \Closure
+function ifElse(callable $predicate = null, callable $onTrue = null, callable $onFalse = null): \Closure
 {
-    return curryN(3, 𝑓ifElse, [$predicate, $onTrue, $onFalse]);
+    return curryN(3, 𝑓ifElse, func_get_args());
 }
 
 function 𝑓ifElse(callable $predicate, callable $onTrue, callable $onFalse): \Closure
