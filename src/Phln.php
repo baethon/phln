@@ -114,16 +114,16 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> Boolean
      * @phlnCategory collection
-     * @param string $predicate
-     * @param string $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|bool
      * @example
      *      $onlyTwos = P::all(P::equals(2));
      *      $onlyTwos([1, 2, 2]); // false
      */
-    public static function all($predicate = NULL, $list = NULL)
+    public static function all(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\all($predicate, $list);
+        return \phln\collection\all(...func_get_args());
     }
 
     /**
@@ -131,16 +131,16 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> Boolean
      * @phlnCategory collection
-     * @param string $predicate
-     * @param string $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|bool
      * @example
      *      $hasTwos = P::any(P::equals(2));
      *      $hasTwos([1, 2, 3, 4]); // true
      */
-    public static function any($predicate = NULL, $list = NULL)
+    public static function any(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\any($predicate, $list);
+        return \phln\collection\any(...func_get_args());
     }
 
     /**
@@ -150,7 +150,7 @@ class Phln
      * @phlnSignature String -> String -> String
      * @phlnCategory collection
      * @param mixed $value
-     * @param string|array $collection
+     * @param array|string $collection
      * @return \Closure|string|array
      * @example
      *      P::append(3, [1, 2]); // [1, 2, 3]
@@ -159,7 +159,7 @@ class Phln
      */
     public static function append($value = NULL, $collection = NULL)
     {
-        return \phln\collection\append($value, $collection);
+        return \phln\collection\append(...func_get_args());
     }
 
     /**
@@ -169,16 +169,16 @@ class Phln
      * @phlnSignature Number -> [a] -> [[a]]
      * @phlnSignature Number -> String -> [String]
      * @phlnCategory collection
-     * @param string|integer $size
-     * @param string|array $collection
+     * @param integer $size
+     * @param array|string $collection
      * @return \Closure|array
      * @example
      *      P::chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
      *      P::chunk(2, 'hello'); // ['he', 'll', 'o']
      */
-    public static function chunk($size = NULL, $collection = NULL)
+    public static function chunk(int $size = 0, $collection = NULL)
     {
-        return \phln\collection\chunk($size, $collection);
+        return \phln\collection\chunk(...func_get_args());
     }
 
     /**
@@ -191,7 +191,7 @@ class Phln
      */
     public static function collapse(array $list): array
     {
-        return \phln\collection\collapse($list);
+        return \phln\collection\collapse(...func_get_args());
     }
 
     /**
@@ -212,7 +212,7 @@ class Phln
      */
     public static function concat($a = NULL, $b = NULL)
     {
-        return \phln\collection\concat($a, $b);
+        return \phln\collection\concat(...func_get_args());
     }
 
     /**
@@ -223,7 +223,7 @@ class Phln
      * @phlnSignature String -> String -> Boolean
      * @phlnCategory collection
      * @param mixed $value
-     * @param string|array $collection
+     * @param array|string $collection
      * @return \Closure|bool
      * @example
      *      P::contains(1, [1, 2, 3]); // true
@@ -231,7 +231,7 @@ class Phln
      */
     public static function contains($value = NULL, $collection = NULL)
     {
-        return \phln\collection\contains($value, $collection);
+        return \phln\collection\contains(...func_get_args());
     }
 
     /**
@@ -239,15 +239,15 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> Boolean
      * @phlnCategory collection
-     * @param string $predicate
-     * @param string $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      P::filter(equals(1), [1, 2, 3]); // [1]
      */
-    public static function filter($predicate = NULL, $list = NULL)
+    public static function filter(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\filter($predicate, $list);
+        return \phln\collection\filter(...func_get_args());
     }
 
     /**
@@ -256,16 +256,16 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> a
      * @phlnCategory collection
-     * @param string $predicate
-     * @param string $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      $xs = [['a' => 1], ['a' => 2], ['a' => 3]];
      *      P::find(equals(['a' => 1]), $xs); // ['a' => 1]
      */
-    public static function find($predicate = NULL, $list = NULL)
+    public static function find(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\find($predicate, $list);
+        return \phln\collection\find(...func_get_args());
     }
 
     /**
@@ -273,8 +273,8 @@ class Phln
      *
      * @phlnSignature (a -> b) -> [a] -> [b]
      * @phlnCategory collection
-     * @param string $mapper
-     * @param string $list
+     * @param callable $mapper
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      $duplicateElements = P::flatMap(function ($i) {
@@ -283,9 +283,9 @@ class Phln
      *
      *      $duplicateElements([1, 2]); // [1, 1, 2, 2]
      */
-    public static function flatMap($mapper = NULL, $list = NULL)
+    public static function flatMap(callable $mapper = NULL, array $list = [])
     {
-        return \phln\collection\flatMap($mapper, $list);
+        return \phln\collection\flatMap(...func_get_args());
     }
 
     /**
@@ -304,7 +304,7 @@ class Phln
      */
     public static function head($collection)
     {
-        return \phln\collection\head($collection);
+        return \phln\collection\head(...func_get_args());
     }
 
     /**
@@ -328,7 +328,7 @@ class Phln
      */
     public static function init($collection)
     {
-        return \phln\collection\init($collection);
+        return \phln\collection\init(...func_get_args());
     }
 
     /**
@@ -337,15 +337,15 @@ class Phln
      * @phlnSignature String -> [a] -> String
      * @phlnCategory collection
      * @param string $separator
-     * @param string $list
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      $spacer = P::join(' ');
      *      $spacer([1, 2, 3]); // '1 2 3'
      */
-    public static function join($separator = NULL, $list = NULL)
+    public static function join(string $separator = '', array $list = [])
     {
-        return \phln\collection\join($separator, $list);
+        return \phln\collection\join(...func_get_args());
     }
 
     /**
@@ -364,7 +364,7 @@ class Phln
      */
     public static function last($list)
     {
-        return \phln\collection\last($list);
+        return \phln\collection\last(...func_get_args());
     }
 
     /**
@@ -380,7 +380,7 @@ class Phln
      */
     public static function length($collection): int
     {
-        return \phln\collection\length($collection);
+        return \phln\collection\length(...func_get_args());
     }
 
     /**
@@ -388,13 +388,13 @@ class Phln
      *
      * @phlnSignature (a -> b) -> [a] -> [b]
      * @phlnCategory collection
-     * @param string|callable $fn
-     * @param string|array $list
+     * @param callable $fn
+     * @param array $list
      * @return \Closure|array
      */
-    public static function map($fn = NULL, $list = NULL)
+    public static function map(callable $fn = NULL, array $list = [])
     {
-        return \phln\collection\map($fn, $list);
+        return \phln\collection\map(...func_get_args());
     }
 
     /**
@@ -404,13 +404,13 @@ class Phln
      *
      * @phlnSignature ((a, i) -> b) -> [a] -> [b]
      * @phlnCategory collection
-     * @param string|callable $fn
-     * @param string|array $list
+     * @param callable $fn
+     * @param array $list
      * @return \Closure|array
      */
-    public static function mapIndexed($fn = NULL, $list = NULL)
+    public static function mapIndexed(callable $fn = NULL, array $list = [])
     {
-        return \phln\collection\mapIndexed($fn, $list);
+        return \phln\collection\mapIndexed(...func_get_args());
     }
 
     /**
@@ -418,8 +418,8 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> Boolean
      * @phlnCategory collection
-     * @param string $predicate
-     * @param string $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      $isEven = function ($i) {
@@ -429,9 +429,9 @@ class Phln
      *      P::none($isEven, [1, 3, 5]); // true
      *      P::none($isEven, [1, 3, 5, 6]); // false
      */
-    public static function none($predicate = NULL, $list = NULL)
+    public static function none(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\none($predicate, $list);
+        return \phln\collection\none(...func_get_args());
     }
 
     /**
@@ -440,16 +440,16 @@ class Phln
      *
      * @phlnSignature Number -> [a] -> a | Null
      * @phlnCategory collection
-     * @param string $n
-     * @param string $list
+     * @param integer $n
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      P::nth(1, [1, 2, 3]); // 2
      *      P::nth(-1, [1, 2, 3]); // 3
      */
-    public static function nth($n = NULL, $list = NULL)
+    public static function nth(int $n = 0, array $list = [])
     {
-        return \phln\collection\nth($n, $list);
+        return \phln\collection\nth(...func_get_args());
     }
 
     /**
@@ -457,16 +457,16 @@ class Phln
      *
      * @phlnSignature k -> [{k: v}] -> v
      * @phlnCategory collection
-     * @param string $key
-     * @param string|array $list
+     * @param string|integer $key
+     * @param array $list
      * @return \Closure|array
      * @example
      *      $list = [['a' => 1], ['a' => 2]];
      *      P::pluck('a', $list); // [1, 2]
      */
-    public static function pluck($key = NULL, $list = NULL)
+    public static function pluck($key = '', array $list = [])
     {
-        return \phln\collection\pluck($key, $list);
+        return \phln\collection\pluck(...func_get_args());
     }
 
     /**
@@ -475,7 +475,7 @@ class Phln
      * @phlnSignature a -> [a] -> [a]
      * @phlnSignature String -> String -> String
      * @phlnCategory collection
-     * @param string $value
+     * @param mixed $value
      * @param string|array $collection
      * @return \Closure|array
      * @example
@@ -485,7 +485,7 @@ class Phln
      */
     public static function prepend($value = NULL, $collection = NULL)
     {
-        return \phln\collection\prepend($value, $collection);
+        return \phln\collection\prepend(...func_get_args());
     }
 
     /**
@@ -493,15 +493,15 @@ class Phln
      *
      * @phlnSignature Integer a => a -> a -> [a]
      * @phlnCategory collection
-     * @param string|int $start
-     * @param string|int $end
+     * @param int $start
+     * @param int $end
      * @return \Closure|array
      * @example
      *      P::range(0, 3); // [0, 1, 2]
      */
-    public static function range($start = NULL, $end = NULL)
+    public static function range(int $start = 0, int $end = 0)
     {
-        return \phln\collection\range($start, $end);
+        return \phln\collection\range(...func_get_args());
     }
 
     /**
@@ -511,17 +511,17 @@ class Phln
      *
      * @phlnSignature ((a, b) -> a) -> a -> [b] -> a
      * @phlnCategory collection
-     * @param string|callable $reducer
+     * @param callable $reducer
      * @param mixed $initialValue
-     * @param string|array $list
+     * @param array $list
      * @return \Closure|mixed
      * @example
      *      P::reduce(P::subtract, 0, [1, 2, 3, 4]);
      *      // ((((0 - 1) - 2) - 3) - 4) => -10
      */
-    public static function reduce($reducer = NULL, $initialValue = NULL, $list = NULL)
+    public static function reduce(callable $reducer = NULL, $initialValue = NULL, array $list = [])
     {
-        return \phln\collection\reduce($reducer, $initialValue, $list);
+        return \phln\collection\reduce(...func_get_args());
     }
 
     /**
@@ -529,8 +529,8 @@ class Phln
      *
      * @phlnSignature (a -> Boolean) -> [a] -> [a]
      * @phlnCategory collection
-     * @param string|callable $predicate
-     * @param string|array $list
+     * @param callable $predicate
+     * @param array $list
      * @return \Closure|array
      * @example
      *      $isOdd = function ($i) {
@@ -538,9 +538,9 @@ class Phln
      *      };
      *      P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
      */
-    public static function reject($predicate = NULL, $list = NULL)
+    public static function reject(callable $predicate = NULL, array $list = [])
     {
-        return \phln\collection\reject($predicate, $list);
+        return \phln\collection\reject(...func_get_args());
     }
 
     /**
@@ -559,7 +559,7 @@ class Phln
      */
     public static function reverse($collection)
     {
-        return \phln\collection\reverse($collection);
+        return \phln\collection\reverse(...func_get_args());
     }
 
     /**
@@ -568,8 +568,8 @@ class Phln
      * @phlnSignature Integer -> Integer -> [a] -> [a]
      * @phlnSignature Integer -> Integer -> String -> String
      * @phlnCategory collection
-     * @param string|integer $offset
-     * @param string|integer $length
+     * @param integer $offset
+     * @param integer $length
      * @param string|array $collection
      * @return \Closure|array|string
      * @see \array_slice()
@@ -578,9 +578,9 @@ class Phln
      *      $takeTwo = P::slice(0, 2);
      *      $takeTwo([1, 2, 3]); // [1, 2]
      */
-    public static function slice($offset = NULL, $length = NULL, $collection = NULL)
+    public static function slice(int $offset = 0, int $length = 0, $collection = NULL)
     {
-        return \phln\collection\slice($offset, $length, $collection);
+        return \phln\collection\slice(...func_get_args());
     }
 
     /**
@@ -588,8 +588,8 @@ class Phln
      *
      * @phlnSignature ((a, a) -> Number) -> [a] -> [a]
      * @phlnCategory collection
-     * @param string|callable $comparator
-     * @param string|array $list
+     * @param callable $comparator
+     * @param array $list
      * @return \Closure|array
      * @see \usort()
      * @example
@@ -599,9 +599,9 @@ class Phln
      *
      *      P::sort($diff, [3, 2, 1]); // [1, 2, 3]
      */
-    public static function sort($comparator = NULL, $list = NULL)
+    public static function sort(callable $comparator = NULL, array $list = [])
     {
-        return \phln\collection\sort($comparator, $list);
+        return \phln\collection\sort(...func_get_args());
     }
 
     /**
@@ -609,8 +609,8 @@ class Phln
      *
      * @phlnSignature (a -> b) -> [a] -> [a]
      * @phlnCategory collection
-     * @param string|callable $mapper
-     * @param string|array $list
+     * @param callable $mapper
+     * @param array $list
      * @return \Closure|array
      * @see \array_multisort()
      * @example
@@ -621,9 +621,9 @@ class Phln
      *
      *      P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
      */
-    public static function sortBy($mapper = NULL, $list = NULL)
+    public static function sortBy(callable $mapper = NULL, array $list = [])
     {
-        return \phln\collection\sortBy($mapper, $list);
+        return \phln\collection\sortBy(...func_get_args());
     }
 
     /**
@@ -644,7 +644,7 @@ class Phln
      */
     public static function tail($collection)
     {
-        return \phln\collection\tail($collection);
+        return \phln\collection\tail(...func_get_args());
     }
 
     /**
@@ -659,7 +659,7 @@ class Phln
      */
     public static function unique(array $list): array
     {
-        return \phln\collection\unique($list);
+        return \phln\collection\unique(...func_get_args());
     }
 
     /**
@@ -671,7 +671,7 @@ class Phln
      */
     public static function F(): bool
     {
-        return \phln\fn\F();
+        return \phln\fn\F(...func_get_args());
     }
 
     /**
@@ -683,7 +683,7 @@ class Phln
      */
     public static function T(): bool
     {
-        return \phln\fn\T();
+        return \phln\fn\T(...func_get_args());
     }
 
     /**
@@ -700,7 +700,7 @@ class Phln
      */
     public static function always($value): \Closure
     {
-        return \phln\fn\always($value);
+        return \phln\fn\always(...func_get_args());
     }
 
     /**
@@ -708,15 +708,15 @@ class Phln
      *
      * @phlnSignature (*... -> a) -> [*] -> a
      * @phlnCategory function
-     * @param string|callable $fn
-     * @param string|array $arguments
+     * @param callable $fn
+     * @param array $arguments
      * @return \Closure|mixed
      * @example
      *      P::apply(P::sum, [1, 2]); // 3
      */
-    public static function apply($fn = NULL, $arguments = NULL)
+    public static function apply(callable $fn = NULL, array $arguments = [])
     {
-        return \phln\fn\apply($fn, $arguments);
+        return \phln\fn\apply(...func_get_args());
     }
 
     /**
@@ -731,7 +731,7 @@ class Phln
      */
     public static function arity(callable $fn): int
     {
-        return \phln\fn\arity($fn);
+        return \phln\fn\arity(...func_get_args());
     }
 
     /**
@@ -748,7 +748,7 @@ class Phln
      */
     public static function compose(array $fns): \Closure
     {
-        return \phln\fn\compose($fns);
+        return \phln\fn\compose(...func_get_args());
     }
 
     /**
@@ -769,7 +769,7 @@ class Phln
      */
     public static function curry(callable $fn, array $args = [])
     {
-        return \phln\fn\curry($fn, $args);
+        return \phln\fn\curry(...func_get_args());
     }
 
     /**
@@ -791,7 +791,7 @@ class Phln
      */
     public static function curryN(int $n, callable $fn, array $args = [])
     {
-        return \phln\fn\curryN($n, $fn, $args);
+        return \phln\fn\curryN(...func_get_args());
     }
 
     /**
@@ -806,7 +806,7 @@ class Phln
      */
     public static function identity($value)
     {
-        return \phln\fn\identity($value);
+        return \phln\fn\identity(...func_get_args());
     }
 
     /**
@@ -825,7 +825,7 @@ class Phln
      */
     public static function negate(callable $predicate): \Closure
     {
-        return \phln\fn\negate($predicate);
+        return \phln\fn\negate(...func_get_args());
     }
 
     /**
@@ -841,7 +841,7 @@ class Phln
      */
     public static function of($value): array
     {
-        return \phln\fn\of($value);
+        return \phln\fn\of(...func_get_args());
     }
 
     /**
@@ -859,7 +859,7 @@ class Phln
      */
     public static function once(callable $fn): \Closure
     {
-        return \phln\fn\once($fn);
+        return \phln\fn\once(...func_get_args());
     }
 
     /**
@@ -870,16 +870,16 @@ class Phln
      *
      * @phlnSignature ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
      * @phlnCategory function
-     * @param string|callable $fn
-     * @param string|array ...$args
+     * @param callable $fn
+     * @param array $args
      * @return \Closure
      * @example
-     *      $subtractFive = P::partial(P::subtract, P::__, 5);
+     *      $subtractFive = P::partial(P::subtract, [P::__, 5]);
      *      $subtractFive(10); // 5
      */
-    public static function partial($fn = NULL, $args = NULL): \Closure
+    public static function partial(callable $fn = NULL, array $args = []): \Closure
     {
-        return \phln\fn\partial($fn, $args);
+        return \phln\fn\partial(...func_get_args());
     }
 
     /**
@@ -896,7 +896,7 @@ class Phln
      */
     public static function pipe(array $fns): \Closure
     {
-        return \phln\fn\pipe($fns);
+        return \phln\fn\pipe(...func_get_args());
     }
 
     /**
@@ -914,7 +914,7 @@ class Phln
      */
     public static function swap(callable $f): \Closure
     {
-        return \phln\fn\swap($f);
+        return \phln\fn\swap(...func_get_args());
     }
 
     /**
@@ -929,9 +929,9 @@ class Phln
      *      $dump = P::tap('var_dump');
      *      $dump('foo'); // var_dumps('foo'); returns 'foo'
      */
-    public static function tap($fn = NULL, $value = NULL)
+    public static function tap(callable $fn = NULL, $value = NULL)
     {
-        return \phln\fn\tap($fn, $value);
+        return \phln\fn\tap(...func_get_args());
     }
 
     /**
@@ -950,7 +950,7 @@ class Phln
      */
     public static function throwException(string $exception = 'Exception', array $args = []): \Closure
     {
-        return \phln\fn\throwException($exception, $args);
+        return \phln\fn\throwException(...func_get_args());
     }
 
     /**
@@ -968,9 +968,9 @@ class Phln
      * @example
      *      P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
      */
-    public static function unapply($fn = NULL, ...$args)
+    public static function unapply(callable $fn = NULL, ...$args)
     {
-        return \phln\fn\unapply($fn, ...$args);
+        return \phln\fn\unapply(...func_get_args());
     }
 
     /**
@@ -990,7 +990,7 @@ class Phln
      */
     public static function allPass(array $predicates): callable
     {
-        return \phln\logic\allPass($predicates);
+        return \phln\logic\allPass(...func_get_args());
     }
 
     /**
@@ -1015,7 +1015,7 @@ class Phln
      */
     public static function both($left = NULL, $right = NULL)
     {
-        return \phln\logic\both($left, $right);
+        return \phln\logic\both(...func_get_args());
     }
 
     /**
@@ -1040,7 +1040,7 @@ class Phln
      */
     public static function cond(array $pairs): \Closure
     {
-        return \phln\logic\cond($pairs);
+        return \phln\logic\cond(...func_get_args());
     }
 
     /**
@@ -1057,7 +1057,7 @@ class Phln
      */
     public static function defaultTo($default = NULL, $value = NULL)
     {
-        return \phln\logic\defaultTo($default, $value);
+        return \phln\logic\defaultTo(...func_get_args());
     }
 
     /**
@@ -1084,7 +1084,7 @@ class Phln
      */
     public static function either($left = NULL, $right = NULL)
     {
-        return \phln\logic\either($left, $right);
+        return \phln\logic\either(...func_get_args());
     }
 
     /**
@@ -1092,9 +1092,9 @@ class Phln
      *
      * @phlnSignature (*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)
      * @phlnCategory logic
-     * @param string|callable $predicate
-     * @param string|callable $onTrue
-     * @param string|callable $onFalse
+     * @param callable $predicate
+     * @param callable $onTrue
+     * @param callable $onFalse
      * @return \Closure
      * @example
      *      $modulo15 = P::swap(P::modulo)(15);
@@ -1107,9 +1107,9 @@ class Phln
      *      $fizzbuzz(15); // 'fizzbuzz'
      *      $fizzbuzz(1); // 1
      */
-    public static function ifElse($predicate = NULL, $onTrue = NULL, $onFalse = NULL): \Closure
+    public static function ifElse(callable $predicate = NULL, callable $onTrue = NULL, callable $onFalse = NULL): \Closure
     {
-        return \phln\logic\ifElse($predicate, $onTrue, $onFalse);
+        return \phln\logic\ifElse(...func_get_args());
     }
 
     /**
@@ -1132,7 +1132,7 @@ class Phln
      */
     public static function isEmpty($value): bool
     {
-        return \phln\logic\isEmpty($value);
+        return \phln\logic\isEmpty(...func_get_args());
     }
 
     /**
@@ -1148,7 +1148,7 @@ class Phln
      */
     public static function not($value): bool
     {
-        return \phln\logic\not($value);
+        return \phln\logic\not(...func_get_args());
     }
 
     /**
@@ -1162,7 +1162,7 @@ class Phln
      */
     public static function add($a = NULL, $b = NULL)
     {
-        return \phln\math\add($a, $b);
+        return \phln\math\add(...func_get_args());
     }
 
     /**
@@ -1175,7 +1175,7 @@ class Phln
      */
     public static function dec($number)
     {
-        return \phln\math\dec($number);
+        return \phln\math\dec(...func_get_args());
     }
 
     /**
@@ -1189,7 +1189,7 @@ class Phln
      */
     public static function divide($a = NULL, $b = NULL)
     {
-        return \phln\math\divide($a, $b);
+        return \phln\math\divide(...func_get_args());
     }
 
     /**
@@ -1202,7 +1202,7 @@ class Phln
      */
     public static function inc($number)
     {
-        return \phln\math\inc($number);
+        return \phln\math\inc(...func_get_args());
     }
 
     /**
@@ -1217,7 +1217,7 @@ class Phln
      */
     public static function mean(array $numbers)
     {
-        return \phln\math\mean($numbers);
+        return \phln\math\mean(...func_get_args());
     }
 
     /**
@@ -1233,7 +1233,7 @@ class Phln
      */
     public static function median(array $numbers)
     {
-        return \phln\math\median($numbers);
+        return \phln\math\median(...func_get_args());
     }
 
     /**
@@ -1249,7 +1249,7 @@ class Phln
      */
     public static function modulo($a = NULL, $b = NULL)
     {
-        return \phln\math\modulo($a, $b);
+        return \phln\math\modulo(...func_get_args());
     }
 
     /**
@@ -1266,7 +1266,7 @@ class Phln
      */
     public static function multiply($a = NULL, $b = NULL)
     {
-        return \phln\math\multiply($a, $b);
+        return \phln\math\multiply(...func_get_args());
     }
 
     /**
@@ -1281,7 +1281,7 @@ class Phln
      */
     public static function product(array $numbers)
     {
-        return \phln\math\product($numbers);
+        return \phln\math\product(...func_get_args());
     }
 
     /**
@@ -1289,8 +1289,8 @@ class Phln
      *
      * @phlnSignature Number a => a -> a -> a
      * @phlnCategory math
-     * @param string $a
-     * @param string $b
+     * @param number $a
+     * @param number $b
      * @return \Closure|mixed
      * @example
      *      $complementaryAngle = P::subtract(90);
@@ -1298,7 +1298,7 @@ class Phln
      */
     public static function subtract($a = NULL, $b = NULL)
     {
-        return \phln\math\subtract($a, $b);
+        return \phln\math\subtract(...func_get_args());
     }
 
     /**
@@ -1313,7 +1313,7 @@ class Phln
      */
     public static function sum(array $numbers)
     {
-        return \phln\math\sum($numbers);
+        return \phln\math\sum(...func_get_args());
     }
 
     /**
@@ -1322,15 +1322,15 @@ class Phln
      * @phlnSignature k -> {k: v} -> {k: v} -> Boolean
      * @phlnCategory object
      * @param string $prop
-     * @param string $a
-     * @param string $b
+     * @param array $a
+     * @param array $b
      * @return \Closure|mixed
      * @example
      *      P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
      */
-    public static function eqProps($prop = NULL, $a = NULL, $b = NULL)
+    public static function eqProps(string $prop = '', array $a = [], array $b = [])
     {
-        return \phln\object\eqProps($prop, $a, $b);
+        return \phln\object\eqProps(...func_get_args());
     }
 
     /**
@@ -1346,7 +1346,7 @@ class Phln
      */
     public static function keys(array $object): array
     {
-        return \phln\object\keys($object);
+        return \phln\object\keys(...func_get_args());
     }
 
     /**
@@ -1354,16 +1354,16 @@ class Phln
      *
      * @phlnSignature {k: v} -> {k: v} -> {k: v}
      * @phlnCategory object
-     * @param string|array $left
-     * @param string|array $right
+     * @param array $left
+     * @param array $right
      * @return \Closure|array
      * @example
      *      $toDefaults = P::partial(P::merge, [P::__, ['x' => 0]);
      *      $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
      */
-    public static function merge($left = NULL, $right = NULL)
+    public static function merge(array $left = [], array $right = [])
     {
-        return \phln\object\merge($left, $right);
+        return \phln\object\merge(...func_get_args());
     }
 
     /**
@@ -1371,15 +1371,15 @@ class Phln
      *
      * @phlnSignature [String] -> {String: *} -> {String: *}
      * @phlnCategory object
-     * @param string $omitKeys
-     * @param string $object
+     * @param array $omitKeys
+     * @param array $object
      * @return \Closure|mixed
      * @example
      *      P::omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
      */
-    public static function omit($omitKeys = NULL, $object = NULL)
+    public static function omit(array $omitKeys = [], array $object = [])
     {
-        return \phln\object\omit($omitKeys, $object);
+        return \phln\object\omit(...func_get_args());
     }
 
     /**
@@ -1388,15 +1388,15 @@ class Phln
      * @phlnSignature String -> {k: v} -> v|Null
      * @phlnCategory object
      * @param string $path
-     * @param string|array $object
+     * @param array $object
      * @return \Closure|mixed
      * @example
      *      P::path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
      *      P::path('a.b.c', ['a' => ['b' => 'foo']]); // null
      */
-    public static function path($path = NULL, $object = NULL)
+    public static function path(string $path = '', array $object = [])
     {
-        return \phln\object\path($path, $object);
+        return \phln\object\path(...func_get_args());
     }
 
     /**
@@ -1405,8 +1405,8 @@ class Phln
      * @phlnSignature String -> a -> {k: v} -> v | a
      * @phlnCategory object
      * @param string $path
-     * @param string $default
-     * @param string|array $object
+     * @param mixed $default
+     * @param array $object
      * @return \Closure|mixed
      * @example
      *      P::pathOr('a.b', 'foo', ['a' => ['b' => 1]]); // 1
@@ -1414,9 +1414,9 @@ class Phln
      *      P::pathOr('a.b', 'foo', ['a' => ['b' => null]]); // 'foo'
      *      P::pathOr('a.b', 'foo', ['a' => 1]); // 'foo'
      */
-    public static function pathOr($path = NULL, $default = NULL, $object = NULL)
+    public static function pathOr(string $path = '', $default = NULL, array $object = [])
     {
-        return \phln\object\pathOr($path, $default, $object);
+        return \phln\object\pathOr(...func_get_args());
     }
 
     /**
@@ -1424,15 +1424,15 @@ class Phln
      *
      * @phlnSignature [String] -> {String: *} -> {String: *}
      * @phlnCategory object
-     * @param string|array $useKeys
-     * @param string|array $object
+     * @param array $useKeys
+     * @param array $object
      * @return \Closure|array
      * @example
      *      P::pick(['a'], ['a' => 1, 'b' => 2]); // ['a' => 1]
      */
-    public static function pick($useKeys = NULL, $object = NULL)
+    public static function pick(array $useKeys = [], array $object = [])
     {
-        return \phln\object\pick($useKeys, $object);
+        return \phln\object\pick(...func_get_args());
     }
 
     /**
@@ -1440,13 +1440,13 @@ class Phln
      *
      * @phlnSignature k -> {k: v} -> v
      * @phlnCategory object
-     * @param string $key
-     * @param string|array $array
+     * @param string|integer $key
+     * @param array $array
      * @return \Closure|mixed
      */
-    public static function prop($key = NULL, $array = NULL)
+    public static function prop($key = '', array $array = [])
     {
-        return \phln\object\prop($key, $array);
+        return \phln\object\prop(...func_get_args());
     }
 
     /**
@@ -1454,16 +1454,16 @@ class Phln
      *
      * @phlnSignature [k] -> {k: v} -> [v]
      * @phlnCategory object
-     * @param string|array $props
-     * @param string|array $object
+     * @param array $props
+     * @param array $object
      * @return \Closure|array
      * @example
      *      $fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
      *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
      */
-    public static function props($props = NULL, $object = NULL)
+    public static function props(array $props = [], array $object = [])
     {
-        return \phln\object\props($props, $object);
+        return \phln\object\props(...func_get_args());
     }
 
     /**
@@ -1476,7 +1476,7 @@ class Phln
      */
     public static function values(array $object): array
     {
-        return \phln\object\values($object);
+        return \phln\object\values(...func_get_args());
     }
 
     /**
@@ -1486,8 +1486,8 @@ class Phln
      *
      * @phlnSignature {String: (* -> Boolean)} -> {String: *} -> Boolean
      * @phlnCategory object
-     * @param string|array $predicates
-     * @param string|array $object
+     * @param array $predicates
+     * @param array $object
      * @return \Closure|bool
      * @example
      *      $verifyJon = P::where([
@@ -1497,9 +1497,9 @@ class Phln
      *
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
      */
-    public static function where($predicates = NULL, $object = NULL)
+    public static function where(array $predicates = [], array $object = [])
     {
-        return \phln\object\where($predicates, $object);
+        return \phln\object\where(...func_get_args());
     }
 
     /**
@@ -1507,16 +1507,16 @@ class Phln
      *
      * @phlnSignature {String: *} -> {String: *} -> Boolean
      * @phlnCategory object
-     * @param string $predicates
-     * @param string $object
+     * @param array $predicates
+     * @param array $object
      * @return \Closure|bool
      * @example
      *      $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
      */
-    public static function whereEq($predicates = NULL, $object = NULL)
+    public static function whereEq(array $predicates = [], array $object = [])
     {
-        return \phln\object\whereEq($predicates, $object);
+        return \phln\object\whereEq(...func_get_args());
     }
 
     /**
@@ -1535,7 +1535,7 @@ class Phln
      */
     public static function clamp($min = NULL, $max = NULL, $value = NULL)
     {
-        return \phln\relation\clamp($min, $max, $value);
+        return \phln\relation\clamp(...func_get_args());
     }
 
     /**
@@ -1543,15 +1543,15 @@ class Phln
      *
      * @phlnSignature [*] -> [*] -> [*]
      * @phlnCategory relation
-     * @param string|array $a
-     * @param string|array $b
+     * @param array $left
+     * @param array $right
      * @return \Closure|array
      * @example
      *      P::difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
      */
-    public static function difference($a = NULL, $b = NULL)
+    public static function difference(array $left = NULL, array $right = NULL)
     {
-        return \phln\relation\difference($a, $b);
+        return \phln\relation\difference(...func_get_args());
     }
 
     /**
@@ -1569,7 +1569,7 @@ class Phln
      */
     public static function equals($a = NULL, $b = NULL)
     {
-        return \phln\relation\equals($a, $b);
+        return \phln\relation\equals(...func_get_args());
     }
 
     /**
@@ -1585,7 +1585,7 @@ class Phln
      */
     public static function gt($a = NULL, $b = NULL)
     {
-        return \phln\relation\gt($a, $b);
+        return \phln\relation\gt(...func_get_args());
     }
 
     /**
@@ -1603,7 +1603,7 @@ class Phln
      */
     public static function gte($a = NULL, $b = NULL)
     {
-        return \phln\relation\gte($a, $b);
+        return \phln\relation\gte(...func_get_args());
     }
 
     /**
@@ -1611,15 +1611,15 @@ class Phln
      *
      * @phlnSignature [*] -> [*] -> [*]
      * @phlnCategory relation
-     * @param string $a
-     * @param string $b
+     * @param array $left
+     * @param array $right
      * @return \Closure|mixed
      * @example
      *      P::intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
      */
-    public static function intersection($a = NULL, $b = NULL)
+    public static function intersection(array $left = [], array $right = [])
     {
-        return \phln\relation\intersection($a, $b);
+        return \phln\relation\intersection(...func_get_args());
     }
 
     /**
@@ -1627,17 +1627,17 @@ class Phln
      *
      * @phlnSignature Ord a => a -> a -> Boolean
      * @phlnCategory relation
-     * @param mixed $a
-     * @param mixed $b
+     * @param mixed $left
+     * @param mixed $right
      * @return \Closure|bool
      * @example
      *      P::lt(1, 2); // true
      *      P::lt(3, 2); // false
      *      P::lt(2, 2); // false
      */
-    public static function lt($a = NULL, $b = NULL)
+    public static function lt($left = NULL, $right = NULL)
     {
-        return \phln\relation\lt($a, $b);
+        return \phln\relation\lt(...func_get_args());
     }
 
     /**
@@ -1645,15 +1645,15 @@ class Phln
      *
      * @phlnSignature Ord a => a -> a -> Boolean
      * @phlnCategory relation
-     * @param string $a
-     * @param string $b
+     * @param mixed $left
+     * @param mixed $right
      * @return \Closure|mixed
      * @example
      *      P::lte(1, 2); // true
      */
-    public static function lte($a = NULL, $b = NULL)
+    public static function lte($left = NULL, $right = NULL)
     {
-        return \phln\relation\lte($a, $b);
+        return \phln\relation\lte(...func_get_args());
     }
 
     /**
@@ -1661,13 +1661,13 @@ class Phln
      *
      * @phlnSignature a -> a -> a
      * @phlnCategory relation
-     * @param string $left
-     * @param string $right
+     * @param mixed $left
+     * @param mixed $right
      * @return \Closure|mixed
      */
     public static function max($left = NULL, $right = NULL)
     {
-        return \phln\relation\max($left, $right);
+        return \phln\relation\max(...func_get_args());
     }
 
     /**
@@ -1675,15 +1675,15 @@ class Phln
      *
      * @phlnSignature a -> a -> a
      * @phlnCategory relation
-     * @param string $left
-     * @param string $right
+     * @param mixed $left
+     * @param mixed $right
      * @return \Closure|mixed
      * @example
      *      P::min(1, -1); // -1
      */
     public static function min($left = NULL, $right = NULL)
     {
-        return \phln\relation\min($left, $right);
+        return \phln\relation\min(...func_get_args());
     }
 
     /**
@@ -1693,14 +1693,14 @@ class Phln
      * @phlnCategory relation
      * @param string $path
      * @param mixed $value
-     * @param string|array $object
+     * @param array $object
      * @return \Closure|bool
      * @example
      *      P::pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
      */
-    public static function pathEq($path = NULL, $value = NULL, $object = NULL)
+    public static function pathEq(string $path = '', $value = NULL, array $object = [])
     {
-        return \phln\relation\pathEq($path, $value, $object);
+        return \phln\relation\pathEq(...func_get_args());
     }
 
     /**
@@ -1709,15 +1709,15 @@ class Phln
      * @phlnSignature k -> a -> {k: a} -> Boolean
      * @phlnCategory relation
      * @param string $prop
-     * @param string $value
-     * @param string $object
+     * @param mixed $value
+     * @param array $object
      * @return \Closure|mixed
      * @example
      *      P::propEq('name', 'Jon', ['name' => 'Jon']); // true
      */
-    public static function propEq($prop = NULL, $value = NULL, $object = NULL)
+    public static function propEq(string $prop = '', $value = NULL, array $object = NULL)
     {
-        return \phln\relation\propEq($prop, $value, $object);
+        return \phln\relation\propEq(...func_get_args());
     }
 
     /**
@@ -1733,9 +1733,9 @@ class Phln
      *      P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
      *      P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
      */
-    public static function match($regexp = NULL, $test = NULL)
+    public static function match($regexp = NULL, string $test = '')
     {
-        return \phln\string\match($regexp, $test);
+        return \phln\string\match(...func_get_args());
     }
 
     /**
@@ -1750,7 +1750,7 @@ class Phln
      */
     public static function regexp(string $regexp): \phln\RegExp
     {
-        return \phln\string\regexp($regexp);
+        return \phln\string\regexp(...func_get_args());
     }
 
     /**
@@ -1761,7 +1761,7 @@ class Phln
      *
      * @phlnSignature RegExp -> String -> String -> String
      * @phlnCategory string
-     * @param string $regexp
+     * @param string|RegExp $regexp
      * @param string $replacement
      * @param string $text
      * @return \Closure|string
@@ -1769,9 +1769,9 @@ class Phln
      *      P::replace('/foo/', 'bar', 'foo foo foo'); // 'bar foo foo'
      *      P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
      */
-    public static function replace($regexp = NULL, $replacement = NULL, $text = NULL)
+    public static function replace($regexp = NULL, string $replacement = '', string $text = '')
     {
-        return \phln\string\replace($regexp, $replacement, $text);
+        return \phln\string\replace(...func_get_args());
     }
 
     /**
@@ -1782,15 +1782,15 @@ class Phln
      * @phlnSignature String -> String -> [String]
      * @phlnSignature RegExp -> String -> [String]
      * @phlnCategory string
-     * @param string $delimiter
+     * @param string|RegExp $delimiter
      * @param string $text
      * @return \Closure|array
      * @example
      *      P::split('/', 'a/b'); // ['a', 'b']
      */
-    public static function split($delimiter = NULL, $text = NULL)
+    public static function split($delimiter = NULL, string $text = '')
     {
-        return \phln\string\split($delimiter, $text);
+        return \phln\string\split(...func_get_args());
     }
 
     /**
@@ -1813,9 +1813,9 @@ class Phln
      *      P::is(\stdClass::class, new \stdClass); // true
      *      P::is(float, 1.1); // true
      */
-    public static function is($type = NULL, $value = NULL)
+    public static function is(string $type = '', $value = NULL)
     {
-        return \phln\type\is($type, $value);
+        return \phln\type\is(...func_get_args());
     }
 
     /**
@@ -1838,7 +1838,7 @@ class Phln
      */
     public static function typeCond(array $pairs): \Closure
     {
-        return \phln\type\typeCond($pairs);
+        return \phln\type\typeCond(...func_get_args());
     }
 
 }
