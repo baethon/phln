@@ -181,7 +181,6 @@ class CreateBundleCommand extends Command
     private function getParametersDefinition(array $parameters)
     {
         $exportDefaultValue = cond([
-            // [partial(𝑓equals, [nil]), always('nil')],
             [equals([]), always('[]')],
             [T, function ($value) {
                 return var_export($value, true);
