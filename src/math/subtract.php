@@ -13,8 +13,8 @@ const 𝑓subtract = '\\phln\\math\\𝑓subtract';
  *
  * @phlnSignature Number a => a -> a -> a
  * @phlnCategory math
- * @param string $a
- * @param string $b
+ * @param number $a
+ * @param number $b
  * @return \Closure|mixed
  * @example
  *      $complementaryAngle = \phln\math\subtract(90);
@@ -22,7 +22,7 @@ const 𝑓subtract = '\\phln\\math\\𝑓subtract';
  */
 function subtract($a = null, $b = null)
 {
-    return curryN(2, 𝑓subtract, [$a, $b]);
+    return curryN(2, 𝑓subtract, func_get_args());
 }
 
 function 𝑓subtract($a, $b)

@@ -19,7 +19,7 @@ const 𝑓divide = '\\phln\\math\\𝑓divide';
  */
 function divide($a = null, $b = null)
 {
-    return curryN(2, 𝑓divide, [$a, $b]);
+    return curryN(2, 𝑓divide, func_get_args());
 }
 
 function 𝑓divide($a, $b)

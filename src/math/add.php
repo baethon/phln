@@ -19,7 +19,7 @@ const 𝑓add = '\\phln\\math\\𝑓add';
  */
 function add($a = null, $b = null)
 {
-    return curryN(2, 𝑓add, [$a, $b]);
+    return curryN(2, 𝑓add, func_get_args());
 }
 
 function 𝑓add($a, $b)

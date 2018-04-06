@@ -22,7 +22,7 @@ const 𝑓multiply = '\\phln\\math\\𝑓multiply';
  */
 function multiply($a = null, $b = null)
 {
-    return curryN(2, 𝑓multiply, [$a, $b]);
+    return curryN(2, 𝑓multiply, func_get_args());
 }
 
 function 𝑓multiply($a, $b)

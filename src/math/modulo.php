@@ -21,7 +21,7 @@ const 𝑓modulo = '\\phln\\math\\𝑓modulo';
  */
 function modulo($a = null, $b = null)
 {
-    return curryN(2, 𝑓modulo, [$a, $b]);
+    return curryN(2, 𝑓modulo, func_get_args());
 }
 
 function 𝑓modulo($a, $b)
