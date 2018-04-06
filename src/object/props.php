@@ -17,16 +17,16 @@ const 𝑓props = '\\phln\\object\\𝑓props';
  *
  * @phlnSignature [k] -> {k: v} -> [v]
  * @phlnCategory object
- * @param string|array $props
- * @param string|array $object
+ * @param array $props
+ * @param array $object
  * @return \Closure|array
  * @example
  *      $fullName = \phln\fn\compose(\phln\string\join(' '), \phln\object\props(['firstName', 'lastName']));
  *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
  */
-function props($props = null, $object = null)
+function props(array $props = [], array $object = [])
 {
-    return curryN(2, 𝑓props, [$props, $object]);
+    return curryN(2, 𝑓props, func_get_args());
 }
 
 function 𝑓props(array $props, array $object): array

@@ -13,16 +13,16 @@ const 𝑓merge = '\\phln\\object\\𝑓merge';
  *
  * @phlnSignature {k: v} -> {k: v} -> {k: v}
  * @phlnCategory object
- * @param string|array $left
- * @param string|array $right
+ * @param array $left
+ * @param array $right
  * @return \Closure|array
  * @example
  *      $toDefaults = \phln\fn\partial(\phln\object\merge, [\phln\fn\__, ['x' => 0]);
  *      $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
  */
-function merge($left = null, $right = null)
+function merge(array $left = [], array $right = [])
 {
-    return curryN(2, 𝑓merge, [$left, $right]);
+    return curryN(2, 𝑓merge, func_get_args());
 }
 
 function 𝑓merge(array $left, array $right): array

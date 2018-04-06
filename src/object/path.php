@@ -16,15 +16,15 @@ const 𝑓path = '\\phln\\object\\𝑓path';
  * @phlnSignature String -> {k: v} -> v|Null
  * @phlnCategory object
  * @param string $path
- * @param string|array $object
+ * @param array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
  *      \phln\object\path('a.b.c', ['a' => ['b' => 'foo']]); // null
  */
-function path($path = null, $object = null)
+function path(string $path = '', array $object = [])
 {
-    return curryN(2, 𝑓path, [$path, $object]);
+    return curryN(2, 𝑓path, func_get_args());
 }
 
 function 𝑓path(string $path, array $object)

@@ -13,15 +13,15 @@ const 𝑓omit = '\\phln\\object\\𝑓omit';
  *
  * @phlnSignature [String] -> {String: *} -> {String: *}
  * @phlnCategory object
- * @param string $omitKeys
- * @param string $object
+ * @param array $omitKeys
+ * @param array $object
  * @return \Closure|mixed
  * @example
  *      \phln\object\omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
  */
-function omit($omitKeys = null, $object = null)
+function omit(array $omitKeys = [], array $object = [])
 {
-    return curryN(2, 𝑓omit, [$omitKeys, $object]);
+    return curryN(2, 𝑓omit, func_get_args());
 }
 
 function 𝑓omit(array $omitKeys, array $object): array

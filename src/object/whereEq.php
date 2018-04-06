@@ -15,16 +15,16 @@ const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
  *
  * @phlnSignature {String: *} -> {String: *} -> Boolean
  * @phlnCategory object
- * @param string $predicates
- * @param string $object
+ * @param array $predicates
+ * @param array $object
  * @return \Closure|bool
  * @example
  *      $verifyJon = \phln\object\whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
  *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
  */
-function whereEq($predicates = null, $object = null)
+function whereEq(array $predicates = [], array $object = [])
 {
-    return curryN(2, 𝑓whereEq, [$predicates, $object]);
+    return curryN(2, 𝑓whereEq, func_get_args());
 }
 
 function 𝑓whereEq(array $predicates, array $object): bool

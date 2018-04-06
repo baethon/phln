@@ -13,13 +13,13 @@ const 𝑓prop = '\\phln\\object\\𝑓prop';
  *
  * @phlnSignature k -> {k: v} -> v
  * @phlnCategory object
- * @param string $key
- * @param string|array $array
+ * @param string|integer $key
+ * @param array $array
  * @return \Closure|mixed
  */
-function prop($key = null, $array = null)
+function prop($key = '', array $array = [])
 {
-    return curryN(2, 𝑓prop, [$key, $array]);
+    return curryN(2, 𝑓prop, func_get_args());
 }
 
 function 𝑓prop($key, array $array)
