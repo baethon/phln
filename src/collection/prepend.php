@@ -17,7 +17,7 @@ const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
  * @phlnSignature a -> [a] -> [a]
  * @phlnSignature String -> String -> String
  * @phlnCategory collection
- * @param string $value
+ * @param mixed $value
  * @param string|array $collection
  * @return \Closure|array
  * @example
@@ -27,7 +27,7 @@ const 𝑓prepend = '\\phln\\collection\\𝑓prepend';
  */
 function prepend($value = null, $collection = null)
 {
-    return curryN(2, 𝑓prepend, [$value, $collection]);
+    return curryN(2, 𝑓prepend, func_get_args());
 }
 
 function 𝑓prepend($value, $collection)

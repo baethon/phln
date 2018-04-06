@@ -21,16 +21,16 @@ const 𝑓chunk = '\\phln\\collection\\𝑓chunk';
  * @phlnSignature Number -> [a] -> [[a]]
  * @phlnSignature Number -> String -> [String]
  * @phlnCategory collection
- * @param string|integer $size
- * @param string|array $collection
+ * @param integer $size
+ * @param array|string $collection
  * @return \Closure|array
  * @example
  *      \phln\collection\chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
  *      \phln\collection\chunk(2, 'hello'); // ['he', 'll', 'o']
  */
-function chunk($size = null, $collection = null)
+function chunk(int $size = 0, $collection = null)
 {
-    return curryN(2, 𝑓chunk, [$size, $collection]);
+    return curryN(2, 𝑓chunk, func_get_args());
 }
 
 function 𝑓chunk(int $size, $collection)

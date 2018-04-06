@@ -12,11 +12,11 @@ const map = '\\phln\\collection\\map';
  *
  * @phlnSignature (a -> b) -> [a] -> [b]
  * @phlnCategory collection
- * @param string|callable $fn
- * @param string|array $list
+ * @param callable $fn
+ * @param array $list
  * @return \Closure|array
  */
-function map($fn = null, $list = null)
+function map(callable $fn = null, array $list = [])
 {
-    return curryN(2, '\\array_map', [$fn, $list]);
+    return curryN(2, '\\array_map', func_get_args());
 }

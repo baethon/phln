@@ -31,7 +31,7 @@ const 𝑓concat = '\\phln\\collection\\𝑓concat';
  */
 function concat($a = null, $b = null)
 {
-    return curryN(2, 𝑓concat, [$a, $b]);
+    return curryN(2, 𝑓concat, func_get_args());
 }
 
 function 𝑓concat($a, $b)

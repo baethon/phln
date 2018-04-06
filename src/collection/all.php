@@ -13,16 +13,16 @@ const 𝑓all = '\\phln\\collection\\𝑓all';
  *
  * @phlnSignature (a -> Boolean) -> [a] -> Boolean
  * @phlnCategory collection
- * @param string $predicate
- * @param string $list
+ * @param callable $predicate
+ * @param array $list
  * @return \Closure|bool
  * @example
  *      $onlyTwos = \phln\collection\all(\phln\relation\equals(2));
  *      $onlyTwos([1, 2, 2]); // false
  */
-function all($predicate = null, $list = null)
+function all(callable $predicate = null, array $list = [])
 {
-    return curryN(2, 𝑓all, [$predicate, $list]);
+    return curryN(2, 𝑓all, func_get_args());
 }
 
 function 𝑓all(callable $predicate, array $list): bool

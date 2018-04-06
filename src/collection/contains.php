@@ -24,7 +24,7 @@ const 𝑓contains = '\\phln\\collection\\𝑓contains';
  * @phlnSignature String -> String -> Boolean
  * @phlnCategory collection
  * @param mixed $value
- * @param string|array $collection
+ * @param array|string $collection
  * @return \Closure|bool
  * @example
  *      \phln\collection\contains(1, [1, 2, 3]); // true
@@ -32,7 +32,7 @@ const 𝑓contains = '\\phln\\collection\\𝑓contains';
  */
 function contains($value = null, $collection = null)
 {
-    return curryN(2, 𝑓contains, [$value, $collection]);
+    return curryN(2, 𝑓contains, func_get_args());
 }
 
 function 𝑓contains($value, $collection): bool

@@ -21,7 +21,7 @@ const 𝑓append = '\\phln\\collection\\𝑓append';
  * @phlnSignature String -> String -> String
  * @phlnCategory collection
  * @param mixed $value
- * @param string|array $collection
+ * @param array|string $collection
  * @return \Closure|string|array
  * @example
  *      \phln\collection\append(3, [1, 2]); // [1, 2, 3]
@@ -30,7 +30,7 @@ const 𝑓append = '\\phln\\collection\\𝑓append';
  */
 function append($value = null, $collection = null)
 {
-    return curryN(2, 𝑓append, [$value, $collection]);
+    return curryN(2, 𝑓append, func_get_args());
 }
 
 function 𝑓append($value, $collection)
