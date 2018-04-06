@@ -18,14 +18,14 @@ const 𝑓pathEq = '\\phln\\relation\\𝑓pathEq';
  * @phlnCategory relation
  * @param string $path
  * @param mixed $value
- * @param string|array $object
+ * @param array $object
  * @return \Closure|bool
  * @example
  *      \phln\relation\pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
  */
-function pathEq($path = null, $value = null, $object = null)
+function pathEq(string $path = '', $value = null, array $object = [])
 {
-    return curryN(3, 𝑓pathEq, [$path, $value, $object]);
+    return curryN(3, 𝑓pathEq, func_get_args());
 }
 
 function 𝑓pathEq(string $path, $value, array $object): bool

@@ -15,18 +15,18 @@ const 𝑓intersection = '\\phln\\relation\\𝑓intersection';
  *
  * @phlnSignature [*] -> [*] -> [*]
  * @phlnCategory relation
- * @param string $a
- * @param string $b
+ * @param array $left
+ * @param array $right
  * @return \Closure|mixed
  * @example
  *      \phln\relation\intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
  */
-function intersection($a = null, $b = null)
+function intersection(array $left = [], array $right = [])
 {
-    return curryN(2, 𝑓intersection, [$a, $b]);
+    return curryN(2, 𝑓intersection, func_get_args());
 }
 
-function 𝑓intersection(array $a, array $b): array
+function 𝑓intersection(array $left, array $right): array
 {
-    return compose([values, '\\array_intersect'])($a, $b);
+    return compose([values, '\\array_intersect'])($left, $right);
 }

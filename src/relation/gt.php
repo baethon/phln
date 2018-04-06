@@ -21,7 +21,7 @@ const 𝑓gt = '\\phln\\relation\\𝑓gt';
  */
 function gt($a = null, $b = null)
 {
-    return curryN(2, 𝑓gt, [$a, $b]);
+    return curryN(2, 𝑓gt, func_get_args());
 }
 
 function 𝑓gt($a, $b): bool

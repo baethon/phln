@@ -17,18 +17,18 @@ const 𝑓propEq = '\\phln\\relation\\𝑓propEq';
  * @phlnSignature k -> a -> {k: a} -> Boolean
  * @phlnCategory relation
  * @param string $prop
- * @param string $value
- * @param string $object
+ * @param mixed $value
+ * @param array $object
  * @return \Closure|mixed
  * @example
  *      \phln\relation\propEq('name', 'Jon', ['name' => 'Jon']); // true
  */
-function propEq($prop = null, $value = null, $object = null)
+function propEq(string $prop = '', $value = null, array $object = null)
 {
-    return curryN(3, 𝑓propEq, [$prop, $value, $object]);
+    return curryN(3, 𝑓propEq, func_get_args());
 }
 
-function 𝑓propEq($prop, $value, array $object): bool
+function 𝑓propEq(string $prop, $value, array $object): bool
 {
     $f = pipe([
         prop($prop),

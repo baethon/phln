@@ -23,7 +23,7 @@ const 𝑓gte = '\\phln\\relation\\𝑓gte';
  */
 function gte($a = null, $b = null)
 {
-    return curryN(2, 𝑓gte, [$a, $b]);
+    return curryN(2, 𝑓gte, func_get_args());
 }
 
 function 𝑓gte($a, $b): bool

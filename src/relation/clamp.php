@@ -26,7 +26,7 @@ const 𝑓clamp = '\\phln\\relation\\𝑓clamp';
  */
 function clamp($min = null, $max = null, $value = null)
 {
-    return curryN(3, 𝑓clamp, [$min, $max, $value]);
+    return curryN(3, 𝑓clamp, func_get_args());
 }
 
 function 𝑓clamp($min, $max, $value)

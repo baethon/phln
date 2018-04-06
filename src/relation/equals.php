@@ -23,7 +23,7 @@ const 𝑓equals = '\\phln\\relation\\𝑓equals';
  */
 function equals($a = null, $b = null)
 {
-    return curryN(2, 𝑓equals, [$a, $b]);
+    return curryN(2, 𝑓equals, func_get_args());
 }
 
 function 𝑓equals($a, $b): bool

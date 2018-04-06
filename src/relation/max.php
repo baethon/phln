@@ -12,11 +12,11 @@ const max = '\\phln\\relation\\max';
  *
  * @phlnSignature a -> a -> a
  * @phlnCategory relation
- * @param string $left
- * @param string $right
+ * @param mixed $left
+ * @param mixed $right
  * @return \Closure|mixed
  */
 function max($left = null, $right = null)
 {
-    return curryN(2, '\\max', [$left, $right]);
+    return curryN(2, '\\max', func_get_args());
 }

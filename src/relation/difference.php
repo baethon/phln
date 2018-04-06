@@ -15,18 +15,18 @@ const 𝑓difference = '\\phln\\relation\\𝑓difference';
  *
  * @phlnSignature [*] -> [*] -> [*]
  * @phlnCategory relation
- * @param string|array $a
- * @param string|array $b
+ * @param array $left
+ * @param array $right
  * @return \Closure|array
  * @example
  *      \phln\relation\difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
  */
-function difference($a = null, $b = null)
+function difference(array $left = null, array $right = null)
 {
-    return curryN(2, 𝑓difference, [$a, $b]);
+    return curryN(2, 𝑓difference, func_get_args());
 }
 
-function 𝑓difference(array $a, array $b): array
+function 𝑓difference(array $left, array $right): array
 {
-    return compose([values, '\\array_diff'])($a, $b);
+    return compose([values, '\\array_diff'])($left, $right);
 }
