@@ -10,13 +10,20 @@ const keys = '\\phln\\object\\keys';
  *
  * @phlnSignature {k: v} -> [k]
  * @phlnCategory object
- * @param array $object
+ * @param array|object $object
  * @return array
  * @see \array_keys()
+ * @see \get_object_vars()
  * @example
  *      \phln\object\keys(['a' => 1, 'b' => 1]); // ['a', 'b']
  */
-function keys(array $object): array
+function keys($object): array
 {
-    return array_keys($object);
+    assertObject($object);
+
+    $value = is_object($object)
+        ? get_object_vars($object)
+        : $object;
+
+    return array_keys($value);
 }
