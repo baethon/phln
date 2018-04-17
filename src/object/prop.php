@@ -14,15 +14,19 @@ const 𝑓prop = '\\phln\\object\\𝑓prop';
  * @phlnSignature k -> {k: v} -> v
  * @phlnCategory object
  * @param string|integer $key
- * @param array $array
+ * @param array|object $array
  * @return \Closure|mixed
  */
-function prop($key = '', array $array = [])
+function prop($key = '', $object = [])
 {
     return curryN(2, 𝑓prop, func_get_args());
 }
 
-function 𝑓prop($key, array $array)
+function 𝑓prop($key, $object)
 {
-    return array_key_exists($key, $array) ? $array[$key] : null;
+    assertObject($object);
+
+    return is_object($object)
+        ? ($object->{$key} ?? null)
+        : ($object[$key] ?? null);
 }
