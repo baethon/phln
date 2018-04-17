@@ -12,6 +12,7 @@ namespace phln\object;
  * @param mixed $value
  * @return void
  * @throws \Exception
+ * @internal
  */
 function assertObject($value)
 {
