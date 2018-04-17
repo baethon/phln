@@ -19,18 +19,18 @@ const 𝑓eqProps = '\\phln\\object\\𝑓eqProps';
  * @phlnSignature k -> {k: v} -> {k: v} -> Boolean
  * @phlnCategory object
  * @param string $prop
- * @param array $a
- * @param array $b
+ * @param array|object $a
+ * @param array|object $b
  * @return \Closure|mixed
  * @example
  *      \phln\object\eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
  */
-function eqProps(string $prop = '', array $a = [], array $b = [])
+function eqProps(string $prop = '', $a = [], $b = [])
 {
     return curryN(3, 𝑓eqProps, func_get_args());
 }
 
-function 𝑓eqProps(string $prop, array $a, array $b): bool
+function 𝑓eqProps(string $prop, $a, $b): bool
 {
     $f = pipe([
         map(prop($prop)),
