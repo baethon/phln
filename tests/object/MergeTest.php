@@ -9,13 +9,23 @@ class MergeTest extends \Phln\Build\PhpUnit\TestCase
         return merge;
     }
 
-    /** @test */
-    public function it_merges_two_objects()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_merges_two_objects($left, $right)
     {
-        $left = ['a' => 1];
-        $right = ['b' => 2];
+        $this->assertEquals(['a' => 1, 'b' => 2], $this->callFn($left, $right));
+    }
 
-        $this->assertEquals(array_merge($left, $right), $this->callFn($left, $right));
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1], ['b' => 2]],
+            [(object) ['a' => 1], (object) ['b' => 2]],
+            [['a' => 1], (object) ['b' => 2]],
+            [(object) ['a' => 1], ['b' => 2]],
+        ];
     }
 
     /** @test */
