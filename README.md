@@ -135,3 +135,7 @@ Due to internal organization and some PHP limitations `phln` exports functions a
 ### 𝑓 function
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
+
+## Note about objects
+
+Library has set of functions related to _objects_. `Phln` object functions will accept associative arrays or... objects. Functions which should return _object_ (eg `only()`) will return array.
