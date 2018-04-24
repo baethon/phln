@@ -28,13 +28,15 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
     public function it_fails_on_non_objects($value)
     {
         $type = gettype($value);
+        $error = null;
 
         try {
             assertObject($value);
-            $this->fail("[{$type}] should not pass assertion");
         } catch (\Throwable $e) {
-            $this->markTestSkipped('assertObject throwed an exception. Everything is fine.');
+            $error = $e;
         }
+
+        $this->assertInstanceOf(\Throwable::class, $error, "[{$type}] should not pass assertion");
     }
 
     public function nonObjectsProvider()
