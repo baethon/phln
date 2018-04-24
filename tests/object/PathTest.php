@@ -9,13 +9,24 @@ class PathTest extends \Phln\Build\PhpUnit\TestCase
         return path;
     }
 
-    /** @test */
-    public function it_retuns_value_using_dot_notation()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_retuns_value_using_dot_notation($object)
     {
-        $object = ['a' => ['b' => ['c' => 'foo']]];
-
         $this->assertEquals('foo', $this->callFn('a.b.c', $object));
-        $this->assertEquals(['c' => 'foo'], $this->callFn('a.b', $object));
+        $this->assertEquals(['c' => 'foo'], (array) $this->callFn('a.b', $object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => ['b' => ['c' => 'foo']]]],
+            [(object) ['a' => ['b' => ['c' => 'foo']]]],
+            [['a' => (object) ['b' => ['c' => 'foo']]]],
+            [['a' => ['b' => (object) ['c' => 'foo']]]],
+        ];
     }
 
     /** @test */
