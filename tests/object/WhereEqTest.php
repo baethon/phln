@@ -9,16 +9,33 @@ class WhereEqTest extends \Phln\Build\PhpUnit\TestCase
         return whereEq;
     }
 
-    /** @test */
-    public function it_validates_object()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_validates_object($a, $b)
     {
         $predicates = [
             'firstName' => 'Jon',
             'lastName' => 'Snow',
         ];
 
-        $this->assertTrue($this->callFn($predicates, ['firstName' => 'Jon', 'lastName' => 'Snow']));
-        $this->assertFalse($this->callFn($predicates, ['firstName' => 'Jon', 'lastName' => 'Stark']));
+        $this->assertTrue($this->callFn($predicates, $a));
+        $this->assertFalse($this->callFn($predicates, $b));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [
+                ['firstName' => 'Jon', 'lastName' => 'Snow'],
+                ['firstName' => 'Jon', 'lastName' => 'Stark'],
+            ],
+            [
+                (object) ['firstName' => 'Jon', 'lastName' => 'Snow'],
+                (object) ['firstName' => 'Jon', 'lastName' => 'Stark'],
+            ],
+        ];
     }
 
     /** @test */
