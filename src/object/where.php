@@ -17,7 +17,7 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  * @phlnSignature {String: (* -> Boolean)} -> {String: *} -> Boolean
  * @phlnCategory object
  * @param array $predicates
- * @param array $object
+ * @param array|object $object
  * @return \Closure|bool
  * @example
  *      $verifyJon = \phln\object\where([
@@ -27,18 +27,21 @@ const 𝑓where = '\\phln\\object\\𝑓where';
  *
  *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
  */
-function where(array $predicates = [], array $object = [])
+function where(array $predicates = [], $object = [])
 {
     return curryN(2, 𝑓where, func_get_args());
 }
 
-function 𝑓where(array $predicates, array $object): bool
+function 𝑓where(array $predicates, $object): bool
 {
+    assertObject($object);
+
     $keys = keys($predicates);
 
     return all(
         function ($key) use ($keys, $object, $predicates) {
-            return $predicates[$key]($object[$key]);
+            $value = prop($key, $object);
+            return $predicates[$key]($value);
         },
         $keys
     );
