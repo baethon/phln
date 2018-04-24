@@ -9,11 +9,21 @@ class PropsTest extends \Phln\Build\PhpUnit\TestCase
         return props;
     }
 
-    /** @test */
-    public function it_returns_defined_props()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_returns_defined_props($object)
     {
-        $object = ['a' => 1, 'b' => 2, 'c' => 3];
         $this->assertEquals([2, 3, 1], $this->callFn(['b', 'c', 'a'], $object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1, 'b' => 2, 'c' => 3]],
+            [(object) ['a' => 1, 'b' => 2, 'c' => 3]],
+        ];
     }
 
     /** @test */

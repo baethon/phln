@@ -18,19 +18,21 @@ const 𝑓props = '\\phln\\object\\𝑓props';
  * @phlnSignature [k] -> {k: v} -> [v]
  * @phlnCategory object
  * @param array $props
- * @param array $object
+ * @param array|object $object
  * @return \Closure|array
  * @example
  *      $fullName = \phln\fn\compose(\phln\string\join(' '), \phln\object\props(['firstName', 'lastName']));
  *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
  */
-function props(array $props = [], array $object = [])
+function props(array $props = [], $object = [])
 {
     return curryN(2, 𝑓props, func_get_args());
 }
 
-function 𝑓props(array $props, array $object): array
+function 𝑓props(array $props, $object): array
 {
+    assertObject($object);
+
     $getProp = partial(prop, [__, $object]);
     return reduce(
         function ($carry, $prop) use ($getProp) {
