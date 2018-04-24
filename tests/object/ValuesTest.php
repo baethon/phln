@@ -9,10 +9,21 @@ class ValuesTest extends \Phln\Build\PhpUnit\TestCase
         return values;
     }
 
-    /** @test */
-    public function it_returns_values()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_returns_values($object)
     {
-        $this->assertEquals([1, 2, 3], $this->callFn(['a' => 1, 'b' => 2, 'c' => 3]));
+        $this->assertEquals([1, 2, 3], $this->callFn($object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1, 'b' => 2, 'c' => 3]],
+            [(object) ['a' => 1, 'b' => 2, 'c' => 3]],
+        ];
     }
 
     /** @test */
