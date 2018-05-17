@@ -10,11 +10,13 @@ const values = '\\phln\\object\\values';
  *
  * @phlnSignature {k: v} -> [v]
  * @phlnCategory object
- * @param array $object
+ * @param array|object $object
  * @return array
  */
-function values(array $object): array
+function values($object): array
 {
-    return array_values($object);
+    assertObject($object);
+
+    return array_values((array) $object);
 }
 

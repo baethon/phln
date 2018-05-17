@@ -9,12 +9,22 @@ class EqPropsTest extends \Phln\Build\PhpUnit\TestCase
         return eqProps;
     }
 
-    /** @test */
-    public function it_checks_if_props_are_equal()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_checks_if_props_are_equal($a)
     {
-        $a = ['a' => 1];
         $this->assertTrue($this->callFn('a', $a, ['a' => 1]));
         $this->assertFalse($this->callFn('a', $a, ['a' => 2]));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1]],
+            [(object) ['a' => 1]],
+        ];
     }
 
     /** @test */

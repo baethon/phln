@@ -9,10 +9,21 @@ class KeysTest extends \Phln\Build\PhpUnit\TestCase
         return keys;
     }
 
-    /** @test */
-    public function it_returns_keys_from_array()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_returns_keys_from_array($value)
     {
-        $this->assertEquals(['a', 'b'], $this->callFn(['a' => 1, 'b' => 1]));
+        $this->assertEquals(['a', 'b'], $this->callFn($value));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1, 'b' => 1]],
+            [(object) ['a' => 1, 'b' => 1]],
+        ];
     }
 
     /** @test */

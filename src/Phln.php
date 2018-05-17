@@ -1322,13 +1322,13 @@ class Phln
      * @phlnSignature k -> {k: v} -> {k: v} -> Boolean
      * @phlnCategory object
      * @param string $prop
-     * @param array $a
-     * @param array $b
+     * @param array|object $a
+     * @param array|object $b
      * @return \Closure|mixed
      * @example
      *      P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
      */
-    public static function eqProps(string $prop = '', array $a = [], array $b = [])
+    public static function eqProps(string $prop = '', $a = [], $b = [])
     {
         return \phln\object\eqProps(...func_get_args());
     }
@@ -1338,13 +1338,14 @@ class Phln
      *
      * @phlnSignature {k: v} -> [k]
      * @phlnCategory object
-     * @param array $object
+     * @param array|object $object
      * @return array
      * @see \array_keys()
+     * @see \get_object_vars()
      * @example
      *      P::keys(['a' => 1, 'b' => 1]); // ['a', 'b']
      */
-    public static function keys(array $object): array
+    public static function keys($object): array
     {
         return \phln\object\keys(...func_get_args());
     }
@@ -1354,14 +1355,14 @@ class Phln
      *
      * @phlnSignature {k: v} -> {k: v} -> {k: v}
      * @phlnCategory object
-     * @param array $left
-     * @param array $right
+     * @param array|object $left
+     * @param array|object $right
      * @return \Closure|array
      * @example
      *      $toDefaults = P::partial(P::merge, [P::__, ['x' => 0]);
      *      $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
      */
-    public static function merge(array $left = [], array $right = [])
+    public static function merge($left = [], $right = [])
     {
         return \phln\object\merge(...func_get_args());
     }
@@ -1372,12 +1373,12 @@ class Phln
      * @phlnSignature [String] -> {String: *} -> {String: *}
      * @phlnCategory object
      * @param array $omitKeys
-     * @param array $object
-     * @return \Closure|mixed
+     * @param array|object $object
+     * @return \Closure|array
      * @example
      *      P::omit(['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3]); // ['b' => 2]
      */
-    public static function omit(array $omitKeys = [], array $object = [])
+    public static function omit(array $omitKeys = [], $object = [])
     {
         return \phln\object\omit(...func_get_args());
     }
@@ -1388,13 +1389,13 @@ class Phln
      * @phlnSignature String -> {k: v} -> v|Null
      * @phlnCategory object
      * @param string $path
-     * @param array $object
+     * @param array|object $object
      * @return \Closure|mixed
      * @example
      *      P::path('a.b', ['a' => ['b' => 'foo']]); // 'foo'
      *      P::path('a.b.c', ['a' => ['b' => 'foo']]); // null
      */
-    public static function path(string $path = '', array $object = [])
+    public static function path(string $path = '', $object = [])
     {
         return \phln\object\path(...func_get_args());
     }
@@ -1425,12 +1426,12 @@ class Phln
      * @phlnSignature [String] -> {String: *} -> {String: *}
      * @phlnCategory object
      * @param array $useKeys
-     * @param array $object
+     * @param array|object $object
      * @return \Closure|array
      * @example
      *      P::pick(['a'], ['a' => 1, 'b' => 2]); // ['a' => 1]
      */
-    public static function pick(array $useKeys = [], array $object = [])
+    public static function pick(array $useKeys = [], $object = [])
     {
         return \phln\object\pick(...func_get_args());
     }
@@ -1441,10 +1442,10 @@ class Phln
      * @phlnSignature k -> {k: v} -> v
      * @phlnCategory object
      * @param string|integer $key
-     * @param array $array
+     * @param array|object $array
      * @return \Closure|mixed
      */
-    public static function prop($key = '', array $array = [])
+    public static function prop($key = '', $object = [])
     {
         return \phln\object\prop(...func_get_args());
     }
@@ -1455,13 +1456,13 @@ class Phln
      * @phlnSignature [k] -> {k: v} -> [v]
      * @phlnCategory object
      * @param array $props
-     * @param array $object
+     * @param array|object $object
      * @return \Closure|array
      * @example
      *      $fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
      *      $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
      */
-    public static function props(array $props = [], array $object = [])
+    public static function props(array $props = [], $object = [])
     {
         return \phln\object\props(...func_get_args());
     }
@@ -1471,10 +1472,10 @@ class Phln
      *
      * @phlnSignature {k: v} -> [v]
      * @phlnCategory object
-     * @param array $object
+     * @param array|object $object
      * @return array
      */
-    public static function values(array $object): array
+    public static function values($object): array
     {
         return \phln\object\values(...func_get_args());
     }
@@ -1487,7 +1488,7 @@ class Phln
      * @phlnSignature {String: (* -> Boolean)} -> {String: *} -> Boolean
      * @phlnCategory object
      * @param array $predicates
-     * @param array $object
+     * @param array|object $object
      * @return \Closure|bool
      * @example
      *      $verifyJon = P::where([
@@ -1497,7 +1498,7 @@ class Phln
      *
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow', 'house' => 'Stark']); // true
      */
-    public static function where(array $predicates = [], array $object = [])
+    public static function where(array $predicates = [], $object = [])
     {
         return \phln\object\where(...func_get_args());
     }
@@ -1508,13 +1509,13 @@ class Phln
      * @phlnSignature {String: *} -> {String: *} -> Boolean
      * @phlnCategory object
      * @param array $predicates
-     * @param array $object
+     * @param array|object $object
      * @return \Closure|bool
      * @example
      *      $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
      *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
      */
-    public static function whereEq(array $predicates = [], array $object = [])
+    public static function whereEq(array $predicates = [], $object = [])
     {
         return \phln\object\whereEq(...func_get_args());
     }

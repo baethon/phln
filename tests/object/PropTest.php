@@ -15,11 +15,22 @@ class PropTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals(1, $this->callFn(1, [0, 1]));
     }
 
-    /** @test */
-    public function it_returns_value_by_key()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_returns_value_by_key($value)
     {
-        $this->assertEquals(1, $this->callFn('a', ['a' => 1]));
-        $this->assertNull($this->callFn('b', ['a' => 1]));
+        $this->assertEquals(1, $this->callFn('a', $value));
+        $this->assertNull($this->callFn('b', $value));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1]],
+            [(object) ['a' => 1]],
+        ];
     }
 
     /** @test */

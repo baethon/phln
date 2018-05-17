@@ -9,11 +9,21 @@ class OmitTest extends \Phln\Build\PhpUnit\TestCase
         return omit;
     }
 
-    /** @test */
-    public function it_omits_given_keys()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_omits_given_keys($object)
     {
-        $object = ['a' => 1, 'b' => 2, 'c' => 3];
         $this->assertEquals(['b' => 2], $this->callFn(['a', 'c'], $object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1, 'b' => 2, 'c' => 3]],
+            [(object) ['a' => 1, 'b' => 2, 'c' => 3]],
+        ];
     }
 
     /** @test */

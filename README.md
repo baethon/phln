@@ -135,3 +135,13 @@ Due to internal organization and some PHP limitations `phln` exports functions a
 ### 𝑓 function
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
+
+## Note about objects
+
+The library takes terminology from Ramda. In most cases, it's perfectly fine, until one gets to the concept of _object_.
+
+Ramda treats _objects_ as dictionaries. In JavaScript, there's only one type which can act as a dictionary. It's ... `object`.
+
+In PHP things get complicated. It's possible to use arrays and objects as dictionaries. This way `Phln` has to treat both of those types as an _object_.
+
+For compatibility reason, all functions which return _object_ will return `array`.

@@ -13,4 +13,4 @@ It's the *real* definition of main function. It's not curried and holds proper t
 Variable holding array of values. Also may refer to a string (array of chars). This doesn't apply to hash arrays.
 
 ## object
-Refers to hash array.
+Object or associative array.

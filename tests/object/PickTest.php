@@ -9,10 +9,21 @@ class PickTest extends \Phln\Build\PhpUnit\TestCase
         return pick;
     }
 
-    /** @test */
-    public function it_picks_given_keys()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_picks_given_keys($object)
     {
-        $this->assertEquals(['b' => 2], $this->callFn(['b'], ['a' => 1, 'b' => 2, 'c' => 3]));
+        $this->assertEquals(['b' => 2], $this->callFn(['b'], $object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['a' => 1, 'b' => 2, 'c' => 3]],
+            [(object) ['a' => 1, 'b' => 2, 'c' => 3]],
+        ];
     }
 
     /** @test */

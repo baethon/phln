@@ -129,6 +129,10 @@ class CreateBundleCommand extends Command
             $this->filters['phln_all'],
             $this->filters['phln_noncurried'],
             map($getName),
+            reject(compose([
+                match('/@internal/'),
+                prop('doc'),
+            ]))
         ]);
 
         return $f();

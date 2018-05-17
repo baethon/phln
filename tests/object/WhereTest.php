@@ -9,17 +9,36 @@ class WhereTest extends \Phln\Build\PhpUnit\TestCase
         return where;
     }
 
-    /** @test */
-    public function it_validates_if_object_passes_predicates()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_validates_if_object_passes_predicates($a, $b, $c)
     {
         $predicates = [
             'a' => \phln\relation\equals('foo'),
             'b' => \phln\collection\contains('foo'),
         ];
 
-        $this->assertTrue($this->callFn($predicates, ['a' => 'foo', 'b' => ['foo']]));
-        $this->assertTrue($this->callFn($predicates, ['a' => 'foo', 'b' => ['foo'], 'c' => 2]));
-        $this->assertFalse($this->callFn($predicates, ['a' => 'bar', 'b' => ['foo'], 'c' => 2]));
+        $this->assertTrue($this->callFn($predicates, $a));
+        $this->assertTrue($this->callFn($predicates, $b));
+        $this->assertFalse($this->callFn($predicates, $c));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [
+                ['a' => 'foo', 'b' => ['foo']],
+                ['a' => 'foo', 'b' => ['foo'], 'c' => 2],
+                ['a' => 'bar', 'b' => ['foo'], 'c' => 2]
+            ],
+            [
+                (object) ['a' => 'foo', 'b' => ['foo']],
+                (object) ['a' => 'foo', 'b' => ['foo'], 'c' => 2],
+                (object) ['a' => 'bar', 'b' => ['foo'], 'c' => 2]
+            ],
+        ];
     }
 
     /** @test */

@@ -14,17 +14,18 @@ const 𝑓pick = '\\phln\\object\\𝑓pick';
  * @phlnSignature [String] -> {String: *} -> {String: *}
  * @phlnCategory object
  * @param array $useKeys
- * @param array $object
+ * @param array|object $object
  * @return \Closure|array
  * @example
  *      \phln\object\pick(['a'], ['a' => 1, 'b' => 2]); // ['a' => 1]
  */
-function pick(array $useKeys = [], array $object = [])
+function pick(array $useKeys = [], $object = [])
 {
     return curryN(2, 𝑓pick, func_get_args());
 }
 
-function 𝑓pick(array $useKeys, array $object): array
+function 𝑓pick(array $useKeys, $object): array
 {
-    return array_intersect_key($object, array_combine($useKeys, $useKeys));
+    assertObject($object);
+    return array_intersect_key((array) $object, array_combine($useKeys, $useKeys));
 }
