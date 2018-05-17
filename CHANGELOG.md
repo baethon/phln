@@ -8,8 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- *BREAKING CHANGE* removed `nil` 
 - updated PHPUnit to `^6.5`
 - added PHP 7.2 to Travis env
+- support `object` type in functions from `object` namespace (2db4d73aa3ed2389c14c61271463e358c93cd594)
+
+### Removed
+
+- **BREAKING CHANGE** `nil` references (07d7d82d93e1654bd32c7ab0d0dc8523e0b8e5a2)
 
 ## [1.1.0] - 2017-07-10
 
