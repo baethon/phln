@@ -12,9 +12,9 @@ This structure is maintened only for *𝑓 function* with arity > 1.
 For example, definition of `sum()` could look like this:
 
 ```php
-function sum($a = nil, $b = nil)
+function sum(int $a = null, int $b = null)
 {
-    return curryN(2, 𝑓sum, [$a, $b]);
+    return curryN(2, 𝑓sum, func_get_args());
 }
 
 function 𝑓sum(int $a, int $b): int
@@ -33,17 +33,7 @@ const sum = '\\phln\\math\\sum';
 const 𝑓sum = '\\phln\\math\\𝑓sum';
 ```
 
-##  Word about `curry` and `nil`
-
-The purpose of `curry()` is to collect all required arguments for *𝑓 function*. It will return a wrapper as long as all arguments will be defined. If a wrapper receives less then required arguments it will return another wrapper until all arguments are defined. When this happens result of wrapped function (with applied arguments) will be returned.
-
-Main function defines arguments of *𝑓 function* with default value of `nil`. Since PHP has no `undefined` type it was required to define `nil` const. It is an indicator for `curry()` that a value was not defined.
-
-It could be resolved in a different way. For example wrapper could pass arguments retrieved by `func_get_args()`.  
-This can lead to conlcusion that parameters definition in main function are not required.  
-I'm preffer explicit approach, meaning that every function should have defined list of parameters (I don't like to rely on *magic* functions when it's not required).
-
-# Adding new function - build pipeline 
+# Adding new function - build pipeline
 
 ## Creating new function
 
@@ -53,12 +43,12 @@ First step is to create a new function. It can be done using `create:fn` command
 ./bin/console.php create:fn namespace fnName
 ```
 
-This command will generate from template function with test case.  
+This command will generate from template function with test case.
 Name of the function has to be unique in scope of all `phln` functions.
 
 ## Generating static wrapper
 
-When function is done it should be added to `phln\Phln` class.  
+When function is done it should be added to `phln\Phln` class.
 This class is result of `create:bundle` command so I suggest to use it to add newly created function.
 
 ```php
@@ -67,7 +57,7 @@ This class is result of `create:bundle` command so I suggest to use it to add ne
 
 ## Generating docs
 
-Some parts of docs are compiled from PHPDocs of functions defined in `phln\Phln` class.  
+Some parts of docs are compiled from PHPDocs of functions defined in `phln\Phln` class.
 To compile new version of docs (once the class is created) use `create:docs` command.
 
 ```php
@@ -105,7 +95,7 @@ Due to some restrictions in PHPUnit `TestBundleListener` will generate, slightly
 
 Every main function should have PHPDoc. Later it will be used to generate package documentation files.
 
-It should contain summary (title), `@phlnSignature` and `@phlnCategory` tags.  
+It should contain summary (title), `@phlnSignature` and `@phlnCategory` tags.
 Description and `@example` tag are optional, yet I suggest strongly to provide `@example`
 
 `@phlnSignature` is [Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system) definition
