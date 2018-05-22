@@ -1,5 +1,7 @@
 #!/bin/sh
 
+pip install --user -r ./pip_requirements.txt
+
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
