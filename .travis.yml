@@ -12,6 +12,11 @@ php:
 
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - ca-certificates
+
 cache:
   directories:
     - $HOME/.composer/cache
