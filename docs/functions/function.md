@@ -1,21 +1,19 @@
-# function
-
 ## F
-`* -> Boolean`  
+`* -> Boolean`
 
 A function that always returns `false`. Any passed in parameters are ignored.
 
 
 
 ## T
-`* -> Boolean`  
+`* -> Boolean`
 
 A function that always returns `true`. Any passed in parameters are ignored.
 
 
 
 ## always
-`a -> (* -> a)`  
+`a -> (* -> a)`
 
 Returns a function that always returns the given value.
 
@@ -27,7 +25,7 @@ $foo(); // 'foo'
 ```
 
 ## apply
-`(*... -> a) -> [*] -> a`  
+`(*... -> a) -> [*] -> a`
 
 Applies function `fn` to the argument list. This is useful for creating a fixed-arity function from a variadic function.
 
@@ -38,7 +36,7 @@ P::apply(P::sum, [1, 2]); // 3
 ```
 
 ## arity
-`(*... -> *) -> Number`  
+`(*... -> *) -> Number`
 
 Takes a function and returns its arity.
 
@@ -49,7 +47,7 @@ P::arity('var_dump'); // 1
 ```
 
 ## compose
-`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`  
+`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
 
 Performs left-to-right function composition.
 
@@ -58,7 +56,7 @@ The leftmost function may have any arity; the remaining functions must be unary.
 **Note**: The result of pipe is not automatically curried.
 
 ## curry
-`(* → a) → (* → a)`  
+`(* → a) → (* → a)`
 
 Returns a curried equivalent of the provided function.
 
@@ -70,7 +68,7 @@ If `f` is a ternary function and `g` is `P::curry(f)`, the following are equival
      * g(1, 2, 3)
 
 ## curryN
-`Number -> (* → a) → (* → a)`  
+`Number -> (* → a) → (* → a)`
 
 Returns a curried equivalent of the provided function, with the specified arity.
 
@@ -82,7 +80,7 @@ If `f` is a ternary function and `g` is `P::curryN(3, f)`, the following are equ
      * g(1, 2, 3)
 
 ## identity
-`a -> a`  
+`a -> a`
 
 A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.
 
@@ -93,7 +91,7 @@ P::identity(1) === 1; // 'true'
 ```
 
 ## negate
-`(*... -> *) -> (*... -> Boolean)`  
+`(*... -> *) -> (*... -> Boolean)`
 
 Creates a function that negates the result of the predicate.
 
@@ -108,7 +106,7 @@ P::filter(P::negate($isEven), [1, 2, 3, 4, 5, 6]); // [1, 3, 5]
 ```
 
 ## of
-`a -> [a]`  
+`a -> [a]`
 
 Returns a singleton array containing the value provided.
 
@@ -120,7 +118,7 @@ P::of('a'); // ['a']
 ```
 
 ## once
-`(a... -> b) -> (a... -> b)`  
+`(a... -> b) -> (a... -> b)`
 
 Accepts a function `fn` and returns a function that guards invocation of `fn` such that `fn` can only ever be called once, no matter how many times the returned function is invoked. The first value calculated is returned in subsequent invocations.
 
@@ -134,7 +132,7 @@ $f(1, 100); // 4
 ```
 
 ## partial
-`((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)`  
+`((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)`
 
 Takes a function `f` and a list of arguments, and returns a function `g`.
 
@@ -148,7 +146,7 @@ $subtractFive(10); // 5
 ```
 
 ## pipe
-`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`  
+`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
 
 Performs left-to-right function composition.
 
@@ -157,7 +155,7 @@ The leftmost function may have any arity; the remaining functions must be unary.
 **Note**: The result of pipe is not automatically curried.
 
 ## swap
-`(a -> b -> c -> ... -> z) -> (b -> a -> c -> ... -> z)`  
+`(a -> b -> c -> ... -> z) -> (b -> a -> c -> ... -> z)`
 
 Returns a new function much like the supplied one, except that the first two arguments' order is reversed.
 
@@ -171,7 +169,7 @@ P::swap($serialize)(2, 1); // 'a:1,b:2'
 ```
 
 ## tap
-`(a -> *) -> a -> a`  
+`(a -> *) -> a -> a`
 
 Runs the given function with the supplied object, then returns the object.
 
@@ -183,7 +181,7 @@ $dump('foo'); // var_dumps('foo'); returns 'foo'
 ```
 
 ## throwException
-`(String, [*]) -> (*... -> Null)`  
+`(String, [*]) -> (*... -> Null)`
 
 Returns callback which throws given exception.
 
@@ -195,7 +193,7 @@ $break(); // -> throw new \LogicException()
 ```
 
 ## unapply
-`([*...] -> a) -> (*... -> a)`  
+`([*...] -> a) -> (*... -> a)`
 
 Takes a function `fn`, which takes a single array argument, and returns a function which:
 * takes any number of positional arguments;

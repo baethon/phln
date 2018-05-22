@@ -1,7 +1,5 @@
-# logic
-
 ## allPass
-`[(*... -> Boolean) -> *... -> Boolean`  
+`[(*... -> Boolean) -> *... -> Boolean`
 
 Takes a list of predicates and returns a predicate that returns `true` for a given list of arguments if every one of the provided predicates is satisfied by those arguments.
 
@@ -15,8 +13,8 @@ $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
 ```
 
 ## both
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
-`Boolean -> Boolean -> Boolean`  
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`Boolean -> Boolean -> Boolean`
 
 Returns `true` when both of two provided values are truthy.
 
@@ -33,7 +31,7 @@ P::both(true, false); // false
 ```
 
 ## cond
-`[[(*… → Boolean),(*… → *)]] → (*… → *)`  
+`[[(*… → Boolean),(*… → *)]] → (*… → *)`
 
 Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
 
@@ -54,7 +52,7 @@ $fn(100); //=> 'water boils at 100°C'
 ```
 
 ## defaultTo
-`a -> b -> b | a`  
+`a -> b -> b | a`
 
 Returns the second argument if it is not `null`; otherwise the first argument is returned.
 
@@ -66,8 +64,8 @@ P::defaultTo(42, 'life'); // 'life'
 ```
 
 ## either
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
-`Boolean -> Boolean -> Boolean`  
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`Boolean -> Boolean -> Boolean`
 
 Returns `true` when one of two provided values is truthy.
 
@@ -86,7 +84,7 @@ P::either(true, false); // true
 ```
 
 ## ifElse
-`(*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)`  
+`(*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)`
 
 Creates a function that will process either the `onTrue` or the `onFalse` function depending upon the result of the condition predicate.
 
@@ -105,7 +103,7 @@ $fizzbuzz(1); // 1
 ```
 
 ## isEmpty
-`a -> Boolean`  
+`a -> Boolean`
 
 Returns `true` if the given value is its type's empty value; `false` otherwise.
 
@@ -122,7 +120,7 @@ P::isEmpty(true); // false
 ```
 
 ## not
-`* -> Boolean`  
+`* -> Boolean`
 
 A function that returns the `!` of its argument. It will return `true` when passed false-y value, and `false` when passed a truth-y one.
 

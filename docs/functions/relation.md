@@ -1,7 +1,5 @@
-# relation
-
 ## clamp
-`Number a => a -> a -> a -> a`  
+`Number a => a -> a -> a -> a`
 
 Restricts a number to be within a range.
 
@@ -14,7 +12,7 @@ P::clamp(-1, 1, 0); // 0
 ```
 
 ## difference
-`[*] -> [*] -> [*]`  
+`[*] -> [*] -> [*]`
 
 Finds the set (i.e. no duplicates) of all elements in the first list not contained in the second list.
 
@@ -25,7 +23,7 @@ P::difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
 ```
 
 ## equals
-`a -> b -> Boolean`  
+`a -> b -> Boolean`
 
 Returns `true` if its arguments are equivalent, `false` otherwise.
 
@@ -38,7 +36,7 @@ P::equals(1, 2); // false
 ```
 
 ## gt
-`Ord a => a -> a -> Boolean`  
+`Ord a => a -> a -> Boolean`
 
 Returns `true` if the first argument is greater than the second; `false` otherwise.
 
@@ -49,7 +47,7 @@ P::gt(2, 1); // true
 ```
 
 ## gte
-`Ord a => a -> a -> Boolean`  
+`Ord a => a -> a -> Boolean`
 
 Returns `true` if the first argument is greater than or equal to the second; `false` otherwise.
 
@@ -62,7 +60,7 @@ P::gte(2, 3); // false
 ```
 
 ## intersection
-`[*] -> [*] -> [*]`  
+`[*] -> [*] -> [*]`
 
 Combines two lists into a set composed of those elements common to both lists.
 
@@ -73,7 +71,7 @@ P::intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
 ```
 
 ## lt
-`Ord a => a -> a -> Boolean`  
+`Ord a => a -> a -> Boolean`
 
 Returns `true` if the first argument is less than the second; `false` otherwise.
 
@@ -86,7 +84,7 @@ P::lt(2, 2); // false
 ```
 
 ## lte
-`Ord a => a -> a -> Boolean`  
+`Ord a => a -> a -> Boolean`
 
 Returns `true` if the first argument is less than or equal to the second; `false` otherwise.
 
@@ -97,14 +95,14 @@ P::lte(1, 2); // true
 ```
 
 ## max
-`a -> a -> a`  
+`a -> a -> a`
 
 Returns the larger of its two arguments.
 
 
 
 ## min
-`a -> a -> a`  
+`a -> a -> a`
 
 Returns the smaller of its two arguments.
 
@@ -115,7 +113,7 @@ P::min(1, -1); // -1
 ```
 
 ## pathEq
-`String -> a -> {a} -> Boolean`  
+`String -> a -> {a} -> Boolean`
 
 Determines whether a nested path on an object has a specific value, in `equals()` terms.
 
@@ -126,7 +124,7 @@ P::pathEq('foo.bar', 1, ['foo' => ['bar' => 1]]); // true
 ```
 
 ## propEq
-`k -> a -> {k: a} -> Boolean`  
+`k -> a -> {k: a} -> Boolean`
 
 Returns `true` if the specified object property is equal, in `equals()` terms, to the given value; `false` otherwise.
 

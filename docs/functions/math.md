@@ -1,35 +1,33 @@
-# math
-
 ## add
-`Number a => a -> a -> a`  
+`Number a => a -> a -> a`
 
 Add two values
 
 
 
 ## dec
-`Int a => a -> a`  
+`Int a => a -> a`
 
 Decrement its argument
 
 
 
 ## divide
-`Number a => a -> a -> a`  
+`Number a => a -> a -> a`
 
 Divide numbers. Equivalent of `a / b`
 
 
 
 ## inc
-`Int a => a -> a`  
+`Int a => a -> a`
 
 Increment its argument
 
 
 
 ## mean
-`Number a => [a] -> a`  
+`Number a => [a] -> a`
 
 Returns the mean of the given list of numbers.
 
@@ -40,7 +38,7 @@ P::mean([2, 7, 9]) // 6
 ```
 
 ## median
-`Number a => [a] -> a`  
+`Number a => [a] -> a`
 
 Returns the median of the given list of numbers.
 
@@ -52,7 +50,7 @@ Returns the median of the given list of numbers.
 ```
 
 ## modulo
-`Number a => a -> a -> a`  
+`Number a => a -> a -> a`
 
 Divides the first parameter by the second and returns the remainder.
 
@@ -63,7 +61,7 @@ Divides the first parameter by the second and returns the remainder.
 ```
 
 ## multiply
-`Number a => a -> a -> a`  
+`Number a => a -> a -> a`
 
 Multiplies two numbers
 
@@ -75,7 +73,7 @@ $triple(7); // 21
 ```
 
 ## product
-`Number a => [a] -> a`  
+`Number a => [a] -> a`
 
 Multiplies together all the elements of a list.
 
@@ -86,7 +84,7 @@ P::product([2, 4, 6, 8, 100, 1]); // 38400
 ```
 
 ## subtract
-`Number a => a -> a -> a`  
+`Number a => a -> a -> a`
 
 Subtracts its second argument from its first argument.
 
@@ -98,7 +96,7 @@ $complementaryAngle(30); //=> 60
 ```
 
 ## sum
-`[Number] -> Number`  
+`[Number] -> Number`
 
 Adds together all the elements of a list.
 

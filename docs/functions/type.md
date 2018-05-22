@@ -1,7 +1,5 @@
-# type
-
 ## is
-`String -> a -> Boolean`  
+`String -> a -> Boolean`
 
 See if `value` is of given `type`.
 
@@ -19,7 +17,7 @@ P::is(float, 1.1); // true
 ```
 
 ## typeCond
-`[[String, (*... -> *)]] -> (*... -> *)`  
+`[[String, (*... -> *)]] -> (*... -> *)`
 
 Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
 

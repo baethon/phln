@@ -1,8 +1,6 @@
-# string
-
 ## match
-`RegExp -> String -> String|Null`  
-`RegExp -> String -> [String]`  
+`RegExp -> String -> String|Null`
+`RegExp -> String -> [String]`
 
 Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
 
@@ -14,7 +12,7 @@ P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
 ```
 
 ## regexp
-`String -> RegExp`  
+`String -> RegExp`
 
 Converts given string to RegExp object
 
@@ -25,7 +23,7 @@ P::regexp('/foo/ig'); // => new \phln\RegExp('/foo/', 'ig');
 ```
 
 ## replace
-`RegExp -> String -> String -> String`  
+`RegExp -> String -> String -> String`
 
 Replace a regex match in a string with a replacement.
 
@@ -38,8 +36,8 @@ P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
 ```
 
 ## split
-`String -> String -> [String]`  
-`RegExp -> String -> [String]`  
+`String -> String -> [String]`
+`RegExp -> String -> [String]`
 
 Splits a string into an array of strings based on the given regular expression or separator.
 

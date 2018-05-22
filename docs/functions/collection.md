@@ -1,7 +1,5 @@
-# collection
-
 ## all
-`(a -> Boolean) -> [a] -> Boolean`  
+`(a -> Boolean) -> [a] -> Boolean`
 
 Returns `true` if all elements of array match the predicate, `false` otherwise.
 
@@ -13,7 +11,7 @@ $onlyTwos([1, 2, 2]); // false
 ```
 
 ## any
-`(a -> Boolean) -> [a] -> Boolean`  
+`(a -> Boolean) -> [a] -> Boolean`
 
 Returns `true` if at least one of array elements match the predicate, `false` otherwise.
 
@@ -25,8 +23,8 @@ $hasTwos([1, 2, 3, 4]); // true
 ```
 
 ## append
-`a -> [a] -> [a]`  
-`String -> String -> String`  
+`a -> [a] -> [a]`
+`String -> String -> String`
 
 Returns a new list containing the contents of the given list or string, followed by the given element.
 
@@ -39,8 +37,8 @@ P::append('foo', 'bar'); // 'barfoo'
 ```
 
 ## chunk
-`Number -> [a] -> [[a]]`  
-`Number -> String -> [String]`  
+`Number -> [a] -> [[a]]`
+`Number -> String -> [String]`
 
 Chunks an array or string into arrays with `size` elements.
 
@@ -52,15 +50,15 @@ P::chunk(2, 'hello'); // ['he', 'll', 'o']
 ```
 
 ## collapse
-`[[*], [*]] -> [*, *]`  
+`[[*], [*]] -> [*, *]`
 
 Flattens array elements by one level
 
 
 
 ## concat
-`[a] -> [a] -> [a]`  
-`String -> String -> String`  
+`[a] -> [a] -> [a]`
+`String -> String -> String`
 
 Returns the result of concatenating the given lists or strings.
 
@@ -72,8 +70,8 @@ P::concat('foo', 'bar'); // 'foobar'
 ```
 
 ## contains
-`a -> [a] -> Boolean`  
-`String -> String -> Boolean`  
+`a -> [a] -> Boolean`
+`String -> String -> Boolean`
 
 Returns `true` if the specified value is equal, `P::equals` terms,
 to at least one element of the given collection; `false` otherwise.
@@ -86,7 +84,7 @@ P::contains('foo', 'foobar'); // true
 ```
 
 ## filter
-`(a -> Boolean) -> [a] -> Boolean`  
+`(a -> Boolean) -> [a] -> Boolean`
 
 Filters elements of an array using a callback function
 
@@ -97,7 +95,7 @@ P::filter(equals(1), [1, 2, 3]); // [1]
 ```
 
 ## find
-`(a -> Boolean) -> [a] -> a`  
+`(a -> Boolean) -> [a] -> a`
 
 Returns the first element of the list which matches the predicate,
 or `null` if no element matches.
@@ -110,7 +108,7 @@ P::find(equals(['a' => 1]), $xs); // ['a' => 1]
 ```
 
 ## flatMap
-`(a -> b) -> [a] -> [b]`  
+`(a -> b) -> [a] -> [b]`
 
 Maps a function over list and concatenates results
 
@@ -125,8 +123,8 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 ```
 
 ## head
-`[a] -> a | Null`  
-`String -> String`  
+`[a] -> a | Null`
+`String -> String`
 
 Returns the first element of a given list or string
 
@@ -140,8 +138,8 @@ P::head('f'); // ''
 ```
 
 ## init
-`[a] -> [a]`  
-`String -> String`  
+`[a] -> [a]`
+`String -> String`
 
 Returns all but the last element of the given array or string.
 
@@ -160,7 +158,7 @@ P::init(''); // ''
 ```
 
 ## join
-`String -> [a] -> String`  
+`String -> [a] -> String`
 
 Returns a string made by inserting the separator between each element and concatenating all the elements into a single string.
 
@@ -172,8 +170,8 @@ $spacer([1, 2, 3]); // '1 2 3'
 ```
 
 ## last
-`[a] -> a`  
-`String -> String`  
+`[a] -> a`
+`String -> String`
 
 Returns the last element of the given list or string.
 
@@ -187,8 +185,8 @@ P::last('f'); // 'f'
 ```
 
 ## length
-`[a] -> Number`  
-`String -> Number`  
+`[a] -> Number`
+`String -> Number`
 
 Returns the number of elements in the array or string
 
@@ -199,21 +197,21 @@ P::length('lorem'); // 5
 ```
 
 ## map
-`(a -> b) -> [a] -> [b]`  
+`(a -> b) -> [a] -> [b]`
 
 Applies the callback to the elements of the given arrays
 
 
 
 ## mapIndexed
-`((a, i) -> b) -> [a] -> [b]`  
+`((a, i) -> b) -> [a] -> [b]`
 
 Applies the callback to the elements of the given arrays
 
 Callback will receive index of iterated value as a second argument.
 
 ## none
-`(a -> Boolean) -> [a] -> Boolean`  
+`(a -> Boolean) -> [a] -> Boolean`
 
 Returns `true` if no elements of the list match the predicate, `false` otherwise.
 
@@ -229,7 +227,7 @@ P::none($isEven, [1, 3, 5, 6]); // false
 ```
 
 ## nth
-`Number -> [a] -> a | Null`  
+`Number -> [a] -> a | Null`
 
 Returns the nth element of the given list or string.
 
@@ -241,7 +239,7 @@ P::nth(-1, [1, 2, 3]); // 3
 ```
 
 ## pluck
-`k -> [{k: v}] -> v`  
+`k -> [{k: v}] -> v`
 
 Returns a new list by plucking the same named property off all objects in the list supplied.
 
@@ -253,8 +251,8 @@ P::pluck('a', $list); // [1, 2]
 ```
 
 ## prepend
-`a -> [a] -> [a]`  
-`String -> String -> String`  
+`a -> [a] -> [a]`
+`String -> String -> String`
 
 Returns a new collection with the given element at the front, followed by the contents of the list or string.
 
@@ -267,7 +265,7 @@ P::prepend('foo', 'bar'); // [[3], 1, 2]
 ```
 
 ## range
-`Integer a => a -> a -> [a]`  
+`Integer a => a -> a -> [a]`
 
 Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
 
@@ -278,7 +276,7 @@ P::range(0, 3); // [0, 1, 2]
 ```
 
 ## reduce
-`((a, b) -> a) -> a -> [b] -> a`  
+`((a, b) -> a) -> a -> [b] -> a`
 
 Returns a single item by iterating through the list, successively calling the iterator function and passing it an accumulator value and the current value from the array, and then passing the result to the next call.
 
@@ -290,7 +288,7 @@ P::reduce(P::subtract, 0, [1, 2, 3, 4]);
 ```
 
 ## reject
-`(a -> Boolean) -> [a] -> [a]`  
+`(a -> Boolean) -> [a] -> [a]`
 
 The negation of `filter`.
 
@@ -304,8 +302,8 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 ```
 
 ## reverse
-`[a] -> [a]`  
-`String -> String`  
+`[a] -> [a]`
+`String -> String`
 
 Returns a new list or string with the elements in reverse order.
 
@@ -317,8 +315,8 @@ P::reverse('foo'); // 'oof'
 ```
 
 ## slice
-`Integer -> Integer -> [a] -> [a]`  
-`Integer -> Integer -> String -> String`  
+`Integer -> Integer -> [a] -> [a]`
+`Integer -> Integer -> String -> String`
 
 Extracts a slice of the array or string
 
@@ -330,7 +328,7 @@ $takeTwo([1, 2, 3]); // [1, 2]
 ```
 
 ## sort
-`((a, a) -> Number) -> [a] -> [a]`  
+`((a, a) -> Number) -> [a] -> [a]`
 
 Returns a copy of the list, sorted according to the comparator function, which should accept two values at a time and return a negative number if the first value is smaller, a positive number if it's larger, and zero if they are equal.
 
@@ -345,7 +343,7 @@ P::sort($diff, [3, 2, 1]); // [1, 2, 3]
 ```
 
 ## sortBy
-`(a -> b) -> [a] -> [a]`  
+`(a -> b) -> [a] -> [a]`
 
 Sorts the list according to the supplied function.
 
@@ -361,8 +359,8 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 ```
 
 ## tail
-`[a] -> [a]`  
-`String -> String`  
+`[a] -> [a]`
+`String -> String`
 
 Returns all but the first element of the given array or string
 
@@ -378,7 +376,7 @@ P::tail(''); // ''
 ```
 
 ## unique
-`[a] -> [a]`  
+`[a] -> [a]`
 
 Returns a new list containing only one copy of each element in the original list. Strict comparision is used to determine equality.
 
