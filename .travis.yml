@@ -16,3 +16,12 @@ install:
 
 script:
   - vendor/bin/phpunit
+
+before_deploy:
+  - pip install -r ./pip_requirements.txt
+
+deploy:
+  - provider: script
+    script: .travis/mkdocs.sh
+    on:
+      branch: master

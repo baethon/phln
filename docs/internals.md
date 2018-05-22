@@ -1,5 +1,3 @@
-# Phln internals
-
 ## Function file
 
 Function should be defined in it's own file. In fact this file stores definition of two functions:
@@ -33,9 +31,9 @@ const sum = '\\phln\\math\\sum';
 const 𝑓sum = '\\phln\\math\\𝑓sum';
 ```
 
-# Adding new function - build pipeline
+## Adding new function - build pipeline
 
-## Creating new function
+### Creating new function
 
 First step is to create a new function. It can be done using `create:fn` command.
 
@@ -46,7 +44,7 @@ First step is to create a new function. It can be done using `create:fn` command
 This command will generate from template function with test case.
 Name of the function has to be unique in scope of all `phln` functions.
 
-## Generating static wrapper
+### Generating static wrapper
 
 When function is done it should be added to `phln\Phln` class.
 This class is result of `create:bundle` command so I suggest to use it to add newly created function.
@@ -55,7 +53,7 @@ This class is result of `create:bundle` command so I suggest to use it to add ne
 ./bin/console.php create:bundle
 ```
 
-## Generating docs
+### Generating docs
 
 Some parts of docs are compiled from PHPDocs of functions defined in `phln\Phln` class.
 To compile new version of docs (once the class is created) use `create:docs` command.
@@ -64,11 +62,11 @@ To compile new version of docs (once the class is created) use `create:docs` com
 ./bin/console.php create:docs
 ```
 
-# Testing
+## Testing
 
 `phln` uses PHPUnit to run tests.
 
-## About `Phln\Build\PhpUnit\TestCase`
+### About `Phln\Build\PhpUnit\TestCase`
 
 `Phln\Build\PhpUnit\TestCase` allows to run test case in two different "contexts". By default it runs tests using main function. Combined with `TestBundleListener` it will be executed once again with "context" of `phln\Phln` class (test case will use appropriate method defined in `Phln`).
 
@@ -91,7 +89,7 @@ Due to some restrictions in PHPUnit `TestBundleListener` will generate, slightly
 ............................................
 ```
 
-# Structure of PHPDoc
+## Structure of PHPDoc
 
 Every main function should have PHPDoc. Later it will be used to generate package documentation files.
 
