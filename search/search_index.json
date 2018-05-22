@@ -46,7 +46,7 @@
             "title": "Prefixed functions"
         }, 
         {
-            "location": "/#function", 
+            "location": "/#f-function", 
             "text": "Those are uncurried versions of functions used internally by  phln . They contain the main logic of the function and proper typehinting.", 
             "title": "\ud835\udc53 function"
         }, 
