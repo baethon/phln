@@ -26,3 +26,4 @@ jobs:
   include:
     - stage: deploy
       script: .travis/mkdocs.sh
+      sudo: required
