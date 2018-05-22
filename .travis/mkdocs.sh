@@ -8,4 +8,7 @@ git config --global user.name "Travis CI"
 
 git remote add upstream "https://${GH_TOKEN}@github.com/baethon/phln.git"
 
+git checkout upstream/gh-pages
+git checkout -
+
 mkdocs gh-deploy -r upstream
