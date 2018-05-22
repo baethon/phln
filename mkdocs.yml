@@ -1,3 +1,4 @@
 site_name: Phln
+repo_url: https://github.com/baethon/phln/
 theme:
     name: 'material'
