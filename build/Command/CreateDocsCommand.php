@@ -24,8 +24,7 @@ class CreateDocsCommand extends Command
     private $docBlockFactory;
 
     private $paths = [
-        'functions' => __DIR__.'/../../docs/functions.md',
-        'summary' => __DIR__.'/../../docs/SUMMARY.md',
+        'functions' => __DIR__.'/../../docs/functions/',
     ];
 
     /**
@@ -60,15 +59,19 @@ class CreateDocsCommand extends Command
             $this->exportCategoryDocs($category, $methods);
         }
 
-        $this->output->writeln('Generating summary');
-        $this->exportSummary($docBlocks);
-
         $this->output->writeln('<info>Done</info>');
     }
 
     private function cleanup()
     {
-        $this->filesystem->delete($this->paths);
+        foreach ($this->paths as $path) {
+
+            if ($this->filesystem->isDirectory($path)) {
+                $this->filesystem->cleanDirectory($path);
+            } else {
+                $this->filesystem->delete($this->paths);
+            }
+        }
     }
 
     /**
@@ -134,7 +137,7 @@ class CreateDocsCommand extends Command
             ->with(compact('category', 'methods'))
             ->render();
 
-        $this->filesystem->append($this->paths['functions'], $rendered);
+        $this->filesystem->append($this->paths['functions']."/{$category}.md", $rendered);
     }
 
     public function getMethodToView(array $method): array
@@ -149,14 +152,5 @@ class CreateDocsCommand extends Command
         $description = $docBlock->getDescription();
 
         return compact('name', 'signatures', 'example', 'summary', 'description');
-    }
-
-    private function exportSummary($functions)
-    {
-        $contents = $this->view->make('docs.summary')
-            ->with(compact('functions'))
-            ->render();
-
-        $this->filesystem->put($this->paths['summary'], $contents);
     }
 }

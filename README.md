@@ -4,13 +4,13 @@ A practical functional library for PHP developers.
 
 Heavily inspired by [Ramda.js](http://ramdajs.com/), adapted for PHP needs.
 
-# Installation
+## Installation
 
 ```bash
 composer require baethon/phln
 ```
 
-# Example usage
+## Example usage
 
 `phln` defines set of functions which can be used individualy:
 
@@ -41,7 +41,7 @@ $fooBars = P::cond([
 
 Later in docs every `P::` reference will be used as a mental shortcut to `phln\Phln::`.
 
-## Currying
+### Currying
 
 By default **most** of functions defined in `phln` namespace are loosely curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.
 
@@ -55,7 +55,7 @@ $foo(1, 2); // 3
 $foo(1)(2); // 3
 ```
 
-## Partial application
+### Partial application
 
 Partial application is possible with combination of `P::partial()` and `P::__` const. Partial returns a function which accepts arguments which should "fill" gap of missing arguments for callable.
 
@@ -67,7 +67,7 @@ $mapFoos(function ($f) {
 }); // [100, 200, 300]
 ```
 
-## Function composition
+### Function composition
 
 For basic function composition `phln` provides `pipe()` and `compose()` functions.
 
@@ -83,7 +83,7 @@ $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
 ```
 
-## About function references
+### About function references
 
 Many of `phln` functions accept `callable` type. PHP does not allow to pass imported function as a callable reference. Instead it's required to pass a string reference (functions fully qualified name) as a "callback":
 
@@ -128,15 +128,15 @@ P::sum(4, 3); // 7
 ```
 
 
-## Prefixed functions
+### Prefixed functions
 
 Due to internal organization and some PHP limitations `phln` exports functions and consts with special prefixes.
 
-### 𝑓 function
+#### 𝑓 function
 
 Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
 
-## Note about objects
+### Note about objects
 
 The library takes terminology from Ramda. In most cases, it's perfectly fine, until one gets to the concept of _object_.
 
