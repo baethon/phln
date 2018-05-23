@@ -19,6 +19,7 @@ class Phln
     const filter = \phln\collection\filter;
     const find = \phln\collection\find;
     const flatMap = \phln\collection\flatMap;
+    const fromPairs = \phln\collection\fromPairs;
     const head = \phln\collection\head;
     const init = \phln\collection\init;
     const join = \phln\collection\join;
@@ -88,6 +89,7 @@ class Phln
     const pick = \phln\object\pick;
     const prop = \phln\object\prop;
     const props = \phln\object\props;
+    const toPairs = \phln\object\toPairs;
     const values = \phln\object\values;
     const where = \phln\object\where;
     const whereEq = \phln\object\whereEq;
@@ -287,6 +289,21 @@ class Phln
     public static function flatMap(callable $mapper = NULL, array $list = [])
     {
         return \phln\collection\flatMap(...func_get_args());
+    }
+
+    /**
+     * Creates a new key => value object from list of pairs.
+     *
+     * @phlnSignature [[k, v]] -> {k: v}
+     * @phlnCategory collection
+     * @param array $pairs
+     * @return array
+     * @example
+     *      P::fromPairs([['foo', 1], ['bar', 2]]); // [ 'foo' => 1, 'bar' => 2 ]
+     */
+    public static function fromPairs(array $pairs): array
+    {
+        return \phln\collection\fromPairs(...func_get_args());
     }
 
     /**
@@ -1482,6 +1499,23 @@ class Phln
     public static function props(array $props = [], $object = [])
     {
         return \phln\object\props(...func_get_args());
+    }
+
+    /**
+     * Converts an object into an array of key-value arrays.
+     *
+     * Note that order of output is not guaranteed.
+     *
+     * @phlnSignature String k => { k: v } -> [[k, v]]
+     * @phlnCategory object
+     * @param array|object $object
+     * @return array
+     * @example
+     *      P::toPairs(['foo' => 1, 'bar' => 2]); // [['foo', 1], ['bar', 2]]
+     */
+    public static function toPairs($object): array
+    {
+        return \phln\object\toPairs(...func_get_args());
     }
 
     /**
