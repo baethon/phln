@@ -32,6 +32,17 @@ $toDefaults = P::partial(P::merge, [P::__, ['x' => 0]);
 $toDefaults(['x' => 2, 'y' => 1]); // ['x' => 0, 'y' => 1]
 ```
 
+## objOf
+`String -> a -> { String: a }`
+
+Creates an object containing a single key:value pair.
+
+
+
+```php
+P::objOf('foo', 'bar'); // ['foo' => 'bar']
+```
+
 ## omit
 `[String] -> {String: *} -> {String: *}`
 

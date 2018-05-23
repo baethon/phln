@@ -81,6 +81,7 @@ class Phln
     const eqProps = \phln\object\eqProps;
     const keys = \phln\object\keys;
     const merge = \phln\object\merge;
+    const objOf = \phln\object\objOf;
     const omit = \phln\object\omit;
     const path = \phln\object\path;
     const pathOr = \phln\object\pathOr;
@@ -1365,6 +1366,22 @@ class Phln
     public static function merge($left = [], $right = [])
     {
         return \phln\object\merge(...func_get_args());
+    }
+
+    /**
+     * Creates an object containing a single key:value pair.
+     *
+     * @phlnSignature String -> a -> { String: a }
+     * @phlnCategory object
+     * @param string $key
+     * @param mixed $value
+     * @return \Closure|object
+     * @example
+     *      P::objOf('foo', 'bar'); // ['foo' => 'bar']
+     */
+    public static function objOf(string $key = NULL, $value = NULL)
+    {
+        return \phln\object\objOf(...func_get_args());
     }
 
     /**
