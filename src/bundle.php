@@ -10,6 +10,7 @@ require __DIR__.'/collection/contains.php';
 require __DIR__.'/collection/filter.php';
 require __DIR__.'/collection/find.php';
 require __DIR__.'/collection/flatMap.php';
+require __DIR__.'/collection/fromPairs.php';
 require __DIR__.'/collection/head.php';
 require __DIR__.'/collection/init.php';
 require __DIR__.'/collection/join.php';
