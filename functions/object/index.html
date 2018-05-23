@@ -418,6 +418,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#topairs" title="toPairs" class="md-nav__link">
+    toPairs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#values" title="values" class="md-nav__link">
     values
   </a>
@@ -579,6 +586,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#topairs" title="toPairs" class="md-nav__link">
+    toPairs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#values" title="values" class="md-nav__link">
     values
   </a>
@@ -681,6 +695,13 @@ P::pathOr('a.b', 'foo', ['a' =&gt; 1]); // 'foo'
 <p>Acts as multiple <code>prop</code>: array of keys in, array of values out. Preserves order.</p>
 <pre><code class="php">$fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
 $fullName(['lastName' =&gt; 'Snow', 'firstName' =&gt; 'Jon']); // 'Jon Snow'
+</code></pre>
+
+<h2 id="topairs">toPairs</h2>
+<p><code>String k =&gt; { k: v } -&gt; [[k, v]]</code></p>
+<p>Converts an object into an array of key-value arrays.</p>
+<p>Note that order of output is not guaranteed.</p>
+<pre><code class="php">P::toPairs(['foo' =&gt; 1, 'bar' =&gt; 2]); // [['foo', 1], ['bar', 2]]
 </code></pre>
 
 <h2 id="values">values</h2>
