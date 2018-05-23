@@ -110,6 +110,17 @@ $fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
 $fullName(['lastName' => 'Snow', 'firstName' => 'Jon']); // 'Jon Snow'
 ```
 
+## toPairs
+`String k => { k: v } -> [[k, v]]`
+
+Converts an object into an array of key-value arrays.
+
+Note that order of output is not guaranteed.
+
+```php
+P::toPairs(['foo' => 1, 'bar' => 2]); // [['foo', 1], ['bar', 2]]
+```
+
 ## values
 `{k: v} -> [v]`
 
