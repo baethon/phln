@@ -369,6 +369,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#objof" title="objOf" class="md-nav__link">
+    objOf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#omit" title="omit" class="md-nav__link">
     omit
   </a>
@@ -523,6 +530,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#objof" title="objOf" class="md-nav__link">
+    objOf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#omit" title="omit" class="md-nav__link">
     omit
   </a>
@@ -623,6 +637,12 @@
 <p>Create a new object with the keys of the first object merged with the keys of the second object. If a key exists in both objects, the value from the second object will be used.</p>
 <pre><code class="php">$toDefaults = P::partial(P::merge, [P::__, ['x' =&gt; 0]);
 $toDefaults(['x' =&gt; 2, 'y' =&gt; 1]); // ['x' =&gt; 0, 'y' =&gt; 1]
+</code></pre>
+
+<h2 id="objof">objOf</h2>
+<p><code>String -&gt; a -&gt; { String: a }</code></p>
+<p>Creates an object containing a single key:value pair.</p>
+<pre><code class="php">P::objOf('foo', 'bar'); // ['foo' =&gt; 'bar']
 </code></pre>
 
 <h2 id="omit">omit</h2>
