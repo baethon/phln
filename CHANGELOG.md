@@ -6,12 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `object\objOf()` ([338519c](https://github.com/baethon/phln/commit/338519c772aead989252dadab68f94bbe2edab06))
+- verification of function uniqueness in `create:fn` command ([322b1f4](https://github.com/baethon/phln/commit/322b1f48b41376f628bfa416c4481115d09dfce4))
+
 ### Changed
 
-- *BREAKING CHANGE* removed `nil` 
+- *BREAKING CHANGE* removed `nil`
 - updated PHPUnit to `^6.5`
 - added PHP 7.2 to Travis env
 - support `object` type in functions from `object` namespace ([2db4d73](https://github.com/baethon/phln/commit/2db4d73aa3ed2389c14c61271463e358c93cd594))
+- moved docs to Github Pages
 
 ### Removed
 
