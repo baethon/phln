@@ -122,6 +122,17 @@ $duplicateElements = P::flatMap(function ($i) {
 $duplicateElements([1, 2]); // [1, 1, 2, 2]
 ```
 
+## fromPairs
+`[[k, v]] -> {k: v}`
+
+Creates a new key => value object from list of pairs.
+
+
+
+```php
+P::fromPairs([['foo', 1], ['bar', 2]]); // [ 'foo' => 1, 'bar' => 2 ]
+```
+
 ## head
 `[a] -> a | Null`
 `String -> String`
