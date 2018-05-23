@@ -7,6 +7,18 @@ use Illuminate\Console\Command;
 use Illuminate\View\Factory;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use const phln\fn\T;
+use const phln\object\keys;
+use function phln\string\match;
+use function phln\collection\{
+    filter
+};
+use function phln\fn\{
+    compose, pipe
+};
+use function phln\object\{
+    prop
+};
 
 class CreateFunctionCommand extends Command
 {
@@ -28,6 +40,8 @@ class CreateFunctionCommand extends Command
         $ns = $this->argument('ns');
         $name = $this->argument('name');
 
+        $this->validateFunctionName($name);
+
         $this->output->writeln(sprintf(
             'Function created at: <info>%s</info>',
             $this->createFunctionSource($ns, $name)
@@ -40,6 +54,18 @@ class CreateFunctionCommand extends Command
 
         $this->reloadBundlesFile();
         $this->output->writeln('Bundle file reloaded');
+    }
+
+    private function validateFunctionName($name)
+    {
+        $collisions = pipe([
+            compose([keys, prop('user'), '\\get_defined_constants', T]),
+            filter(match("/^phln\\\\.+\\\\${name}$/"))
+        ])($name);
+
+        if (false === empty($collisions)) {
+            throw new \Exception("Name [{$name}] is in use");
+        }
     }
 
     private function createFunctionSource($ns, $name)
