@@ -79,6 +79,7 @@ require __DIR__.'/object/pathOr.php';
 require __DIR__.'/object/pick.php';
 require __DIR__.'/object/prop.php';
 require __DIR__.'/object/props.php';
+require __DIR__.'/object/toPairs.php';
 require __DIR__.'/object/values.php';
 require __DIR__.'/object/where.php';
 require __DIR__.'/object/whereEq.php';
