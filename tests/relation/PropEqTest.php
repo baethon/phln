@@ -9,11 +9,22 @@ class PropEqTest extends \Phln\Build\PhpUnit\TestCase
         return propEq;
     }
 
-    /** @test */
-    public function it_checks_value()
+    /**
+     * @test
+     * @dataProvider objectsProvider
+     */
+    public function it_checks_value($object)
     {
-        $this->assertTrue($this->callFn('name', 'Jon', ['name' => 'Jon']));
-        $this->assertFalse($this->callFn('name', 'Arrya', ['name' => 'Jon']));
+        $this->assertTrue($this->callFn('name', 'Jon', $object));
+        $this->assertFalse($this->callFn('name', 'Arrya', $object));
+    }
+
+    public function objectsProvider()
+    {
+        return [
+            [['name' => 'Jon']],
+            [(object)['name' => 'Jon']],
+        ];
     }
 
     /** @test */

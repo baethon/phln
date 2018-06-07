@@ -1767,7 +1767,7 @@ class Phln
      * @example
      *      P::propEq('name', 'Jon', ['name' => 'Jon']); // true
      */
-    public static function propEq(string $prop = '', $value = NULL, array $object = NULL)
+    public static function propEq(string $prop = '', $value = NULL, $object = NULL)
     {
         return \phln\relation\propEq(...func_get_args());
     }
