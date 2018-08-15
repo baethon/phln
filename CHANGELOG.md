@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `object\toParis()` ([e3e93a5](https://github.com/baethon/phln/commit/e3e93a542cb49890ac9eb57ae66e0a178e092cd3))
 - `collection\fromPairs()` ([e3e93a5](https://github.com/baethon/phln/commit/e3e93a542cb49890ac9eb57ae66e0a178e092cd3))
 - verification of function uniqueness in `create:fn` command ([322b1f4](https://github.com/baethon/phln/commit/322b1f48b41376f628bfa416c4481115d09dfce4))
+- `string\test()` ([8f603af](https://github.com/baethon/phln/commit/8f603af))
+- `fn\partialRight()` ([00c1006](https://github.com/baethon/phln/commit/00c1006))
+- `RegExp::of()` ([75d39ea](https://github.com/baethon/phln/commit/75d39ea))
 
 ### Changed
 
