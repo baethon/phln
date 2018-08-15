@@ -55,6 +55,7 @@ class Phln
     const once = \phln\fn\once;
     const __ = \phln\fn\__;
     const partial = \phln\fn\partial;
+    const partialRight = \phln\fn\partialRight;
     const pipe = \phln\fn\pipe;
     const swap = \phln\fn\swap;
     const tap = \phln\fn\tap;
@@ -109,6 +110,7 @@ class Phln
     const regexp = \phln\string\regexp;
     const replace = \phln\string\replace;
     const split = \phln\string\split;
+    const test = \phln\string\test;
     const is = \phln\type\is;
     const typeCond = \phln\type\typeCond;
 
@@ -898,6 +900,27 @@ class Phln
     public static function partial(callable $fn = NULL, array $args = []): \Closure
     {
         return \phln\fn\partial(...func_get_args());
+    }
+
+    /**
+     * Takes a function `f` and a list of arguments, and returns a function `g`. When applied, `g` returns the result of applying `f` to the arguments provided initially followed by the arguments provided to `g`.
+     *
+     * @phlnSignature ((a, b, c, d, ..., n) -> x) -> [d, ..., n] -> ((a, b, c) -> x)
+     * @phlnCategory function
+     * @param callable $fn
+     * @param array $args
+     * @return \Closure
+     * @example
+     *      $hello = function ($salutations, $name, $lastname) {
+     *          return "{$salutations}, {$name} {$lastname}";
+     *      };
+     *
+     *      $f = P::partialRight($hello, ['Jon', 'Stark']);
+     *      $f('Hello'); // 'Hello, Jon Stark'
+     */
+    public static function partialRight(callable $fn = NULL, array $args = NULL): \Closure
+    {
+        return \phln\fn\partialRight(...func_get_args());
     }
 
     /**
@@ -1762,7 +1785,7 @@ class Phln
      * @phlnCategory relation
      * @param string $prop
      * @param mixed $value
-     * @param array $object
+     * @param mixed $object
      * @return \Closure|mixed
      * @example
      *      P::propEq('name', 'Jon', ['name' => 'Jon']); // true
@@ -1843,6 +1866,23 @@ class Phln
     public static function split($delimiter = NULL, string $text = '')
     {
         return \phln\string\split(...func_get_args());
+    }
+
+    /**
+     * Determines whether a given string matches a given regular expression.
+     *
+     * @phlnSignature RegExp -> String -> Bool
+     * @phlnSignature String -> String -> Bool
+     * @phlnCategory string
+     * @param string|RegExp $regexp
+     * @param string $string
+     * @return \Closure|bool
+     * @example
+     *      P::test('/foo/', 'foobar'); // true
+     */
+    public static function test($regexp = NULL, string $string = NULL)
+    {
+        return \phln\string\test(...func_get_args());
     }
 
     /**
