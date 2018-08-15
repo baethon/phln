@@ -44,6 +44,7 @@ require __DIR__.'/fn/negate.php';
 require __DIR__.'/fn/of.php';
 require __DIR__.'/fn/once.php';
 require __DIR__.'/fn/partial.php';
+require __DIR__.'/fn/partialRight.php';
 require __DIR__.'/fn/pipe.php';
 require __DIR__.'/fn/swap.php';
 require __DIR__.'/fn/tap.php';
