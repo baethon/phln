@@ -110,4 +110,9 @@ final class RegExp
 
         return isset($matches[0]) ? $matches[0] : [];
     }
+
+    public function test(string $string): bool
+    {
+        return (bool) preg_match((string) $this, $string);
+    }
 }
