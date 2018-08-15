@@ -96,6 +96,13 @@ final class RegExp
         return new static($pattern, $modifiers);
     }
 
+    public static function of($regexp): RegExp
+    {
+        return ($regexp instanceof static)
+            ? $regexp
+            : static::fromString($regexp);
+    }
+
     public function matchAll(string $test): array
     {
         $matches = [];

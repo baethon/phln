@@ -71,6 +71,15 @@ class RegExpTest extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
+    public function it_can_be_created_from_string_or_other_regexp()
+    {
+        $expected = new RegExp('/foo/', 'i');
+
+        $this->assertEquals($expected, RegExp::of('/foo/i'));
+        $this->assertEquals($expected, RegExp::of($expected));
+    }
+
+    /** @test */
     public function it_escapes_delimiter_for_non_regex_pattern()
     {
         $str = 'foo / bar';

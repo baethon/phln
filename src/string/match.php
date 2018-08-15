@@ -6,7 +6,6 @@ namespace phln\string;
 use phln\RegExp;
 use function phln\collection\head;
 use function phln\fn\curryN;
-use function phln\type\𝑓is;
 
 const match = '\\phln\\string\\match';
 const 𝑓match = '\\phln\\string\\𝑓match';
@@ -31,7 +30,7 @@ function match($regexp = null, string $test = '')
 
 function 𝑓match($regexp, string $test)
 {
-    $r = 𝑓is(RegExp::class, $regexp) ? $regexp : RegExp::fromString($regexp);
+    $r = RegExp::of($regexp);
     $matches = $r->matchAll($test);
 
     return $r->isGlobal() ? $matches : head($matches);

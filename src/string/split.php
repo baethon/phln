@@ -5,7 +5,6 @@ namespace phln\string;
 
 use phln\RegExp;
 use function phln\fn\curryN;
-use function phln\type\𝑓is;
 
 const split = '\\phln\\string\\split';
 const 𝑓split = '\\phln\\string\\𝑓split';
@@ -31,7 +30,5 @@ function split($delimiter = null, string $text = '')
 
 function 𝑓split($delimiter, string $text): array
 {
-    $r = 𝑓is(RegExp::class, $delimiter) ? $delimiter : RegExp::fromString($delimiter);
-
-    return preg_split((string) $r, $text);
+    return preg_split((string) RegExp::of($delimiter), $text);
 }
