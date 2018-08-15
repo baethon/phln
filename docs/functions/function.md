@@ -145,6 +145,22 @@ $subtractFive = P::partial(P::subtract, [P::__, 5]);
 $subtractFive(10); // 5
 ```
 
+## partialRight
+`((a, b, c, d, ..., n) -> x) -> [d, ..., n] -> ((a, b, c) -> x)`
+
+Takes a function `f` and a list of arguments, and returns a function `g`. When applied, `g` returns the result of applying `f` to the arguments provided initially followed by the arguments provided to `g`.
+
+
+
+```php
+$hello = function ($salutations, $name, $lastname) {
+    return "{$salutations}, {$name} {$lastname}";
+};
+
+$f = P::partialRight($hello, ['Jon', 'Stark']);
+$f('Hello'); // 'Hello, Jon Stark'
+```
+
 ## pipe
 `[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
 

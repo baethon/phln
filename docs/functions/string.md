@@ -47,3 +47,15 @@ It's possible to split string
 P::split('/', 'a/b'); // ['a', 'b']
 ```
 
+## test
+`RegExp -> String -> Bool`
+`String -> String -> Bool`
+
+Determines whether a given string matches a given regular expression.
+
+
+
+```php
+P::test('/foo/', 'foobar'); // true
+```
+
