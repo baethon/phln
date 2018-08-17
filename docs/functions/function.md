@@ -90,6 +90,26 @@ A function that does nothing but return the parameter supplied to it. Good as a 
 P::identity(1) === 1; // 'true'
 ```
 
+## invoker
+`Int -> String -> (a -> b -> c -> ... -> n -> Object -> *)`
+
+Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.
+
+The returned function is curried and accepts `arity + 1` parameters where the final parameter is the target object.
+
+```php
+$greeter = new class ()
+{
+    public function hello($name, $lastname)
+    {
+        return "Hello, {$name} {$lastname}!";
+    }
+};
+
+$helloToJon = P::invoker(2, 'hello')('Jon');
+$helloToJon('Snow'); // 'Hello, Jon Snow!'
+```
+
 ## negate
 `(*... -> *) -> (*... -> Boolean)`
 

@@ -50,6 +50,7 @@ class Phln
     const curry = \phln\fn\curry;
     const curryN = \phln\fn\curryN;
     const identity = \phln\fn\identity;
+    const invoker = \phln\fn\invoker;
     const negate = \phln\fn\negate;
     const of = \phln\fn\of;
     const once = \phln\fn\once;
@@ -827,6 +828,34 @@ class Phln
     public static function identity($value)
     {
         return \phln\fn\identity(...func_get_args());
+    }
+
+    /**
+     * Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.
+     *
+     * The returned function is curried and accepts `arity + 1` parameters where the final parameter is the target object.
+     *
+     * @phlnSignature Int -> String -> (a -> b -> c -> ... -> n -> Object -> *)
+     * @phlnCategory function
+     * @since 1.2.0
+     * @param int $arity
+     * @param string $method
+     * @return \Closure
+     * @example
+     *      $greeter = new class ()
+     *      {
+     *          public function hello($name, $lastname)
+     *          {
+     *              return "Hello, {$name} {$lastname}!";
+     *          }
+     *      };
+     *
+     *      $helloToJon = P::invoker(2, 'hello')('Jon');
+     *      $helloToJon('Snow'); // 'Hello, Jon Snow!'
+     */
+    public static function invoker(int $arity = NULL, string $method): \Closure
+    {
+        return \phln\fn\invoker(...func_get_args());
     }
 
     /**
