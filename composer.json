@@ -4,6 +4,12 @@
     "type": "library",
     "require": {
     },
+    "scripts": {
+        "build": [
+            "./bin/console.php create:bundle",
+            "./bin/console.php create:docs"
+        ]
+    },
     "require-dev": {
         "symfony/console": "^3.2",
         "illuminate/view": "^5.4",
