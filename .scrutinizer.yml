@@ -1,0 +1,8 @@
+filter:
+  paths:
+    - src/
+  dependency_paths:
+    - vendor/
+  excluded_paths:
+    - src/Phln.php
+    - src/bundle.php
