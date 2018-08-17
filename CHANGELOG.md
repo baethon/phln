@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `string\test()` ([8f603af](https://github.com/baethon/phln/commit/8f603af))
 - `fn\partialRight()` ([00c1006](https://github.com/baethon/phln/commit/00c1006))
 - `RegExp::of()` ([75d39ea](https://github.com/baethon/phln/commit/75d39ea))
+- `fn\invoker()` ([08f4710](https://github.com/baethon/phln/commit/08f4710))
 
 ### Changed
 
