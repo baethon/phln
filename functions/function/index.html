@@ -376,6 +376,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#invoker" title="invoker" class="md-nav__link">
+    invoker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#negate" title="negate" class="md-nav__link">
     negate
   </a>
@@ -615,6 +622,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#invoker" title="invoker" class="md-nav__link">
+    invoker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#negate" title="negate" class="md-nav__link">
     negate
   </a>
@@ -758,6 +772,22 @@ If <code>f</code> is a ternary function and <code>g</code> is <code>P::curryN(3,
 <p><code>a -&gt; a</code></p>
 <p>A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.</p>
 <pre><code class="php">P::identity(1) === 1; // 'true'
+</code></pre>
+
+<h2 id="invoker">invoker</h2>
+<p><code>Int -&gt; String -&gt; (a -&gt; b -&gt; c -&gt; ... -&gt; n -&gt; Object -&gt; *)</code></p>
+<p>Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.</p>
+<p>The returned function is curried and accepts <code>arity + 1</code> parameters where the final parameter is the target object.</p>
+<pre><code class="php">$greeter = new class ()
+{
+    public function hello($name, $lastname)
+    {
+        return &quot;Hello, {$name} {$lastname}!&quot;;
+    }
+};
+
+$helloToJon = P::invoker(2, 'hello')('Jon');
+$helloToJon('Snow'); // 'Hello, Jon Snow!'
 </code></pre>
 
 <h2 id="negate">negate</h2>
