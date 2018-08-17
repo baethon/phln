@@ -40,6 +40,7 @@ require __DIR__.'/fn/compose.php';
 require __DIR__.'/fn/curry.php';
 require __DIR__.'/fn/curryN.php';
 require __DIR__.'/fn/identity.php';
+require __DIR__.'/fn/invoker.php';
 require __DIR__.'/fn/negate.php';
 require __DIR__.'/fn/of.php';
 require __DIR__.'/fn/once.php';
