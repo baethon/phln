@@ -29,6 +29,7 @@ class Phln
     const mapIndexed = \phln\collection\mapIndexed;
     const none = \phln\collection\none;
     const nth = \phln\collection\nth;
+    const partition = \phln\collection\partition;
     const pluck = \phln\collection\pluck;
     const prepend = \phln\collection\prepend;
     const range = \phln\collection\range;
@@ -471,6 +472,25 @@ class Phln
     public static function nth(int $n = 0, array $list = [])
     {
         return \phln\collection\nth(...func_get_args());
+    }
+
+    /**
+     * Takes a predicate and a collection and returns the pair of filterable objects of the same type of elements which do and do not satisfy, the predicate, respectively.
+     *
+     * @phlnSignature (a -> Bool) -> [a] -> [[a], [a]]
+     * @phlnCategory collection
+     * @param callable $predicate
+     * @param array $collection
+     * @return \Closure|array
+     * @example
+     *      P::partition(
+     *          P::contains('foo'),
+     *          ['foo bar', 'bar', 'foo']
+     *      ); // [['foo bar', 'foo'], ['bar']]
+     */
+    public static function partition(callable $predicate = NULL, array $collection = NULL)
+    {
+        return \phln\collection\partition(...func_get_args());
     }
 
     /**

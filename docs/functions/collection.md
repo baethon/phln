@@ -249,6 +249,20 @@ P::nth(1, [1, 2, 3]); // 2
 P::nth(-1, [1, 2, 3]); // 3
 ```
 
+## partition
+`(a -> Bool) -> [a] -> [[a], [a]]`
+
+Takes a predicate and a collection and returns the pair of filterable objects of the same type of elements which do and do not satisfy, the predicate, respectively.
+
+
+
+```php
+P::partition(
+    P::contains('foo'),
+    ['foo bar', 'bar', 'foo']
+); // [['foo bar', 'foo'], ['bar']]
+```
+
 ## pluck
 `k -> [{k: v}] -> v`
 
