@@ -441,6 +441,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#partition" title="partition" class="md-nav__link">
+    partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pluck" title="pluck" class="md-nav__link">
     pluck
   </a>
@@ -776,6 +783,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#partition" title="partition" class="md-nav__link">
+    partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pluck" title="pluck" class="md-nav__link">
     pluck
   </a>
@@ -1029,6 +1043,15 @@ P::none($isEven, [1, 3, 5, 6]); // false
 <p>If n is negative the element at index length - n is returned.</p>
 <pre><code class="php">P::nth(1, [1, 2, 3]); // 2
 P::nth(-1, [1, 2, 3]); // 3
+</code></pre>
+
+<h2 id="partition">partition</h2>
+<p><code>(a -&gt; Bool) -&gt; [a] -&gt; [[a], [a]]</code></p>
+<p>Takes a predicate and a collection and returns the pair of filterable objects of the same type of elements which do and do not satisfy, the predicate, respectively.</p>
+<pre><code class="php">P::partition(
+    P::contains('foo'),
+    ['foo bar', 'bar', 'foo']
+); // [['foo bar', 'foo'], ['bar']]
 </code></pre>
 
 <h2 id="pluck">pluck</h2>
