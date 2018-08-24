@@ -20,6 +20,7 @@ require __DIR__.'/collection/map.php';
 require __DIR__.'/collection/mapIndexed.php';
 require __DIR__.'/collection/none.php';
 require __DIR__.'/collection/nth.php';
+require __DIR__.'/collection/partition.php';
 require __DIR__.'/collection/pluck.php';
 require __DIR__.'/collection/prepend.php';
 require __DIR__.'/collection/range.php';
