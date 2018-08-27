@@ -513,8 +513,10 @@
 <p><code>RegExp -&gt; String -&gt; String|Null</code>
 <code>RegExp -&gt; String -&gt; [String]</code></p>
 <p>Tests a regular expression against a String. Returns found string, or <code>NULL</code>. When regular expression has 'global' modifier function will return array of found strings.</p>
+<p>If regular expression contains groups <code>match()</code> will return only matching groups (in an order defined in regular expression).</p>
 <pre><code class="php">P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
 P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
+P::match('/return (\w)/', 'return integer'); // 'integer'
 </code></pre>
 
 <h2 id="regexp">regexp</h2>
