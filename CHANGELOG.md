@@ -17,14 +17,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `RegExp::of()` ([75d39ea](https://github.com/baethon/phln/commit/75d39ea))
 - `fn\invoker()` ([08f4710](https://github.com/baethon/phln/commit/08f4710))
 - `collection\partition()` ([fbc618f](https://github.com/baethon/phln/commit/fbc618f))
+- `create:fn` will create dummy docblock for created function ([7a6ed40](https://github.com/baethon/phln/commit/7a6ed40))
 
 ### Changed
 
 - *BREAKING CHANGE* removed `nil`
+- *POSSIBLE BREAKING CHANGE* `string\match()` returns matching group (if defined) ([8f1f904](https://github.com/baethon/phln/commit/8f1f904))
 - updated PHPUnit to `^6.5`
 - added PHP 7.2 to Travis env
 - support `object` type in functions from `object` namespace ([2db4d73](https://github.com/baethon/phln/commit/2db4d73aa3ed2389c14c61271463e358c93cd594))
 - moved docs to Github Pages
+- `Phln` will use `__staticCall` to call one of defined methods ([34e6c02](https://github.com/baethon/phln/commit/34e6c02))
 
 ### Removed
 
