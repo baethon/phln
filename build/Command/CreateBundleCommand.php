@@ -66,10 +66,12 @@ class CreateBundleCommand extends Command
         }
     }
 
-    private function getReturnTypeSource(\ReflectionType $reflectionType = null): string
+    private function getReturnTypeSource(\ReflectionFunction $function): string
     {
+        $reflectionType = $function->getReturnType();
+
         if (true === is_null($reflectionType)) {
-            return 'mixed';
+            return $this->getReturnTypeFromDocBlock($function);
         }
 
         return sprintf(
@@ -77,6 +79,14 @@ class CreateBundleCommand extends Command
             $reflectionType->isBuiltin() ? '' : '\\',
             $reflectionType
         );
+    }
+
+    private function getReturnTypeFromDocBlock(\ReflectionFunction $function): string
+    {
+        $docBlock = $function->getDocComment();
+        $matched = match('/@return (\S+)/', $docBlock);
+
+        return $matched ?? 'mixed';
     }
 
     private function saveFile(array $functions, array $constants)
@@ -119,7 +129,7 @@ class CreateBundleCommand extends Command
                 'name' => compose([last, split('\\')])($reflection->getName()),
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
-                'returnType' => $this->getReturnTypeSource($reflection->getReturnType()),
+                'returnType' => $this->getReturnTypeSource($reflection),
                 'doc' => $this->getFunctionDocumentation($reflection),
             ];
         };
