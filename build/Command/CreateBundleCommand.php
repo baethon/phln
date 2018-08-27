@@ -130,7 +130,7 @@ class CreateBundleCommand extends Command
                 'fqn' => $reflection->getName(),
                 'parameters' => $this->getParametersSource($parameters),
                 'returnType' => $this->getReturnTypeSource($reflection),
-                'doc' => $this->getFunctionDocumentation($reflection),
+                'doc' => $reflection->getDocComment(),
             ];
         };
 
@@ -221,17 +221,5 @@ class CreateBundleCommand extends Command
             map($toSrc),
             join(', '),
         ])($parameters);
-    }
-
-    private function getFunctionDocumentation(\ReflectionFunction $function): string
-    {
-        $getDoc = pipe([
-            [$function, 'getDocComment'],
-            replace('/^/gm', '    '),
-            replace('/\\\\phln\\\\\w+\\\\(\w+)(\()?/g', 'P::$1$2'),
-            replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1'),
-        ]);
-
-        return $getDoc();
     }
 }
