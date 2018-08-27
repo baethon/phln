@@ -13,6 +13,8 @@ const 𝑓match = '\\phln\\string\\𝑓match';
 /**
  * Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
  *
+ * If regular expression contains groups `match()` will return only matching groups (in an order defined in regular expression).
+ *
  * @phlnSignature RegExp -> String -> String|Null
  * @phlnSignature RegExp -> String -> [String]
  * @phlnCategory string
@@ -22,6 +24,7 @@ const 𝑓match = '\\phln\\string\\𝑓match';
  * @example
  *      \phln\string\match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
  *      \phln\string\match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
+ *      \phln\string\match('/return (\w)/', 'return integer'); // 'integer'
  */
 function match($regexp = null, string $test = '')
 {

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace phln;
 
+use function \phln\collection\𝑓flatMap as flatMap;
+
 final class RegExp
 {
     /**
@@ -106,9 +108,15 @@ final class RegExp
     public function matchAll(string $test): array
     {
         $matches = [];
-        preg_match_all((string) $this, $test, $matches);
+        preg_match_all((string) $this, $test, $matches, PREG_SET_ORDER);
 
-        return isset($matches[0]) ? $matches[0] : [];
+        $slice = function ($list) {
+            return count($list) > 1
+                ? array_slice($list, 1)
+                : $list;
+        };
+
+        return flatMap($slice, $matches);
     }
 
     public function test(string $string): bool
