@@ -69,11 +69,11 @@ class CreateBundleCommand extends Command
     private function getReturnTypeSource(\ReflectionType $reflectionType = null): string
     {
         if (true === is_null($reflectionType)) {
-            return '';
+            return 'mixed';
         }
 
         return sprintf(
-            ': %s%s',
+            '%s%s',
             $reflectionType->isBuiltin() ? '' : '\\',
             $reflectionType
         );

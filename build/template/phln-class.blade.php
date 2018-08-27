@@ -7,18 +7,27 @@ declare(strict_types=1);
 
 namespace phln;
 
-class Phln
+/**
+@foreach($functions as $item)
+ * @method static {{ $item['returnType'] }} {{ $item['name'] }}({!! $item['parameters']['definition'] !!})
+@endforeach
+ */
+final class Phln
 {
 @foreach($constants as $item)
     const {{ $item['name'] }} = \{{ $item['fqn'] }};
 @endforeach
 
-@foreach($functions as $item)
-{!! $item['doc'] !!}
-    public static function {{ $item['name'] }}({!! $item['parameters']['definition'] !!}){{ $item['returnType'] }}
+    public static function __callStatic($name, $args)
     {
-        return \{{ $item['fqn'] }}(...func_get_args());
-    }
+        $constName = sprintf('%s::%s', __CLASS__, $name);
 
-@endforeach
+        if (false === defined($constName)) {
+            throw new \BadMethodCallException("Call to unknown method {$name}()");
+        }
+
+        $fn = constant($constName);
+
+        return $fn(...$args);
+    }
 }
