@@ -15,7 +15,12 @@ use function phln\collection\map;
 use function phln\collection\reduce;
 use function phln\fn\apply;
 use function phln\fn\pipe;
+use function phln\fn\compose;
+use function phln\fn\invoker;
 use function phln\object\pathOr;
+use function phln\string\split;
+use function phln\string\replace;
+use const phln\collection\last;
 
 class CreateDocsCommand extends Command
 {
@@ -82,31 +87,49 @@ class CreateDocsCommand extends Command
      */
     private function extractDocBlocks(\ReflectionClass $reflection): array
     {
-        $methods = $reflection->getMethods();
+        $constants = $reflection->getConstants();
+        $basename = compose([last, split('\\')]);
 
         return apply(
             pipe([
-                map(function (\ReflectionMethod $method) {
-                    $comment = $method->getDocComment();
+                filter('\\function_exists'),
+                map(function (string $fnName) {
+                    return new \ReflectionFunction($fnName);
+                }),
+                map(function (\ReflectionFunction $function) use ($basename) {
+                    $comment = $this->getDocComment($function);
 
                     return [
-                        'name' => $method->getName(),
+                        'name' => $basename($function->getName()),
                         'docBlock' => $this->docBlockFactory->create($comment),
                     ];
                 }),
-                reduce(function ($carry, array $method) {
-                    $category = (string)$this->getDocBlockTag('phlnCategory', $method['docBlock']->getTags());
+                reduce(function ($carry, array $function) {
+                    $category = (string)$this->getDocBlockTag('phlnCategory', $function['docBlock']->getTags());
 
                     if (true === empty($category)) {
-                        throw new \RuntimeException("Missing category for function: {$method['name']}");
+                        throw new \RuntimeException("Missing category for function: {$function['name']}");
                     }
 
                     return array_merge($carry, [
-                        $category => array_merge(pathOr($category, [], $carry), [$this->getMethodToView($method)]),
+                        $category => array_merge(pathOr($category, [], $carry), [$this->getMethodToView($function)]),
                     ]);
                 }, [])
             ]),
-            [$methods]
+            [$constants]
+        );
+    }
+
+    private function getDocComment(\ReflectionFunction $function): string
+    {
+        return apply(
+            pipe([
+                invoker(0, 'getDocComment'),
+                replace('/^/gm', '    '),
+                replace('/\\\\phln\\\\\w+\\\\(\w+)(\()?/g', 'P::$1$2'),
+                replace('/phln\\\\\w+\\\\(\w+)/g', 'P::$1'),
+            ]),
+            [$function]
         );
     }
 
