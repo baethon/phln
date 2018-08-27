@@ -12,6 +12,13 @@ A function that always returns `true`. Any passed in parameters are ignored.
 
 
 
+## T
+`* -> Boolean`
+
+A function that always returns `true`. Any passed in parameters are ignored.
+
+
+
 ## always
 `a -> (* -> a)`
 

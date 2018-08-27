@@ -4,11 +4,12 @@
 
 Tests a regular expression against a String. Returns found string, or `NULL`. When regular expression has 'global' modifier function will return array of found strings.
 
-
+If regular expression contains groups `match()` will return only matching groups (in an order defined in regular expression).
 
 ```php
 P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
 P::match('/([a-z](o))/ig', 'Lorem ipsum dolor'); // ['Lo', 'do', 'lo']
+P::match('/return (\w)/', 'return integer'); // 'integer'
 ```
 
 ## regexp
