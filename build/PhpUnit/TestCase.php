@@ -24,7 +24,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     {
         $fn = $this->getResolvedFn();
 
-        if (false === is_callable($fn)) {
+        if (false === defined($fn)) {
             $this->markTestSkipped("Function {$fn} is not defined");
         }
 
