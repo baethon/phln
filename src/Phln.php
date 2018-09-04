@@ -19,6 +19,7 @@ namespace phln;
  * @method  static \Closure|mixed find(callable $predicate = NULL, array $list = [])
  * @method  static \Closure|mixed flatMap(callable $mapper = NULL, array $list = [])
  * @method  static array fromPairs(array $pairs)
+ * @method  static \Closure|array groupBy(callable $fn = NULL, array $collection = NULL)
  * @method  static mixed|null head($collection)
  * @method  static array|string init($collection)
  * @method  static \Closure|mixed join(string $separator = '', array $list = [])
@@ -126,6 +127,7 @@ final class Phln
     const find = \phln\collection\find;
     const flatMap = \phln\collection\flatMap;
     const fromPairs = \phln\collection\fromPairs;
+    const groupBy = \phln\collection\groupBy;
     const head = \phln\collection\head;
     const init = \phln\collection\init;
     const join = \phln\collection\join;

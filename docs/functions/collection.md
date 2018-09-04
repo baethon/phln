@@ -133,6 +133,24 @@ Creates a new key => value object from list of pairs.
 P::fromPairs([['foo', 1], ['bar', 2]]); // [ 'foo' => 1, 'bar' => 2 ]
 ```
 
+## groupBy
+`(a -> String) -> [a] -> { String: [a] }`
+
+Splits a list into sub-lists stored in an object, based on the result of calling a String-returning function on each element, and grouping the results according to values returned.
+
+
+
+```php
+P::groupBy(
+    function (int $i) {
+        return ($i % 2 === 0)
+            ? 'even'
+            : 'odd';
+    },
+    [1, 2, 3, 4]
+); // ['odd' => [1, 3], 'even' => [2, 4]]
+```
+
 ## head
 `[a] -> a | Null`
 `String -> String`

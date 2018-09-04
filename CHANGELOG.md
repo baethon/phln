@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `fn\invoker()` ([08f4710](https://github.com/baethon/phln/commit/08f4710))
 - `collection\partition()` ([fbc618f](https://github.com/baethon/phln/commit/fbc618f))
 - `create:fn` will create dummy docblock for created function ([7a6ed40](https://github.com/baethon/phln/commit/7a6ed40))
+- `collection\groupBy()` ([cee12df](https://github.com/baethon/phln/commit/cee12df))
 
 ### Changed
 
@@ -28,6 +29,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - support `object` type in functions from `object` namespace ([2db4d73](https://github.com/baethon/phln/commit/2db4d73aa3ed2389c14c61271463e358c93cd594))
 - moved docs to Github Pages
 - `Phln` will use `__staticCall` to call one of defined methods ([34e6c02](https://github.com/baethon/phln/commit/34e6c02))
+
+### Fixed
+
+- `collection\length()` will support `countable` objects ([588e10f](https://github.com/baethon/phln/commit/588e10f))
 
 ### Removed
 
