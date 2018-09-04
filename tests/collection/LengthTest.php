@@ -20,4 +20,17 @@ class LengthTest extends \Phln\Build\PhpUnit\TestCase
     {
         $this->assertEquals(5, $this->callFn('lorem'));
     }
+
+    /** @test */
+    public function it_returns_length_of_countable()
+    {
+        $obj = new class () implements \Countable {
+            public function count()
+            {
+                return 10;
+            }
+        };
+
+        $this->assertEquals(10, $this->callFn($obj));
+    }
 }

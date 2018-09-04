@@ -3,9 +3,12 @@ declare(strict_types=1);
 
 namespace phln\collection;
 
-use const phln\fn\otherwise;
+use function phln\type\is;
+use function phln\logic\cond;
 use function phln\fn\throwException;
-use function phln\type\typeCond;
+use function phln\fn\𝑓apply as apply;
+
+use const phln\fn\otherwise;
 
 const length = '\\phln\\collection\\length';
 
@@ -22,11 +25,15 @@ const length = '\\phln\\collection\\length';
  */
 function length($collection): int
 {
-    $f = typeCond([
-        ['array', '\\count'],
-        ['string', '\\mb_strlen'],
-        [otherwise, throwException(\InvalidArgumentException::class)],
-    ]);
-
-    return $f($collection);
+    return apply(
+        cond([
+            ['\\is_countable', '\\count'],
+            [is('string'), '\\mb_strlen'],
+            [otherwise, throwException(
+                \InvalidArgumentException::class,
+                ['Unable to return length of given collection']
+            )],
+        ]),
+        [$collection]
+    );
 }
