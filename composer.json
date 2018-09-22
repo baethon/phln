@@ -17,7 +17,8 @@
     },
     "autoload": {
         "psr-4": {
-            "phln\\": "src"
+            "phln\\": "src",
+            "Baethon\\Phln\\": "src"
         },
         "files": [
             "src/bundle.php"

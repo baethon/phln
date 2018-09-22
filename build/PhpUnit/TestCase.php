@@ -25,6 +25,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     {
         $fn = $this->getTestedFn();
 
-        return sprintf('phln\Phln::%s', $this->getMacroName($fn));
+        return sprintf('Baethon\Phln\Phln::%s', $this->getMacroName($fn));
     }
 }
