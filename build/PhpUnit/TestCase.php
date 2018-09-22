@@ -5,48 +5,26 @@ namespace Phln\Build\PhpUnit;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var string
-     */
-    protected $testedFnOverwrite = null;
-
     abstract public function getTestedFn(): string;
-
-    /**
-     * @param string $testedFnOverwrite
-     */
-    public function setTestedFnOverwrite(string $testedFnOverwrite)
-    {
-        $this->testedFnOverwrite = $testedFnOverwrite;
-    }
 
     protected function callFn(...$args)
     {
         $fn = $this->getResolvedFn();
 
-        if (false === defined($fn)) {
-            $this->markTestSkipped("Function {$fn} is not defined");
-        }
-
-        return $fn(...$args);
+        return call_user_func_array($fn, $args);
     }
 
-    public function toString()
+    protected function getMacroName(string $fnName): string
     {
-        $class = new \ReflectionClass($this);
+        $tmp = explode('\\', $fnName);
 
-        $buffer = sprintf(
-            '%s::%s (using fn: %s)',
-            $class->name,
-            $this->getName(false),
-            $this->getResolvedFn()
-        );
-
-        return $buffer . $this->getDataSetAsString();
+        return array_pop($tmp);
     }
 
     protected function getResolvedFn(): string
     {
-        return $this->testedFnOverwrite ?? $this->getTestedFn();
+        $fn = $this->getTestedFn();
+
+        return sprintf('phln\Phln::%s', $this->getMacroName($fn));
     }
 }
