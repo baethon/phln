@@ -22,16 +22,15 @@ load_macro('fn', 'swap');
 load_macro('fn', 'tap');
 load_macro('fn', 'throwException');
 load_macro('fn', 'unapply');
-
-/* load_macro('collection', 'all'); */
-/* load_macro('collection', 'any'); */
-/* load_macro('collection', 'append'); */
-/* load_macro('collection', 'chunk'); */
-/* load_macro('collection', 'collapse'); */
-/* load_macro('collection', 'concat'); */
-/* load_macro('collection', 'contains'); */
-/* load_macro('collection', 'filter'); */
-/* load_macro('collection', 'find'); */
+load_macro('collection', 'all');
+load_macro('collection', 'any');
+load_macro('collection', 'append');
+load_macro('collection', 'chunk');
+load_macro('collection', 'collapse');
+load_macro('collection', 'concat');
+load_macro('collection', 'contains');
+load_macro('collection', 'filter');
+load_macro('collection', 'find');
 /* load_macro('collection', 'flatMap'); */
 /* load_macro('collection', 'fromPairs'); */
 /* load_macro('collection', 'groupBy'); */
@@ -40,10 +39,10 @@ load_macro('fn', 'unapply');
 /* load_macro('collection', 'join'); */
 /* load_macro('collection', 'last'); */
 /* load_macro('collection', 'length'); */
-/* load_macro('collection', 'map'); */
+load_macro('collection', 'map');
 /* load_macro('collection', 'mapIndexed'); */
 /* load_macro('collection', 'none'); */
-/* load_macro('collection', 'nth'); */
+load_macro('collection', 'nth');
 /* load_macro('collection', 'partition'); */
 /* load_macro('collection', 'pluck'); */
 /* load_macro('collection', 'prepend'); */
@@ -57,11 +56,11 @@ load_macro('fn', 'unapply');
 /* load_macro('collection', 'tail'); */
 /* load_macro('collection', 'unique'); */
 /* load_macro('logic', 'allPass'); */
-/* load_macro('logic', 'both'); */
-/* load_macro('logic', 'cond'); */
+load_macro('logic', 'both');
+load_macro('logic', 'cond');
 /* load_macro('logic', 'defaultTo'); */
 /* load_macro('logic', 'either'); */
-/* load_macro('logic', 'ifElse'); */
+load_macro('logic', 'ifElse');
 /* load_macro('logic', 'isEmpty'); */
 /* load_macro('logic', 'not'); */
 /* load_macro('math', 'add'); */
@@ -92,7 +91,7 @@ load_macro('fn', 'unapply');
 /* load_macro('object', 'whereEq'); */
 /* load_macro('relation', 'clamp'); */
 /* load_macro('relation', 'difference'); */
-/* load_macro('relation', 'equals'); */
+load_macro('relation', 'equals');
 /* load_macro('relation', 'gt'); */
 /* load_macro('relation', 'gte'); */
 /* load_macro('relation', 'intersection'); */
@@ -107,5 +106,5 @@ load_macro('fn', 'unapply');
 /* load_macro('string', 'replace'); */
 /* load_macro('string', 'split'); */
 /* load_macro('string', 'test'); */
-/* load_macro('type', 'is'); */
-/* load_macro('type', 'typeCond'); */
+load_macro('type', 'is');
+load_macro('type', 'typeCond');

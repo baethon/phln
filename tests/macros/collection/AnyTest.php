@@ -1,30 +1,22 @@
 <?php
 
-use function phln\collection\any;
-use const phln\collection\any;
+use Baethon\Phln\Phln as P;
 
-class AnyTest extends \Phln\Build\PhpUnit\TestCase
+class AnyTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return any;
-    }
-
-    /** @test */
-    public function it_checks_if_any_element_of_array_match_predicate()
+    public function test_it_checks_if_any_element_of_array_match_predicate()
     {
         $predicate = function ($i) {
             return $i > 4;
         };
 
-        $this->assertTrue($this->callFn($predicate, [1, 2, 4, 5]));
-        $this->assertFalse($this->callFn($predicate, [1, 2]));
+        $this->assertTrue(P::any($predicate, [1, 2, 4, 5]));
+        $this->assertFalse(P::any($predicate, [1, 2]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn(function ($i) {
+        $f = P::any(function ($i) {
             return $i > 2;
         });
 

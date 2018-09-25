@@ -1,35 +1,27 @@
 <?php
 
-use const phln\type\is;
+use Baethon\Phln\Phln as P;
 
-class IsTest extends \Phln\Build\PhpUnit\TestCase
+class IsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return is;
-    }
-
     /**
      * @param $type
      * @param $value
-     * @test
      * @dataProvider isDataProvider
      */
-    public function it_tests_given_type($type, $value)
+    public function test_it_tests_given_type($type, $value)
     {
-        $this->assertTrue($this->callFn($type, $value));
+        $this->assertTrue(P::is($type, $value));
     }
 
-    /** @test */
-    public function it_tests_object_type()
+    public function test_it_tests_object_type()
     {
-        $this->assertFalse($this->callFn('array', new stdClass()));
+        $this->assertFalse(P::is('array', new stdClass()));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $isString = $this->callFn('string');
+        $isString = P::is('string');
         $this->assertTrue($isString('asd'));
     }
 

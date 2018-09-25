@@ -1,29 +1,22 @@
 <?php
 
-use const phln\collection\find;
+use Baethon\Phln\Phln as P;
 
-class FindTest extends \Phln\Build\PhpUnit\TestCase
+class FindTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return find;
-    }
-
-    /** @test */
-    public function it_finds_first_matching_element()
+    public function test_it_finds_first_matching_element()
     {
         $p = function ($i) {
             return $i['id'] === 1;
         };
 
-        $this->assertEquals(['id' => 1], $this->callFn($p, [['id' => 1], ['id' => 2]]));
-        $this->assertNull($this->callFn($p, ['id' => 3]));
+        $this->assertEquals(['id' => 1], P::find($p, [['id' => 1], ['id' => 2]]));
+        $this->assertNull(P::find($p, ['id' => 3]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $finder = $this->callFn(function ($i) {
+        $finder = P::find(function ($i) {
             return $i['id'] === 1;
         });
 

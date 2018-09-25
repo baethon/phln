@@ -1,16 +1,10 @@
 <?php
 
-use const phln\logic\both;
+use Baethon\Phln\Phln as P;
 
-class BothTest extends \Phln\Build\PhpUnit\TestCase
+class BothTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return both;
-    }
-
-    /** @test */
-    public function it_checks_if_two_predicates_are_true()
+    public function test_it_checks_if_two_predicates_are_true()
     {
         $p = function ($i) {
             return $i > 10;
@@ -19,14 +13,13 @@ class BothTest extends \Phln\Build\PhpUnit\TestCase
             return $i < 20;
         };
 
-        $this->assertTrue($this->callFn($p, $p2)(11));
-        $this->assertFalse($this->callFn($p, $p2)(10));
+        $this->assertTrue(P::both($p, $p2)(11));
+        $this->assertFalse(P::both($p, $p2)(10));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $p = $this->callFn(function ($i) {
+        $p = P::both(function ($i) {
             return $i > 10;
         });
 
@@ -38,10 +31,9 @@ class BothTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertFalse($p($p2)(10));
     }
 
-    /** @test */
-    public function it_supports_primitives()
+    public function test_it_supports_primitives()
     {
-        $this->assertTrue($this->callFn(true, true));
-        $this->assertFalse($this->callFn(true, false));
+        $this->assertTrue(P::both(true, true));
+        $this->assertFalse(P::both(true, false));
     }
 }

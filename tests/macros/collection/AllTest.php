@@ -1,30 +1,23 @@
 <?php
 
-use const phln\collection\all;
+use Baethon\Phln\Phln as P;
 
-class AllTest extends \Phln\Build\PhpUnit\TestCase
+class AllTest extends \PHPUnit\Framework\TestCase
 {
-    function getTestedFn(): string
-    {
-        return all;
-    }
-
-    /** @test */
-    public function it_checks_if_all_elements_match_predicate()
+    public function test_it_checks_if_all_elements_match_predicate()
     {
         $list = [2, 4, 6, 8];
         $predicate = function ($i) {
             return $i % 2 === 0;
         };
 
-        $this->assertTrue($this->callFn($predicate, $list));
-        $this->assertFalse($this->callFn($predicate, [2, 4, 5]));
+        $this->assertTrue(P::all($predicate, $list));
+        $this->assertFalse(P::all($predicate, [2, 4, 5]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn(function ($i) {
+        $f = P::all(function ($i) {
             return $i % 2 === 0;
         });
 

@@ -1,28 +1,21 @@
 <?php
 
-use const phln\collection\filter;
+use Baethon\Phln\Phln as P;
 
-class FilterTest extends \Phln\Build\PhpUnit\TestCase
+class FilterTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return filter;
-    }
-
-    /** @test */
-    public function it_filters_array()
+    public function test_it_filters_array()
     {
         $p = function ($i) {
             return $i > 2;
         };
 
-        $this->assertEquals([3, 4], $this->callFn($p, [1, 2, 3, 4]));
+        $this->assertEquals([3, 4], P::filter($p, [1, 2, 3, 4]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $filter = $this->callFn(function ($i) {
+        $filter = P::filter(function ($i) {
             return $i > 2;
         });
 

@@ -1,31 +1,18 @@
 <?php
 
-use const phln\relation\equals;
+use Baethon\Phln\Phln as P;
 
-class EqualsTest extends \Phln\Build\PhpUnit\TestCase
+class EqualsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_checks_if_values_are_equal()
     {
-        return equals;
+        $this->assertTrue(P::equals(1, 1));
+        $this->assertFalse(P::equals(1, '1'));
     }
 
-    /** @test */
-    public function it_checks_if_values_are_equal()
+    public function test_it_is_curried()
     {
-        $this->assertTrue($this->callFn(1, 1));
-        $this->assertFalse($this->callFn(1, '1'));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(1);
+        $f = P::equals(1);
         $this->assertTrue($f(1));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $this->assertTrue(call_user_func($this->getResolvedFn(), 1, 1));
     }
 }

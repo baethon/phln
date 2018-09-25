@@ -1,51 +1,33 @@
 <?php
 
-use const phln\collection\map;
+use Baethon\Phln\Phln as P;
 
-class MapTest extends \Phln\Build\PhpUnit\TestCase
+class MapTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return map;
-    }
-
-    /** @test */
-    public function it_maps_array()
+    public function test_it_maps_array()
     {
         $fn = function ($i) {
             return $i * 100;
         };
 
-        $this->assertEquals([100, 200], $this->callFn($fn, [1, 2]));
+        $this->assertEquals([100, 200], P::map($fn, [1, 2]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn(function ($i) {
+        $f = P::map(function ($i) {
             return $i * 100;
         });
 
         $this->assertEquals([100, 200], $f([1, 2]));
     }
 
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $fn = function ($i) {
-            return $i * 100;
-        };
-
-        $this->assertEquals([100], call_user_func($this->getResolvedFn(), $fn, [1]));
-    }
-
-    /** @test */
-    public function it_passes_only_value()
+    public function test_it_passes_only_value()
     {
         $fn = function ($a, $b = null) {
             return compact('a', 'b');
         };
 
-        $this->assertEquals([['a' => 1, 'b' => null]], $this->callFn($fn, [1]));
+        $this->assertEquals([['a' => 1, 'b' => null]], P::map($fn, [1]));
     }
 }

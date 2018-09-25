@@ -1,39 +1,29 @@
 <?php
 
-use function phln\collection\contains;
-use const phln\collection\contains;
+use Baethon\Phln\Phln as P;
 
-class ContainsTest extends \Phln\Build\PhpUnit\TestCase
+class ContainsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_checks_if_value_is_in_array()
     {
-        return contains;
+        $this->assertTrue(P::contains(1, [1, 2, 3]));
+        $this->assertFalse(P::contains('1', [1, 2, 3]));
     }
 
-    /** @test */
-    public function it_checks_if_value_is_in_array()
+    public function test_it_checks_if_string_contains_value()
     {
-        $this->assertTrue($this->callFn(1, [1, 2, 3]));
-        $this->assertFalse($this->callFn('1', [1, 2, 3]));
+        $this->assertTrue(P::contains('foo', 'barfooasd'));
+        $this->assertFalse(P::contains('foo', 'bar'));
     }
 
-    /** @test */
-    public function it_checks_if_string_contains_value()
+    public function test_it_returns_false_for_non_supported_types()
     {
-        $this->assertTrue($this->callFn('foo', 'barfooasd'));
-        $this->assertFalse($this->callFn('foo', 'bar'));
+        $this->assertFalse(P::contains('foo', 1));
     }
 
-    /** @test */
-    public function it_returns_false_for_non_supported_types()
+    public function test_it_is_curried()
     {
-        $this->assertFalse($this->callFn('foo', 1));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $p = $this->callFn(1);
+        $p = P::contains(1);
         $this->assertTrue($p([1, 2, 3]));
     }
 }

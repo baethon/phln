@@ -1,22 +1,16 @@
 <?php
 
-use const phln\type\typeCond;
+use Baethon\Phln\Phln as P;
 
-class TypeCondTest extends \Phln\Build\PhpUnit\TestCase
+class TypeCondTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_calls_fn_based_on_type()
     {
-        return typeCond;
-    }
-
-    /** @test  */
-    public function it_calls_fn_based_on_type()
-    {
-        $f = $this->callFn([
-            ['array', \phln\fn\always('A')],
-            ['integer', \phln\fn\always('I')],
-            [stdClass::class, \phln\fn\always('STD')],
-            [phln\fn\T, \phln\fn\identity],
+        $f = P::typeCond([
+            ['array', P::always('A')],
+            ['integer', P::always('I')],
+            [stdClass::class, P::always('STD')],
+            [P::ref('T'), P::ref('identity')],
         ]);
 
         $this->assertEquals('A', $f([]));

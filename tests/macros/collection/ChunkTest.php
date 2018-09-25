@@ -1,32 +1,23 @@
 <?php
 
-use function phln\collection\chunk;
-use const phln\collection\chunk;
+use Baethon\Phln\Phln as P;
 
-class ChunkTest extends \Phln\Build\PhpUnit\TestCase
+class ChunkTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return chunk;
-    }
-
-    /** @test */
-    public function it_splits_array_into_chunks()
+    public function test_it_splits_array_into_chunks()
     {
         $list = range(1, 10);
-        $this->assertEquals(array_chunk($list, 3), $this->callFn(3, $list));
+        $this->assertEquals(array_chunk($list, 3), P::chunk(3, $list));
     }
 
-    /** @test */
-    public function it_splits_text_into_chunks()
+    public function test_it_splits_text_into_chunks()
     {
-        $this->assertEquals(['lo', 're', 'm ', 'ip', 'su', 'm'], $this->callFn(2, 'lorem ipsum'));
+        $this->assertEquals(['lo', 're', 'm ', 'ip', 'su', 'm'], P::chunk(2, 'lorem ipsum'));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $split = $this->callFn(2);
+        $split = P::chunk(2);
         $list = range(1, 10);
         $this->assertEquals(array_chunk($list, 2), $split($list));
     }

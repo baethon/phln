@@ -1,48 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\collection;
+use Baethon\Phln\Phln as P;
 
-use const phln\fn\{
-    __, F, otherwise, T
-};
-use function phln\fn\{
-    curryN, partial
-};
-use function phln\logic\𝑓both as both;
-use function phln\relation\equals;
-use function phln\type\typeCond;
+P::curried('contains', 2, function ($value, $collection): bool {
+    $stringContains = P::partialRight('\\strstr', [$value]);
 
-const contains = '\\phln\\collection\\contains';
-const 𝑓contains = '\\phln\\collection\\𝑓contains';
-
-/**
- * Returns `true` if the specified value is equal, `phln\relation\equals` terms,
- * to at least one element of the given collection; `false` otherwise.
- *
- * @phlnSignature a -> [a] -> Boolean
- * @phlnSignature String -> String -> Boolean
- * @phlnCategory collection
- * @param mixed $value
- * @param array|string $collection
- * @return \Closure|bool
- * @example
- *      \phln\collection\contains(1, [1, 2, 3]); // true
- *      \phln\collection\contains('foo', 'foobar'); // true
- */
-function contains($value = null, $collection = null)
-{
-    return curryN(2, 𝑓contains, func_get_args());
-}
-
-function 𝑓contains($value, $collection): bool
-{
-    $stringContains = partial('\\strstr', [__, $value]);
-    $f = typeCond([
-        ['array', any(equals($value))],
-        ['string', both(T, $stringContains)],
-        [otherwise, F]
-    ]);
-
-    return $f($collection);
-}
+    return P::apply(
+        P::typeCond([
+            ['array', P::any(P::equals($value))],
+            ['string', P::both(P::ref('T'), $stringContains)],
+            [P::ref('otherwise'), P::ref('F')]
+        ]),
+        [$collection]
+    );
+});

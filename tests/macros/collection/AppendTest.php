@@ -1,34 +1,25 @@
 <?php
 
-use function phln\collection\append;
-use const phln\collection\append;
+use Baethon\Phln\Phln as P;
 
-class AppendTest extends \Phln\Build\PhpUnit\TestCase
+class AppendTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return append;
-    }
-
-    /** @test */
-    public function it_appends_value_to_array()
+    public function test_it_appends_value_to_array()
     {
         $list = [1, 2];
-        $this->assertEquals([1, 2, 'a'], $this->callFn('a', $list));
-        $this->assertEquals([1, 2, ['a']], $this->callFn(['a'], $list));
+        $this->assertEquals([1, 2, 'a'], P::append('a', $list));
+        $this->assertEquals([1, 2, ['a']], P::append(['a'], $list));
         $this->assertEquals([1, 2], $list);
     }
 
-    /** @test */
-    public function it_appends_value_to_string()
+    public function test_it_appends_value_to_string()
     {
-        $this->assertEquals('foobar', $this->callFn('bar', 'foo'));
+        $this->assertEquals('foobar', P::append('bar', 'foo'));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $appendFoo = $this->callFn('foo');
+        $appendFoo = P::append('foo');
         $this->assertEquals(['foo'], $appendFoo([]));
     }
 }

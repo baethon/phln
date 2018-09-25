@@ -1,18 +1,12 @@
 <?php
 
-use const phln\logic\ifElse;
+use Baethon\Phln\Phln as P;
 
-class IfElseTest extends \Phln\Build\PhpUnit\TestCase
+class IfElseTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_runs_callback_on_met_condition()
     {
-        return ifElse;
-    }
-
-    /** @test */
-    public function it_runs_callback_on_met_condition()
-    {
-        $f = $this->callFn(
+        $f = P::ifElse(
             function ($a, $b) {
                 return $a + $b === 6;
             },
@@ -28,10 +22,9 @@ class IfElseTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals(['a' => 1, 'b' => 2], $f(1, 2));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $p = $this->callFn(function ($i) {
+        $p = P::ifElse(function ($i) {
             return $i % 15 === 0;
         });
 
