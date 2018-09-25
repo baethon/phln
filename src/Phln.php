@@ -31,7 +31,7 @@ final class Phln
      */
     public static function alias(string $macroName, string $targetMacro)
     {
-        static::macro($macroName, static::class."::{$targetMacro}");
+        static::macro($macroName, static::ref($targetMacro));
     }
 
     /**
