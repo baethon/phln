@@ -20,12 +20,10 @@ use Baethon\Phln\Phln as P;
  * @param array $args
  * @return \Closure|mixed
  */
-P::macro('curryN', new class {
-    public function __invoke(int $n, callable $fn, array $args = []) {
-        return (count($args) >= $n)
-            ? $fn(...$args)
-            : function (...$innerArgs) use ($n, $fn, $args) {
-                return $this($n, $fn, array_merge($args, $innerArgs));
-            };
-    }
+P::macro('curryN', function (int $n, callable $fn, array $args = []) {
+    return (count($args) >= $n)
+        ? $fn(...$args)
+        : function (...$innerArgs) use ($n, $fn, $args) {
+            return P::curryN($n, $fn, array_merge($args, $innerArgs));
+        };
 });
