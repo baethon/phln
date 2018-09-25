@@ -1,21 +1,15 @@
 <?php
 
-use const phln\fn\swap;
+use Baethon\Phln\Phln as P;
 
-class SwapTest extends \Phln\Build\PhpUnit\TestCase
+class SwapTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return swap;
-    }
-
-    /** @test */
-    public function it_swaps_first_two_arguments()
+    public function test_it_swaps_first_two_arguments()
     {
         $f = function ($a, $b) {
             return "a:{$a},b:{$b}";
         };
 
-        $this->assertEquals("a:2,b:1", $this->callFn($f)(1, 2));
+        $this->assertEquals("a:2,b:1", P::swap($f)(1, 2));
     }
 }

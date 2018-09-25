@@ -1,18 +1,12 @@
 <?php
 
-use const phln\fn\always;
+use Baethon\Phln\Phln as P;
 
-class AlwaysTest extends \Phln\Build\PhpUnit\TestCase
+class AlwaysTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_set_value()
     {
-        return always;
-    }
-
-    /** @test */
-    public function it_returns_set_value()
-    {
-        $f = $this->callFn('foo');
+        $f = P::always('foo');
         $this->assertEquals('foo', $f());
     }
 }

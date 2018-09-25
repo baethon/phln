@@ -11,7 +11,7 @@ use Baethon\Phln\Phln as P;
  * @param callable $fn
  * @return int
  * @example
- *      \phln\fn\arity('var_dump'); // 1
+ *      P::arity('var_dump'); // 1
  */
 P::macro('arity', function (callable $fn): int {
     return (new \ReflectionFunction($fn))->getNumberOfParameters();

@@ -1,16 +1,10 @@
 <?php
 
-use const phln\fn\invoker;
+use Baethon\Phln\Phln as P;
 
-class InvokerTest extends \Phln\Build\PhpUnit\TestCase
+class InvokerTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return invoker;
-    }
-
-    /** @test  */
-    public function it_invokes_method()
+    public function test_it_invokes_method()
     {
         $object = new class ()
         {
@@ -20,11 +14,10 @@ class InvokerTest extends \Phln\Build\PhpUnit\TestCase
             }
         };
 
-        $this->assertEquals('foo', $this->callFn(0, 'foo')($object));
+        $this->assertEquals('foo', P::invoker(0, 'foo')($object));
     }
 
-    /** @test */
-    public function it_passes_given_arguments()
+    public function test_it_passes_given_arguments()
     {
         $object = new class ()
         {
@@ -34,13 +27,12 @@ class InvokerTest extends \Phln\Build\PhpUnit\TestCase
             }
         };
 
-        $f = $this->callFn(3, 'foo');
+        $f = P::invoker(3, 'foo');
 
         $this->assertEquals('a,b,c', $f('a', 'b', 'c', $object));
     }
 
-    /** @test */
-    public function it_curries_wrapper_fn()
+    public function test_it_curries_wrapper_fn()
     {
         $object = new class ()
         {
@@ -50,7 +42,7 @@ class InvokerTest extends \Phln\Build\PhpUnit\TestCase
             }
         };
 
-        $f = $this->callFn(3, 'foo')('a', 'b');
+        $f = P::invoker(3, 'foo')('a', 'b');
 
         $this->assertEquals('a,b,c', $f('c', $object));
     }

@@ -1,38 +1,30 @@
 <?php
 
-use const phln\fn\throwException;
+use Baethon\Phln\Phln as P;
 
-class ThrowExceptionTest extends \Phln\Build\PhpUnit\TestCase
+class ThrowExceptionTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return throwException;
-    }
-
-    /** @test  */
-    public function it_returns_callback_which_throws_exception()
+    public function test_it_returns_callback_which_throws_exception()
     {
         $this->expectException(\Exception::class);
-        $f = $this->callFn();
+        $f = P::throwException();
 
         $f();
     }
 
-    /** @test */
-    public function it_supports_custom_exception_class()
+    public function test_it_supports_custom_exception_class()
     {
         $this->expectException(\LogicException::class);
-        $f = $this->callFn(\LogicException::class);
+        $f = P::throwException(\LogicException::class);
         $f();
     }
 
-    /** @test */
-    public function it_supports_exception_constructor_args()
+    public function test_it_supports_exception_constructor_args()
     {
         $this->expectExceptionMessage('foo');
         $this->expectExceptionCode(100);
 
-        $f = $this->callFn(\Exception::class, ['foo', 100]);
+        $f = P::throwException(\Exception::class, ['foo', 100]);
         $f();
     }
 }

@@ -1,17 +1,11 @@
 <?php
 
-use const phln\fn\of;
+use Baethon\Phln\Phln as P;
 
-class OfTest extends \Phln\Build\PhpUnit\TestCase
+class OfTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_creates_array_of_value()
     {
-        return of;
-    }
-
-    /** @test */
-    public function it_creates_array_of_value()
-    {
-        $this->assertEquals(['a'], $this->callFn('a'));
+        $this->assertEquals(['a'], P::of('a'));
     }
 }

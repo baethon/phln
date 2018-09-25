@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const always = '\\phln\\fn\\always';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns a function that always returns the given value.
@@ -14,12 +12,11 @@ const always = '\\phln\\fn\\always';
  * @param $value
  * @return \Closure
  * @example
- *      $foo = \phln\fn\always('foo');
+ *      $foo = P::always('foo');
  *      $foo(); // 'foo'
  */
-function always($value): \Closure
-{
+P::macro('always', function ($value): \Closure {
     return function () use ($value) {
         return $value;
     };
-}
+});

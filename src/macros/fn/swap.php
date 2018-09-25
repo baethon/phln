@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const swap = '\\phln\\fn\\swap';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns a new function much like the supplied one, except that the first two arguments' order is reversed.
@@ -16,13 +14,11 @@ const swap = '\\phln\\fn\\swap';
  *      $serialize = function ($a, $b) {
  *          return "a:{$a},b:{$b}";
  *      };
- *      \phln\fn\swap($serialize)(2, 1); // 'a:1,b:2'
+ *      P::swap($serialize)(2, 1); // 'a:1,b:2'
  */
-function swap(callable $f): \Closure
-{
+P::macro('swap', function (callable $f): \Closure {
     return function ($second, $first, ...$tail) use ($f) {
         $arguments = array_merge([$first, $second], $tail);
         return $f(...$arguments);
     };
-}
-
+});

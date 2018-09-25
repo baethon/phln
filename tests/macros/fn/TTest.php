@@ -1,17 +1,13 @@
 <?php
 
-use const phln\fn\T;
+use Baethon\Phln\Phln as P;
 
-class TTest extends \Phln\Build\PhpUnit\TestCase
+class TTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_true()
     {
-        return T;
-    }
-
-    /** @test */
-    public function it_returns_true()
-    {
-        $this->assertTrue($this->callFn());
+        $this->assertTrue(P::T());
+        $this->assertTrue(call_user_func(P::class.'::T'));
+        $this->assertTrue(call_user_func(P::class.'::otherwise'));
     }
 }

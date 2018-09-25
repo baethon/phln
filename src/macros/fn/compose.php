@@ -1,12 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-use function phln\collection\head;
-use function phln\collection\tail;
-
-const compose = '\\phln\\fn\\compose';
+use Baethon\Phln\Phln as P;
 
 /**
  * Performs left-to-right function composition.
@@ -20,11 +15,10 @@ const compose = '\\phln\\fn\\compose';
  * @return \Closure
  * @throws \UnderflowException
  */
-function compose(array $fns): \Closure
-{
+P::macro('compose', function (array $fns): \Closure {
     if (0 === count($fns)) {
         throw new \UnderflowException('compose requires at least one argument');
     }
 
-    return pipe(array_reverse($fns));
-}
+    return P::pipe(array_reverse($fns));
+});

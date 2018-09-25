@@ -7,7 +7,7 @@ use Baethon\Phln\Phln as P;
  * Returns a curried equivalent of the provided function.
  *
  * Curried function doesn't require providing arguments one at a time.
- * If `f` is a ternary function and `g` is `\phln\fn\curry(f)`, the following are equivalent.
+ * If `f` is a ternary function and `g` is `P::curry(f)`, the following are equivalent.
  *      * g(1)(2)(3)
  *      * g(1)(2, 3)
  *      * g(1, 2)(3)

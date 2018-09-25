@@ -1,11 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const T = '\\phln\\fn\\T';
-
-const otherwise = T;
+use Baethon\Phln\Phln as P;
 
 /**
  * A function that always returns `true`. Any passed in parameters are ignored.
@@ -14,8 +10,9 @@ const otherwise = T;
  * @phlnCategory function
  * @return bool
  */
-function T(): bool
-{
+P::macro('T', function (): bool {
     return true;
-}
+});
+
+P::alias('otherwise', 'T');
 

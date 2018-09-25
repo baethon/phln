@@ -1,12 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const __ = '_phln_fn_partial_placeholder';
-
-const partial = '\\phln\\fn\\partial';
-const 𝑓partial = '\\phln\\fn\\𝑓partial';
+use Baethon\Phln\Phln as P;
 
 /**
  * Takes a function `f` and a list of arguments, and returns a function `g`.
@@ -20,21 +15,15 @@ const 𝑓partial = '\\phln\\fn\\𝑓partial';
  * @param array $args
  * @return \Closure
  * @example
- *      $subtractFive = \phln\fn\partial(\phln\math\subtract, [\phln\fn\__, 5]);
+ *      $subtractFive = P::partial(P::subtract, [P::__, 5]);
  *      $subtractFive(10); // 5
  */
-function partial(callable $fn = null, array $args = []): \Closure
-{
-    return curryN(2, 𝑓partial, func_get_args());
-}
-
-function 𝑓partial(callable $fn, array $args): \Closure
-{
+P::curried('partial', 2, function (callable $fn, array $args): \Closure {
     $mergeArguments = function (array $args, array $innerArgs) {
         $mapped = [];
 
         foreach ($args as $value) {
-            if (__ === $value) {
+            if (P::__ === $value) {
                 $mapped[] = array_shift($innerArgs);
             } else {
                 $mapped[] = $value;
@@ -47,4 +36,4 @@ function 𝑓partial(callable $fn, array $args): \Closure
     return function (...$innerArgs) use ($fn, $args, $mergeArguments) {
         return $fn(...$mergeArguments($args, $innerArgs));
     };
-}
+});

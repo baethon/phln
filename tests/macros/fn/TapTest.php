@@ -1,16 +1,10 @@
 <?php
 
-use const phln\fn\tap;
+use Baethon\Phln\Phln as P;
 
-class TapTest extends \Phln\Build\PhpUnit\TestCase
+class TapTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return tap;
-    }
-
-    /** @test */
-    public function it_calls_function_and_returns_passed_value()
+    public function test_it_calls_function_and_returns_passed_value()
     {
         $argument = null;
         $fn = function ($a) use (& $argument) {
@@ -18,15 +12,14 @@ class TapTest extends \Phln\Build\PhpUnit\TestCase
             return true;
         };
 
-        $this->assertEquals('foo', $this->callFn($fn, 'foo'));
+        $this->assertEquals('foo', P::tap($fn, 'foo'));
         $this->assertEquals('foo', $argument);
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $called = false;
-        $f = $this->callFn(function () use (& $called) {
+        $f = P::tap(function () use (& $called) {
             $called = true;
         });
 

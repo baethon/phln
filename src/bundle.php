@@ -5,6 +5,23 @@ use function Baethon\Phln\load_macro;
 load_macro('fn', 'curryN');
 load_macro('fn', 'arity');
 load_macro('fn', 'curry');
+load_macro('fn', 'F');
+load_macro('fn', 'T');
+load_macro('fn', 'always');
+load_macro('fn', 'apply');
+load_macro('fn', 'pipe');
+load_macro('fn', 'compose');
+load_macro('fn', 'identity');
+load_macro('fn', 'invoker');
+load_macro('fn', 'negate');
+load_macro('fn', 'of');
+load_macro('fn', 'once');
+load_macro('fn', 'partial');
+load_macro('fn', 'partialRight');
+load_macro('fn', 'swap');
+load_macro('fn', 'tap');
+load_macro('fn', 'throwException');
+load_macro('fn', 'unapply');
 
 /* load_macro('collection', 'all'); */
 /* load_macro('collection', 'any'); */
@@ -39,23 +56,6 @@ load_macro('fn', 'curry');
 /* load_macro('collection', 'sortBy'); */
 /* load_macro('collection', 'tail'); */
 /* load_macro('collection', 'unique'); */
-/* load_macro('fn', 'F'); */
-/* load_macro('fn', 'T'); */
-/* load_macro('fn', 'always'); */
-/* load_macro('fn', 'apply'); */
-/* load_macro('fn', 'compose'); */
-/* load_macro('fn', 'identity'); */
-/* load_macro('fn', 'invoker'); */
-/* load_macro('fn', 'negate'); */
-/* load_macro('fn', 'of'); */
-/* load_macro('fn', 'once'); */
-/* load_macro('fn', 'partial'); */
-/* load_macro('fn', 'partialRight'); */
-/* load_macro('fn', 'pipe'); */
-/* load_macro('fn', 'swap'); */
-/* load_macro('fn', 'tap'); */
-/* load_macro('fn', 'throwException'); */
-/* load_macro('fn', 'unapply'); */
 /* load_macro('logic', 'allPass'); */
 /* load_macro('logic', 'both'); */
 /* load_macro('logic', 'cond'); */

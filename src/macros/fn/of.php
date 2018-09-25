@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const of = '\\phln\\fn\\of';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns a singleton array containing the value provided.
@@ -13,10 +11,9 @@ const of = '\\phln\\fn\\of';
  * @param mixed $value
  * @return array
  * @example
- *      \phln\fn\of(null); // [null]
- *      \phln\fn\of('a'); // ['a']
+ *      P::of(null); // [null]
+ *      P::of('a'); // ['a']
  */
-function of($value): array
-{
+P::macro('of', function ($value): array {
     return [$value];
-}
+});

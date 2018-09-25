@@ -1,17 +1,11 @@
 <?php
 
-use const phln\fn\identity;
+use Baethon\Phln\Phln as P;
 
-class IdentityTest extends \Phln\Build\PhpUnit\TestCase
+class IdentityTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_passed_value()
     {
-        return identity;
-    }
-
-    /** @test */
-    public function it_returns_passed_value()
-    {
-        $this->assertEquals(1, $this->callFn(1));
+        $this->assertEquals(1, P::identity(1));
     }
 }

@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const throwException = '\\phln\\fn\\throwException';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns callback which throws given exception.
@@ -16,12 +14,11 @@ const throwException = '\\phln\\fn\\throwException';
  * @param array $args
  * @return \Closure
  * @example
- *      $break = \phln\fn\throwException(\LogicException::class);
+ *      $break = P::throwException(\LogicException::class);
  *      $break(); // -> throw new \LogicException()
  */
-function throwException(string $exception = \Exception::class, array $args = []): \Closure
-{
+P::macro('throwException', function (string $exception = \Exception::class, array $args = []): \Closure {
     return function () use ($exception, $args) {
         throw new $exception(...$args);
     };
-}
+});

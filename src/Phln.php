@@ -9,6 +9,8 @@ final class Phln
 {
     use Macroable;
 
+    const __ = '_phln_fn_partial_placeholder';
+
     /**
      * Adds curried macro
      *

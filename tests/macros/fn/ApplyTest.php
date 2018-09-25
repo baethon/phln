@@ -1,28 +1,21 @@
 <?php
 
-use const phln\fn\apply;
+use Baethon\Phln\Phln as P;
 
-class ApplyTest extends \Phln\Build\PhpUnit\TestCase
+class ApplyTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return apply;
-    }
-
-    /** @test */
-    public function it_applies_array_to_function()
+    public function test_it_applies_array_to_function()
     {
         $f = function ($a, $b) {
             return $a + $b;
         };
 
-        $this->assertEquals(42, $this->callFn($f, [40, 2]));
+        $this->assertEquals(42, P::apply($f, [40, 2]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn(function ($a, $b) {
+        $f = P::apply(function ($a, $b) {
             return $a + $b;
         });
 

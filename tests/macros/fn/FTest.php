@@ -1,17 +1,12 @@
 <?php
 
-use const phln\fn\F;
+use Baethon\Phln\Phln as P;
 
-class FTest extends \Phln\Build\PhpUnit\TestCase
+class FTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_false()
     {
-        return F;
-    }
-
-    /** @test */
-    public function it_returns_false()
-    {
-        $this->assertFalse($this->callFn());
+        $this->assertFalse(P::F());
+        $this->assertFalse(call_user_func(P::class.'::F'));
     }
 }

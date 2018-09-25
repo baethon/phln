@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const pipe = '\\phln\\fn\\pipe';
+use Baethon\Phln\Phln as P;
 
 /**
  * Performs left-to-right function composition.
@@ -17,8 +15,7 @@ const pipe = '\\phln\\fn\\pipe';
  * @return \Closure
  * @throws \UnderflowException
  */
-function pipe(array $fns): \Closure
-{
+P::macro('pipe', function (array $fns): \Closure {
     if (0 === count($fns)) {
         throw new \UnderflowException('pipe requires at least one argument');
     }
@@ -31,4 +28,4 @@ function pipe(array $fns): \Closure
             return $fn($carry);
         }, $head(... $args));
     };
-}
+});

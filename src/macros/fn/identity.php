@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const identity = '\\phln\\fn\\identity';
+use Baethon\Phln\Phln as P;
 
 /**
  * A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.
@@ -13,10 +11,8 @@ const identity = '\\phln\\fn\\identity';
  * @param $value
  * @return mixed
  * @example
- *      \phln\fn\identity(1) === 1; // 'true'
+ *      P::identity(1) === 1; // 'true'
  */
-function identity($value)
-{
+P::macro('identity', function ($value) {
     return $value;
-}
-
+});

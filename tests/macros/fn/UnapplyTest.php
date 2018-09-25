@@ -1,27 +1,20 @@
 <?php
 
-use const phln\fn\unapply;
+use Baethon\Phln\Phln as P;
 
-class UnapplyTest extends \Phln\Build\PhpUnit\TestCase
+class UnapplyTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return unapply;
-    }
-
-    /** @test */
-    public function it_passes_variadics_as_array_argument()
+    public function test_it_passes_variadics_as_array_argument()
     {
         $args = [1, 2, 3];
-        $result = $this->callFn('\\json_encode', ...$args);
+        $result = P::unapply('\\json_encode', ...$args);
         $this->assertEquals(json_encode($args), $result);
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $args = [1, 2, 3];
-        $f = $this->callFn('\\json_encode');
+        $f = P::unapply('\\json_encode');
         $this->assertEquals(json_encode($args), $f(...$args));
     }
 }

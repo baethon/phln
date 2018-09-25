@@ -1,65 +1,56 @@
 <?php
 
-use const phln\fn\partial;
-use const phln\fn\__;
+use Baethon\Phln\Phln as P;
 
-class PartialTest extends \Phln\Build\PhpUnit\TestCase
+class PartialTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return partial;
-    }
-
-    /** @test */
-    public function it_builds_partial_of_function()
+    public function test_it_builds_partial_of_function()
     {
         $f = function ($a, $b, $c) {
             return join(',', [$a, $b, $c]);
         };
 
-        $g = $this->callFn($f, [2, 3]);
+        $g = P::partial($f, [2, 3]);
 
         $this->assertEquals('2,3,4', $g(4));
     }
 
-    /** @test */
-    public function it_returns_function_even_for_full_arguments_applied()
+    public function test_it_returns_function_even_for_full_arguments_applied()
     {
         $f = function ($a, $b) {
             return $a + $b;
         };
-        $g = $this->callFn($f, [1, 2]);
+        $g = P::partial($f, [1, 2]);
 
         $this->assertEquals(3, $g());
     }
 
-    /** @test */
-    public function it_supports_placeholder()
+    public function test_it_supports_placeholder()
     {
         $f = function ($a, $b) {
             return "$a-$b";
         };
-        $g = $this->callFn($f, [__, 2]);
+        $g = P::partial($f, [P::__, 2]);
 
         $this->assertEquals('1-2', $g(1));
     }
 
-    /** @test */
-    public function it_supports_multiple_placeholders()
+    public function test_it_supports_multiple_placeholders()
     {
         $f = function ($a, $b, $c) {
             return compact('a', 'b', 'c');
         };
-        $g = $this->callFn($f, [__, 'b', __]);
+        $g = P::partial($f, [P::__, 'b', P::__]);
         $expected = ['a' => 'A', 'b' => 'b', 'c' => 'C'];
 
         $this->assertEquals($expected, $g('A', 'C'));
     }
 
-    /** @test */
-    public function it_can_be_curried()
+    public function test_it_can_be_curried()
     {
-        $factory = $this->callFn(\phln\math\add);
+        $factory = P::partial(function ($a, $b) {
+            return $a + $b;
+        });
         $g = $factory([1]);
         $this->assertEquals(3, $g(2));
     }

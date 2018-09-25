@@ -1,22 +1,16 @@
 <?php
 
-use const phln\fn\negate;
+use Baethon\Phln\Phln as P;
 
-class NegateTest extends \Phln\Build\PhpUnit\TestCase
+class NegateTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return negate;
-    }
-
-    /** @test */
-    public function it_negates_predicate()
+    public function test_it_negates_predicate()
     {
         $isEven = function ($i) {
             return $i % 2 === 0;
         };
 
-        $g = $this->callFn($isEven);
+        $g = P::negate($isEven);
         $this->assertTrue($g(1));
     }
 }

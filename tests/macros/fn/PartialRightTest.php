@@ -1,34 +1,27 @@
 <?php
 
-use const phln\fn\partialRight;
+use Baethon\Phln\Phln as P;
 
-class PartialRightTest extends \Phln\Build\PhpUnit\TestCase
+class PartialRightTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return partialRight;
-    }
-
-    /** @test  */
-    public function it_applies_right_side_of_arguments()
+    public function test_it_applies_right_side_of_arguments()
     {
         $fn = function ($a, $b, $c) {
             return sprintf('%s, %s - %s', $a, $b, $c);
         };
 
-        $f = $this->callFn($fn, ['a', 'z']);
+        $f = P::partialRight($fn, ['a', 'z']);
 
         $this->assertEquals('Hello, a - z', $f('Hello'));
     }
 
-    /** @test */
-    public function it_allows_to_pass_multiple_arguments()
+    public function test_it_allows_to_pass_multiple_arguments()
     {
         $fn = function ($a, $b, $c) {
             return sprintf('%s, %s - %s', $a, $b, $c);
         };
 
-        $f = $this->callFn($fn, ['z']);
+        $f = P::partialRight($fn, ['z']);
 
         $this->assertEquals('Hello, a - z', $f('Hello', 'a'));
     }

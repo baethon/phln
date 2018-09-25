@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const F = '\\phln\\fn\\F';
+use Baethon\Phln\Phln as P;
 
 /**
  * A function that always returns `false`. Any passed in parameters are ignored.
@@ -12,8 +10,7 @@ const F = '\\phln\\fn\\F';
  * @phlnCategory function
  * @return bool
  */
-function F(): bool
-{
+P::macro('F', function (): bool {
     return false;
-}
+});
 

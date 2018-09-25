@@ -1,20 +1,14 @@
 <?php
 
-use const phln\fn\once;
+use Baethon\Phln\Phln as P;
 
-class OnceTest extends \Phln\Build\PhpUnit\TestCase
+class OnceTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return once;
-    }
-
     /**
-     * @test
      * @dataProvider onceValueProvider
      * @param mixed $returnValue
      */
-    public function it_calls_fn_once($returnValue)
+    public function test_it_calls_fn_once($returnValue)
     {
         $callCounter = 0;
         $fn = function () use (& $callCounter, $returnValue) {
@@ -22,21 +16,20 @@ class OnceTest extends \Phln\Build\PhpUnit\TestCase
             return $returnValue;
         };
 
-        $f = $this->callFn($fn);
+        $f = P::once($fn);
 
         $this->assertEquals($returnValue, $f());
         $this->assertEquals($returnValue, $f());
         $this->assertEquals(1, $callCounter);
     }
 
-    /** @test */
-    public function it_passes_arguments_to_fn()
+    public function test_it_passes_arguments_to_fn()
     {
         $sum = function ($a, $b) {
             return $a + $b;
         };
 
-        $f = $this->callFn($sum);
+        $f = P::once($sum);
 
         $this->assertEquals(5, $f(2, 3));
     }

@@ -1,12 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-use function phln\fn\curryN;
-
-const invoker = '\\phln\\fn\\invoker';
-const 𝑓invoker = '\\phln\\fn\\𝑓invoker';
+use Baethon\Phln\Phln as P;
 
 /**
  * Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.
@@ -28,16 +23,10 @@ const 𝑓invoker = '\\phln\\fn\\𝑓invoker';
  *          }
  *      };
  *
- *      $helloToJon = \phln\fn\invoker(2, 'hello')('Jon');
+ *      $helloToJon = P::invoker(2, 'hello')('Jon');
  *      $helloToJon('Snow'); // 'Hello, Jon Snow!'
  */
-function invoker(int $arity = null, string $method): \Closure
-{
-    return curryN(2, 𝑓invoker, func_get_args());
-}
-
-function 𝑓invoker(int $arity, string $method): \Closure
-{
+P::curried('invoker', 2, function (int $arity, string $method): \Closure {
     $wrapper = function(...$args) use ($arity, $method) {
         $args = array_slice($args, 0, $arity + 1);
         $object = array_pop($args);
@@ -47,5 +36,5 @@ function 𝑓invoker(int $arity, string $method): \Closure
         return $object->$method(...$args);
     };
 
-    return curryN($arity + 1, $wrapper);
-}
+    return P::curryN($arity + 1, $wrapper);
+});
