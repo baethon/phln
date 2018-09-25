@@ -21,6 +21,7 @@
             "Baethon\\Phln\\": "src"
         },
         "files": [
+            "src/load_macro.php",
             "src/bundle.php"
         ]
     },

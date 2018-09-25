@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const curryN = '\\phln\\fn\\curryN';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns a curried equivalent of the provided function, with the specified arity.
@@ -22,16 +20,12 @@ const curryN = '\\phln\\fn\\curryN';
  * @param array $args
  * @return \Closure|mixed
  */
-function curryN(int $n, callable $fn, array $args = [])
-{
-    $argumentsLengthMatch = function (array $arguments) use ($n) {
-        return count($arguments) >= $n;
-    };
-
-    $wrapper = function (...$wrapperArguments) use ($fn, $args, $argumentsLengthMatch, $n) {
-        $combined = array_merge($args, $wrapperArguments);
-        return $argumentsLengthMatch($combined) ? $fn(...$combined) : curryN($n, $fn, $combined);
-    };
-
-    return $argumentsLengthMatch($args) ? $fn(...$args) : $wrapper;
-}
+P::macro('curryN', new class {
+    public function __invoke(int $n, callable $fn, array $args = []) {
+        return (count($args) >= $n)
+            ? $fn(...$args)
+            : function (...$innerArgs) use ($n, $fn, $args) {
+                return $this($n, $fn, array_merge($args, $innerArgs));
+            };
+    }
+});

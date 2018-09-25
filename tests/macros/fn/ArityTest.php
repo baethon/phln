@@ -1,20 +1,14 @@
 <?php
 
-use const phln\fn\arity;
+use Baethon\Phln\Phln as P;
 
-class ArityTest extends \Phln\Build\PhpUnit\TestCase
+class ArityTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_arity_of_function()
     {
-        return arity;
-    }
-
-    /** @test */
-    public function it_returns_arity_of_function()
-    {
-        $this->assertEquals(1, $this->callFn(function ($a) {}));
-        $this->assertEquals(2, $this->callFn(function ($a, $b) {}));
-        $this->assertEquals(1, $this->callFn(function (...$a) {}));
-        $this->assertEquals(2, $this->callFn(function ($a, ...$b) {}));
+        $this->assertEquals(1, P::arity(function ($a) {}));
+        $this->assertEquals(2, P::arity(function ($a, $b) {}));
+        $this->assertEquals(1, P::arity(function (...$a) {}));
+        $this->assertEquals(2, P::arity(function ($a, ...$b) {}));
     }
 }

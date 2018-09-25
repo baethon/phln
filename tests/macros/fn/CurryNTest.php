@@ -1,23 +1,17 @@
 <?php
 
-use const phln\fn\curryN;
+use Baethon\Phln\Phln as P;
 
-class CurryNTest extends \Phln\Build\PhpUnit\TestCase
+class CurryNTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return curryN;
-    }
-
-    /** @test */
-    public function it_curries_function()
+    public function test_it_curries_function()
     {
         $sum = function ($a, $b, $c) {
             return $a + $b + $c;
         };
 
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn(3, $sum);
+        $g = P::curryN(3, $sum);
 
         $this->assertEquals($expected, $g(1, 2, 3));
         $this->assertEquals($expected, $g(1)(2, 3));
@@ -25,28 +19,26 @@ class CurryNTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertEquals($expected, $g(1)(2)(3));
     }
 
-    /** @test */
-    function it_returns_value_when_arguments_lenght_is_equal_to_parameters()
+    function test_it_returns_value_when_arguments_lenght_is_equal_to_parameters()
     {
         $sum = function ($a, $b, $c) {
             return $a + $b + $c;
         };
         $expected = $sum(1, 2, 3);
-        $g = $this->callFn(3, $sum, [1, 2, 3]);
+        $g = P::curryN(3, $sum, [1, 2, 3]);
 
         $this->assertEquals($expected, $g);
     }
 
-    /** @test */
-    function it_curries_until_n_is_matched()
+    function test_it_curries_until_n_is_matched()
     {
         $sum = function (... $args) {
             return array_sum($args);
         };
 
-        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum));
-        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, [1]));
-        $this->assertInstanceOf(\Closure::class, $this->callFn(3, $sum, [1, 2]));
-        $this->assertEquals(6, $this->callFn(3, $sum, [1, 2, 3]));
+        $this->assertInstanceOf(\Closure::class, P::curryN(3, $sum));
+        $this->assertInstanceOf(\Closure::class, P::curryN(3, $sum, [1]));
+        $this->assertInstanceOf(\Closure::class, P::curryN(3, $sum, [1, 2]));
+        $this->assertEquals(6, P::curryN(3, $sum, [1, 2, 3]));
     }
 }

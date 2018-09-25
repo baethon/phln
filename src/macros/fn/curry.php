@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const curry = '\\phln\\fn\\curry';
+use Baethon\Phln\Phln as P;
 
 /**
  * Returns a curried equivalent of the provided function.
@@ -21,7 +19,6 @@ const curry = '\\phln\\fn\\curry';
  * @param array $args
  * @return \Closure|mixed
  */
-function curry(callable $fn, array $args = [])
-{
-    return curryN(arity($fn), $fn, $args);
-}
+P::macro('curry', function (callable $fn, array $args = []) {
+    return P::curryN(P::arity($fn), $fn, $args);
+});

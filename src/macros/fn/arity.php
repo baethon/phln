@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\fn;
-
-const arity = '\\phln\\fn\\arity';
+use Baethon\Phln\Phln as P;
 
 /**
  * Takes a function and returns its arity.
@@ -15,7 +13,6 @@ const arity = '\\phln\\fn\\arity';
  * @example
  *      \phln\fn\arity('var_dump'); // 1
  */
-function arity(callable $fn): int
-{
+P::macro('arity', function (callable $fn): int {
     return (new \ReflectionFunction($fn))->getNumberOfParameters();
-}
+});
