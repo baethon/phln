@@ -20,4 +20,15 @@ final class Phln
     {
         static::macro($macroName, static::curryN($arity, $fn));
     }
+
+    /**
+     * Makes an alias for given macro
+     *
+     * @param string $macroName
+     * @param string $targetMacro
+     */
+    public static function alias(string $macroName, string $targetMacro)
+    {
+        static::macro($macroName, static::class."::{$targetMacro}");
+    }
 }

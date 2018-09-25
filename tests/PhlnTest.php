@@ -23,4 +23,15 @@ class PhlnTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(3, $f(2));
     }
+
+    public function test_adding_macro_aliases()
+    {
+        P::macro('hello', function (string $name) {
+            return "Hello {$name}";
+        });
+
+        P::alias('hai', 'hello');
+
+        $this->assertEquals(P::hello('Jon'), P::hai('Jon'));
+    }
 }
