@@ -34,4 +34,9 @@ class PhlnTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(P::hello('Jon'), P::hai('Jon'));
     }
+
+    public function test_it_returns_ref_to_macro()
+    {
+        $this->assertEquals(P::class.'::tap', P::ref('tap'));
+    }
 }

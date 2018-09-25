@@ -33,4 +33,15 @@ final class Phln
     {
         static::macro($macroName, static::class."::{$targetMacro}");
     }
+
+    /**
+     * Returns "reference" to one of Phln macros
+     *
+     * @param string $macroName
+     * @return callable
+     */
+    public static function ref(string $macroName): callable
+    {
+        return sprintf('%s::%s', static::class, $macroName);
+    }
 }
