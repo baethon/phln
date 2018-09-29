@@ -1,28 +1,20 @@
 <?php
 
-use const phln\collection\length;
+use Baethon\Phln\Phln as P;
 
-class LengthTest extends \Phln\Build\PhpUnit\TestCase
+class LengthTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_length_of_array()
     {
-        return length;
+        $this->assertEquals(3, P::length([1, 2, 3]));
     }
 
-    /** @test  */
-    public function it_returns_length_of_array()
+    public function test_it_returns_length_of_string()
     {
-        $this->assertEquals(3, $this->callFn([1, 2, 3]));
+        $this->assertEquals(5, P::length('lorem'));
     }
 
-    /** @test */
-    public function it_returns_length_of_string()
-    {
-        $this->assertEquals(5, $this->callFn('lorem'));
-    }
-
-    /** @test */
-    public function it_returns_length_of_countable()
+    public function test_it_returns_length_of_countable()
     {
         $obj = new class () implements \Countable {
             public function count()
@@ -31,6 +23,6 @@ class LengthTest extends \Phln\Build\PhpUnit\TestCase
             }
         };
 
-        $this->assertEquals(10, $this->callFn($obj));
+        $this->assertEquals(10, P::length($obj));
     }
 }

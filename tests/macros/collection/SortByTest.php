@@ -1,16 +1,10 @@
 <?php
 
-use const phln\collection\sortBy;
+use Baethon\Phln\Phln as P;
 
-class SortByTest extends \Phln\Build\PhpUnit\TestCase
+class SortByTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return sortBy;
-    }
-
-    /** @test */
-    public function it_sorts_by_supplied_function()
+    public function test_it_sorts_by_supplied_function()
     {
         $alice = ['name' => 'ALICE'];
         $bob = ['name' => 'bob'];
@@ -19,19 +13,18 @@ class SortByTest extends \Phln\Build\PhpUnit\TestCase
             return strtolower($item['name']);
         };
 
-        $this->assertEquals([$alice, $bob, $clara], $this->callFn($f, [$clara, $bob, $alice]));
+        $this->assertEquals([$alice, $bob, $clara], P::sortBy($f, [$clara, $bob, $alice]));
 
         return [$alice, $bob, $clara, $f];
     }
 
     /**
-     * @test
-     * @depends it_sorts_by_supplied_function
+     * @depends test_it_sorts_by_supplied_function
      */
-    public function it_is_curried($payload)
+    public function test_it_is_curried($payload)
     {
         list($alice, $bob, $clara, $f) = $payload;
-        $sort = $this->callFn($f);
+        $sort = P::sortBy($f);
 
         $this->assertEquals([$alice, $bob, $clara], $sort([$bob, $clara, $alice]));
     }

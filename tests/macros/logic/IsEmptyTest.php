@@ -1,21 +1,15 @@
 <?php
 
-use const phln\logic\isEmpty;
+use Baethon\Phln\Phln as P;
 
-class IsEmptyTest extends \Phln\Build\PhpUnit\TestCase
+class IsEmptyTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return isEmpty;
-    }
-
     /**
-     * @test
      * @dataProvider emptyCheckDataProvider
      */
-    public function it_tests_if_values_are_empty($value, $expected)
+    public function test_it_tests_if_values_are_empty($value, $expected)
     {
-        $this->assertEquals($expected, $this->callFn($value));
+        $this->assertEquals($expected, P::isEmpty($value));
     }
 
     public function emptyCheckDataProvider()

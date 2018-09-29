@@ -1,26 +1,19 @@
 <?php
 
-use const phln\collection\range;
+use Baethon\Phln\Phln as P;
 
-class RangeTest extends \Phln\Build\PhpUnit\TestCase
+class RangeTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_generates_range()
     {
-        return range;
+        $this->assertEquals([0, 1, 2, 3, 4], P::range(0, 5));
+        $this->assertEquals([4, 3, 2, 1], P::range(4, 0));
+        $this->assertEquals([], P::range(1, 1));
     }
 
-    /** @test */
-    public function it_generates_range()
+    public function test_it_is_curried()
     {
-        $this->assertEquals([0, 1, 2, 3, 4], $this->callFn(0, 5));
-        $this->assertEquals([4, 3, 2, 1], $this->callFn(4, 0));
-        $this->assertEquals([], $this->callFn(1, 1));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(0);
+        $f = P::range(0);
         $this->assertEquals([0, 1, 2, 3, 4], $f(5));
     }
 }

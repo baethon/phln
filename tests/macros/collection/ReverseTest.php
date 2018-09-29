@@ -1,24 +1,17 @@
 <?php
 
-use const phln\collection\reverse;
+use Baethon\Phln\Phln as P;
 
-class ReverseTest extends \Phln\Build\PhpUnit\TestCase
+class ReverseTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return reverse;
-    }
-
-    /** @test */
-    public function it_reverses_array()
+    public function test_it_reverses_array()
     {
         $list = range(1, 10);
-        $this->assertEquals(array_reverse($list), $this->callFn($list));
+        $this->assertEquals(array_reverse($list), P::reverse($list));
     }
 
-    /** @test */
-    public function it_reverses_string()
+    public function test_it_reverses_string()
     {
-        $this->assertEquals('oof', $this->callFn('foo'));
+        $this->assertEquals('oof', P::reverse('foo'));
     }
 }

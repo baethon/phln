@@ -1,33 +1,20 @@
 <?php
 
-use const phln\collection\last;
+use Baethon\Phln\Phln as P;
 
-class LastTest extends \Phln\Build\PhpUnit\TestCase
+class LastTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_last_element_of_array()
     {
-        return last;
+        $this->assertEquals(3, P::last([1, 2, 3]));
+        $this->assertEquals(1, P::last([1]));
+        $this->assertNull(P::last([]));
     }
 
-    /** @test */
-    public function it_returns_last_element_of_array()
+    public function test_it_returns_last_character_of_string()
     {
-        $this->assertEquals(3, $this->callFn([1, 2, 3]));
-        $this->assertEquals(1, $this->callFn([1]));
-        $this->assertNull($this->callFn([]));
-    }
-
-    /** @test */
-    public function it_returns_last_character_of_string()
-    {
-        $this->assertEquals('o', $this->callFn('foo'));
-        $this->assertEquals('f', $this->callFn('f'));
-        $this->assertEquals('', $this->callFn(''));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $this->assertEquals(3, call_user_func($this->getResolvedFn(), [1, 2, 3]));
+        $this->assertEquals('o', P::last('foo'));
+        $this->assertEquals('f', P::last('f'));
+        $this->assertEquals('', P::last(''));
     }
 }

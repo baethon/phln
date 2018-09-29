@@ -1,27 +1,20 @@
 <?php
 
-use const phln\collection\tail;
+use Baethon\Phln\Phln as P;
 
-class TailTest extends \Phln\Build\PhpUnit\TestCase
+class TailTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_tail_of_array()
     {
-        return tail;
+        $this->assertEquals([2, 3, 4], P::tail([1, 2, 3, 4]));
+        $this->assertEquals([], P::tail([1]));
+        $this->assertEquals([], P::tail([]));
     }
 
-    /** @test */
-    public function it_returns_tail_of_array()
+    public function test_it_returns_tail_of_string()
     {
-        $this->assertEquals([2, 3, 4], $this->callFn([1, 2, 3, 4]));
-        $this->assertEquals([], $this->callFn([1]));
-        $this->assertEquals([], $this->callFn([]));
-    }
-
-    /** @test */
-    public function it_returns_tail_of_string()
-    {
-        $this->assertEquals('orem', $this->callFn('lorem'));
-        $this->assertEquals('', $this->callFn('l'));
-        $this->assertEquals('', $this->callFn(''));
+        $this->assertEquals('orem', P::tail('lorem'));
+        $this->assertEquals('', P::tail('l'));
+        $this->assertEquals('', P::tail(''));
     }
 }

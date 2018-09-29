@@ -1,28 +1,21 @@
 <?php
 
-use const phln\object\prop;
+use Baethon\Phln\Phln as P;
 
-class PropTest extends \Phln\Build\PhpUnit\TestCase
+class PropTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_value_by_index()
     {
-        return prop;
-    }
-
-    /** @test */
-    public function it_returns_value_by_index()
-    {
-        $this->assertEquals(1, $this->callFn(1, [0, 1]));
+        $this->assertEquals(1, P::prop(1, [0, 1]));
     }
 
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_returns_value_by_key($value)
+    public function test_it_returns_value_by_key($value)
     {
-        $this->assertEquals(1, $this->callFn('a', $value));
-        $this->assertNull($this->callFn('b', $value));
+        $this->assertEquals(1, P::prop('a', $value));
+        $this->assertNull(P::prop('b', $value));
     }
 
     public function objectsProvider()
@@ -33,10 +26,9 @@ class PropTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn('a');
+        $f = P::prop('a');
         $this->assertEquals(1, $f(['a' => 1]));
     }
 }

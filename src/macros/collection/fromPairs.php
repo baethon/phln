@@ -1,22 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\collection;
+use Baethon\Phln\Phln as P;
 
-const fromPairs = '\\phln\\collection\\fromPairs';
-
-/**
- * Creates a new key => value object from list of pairs.
- *
- * @phlnSignature [[k, v]] -> {k: v}
- * @phlnCategory collection
- * @param array $pairs
- * @return array
- * @example
- *      \phln\collection\fromPairs([['foo', 1], ['bar', 2]]); // [ 'foo' => 1, 'bar' => 2 ]
- */
-function fromPairs(array $pairs): array
-{
+P::macro('fromPairs', function (array $pairs): array {
     return array_reduce(
         $pairs,
         function ($carry, $item) {
@@ -26,4 +13,4 @@ function fromPairs(array $pairs): array
         },
         []
     );
-}
+});

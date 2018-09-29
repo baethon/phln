@@ -1,30 +1,22 @@
 <?php
 
-use function phln\collection\init;
-use const phln\collection\init;
+use Baethon\Phln\Phln as P;
 
-class InitTest extends \Phln\Build\PhpUnit\TestCase
+class InitTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_list_without_last_element()
     {
-        return init;
+        $this->assertEquals([1, 2], P::init([1, 2, 3]));
+        $this->assertEquals([1], P::init([1, 2]));
+        $this->assertEquals([], P::init([1]));
+        $this->assertEquals([], P::init([]));
     }
 
-    /** @test */
-    public function it_returns_list_without_last_element()
+    public function test_it_returns_string_without_last_character()
     {
-        $this->assertEquals([1, 2], $this->callFn([1, 2, 3]));
-        $this->assertEquals([1], $this->callFn([1, 2]));
-        $this->assertEquals([], $this->callFn([1]));
-        $this->assertEquals([], $this->callFn([]));
-    }
-
-    /** @test */
-    public function it_returns_string_without_last_character()
-    {
-        $this->assertEquals('lore', $this->callFn('lorem'));
-        $this->assertEquals('l', $this->callFn('lo'));
-        $this->assertEquals('', $this->callFn('l'));
-        $this->assertEquals('', $this->callFn(''));
+        $this->assertEquals('lore', P::init('lorem'));
+        $this->assertEquals('l', P::init('lo'));
+        $this->assertEquals('', P::init('l'));
+        $this->assertEquals('', P::init(''));
     }
 }

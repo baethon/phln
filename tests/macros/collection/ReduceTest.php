@@ -1,28 +1,21 @@
 <?php
 
-use const phln\collection\reduce;
+use Baethon\Phln\Phln as P;
 
-class ReduceTest extends \Phln\Build\PhpUnit\TestCase
+class ReduceTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return reduce;
-    }
-
-    /** @test */
-    public function it_reduces_value()
+    public function test_it_reduces_value()
     {
         $f = function ($a, $b) {
             return $a - $b;
         };
 
-        $this->assertEquals(-10, $this->callFn($f, 0, [1, 2, 3, 4]));
+        $this->assertEquals(-10, P::reduce($f, 0, [1, 2, 3, 4]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn(function ($a, $b) {
+        $f = P::reduce(function ($a, $b) {
             return $a - $b;
         }, 0);
 

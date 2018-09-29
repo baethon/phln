@@ -1,19 +1,13 @@
 <?php
 
-use const phln\collection\unique;
+use Baethon\Phln\Phln as P;
 
-class UniqueTest extends \Phln\Build\PhpUnit\TestCase
+class UniqueTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_unique_elements()
     {
-        return unique;
-    }
-
-    /** @test */
-    public function it_returns_unique_elements()
-    {
-        $this->assertEquals([1, 3, 2], $this->callFn([1, 3, 3, 2, 1, 1]));
-        $this->assertEquals([1, '1'], $this->callFn([1, '1', 1]));
-        $this->assertEquals([[42]], $this->callFn([[42], [42]]));
+        $this->assertEquals([1, 3, 2], P::unique([1, 3, 3, 2, 1, 1]));
+        $this->assertEquals([1, '1'], P::unique([1, '1', 1]));
+        $this->assertEquals([[42]], P::unique([[42], [42]]));
     }
 }

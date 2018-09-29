@@ -1,24 +1,17 @@
 <?php
 
-use const phln\collection\join;
+use Baethon\Phln\Phln as P;
 
-class JoinTest extends \Phln\Build\PhpUnit\TestCase
+class JoinTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_joins_array_elements()
     {
-        return join;
+        $this->assertEquals('1,2,3', P::join(',', [1, 2, 3]));
     }
 
-    /** @test */
-    public function it_joins_array_elements()
+    public function test_it_is_curried()
     {
-        $this->assertEquals('1,2,3', $this->callFn(',', [1, 2, 3]));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $spacer = $this->callFn(' ');
+        $spacer = P::join(' ');
         $this->assertEquals('1 2 3', $spacer([1, 2, 3]));
     }
 }

@@ -1,26 +1,19 @@
 <?php
 
-use const phln\relation\lte;
+use Baethon\Phln\Phln as P;
 
-class LteTest extends \Phln\Build\PhpUnit\TestCase
+class LteTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_checks_if_value_is_less_or_equal()
     {
-        return lte;
+        $this->assertTrue(P::lte(1, 1));
+        $this->assertTrue(P::lte(1, 2));
+        $this->assertFalse(P::lte(3, 2));
     }
 
-    /** @test */
-    public function it_checks_if_value_is_less_or_equal()
+    public function test_it_is_curried()
     {
-        $this->assertTrue($this->callFn(1, 1));
-        $this->assertTrue($this->callFn(1, 2));
-        $this->assertFalse($this->callFn(3, 2));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(1);
+        $f = P::lte(1);
 
         $this->assertTrue($f(2));
         $this->assertTrue($f(1));

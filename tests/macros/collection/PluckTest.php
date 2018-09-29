@@ -1,25 +1,18 @@
 <?php
 
-use const phln\collection\pluck;
+use Baethon\Phln\Phln as P;
 
-class PluckTest extends \Phln\Build\PhpUnit\TestCase
+class PluckTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_plucks_value_by_key()
     {
-        return pluck;
+        $this->assertEquals([1, 2], P::pluck('a', [['a' => 1], ['a' => 2]]));
+        $this->assertEquals([1, 2], P::pluck(1, [[0, 1], [1, 2]]));
     }
 
-    /** @test */
-    public function it_plucks_value_by_key()
+    public function test_it_is_curried()
     {
-        $this->assertEquals([1, 2], $this->callFn('a', [['a' => 1], ['a' => 2]]));
-        $this->assertEquals([1, 2], $this->callFn(1, [[0, 1], [1, 2]]));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn('a');
+        $f = P::pluck('a');
         $this->assertEquals([1], $f([['a' => 1]]));
     }
 }

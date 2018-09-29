@@ -1,33 +1,25 @@
 <?php
 
-use const phln\collection\prepend;
+use Baethon\Phln\Phln as P;
 
-class PrependTest extends \Phln\Build\PhpUnit\TestCase
+class PrependTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return prepend;
-    }
-
-    /** @test */
-    public function it_prepends_value_to_array()
+    public function test_it_prepends_value_to_array()
     {
         $list = [1, 2];
-        $this->assertEquals(['a', 1, 2], $this->callFn('a', $list));
-        $this->assertEquals([['a'], 1, 2], $this->callFn(['a'], $list));
+        $this->assertEquals(['a', 1, 2], P::prepend('a', $list));
+        $this->assertEquals([['a'], 1, 2], P::prepend(['a'], $list));
         $this->assertEquals([1, 2], $list);
     }
 
-    /** @test */
-    public function it_prepends_value_to_string()
+    public function test_it_prepends_value_to_string()
     {
-        $this->assertEquals('foobar', $this->callFn('foo', 'bar'));
+        $this->assertEquals('foobar', P::prepend('foo', 'bar'));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $prependFoo = $this->callFn('foo');
+        $prependFoo = P::prepend('foo');
         $this->assertEquals(['foo', 1], $prependFoo([1]));
     }
 }

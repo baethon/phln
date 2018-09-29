@@ -1,16 +1,10 @@
 <?php
 
-use const phln\collection\groupBy;
+use Baethon\Phln\Phln as P;
 
-class GroupByTest extends \Phln\Build\PhpUnit\TestCase
+class GroupByTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return groupBy;
-    }
-
-    /** @test  */
-    public function it_groups_by_given_fn()
+    public function test_it_groups_by_given_fn()
     {
         $list = [
             ['name' => 'Jon', 'score' => 64],
@@ -38,13 +32,12 @@ class GroupByTest extends \Phln\Build\PhpUnit\TestCase
             ],
         ];
 
-        $this->assertEquals($expected, $this->callFn($this->getScoreFn(), $list));
+        $this->assertEquals($expected, P::groupBy($this->getScoreFn(), $list));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn($this->getScoreFn());
+        $f = P::groupBy($this->getScoreFn());
 
         $list = [
             ['name' => 'Jon', 'score' => 70],

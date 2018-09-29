@@ -1,28 +1,20 @@
 <?php
 
-use function phln\collection\head;
-use const phln\collection\head;
+use Baethon\Phln\Phln as P;
 
-class HeadTest extends \Phln\Build\PhpUnit\TestCase
+class HeadTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_head_of_array()
     {
-        return head;
+        $this->assertEquals(1, P::head([1, 2, 3]));
+        $this->assertEquals(1, P::head([1]));
+        $this->assertNull(P::head([]));
     }
 
-    /** @test */
-    public function it_returns_head_of_array()
+    public function test_it_returs_head_of_string()
     {
-        $this->assertEquals(1, $this->callFn([1, 2, 3]));
-        $this->assertEquals(1, $this->callFn([1]));
-        $this->assertNull($this->callFn([]));
-    }
-
-    /** @test */
-    public function it_returs_head_of_string()
-    {
-        $this->assertEquals('f', $this->callFn('foo'));
-        $this->assertEquals('f', $this->callFn('f'));
-        $this->assertEquals('', $this->callFn(''));
+        $this->assertEquals('f', P::head('foo'));
+        $this->assertEquals('f', P::head('f'));
+        $this->assertEquals('', P::head(''));
     }
 }

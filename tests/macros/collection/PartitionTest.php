@@ -1,16 +1,10 @@
 <?php
 
-use const phln\collection\partition;
+use Baethon\Phln\Phln as P;
 
-class PartitionTest extends \Phln\Build\PhpUnit\TestCase
+class PartitionTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return partition;
-    }
-
-    /** @test  */
-    public function it_splits_array_using_predicate()
+    public function test_it_splits_array_using_predicate()
     {
         $p = function ($string) {
             return (bool) preg_match('/fo/', $string);
@@ -23,17 +17,16 @@ class PartitionTest extends \Phln\Build\PhpUnit\TestCase
             ['abc', 'jon', 'snow'],
         ];
 
-        $this->assertEquals($expected, $this->callFn($p, $collection));
+        $this->assertEquals($expected, P::partition($p, $collection));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $p = function ($i) {
             return $i % 2 === 0;
         };
 
-        $f = $this->callFn($p);
+        $f = P::partition($p);
 
         $collection = [1, 2, 3, 4];
         $expected = [[2, 4], [1, 3]];

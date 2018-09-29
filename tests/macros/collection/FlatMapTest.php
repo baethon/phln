@@ -1,29 +1,21 @@
 <?php
 
-use function phln\collection\flatMap;
-use const phln\collection\flatMap;
+use Baethon\Phln\Phln as P;
 
-class FlatMapTest extends \Phln\Build\PhpUnit\TestCase
+class FlatMapTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return flatMap;
-    }
-
-    /** @test */
-    public function it_flattens_mapped_array()
+    public function test_it_flattens_mapped_array()
     {
         $duplicate = function($i) {
             return [$i, $i];
         };
 
-        $this->assertEquals([1, 1, 2, 2], $this->callFn($duplicate, [1, 2]));
+        $this->assertEquals([1, 1, 2, 2], P::flatMap($duplicate, [1, 2]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $map = $this->callFn(function ($i) {
+        $map = P::flatMap(function ($i) {
             return [$i, $i];
         });
 

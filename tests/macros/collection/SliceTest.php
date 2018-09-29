@@ -1,33 +1,25 @@
 <?php
 
-use const phln\collection\slice;
+use Baethon\Phln\Phln as P;
 
-class SliceTest extends \Phln\Build\PhpUnit\TestCase
+class SliceTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return slice;
-    }
-
-    /** @test */
-    public function it_slices_array()
+    public function test_it_slices_array()
     {
         $list = \range(1, 100);
-        $this->assertEquals(array_slice($list, 4, 10), $this->callFn(4, 10, $list));
+        $this->assertEquals(array_slice($list, 4, 10), P::slice(4, 10, $list));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $list = \range(1, 100);
-        $slicer = $this->callFn(0, 5);
+        $slicer = P::slice(0, 5);
         $this->assertEquals(array_slice($list, 0, 5), $slicer($list));
     }
 
-    /** @test */
-    public function it_slices_text()
+    public function test_it_slices_text()
     {
         $string = 'lorem ipsum dolor sit amet';
-        $this->assertEquals('lorem', $this->callFn(0, 5, $string));
+        $this->assertEquals('lorem', P::slice(0, 5, $string));
     }
 }

@@ -1,18 +1,12 @@
 <?php
 
-use const phln\collection\fromPairs;
+use Baethon\Phln\Phln as P;
 
-class FromPairsTest extends \Phln\Build\PhpUnit\TestCase
+class FromPairsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return fromPairs;
-    }
-
-    /** @test  */
-    public function it_converts_collection_to_object()
+    public function test_it_converts_collection_to_object()
     {
         $expected = ['foo' => 1, 'bar' => 2];
-        $this->assertEquals($expected, $this->callFn([['foo', 1], ['bar', 2]]));
+        $this->assertEquals($expected, P::fromPairs([['foo', 1], ['bar', 2]]));
     }
 }
