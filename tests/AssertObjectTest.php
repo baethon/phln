@@ -1,14 +1,13 @@
 <?php
 
-use function phln\object\assertObject;
+use function Baethon\Phln\assertObject;
 
 class AssertObjectTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_passes_on_valid_object($value)
+    public function test_it_passes_on_valid_object($value)
     {
         $this->assertNull(assertObject($value));
     }
@@ -22,10 +21,9 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
      * @dataProvider nonObjectsProvider
      */
-    public function it_fails_on_non_objects($value)
+    public function test_it_fails_on_non_objects($value)
     {
         $type = gettype($value);
         $error = null;

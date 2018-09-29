@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\object;
+namespace Baethon\Phln;
 
 /**
  * Check if value is valid object.
