@@ -1,25 +1,18 @@
 <?php
 
-use const phln\relation\max;
+use Baethon\Phln\Phln as P;
 
-class MaxTest extends \Phln\Build\PhpUnit\TestCase
+class MaxTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_bigger_value()
     {
-        return max;
+        $this->assertEquals(1, P::max(-1, 1));
+        $this->assertEquals(1, P::max(1, -1));
     }
 
-    /** @test */
-    public function it_returns_bigger_value()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(1, $this->callFn(-1, 1));
-        $this->assertEquals(1, $this->callFn(1, -1));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(1);
+        $f = P::max(1);
         $this->assertEquals(1, $f(-1));
     }
 }

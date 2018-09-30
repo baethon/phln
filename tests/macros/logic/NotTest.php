@@ -1,23 +1,17 @@
 <?php
 
-use const phln\logic\not;
+use Baethon\Phln\Phln as P;
 
-class NotTest extends \Phln\Build\PhpUnit\TestCase
+class NotTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return not;
-    }
-
     /**
      * @param $value
      * @param $expected
-     * @test
      * @dataProvider notValueProvider
      */
-    public function it_negates_passed_value($value, $expected)
+    public function test_it_negates_passed_value($value, $expected)
     {
-        $this->assertEquals($expected, $this->callFn($value));
+        $this->assertEquals($expected, P::not($value));
     }
 
     public function notValueProvider()

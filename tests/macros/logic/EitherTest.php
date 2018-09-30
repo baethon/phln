@@ -1,16 +1,10 @@
 <?php
 
-use const phln\logic\either;
+use Baethon\Phln\Phln as P;
 
-class EitherTest extends \Phln\Build\PhpUnit\TestCase
+class EitherTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return either;
-    }
-
-    /** @test */
-    public function it_checks_if_one_of_predicates_returns_true()
+    public function test_it_checks_if_one_of_predicates_returns_true()
     {
         $p = function ($i) {
             return $i > 10;
@@ -19,7 +13,7 @@ class EitherTest extends \Phln\Build\PhpUnit\TestCase
             return 0 === $i % 2;
         };
 
-        $f = $this->callFn($p, $p2);
+        $f = P::either($p, $p2);
 
         $this->assertTrue($f(11));
         $this->assertTrue($f(2));
@@ -27,14 +21,13 @@ class EitherTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertFalse($f(9));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $p2 = function ($i) {
             return 0 === $i % 2;
         };
 
-        $f = $this->callFn(function ($i) {
+        $f = P::either(function ($i) {
             return $i > 10;
         });
 
@@ -42,11 +35,10 @@ class EitherTest extends \Phln\Build\PhpUnit\TestCase
         $this->assertTrue($f($p2)(2));
     }
 
-    /** @test */
-    public function it_supports_primitives()
+    public function test_it_supports_primitives()
     {
-        $this->assertTrue($this->callFn(true, true));
-        $this->assertTrue($this->callFn(true, false));
-        $this->assertFalse($this->callFn(false, false));
+        $this->assertTrue(P::either(true, true));
+        $this->assertTrue(P::either(true, false));
+        $this->assertFalse(P::either(false, false));
     }
 }

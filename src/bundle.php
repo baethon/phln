@@ -52,14 +52,14 @@ load_macro('collection', 'sort');
 load_macro('collection', 'sortBy');
 load_macro('collection', 'tail');
 load_macro('collection', 'unique');
-/* load_macro('logic', 'allPass'); */
+load_macro('logic', 'allPass');
 load_macro('logic', 'both');
 load_macro('logic', 'cond');
-/* load_macro('logic', 'defaultTo'); */
-/* load_macro('logic', 'either'); */
+load_macro('logic', 'defaultTo');
+load_macro('logic', 'either');
 load_macro('logic', 'ifElse');
 load_macro('logic', 'isEmpty');
-/* load_macro('logic', 'not'); */
+load_macro('logic', 'not');
 /* load_macro('math', 'add'); */
 /* load_macro('math', 'dec'); */
 /* load_macro('math', 'divide'); */
@@ -94,7 +94,7 @@ load_macro('relation', 'equals');
 /* load_macro('relation', 'intersection'); */
 /* load_macro('relation', 'lt'); */
 load_macro('relation', 'lte');
-/* load_macro('relation', 'max'); */
+load_macro('relation', 'max');
 /* load_macro('relation', 'min'); */
 /* load_macro('relation', 'pathEq'); */
 /* load_macro('relation', 'propEq'); */

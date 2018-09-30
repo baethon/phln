@@ -2,23 +2,32 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('both', function ($left, $right) {
+load_macro('type', 'is');
+load_macro('logic', 'cond');
+
+P::macro('both', call_user_func(function () {
     $allPrimitives = P::unapply(P::all(P::is('bool')));
     $allCallables = P::unapply(P::all(P::is('callable')));
-    $bothPredicate = function (...$args) use ($left, $right) {
-        return $left(...$args) && $right(...$args);
+
+    $bothPredicate = function ($left, $right) {
+        return function (...$args) use ($left, $right) {
+            return $left(...$args) && $right(...$args);
+        };
     };
+
     $compareBooleans = function ($left, $right) {
         return $left && $right;
     };
 
-    return P::apply(
-        P::cond([
-            [$allPrimitives, $compareBooleans],
-            [$allCallables, P::always($bothPredicate)],
-            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
-        ]),
-        [$left, $right]
-    );
-});
+    $both = P::cond([
+        [$allPrimitives, $compareBooleans],
+        [$allCallables, $bothPredicate],
+        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+    ]);
+
+    return function ($left, $right) use ($both) {
+        return $both($left, $right);
+    };
+}));
