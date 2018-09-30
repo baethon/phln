@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('is', 2, function (string $type, $value): bool {
+P::macro('is', function (string $type, $value): bool {
     $typeOfValue = strtolower(gettype($value));
     $expectedType = strtolower($type);
 

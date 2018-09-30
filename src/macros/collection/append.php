@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('append', 2, function ($value, $collection) {
+P::macro('append', function ($value, $collection) {
     $pushToArray = function (array $copy) use ($value) {
         array_push($copy, $value);
         return $copy;

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('prepend', 2, function ($value, $collection) {
+P::macro('prepend', function ($value, $collection) {
     $arrayPrepend = function (array $copy) use ($value) {
         array_unshift($copy, $value);
         return $copy;

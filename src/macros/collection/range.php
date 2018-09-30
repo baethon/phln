@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('range', 2, function (int $from, int $to): array {
+P::macro('range', function (int $from, int $to): array {
     if ($from === $to) {
         return [];
     }

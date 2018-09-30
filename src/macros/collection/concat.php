@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('concat', 2, function ($a, $b) {
+P::macro('concat', function ($a, $b) {
     $getTypes = P::unapply(P::map('\\gettype'));
     $matchesType = function (string $type) use ($getTypes) {
         return P::compose([P::equals([$type, $type]), $getTypes]);

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('partition', 2, function (callable $predicate, array $collection): array {
+P::macro('partition', function (callable $predicate, array $collection): array {
     return P::apply(
         P::pipe([
             P::reduce(

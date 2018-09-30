@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('contains', 2, function ($value, $collection): bool {
+P::macro('contains', function ($value, $collection): bool {
     $stringContains = P::partialRight('\\strstr', [$value]);
 
     return P::apply(

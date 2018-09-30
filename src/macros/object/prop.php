@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Baethon\Phln\Phln as P;
 use function Baethon\Phln\assertObject;
 
-P::curried('prop', 2, function ($key, $object) {
+P::macro('prop', function ($key, $object) {
     assertObject($object);
 
     return is_object($object)

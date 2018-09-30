@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::curried('both', 2, function ($left, $right) {
+P::macro('both', function ($left, $right) {
     $allPrimitives = P::unapply(P::all(P::is('bool')));
     $allCallables = P::unapply(P::all(P::is('callable')));
     $bothPredicate = function (...$args) use ($left, $right) {

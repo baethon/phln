@@ -14,18 +14,6 @@ final class Phln
     }
 
     /**
-     * Adds curried macro
-     *
-     * @param string $macroName
-     * @param int $arity
-     * @param callable $fn
-     */
-    public static function curried(string $macroName, int $arity, callable $fn)
-    {
-        static::macro($macroName, static::curryN($arity, $fn));
-    }
-
-    /**
      * Makes an alias for given macro
      *
      * @param string $macroName
