@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Baethon\Phln\Phln as P;
 
 P::macro('typeCond', function (array $pairs): \Closure {
-    $typeToPredicate = P::ifElse('\\is_callable', P::ref('identity'), P::ref('is'));
+    $typeToPredicate = P::ifElse('\\is_callable', P::ref('identity'), P::is());
 
     $mapRow = function ($row) use ($typeToPredicate) {
         $p = $typeToPredicate($row[0]);
