@@ -1,32 +1,18 @@
 <?php
 
-use const phln\math\median;
+use Baethon\Phln\Phln as P;
 
-class MedianTest extends \Phln\Build\PhpUnit\TestCase
+class MedianTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return median;
-    }
-
-    /** @test */
-    public function it_finds_median_of_odd_length_array()
+    public function test_it_finds_median_of_odd_length_array()
     {
         $numbers = [7, 2, 9];
-        $this->assertEquals(7, $this->callFn($numbers));
+        $this->assertEquals(7, P::median($numbers));
     }
 
-    /** @test */
-    public function it_finds_median_of_even_length_array()
+    public function test_it_finds_median_of_even_length_array()
     {
         $numbers = [7, 2, 10, 9];
-        $this->assertEquals(8, $this->callFn($numbers));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $result = call_user_func($this->getResolvedFn(), [7, 2, 9]);
-        $this->assertEquals(7, $result);
+        $this->assertEquals(8, P::median($numbers));
     }
 }

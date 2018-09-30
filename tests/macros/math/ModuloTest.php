@@ -1,30 +1,17 @@
 <?php
 
-use const phln\math\modulo;
+use Baethon\Phln\Phln as P;
 
-class ModuloTest extends \Phln\Build\PhpUnit\TestCase
+class ModuloTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_calculates_modulo()
     {
-        return modulo;
+        $this->assertEquals(1 % 2, P::modulo(1, 2));
     }
 
-    /** @test */
-    public function it_calculates_modulo()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(1 % 2, $this->callFn(1, 2));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(1);
+        $f = P::modulo(1);
         $this->assertEquals(1 % 2, $f(2));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $this->assertEquals(1 % 2, call_user_func($this->getResolvedFn(), 1, 2));
     }
 }

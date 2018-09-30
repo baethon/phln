@@ -1,33 +1,17 @@
 <?php
 
-use const phln\math\divide;
+use Baethon\Phln\Phln as P;
 
-class DivideTest extends \Phln\Build\PhpUnit\TestCase
+class DivideTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_divides_values()
     {
-        return divide;
+        $this->assertEquals(1 / 2, P::divide(1, 2));
     }
 
-    /** @test */
-    public function it_divides_values()
+    public function test_it_can_be_curried()
     {
-        $this->assertEquals(1 / 2, $this->callFn(1, 2));
-    }
-
-    /** @test */
-    public function it_can_be_curried()
-    {
-        $g = $this->callFn(1);
+        $g = P::divide(1);
         $this->assertEquals(1 / 2, $g(2));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [1, 2, 3];
-        $reduced = array_reduce($numbers, $this->getResolvedFn(), 1);
-
-        $this->assertEquals(1 / 2 / 3, $reduced);
     }
 }

@@ -1,32 +1,17 @@
 <?php
 
-use const phln\math\add;
+use Baethon\Phln\Phln as P;
 
-class AddTest extends \Phln\Build\PhpUnit\TestCase
+class AddTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_adds_two_numbers()
     {
-        return add;
+        $this->assertEquals(4, P::add(2, 2));
     }
 
-    /** @test */
-    public function it_adds_two_numbers()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(4, $this->callFn(2, 2));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $addFive = $this->callFn(5);
+        $addFive = P::add(5);
         $this->assertEquals(7, $addFive(2));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [1, 2, 3, 4];
-        $sum = array_reduce($numbers, $this->getResolvedFn());
-        $this->assertEquals(10, $sum);
     }
 }

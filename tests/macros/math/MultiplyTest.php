@@ -1,32 +1,17 @@
 <?php
 
-use const phln\math\multiply;
+use Baethon\Phln\Phln as P;
 
-class MultiplyTest extends \Phln\Build\PhpUnit\TestCase
+class MultiplyTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_multiplies_two_numbers()
     {
-        return multiply;
+        $this->assertEquals(4, P::multiply(2, 2));
     }
 
-    /** @test */
-    public function it_multiplies_two_numbers()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(4, $this->callFn(2, 2));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $triple = $this->callFn(3);
+        $triple = P::multiply(3);
         $this->assertEquals(6, $triple(2));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [1, 2, 3, 4];
-        $result = array_reduce($numbers, $this->getResolvedFn(), 1);
-        $this->assertEquals(24, $result);
     }
 }

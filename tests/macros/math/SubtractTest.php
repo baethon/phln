@@ -1,32 +1,17 @@
 <?php
 
-use const phln\math\subtract;
+use Baethon\Phln\Phln as P;
 
-class SubtractTest extends \Phln\Build\PhpUnit\TestCase
+class SubtractTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_subtracts_number()
     {
-        return subtract;
+        $this->assertEquals(4, P::subtract(7, 3));
     }
 
-    /** @test */
-    public function it_subtracts_number()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(4, $this->callFn(7, 3));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $complementaryAngle = $this->callFn(90);
+        $complementaryAngle = P::subtract(90);
         $this->assertEquals(30, $complementaryAngle(60));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [10, 4, 2];
-        $result = array_reduce($numbers, $this->getResolvedFn(), 0);
-        $this->assertEquals(-16, $result);
     }
 }

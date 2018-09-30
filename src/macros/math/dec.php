@@ -1,19 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\math;
+use Baethon\Phln\Phln as P;
 
-const dec = '\\phln\\math\\dec';
-
-/**
- * Decrement its argument
- *
- * @phlnSignature Int a => a -> a
- * @phlnCategory math
- * @param mixed $number
- * @return mixed
- */
-function dec($number)
-{
+P::macro('dec', function ($number) {
     return $number - 1;
-}
+});

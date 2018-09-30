@@ -60,17 +60,17 @@ load_macro('logic', 'either');
 load_macro('logic', 'ifElse');
 load_macro('logic', 'isEmpty');
 load_macro('logic', 'not');
-/* load_macro('math', 'add'); */
-/* load_macro('math', 'dec'); */
-/* load_macro('math', 'divide'); */
-/* load_macro('math', 'inc'); */
-/* load_macro('math', 'mean'); */
-/* load_macro('math', 'median'); */
-/* load_macro('math', 'modulo'); */
-/* load_macro('math', 'multiply'); */
-/* load_macro('math', 'product'); */
-/* load_macro('math', 'subtract'); */
-/* load_macro('math', 'sum'); */
+load_macro('math', 'add');
+load_macro('math', 'dec');
+load_macro('math', 'divide');
+load_macro('math', 'inc');
+load_macro('math', 'mean');
+load_macro('math', 'median');
+load_macro('math', 'modulo');
+load_macro('math', 'multiply');
+load_macro('math', 'product');
+load_macro('math', 'subtract');
+load_macro('math', 'sum');
 /* load_macro('object', 'assertObject'); */
 /* load_macro('object', 'eqProps'); */
 /* load_macro('object', 'keys'); */

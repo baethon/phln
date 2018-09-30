@@ -1,26 +1,12 @@
 <?php
 
-use const phln\math\product;
+use Baethon\Phln\Phln as P;
 
-class ProductTest extends \Phln\Build\PhpUnit\TestCase
+class ProductTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return product;
-    }
-
-    /** @test */
-    public function it_multiplies_elements_of_list()
+    public function test_it_multiplies_elements_of_list()
     {
         $numbers = [2, 4, 6, 8, 100, 1];
-        $this->assertEquals(38400, $this->callFn($numbers));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [2, 4, 6, 8, 100, 1];
-        $result = call_user_func($this->getResolvedFn(), $numbers);
-        $this->assertEquals(38400, $result);
+        $this->assertEquals(38400, P::product($numbers));
     }
 }

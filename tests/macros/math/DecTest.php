@@ -1,26 +1,11 @@
 <?php
 
-use const phln\math\dec;
+use Baethon\Phln\Phln as P;
 
-class DecTest extends \Phln\Build\PhpUnit\TestCase
+class DecTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_decrements_value()
     {
-        return dec;
-    }
-
-    /** @test */
-    public function it_decrements_value()
-    {
-        $this->assertEquals(1, $this->callFn(2));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [1, 2, 3];
-        $mapped = array_map($this->getResolvedFn(), $numbers);
-
-        $this->assertEquals([0, 1, 2], $mapped);
+        $this->assertEquals(1, P::dec(2));
     }
 }

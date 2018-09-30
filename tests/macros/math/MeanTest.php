@@ -1,27 +1,12 @@
 <?php
 
-use const phln\math\mean;
+use Baethon\Phln\Phln as P;
 
-class MeanTest extends \Phln\Build\PhpUnit\TestCase
+class MeanTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return mean;
-    }
-
-    /** @test */
-    public function it_returns_mean_of_numbers()
+    public function test_it_returns_mean_of_numbers()
     {
         $numbers = [2, 7, 9];
-        $this->assertEquals(6, $this->callFn($numbers));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [2, 7, 9];
-        $mean = call_user_func($this->getResolvedFn(), $numbers);
-
-        $this->assertEquals(6, $mean);
+        $this->assertEquals(6, P::mean($numbers));
     }
 }

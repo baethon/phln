@@ -1,24 +1,11 @@
 <?php
 
-use const phln\math\sum;
+use Baethon\Phln\Phln as P;
 
-class SumTest extends \Phln\Build\PhpUnit\TestCase
+class SumTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_sums_numbers_list()
     {
-        return sum;
-    }
-
-    /** @test  */
-    public function it_sums_numbers_list()
-    {
-        $this->assertEquals(10, $this->callFn([1, 2, 3, 4]));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $numbers = [1, 2, 3, 4];
-        $this->assertEquals(10, call_user_func($this->getResolvedFn(), $numbers));
+        $this->assertEquals(10, P::sum([1, 2, 3, 4]));
     }
 }
