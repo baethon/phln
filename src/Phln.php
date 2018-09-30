@@ -3,13 +3,15 @@ declare(strict_types=1);
 
 namespace Baethon\Phln;
 
-use Spatie\Macroable\Macroable;
-
 final class Phln
 {
-    use Macroable;
-
     const __ = '_phln_fn_partial_placeholder';
+
+    protected static $macros = [];
+
+    private function __construct()
+    {
+    }
 
     /**
      * Adds curried macro
@@ -31,7 +33,7 @@ final class Phln
      */
     public static function alias(string $macroName, string $targetMacro)
     {
-        static::macro($macroName, static::ref($targetMacro));
+        static::macro($macroName, static::$macros[$targetMacro]);
     }
 
     /**
@@ -43,5 +45,43 @@ final class Phln
     public static function ref(string $macroName): callable
     {
         return sprintf('%s::%s', static::class, $macroName);
+    }
+
+    public static function arity(callable $fn): int
+    {
+        return (new \ReflectionFunction($fn))->getNumberOfParameters();
+    }
+
+    public static function curry(callable $fn, array $args = [])
+    {
+        return Phln::curryN(Phln::arity($fn), $fn, $args);
+    }
+
+    public static function curryN(int $n, callable $fn, array $args = [])
+    {
+        return (count($args) >= $n)
+            ? $fn(...$args)
+            : function (...$innerArgs) use ($n, $fn, $args) {
+                return Phln::curryN($n, $fn, array_merge($args, $innerArgs));
+            };
+    }
+
+    public static function macro(string $name, callable $macro)
+    {
+        static::$macros[$name] = $macro;
+    }
+
+    public static function hasMacro(string $name): bool
+    {
+        return isset(static::$macros[$name]);
+    }
+
+    public static function __callStatic($method, $parameters)
+    {
+        if (! static::hasMacro($method)) {
+            throw new \BadMethodCallException("Method {$method} does not exist.");
+        }
+
+        return static::curry(static::$macros[$method], $parameters);
     }
 }

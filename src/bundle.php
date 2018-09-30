@@ -2,9 +2,6 @@
 
 use function Baethon\Phln\load_macro;
 
-load_macro('fn', 'curryN');
-load_macro('fn', 'arity');
-load_macro('fn', 'curry');
 load_macro('fn', 'F');
 load_macro('fn', 'T');
 load_macro('fn', 'always');

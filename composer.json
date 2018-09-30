@@ -3,8 +3,7 @@
     "description": "A practical functional library for PHP developers",
     "type": "library",
     "require": {
-        "ayesh/is_countable-polyfill": "^1.0",
-        "spatie/macroable": "^1.0"
+        "ayesh/is_countable-polyfill": "^1.0"
     },
     "require-dev": {
         "symfony/console": "^3.2",
