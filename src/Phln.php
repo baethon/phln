@@ -21,7 +21,7 @@ final class Phln
      */
     public static function alias(string $macroName, string $targetMacro)
     {
-        static::macro($macroName, static::$macros[$targetMacro]);
+        static::macro($macroName, static::ref($targetMacro));
     }
 
     /**
@@ -32,7 +32,9 @@ final class Phln
      */
     public static function ref(string $macroName): callable
     {
-        return sprintf('%s::%s', static::class, $macroName);
+        return static::hasMacro($macroName)
+            ? static::$macros[$macroName]
+            : sprintf('%s::%s', static::class, $macroName);
     }
 
     public static function arity(callable $fn): int
