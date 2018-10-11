@@ -875,10 +875,10 @@ $dump('foo'); // var_dumps('foo'); returns 'foo'
 </code></pre>
 
 <h2 id="throwexception">throwException</h2>
-<p><code>(String, [*]) -&gt; (*... -&gt; Null)</code></p>
+<p><code>String -&gt; [*] -&gt; (*... -&gt; Null)</code></p>
 <p>Returns callback which throws given exception.</p>
 <p><em>Note:</em> exceptions are considered as side-efects. Use it with caution.</p>
-<pre><code class="php">$break = P::throwException(\LogicException::class);
+<pre><code class="php">$break = P::throwException(\LogicException::class, []);
 $break(); // -&gt; throw new \LogicException()
 </code></pre>
 
