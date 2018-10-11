@@ -26,7 +26,7 @@ class PhlnTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_returns_ref_to_macro()
     {
-        $this->assertEquals(P::class.'::tap', P::ref('tap'));
+        $this->assertTrue(is_callable(P::ref('tap')));
     }
 
     public function test_it_returns_arity_of_function()
