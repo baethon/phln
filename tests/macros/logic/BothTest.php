@@ -17,20 +17,6 @@ class BothTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse(P::both($p, $p2)(10));
     }
 
-    public function test_it_is_curried()
-    {
-        $p = P::both(function ($i) {
-            return $i > 10;
-        });
-
-        $p2 = function ($i) {
-            return $i < 20;
-        };
-
-        $this->assertTrue($p($p2)(11));
-        $this->assertFalse($p($p2)(10));
-    }
-
     public function test_it_supports_primitives()
     {
         $this->assertTrue(P::both(true, true));

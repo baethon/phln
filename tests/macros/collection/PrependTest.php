@@ -16,10 +16,4 @@ class PrependTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals('foobar', P::prepend('foo', 'bar'));
     }
-
-    public function test_it_is_curried()
-    {
-        $prependFoo = P::prepend('foo');
-        $this->assertEquals(['foo', 1], $prependFoo([1]));
-    }
 }

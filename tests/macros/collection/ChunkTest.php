@@ -14,11 +14,4 @@ class ChunkTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(['lo', 're', 'm ', 'ip', 'su', 'm'], P::chunk(2, 'lorem ipsum'));
     }
-
-    public function test_it_is_curried()
-    {
-        $split = P::chunk(2);
-        $list = range(1, 10);
-        $this->assertEquals(array_chunk($list, 2), $split($list));
-    }
 }

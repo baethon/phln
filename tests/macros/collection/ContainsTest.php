@@ -20,10 +20,4 @@ class ContainsTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertFalse(P::contains('foo', 1));
     }
-
-    public function test_it_is_curried()
-    {
-        $p = P::contains(1);
-        $this->assertTrue($p([1, 2, 3]));
-    }
 }

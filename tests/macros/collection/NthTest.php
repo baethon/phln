@@ -18,10 +18,4 @@ class NthTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertNull(P::nth(1000, [1, 2, 3]));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::nth(1);
-        $this->assertEquals(2, $f([1, 2, 3]));
-    }
 }

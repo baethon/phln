@@ -10,12 +10,4 @@ class GteTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(P::gte(2, 1));
         $this->assertFalse(P::gte(2, 3));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::gte(2);
-        $this->assertTrue($f(2));
-        $this->assertTrue($f(1));
-        $this->assertFalse($f(3));
-    }
 }

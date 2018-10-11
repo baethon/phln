@@ -14,18 +14,5 @@ class SortByTest extends \PHPUnit\Framework\TestCase
         };
 
         $this->assertEquals([$alice, $bob, $clara], P::sortBy($f, [$clara, $bob, $alice]));
-
-        return [$alice, $bob, $clara, $f];
-    }
-
-    /**
-     * @depends test_it_sorts_by_supplied_function
-     */
-    public function test_it_is_curried($payload)
-    {
-        list($alice, $bob, $clara, $f) = $payload;
-        $sort = P::sortBy($f);
-
-        $this->assertEquals([$alice, $bob, $clara], $sort([$bob, $clara, $alice]));
     }
 }

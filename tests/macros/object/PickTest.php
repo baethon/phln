@@ -24,10 +24,4 @@ class PickTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals([], P::pick(['c'], ['a' => 1]));
     }
-
-    public function test_it_is_curried()
-    {
-        $pickA = P::pick(['a']);
-        $this->assertEquals(['a' => 1], $pickA(['a' => 1, 'b' => 2]));
-    }
 }

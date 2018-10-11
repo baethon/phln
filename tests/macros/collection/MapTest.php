@@ -13,15 +13,6 @@ class MapTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([100, 200], P::map($fn, [1, 2]));
     }
 
-    public function test_it_is_curried()
-    {
-        $f = P::map(function ($i) {
-            return $i * 100;
-        });
-
-        $this->assertEquals([100, 200], $f([1, 2]));
-    }
-
     public function test_it_passes_only_value()
     {
         $fn = function ($a, $b = null) {

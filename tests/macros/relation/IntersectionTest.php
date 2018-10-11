@@ -11,10 +11,4 @@ class IntersectionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals([2, 5], P::intersection($a, $b));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::intersection([1, 2, 3, 4]);
-        $this->assertEquals([4], $f([6, 7, 8, 4]));
-    }
 }

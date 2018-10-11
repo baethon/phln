@@ -16,10 +16,4 @@ class AppendTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals('foobar', P::append('bar', 'foo'));
     }
-
-    public function test_it_is_curried()
-    {
-        $appendFoo = P::append('foo');
-        $this->assertEquals(['foo'], $appendFoo([]));
-    }
 }

@@ -11,12 +11,4 @@ class DifferenceTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals([2, 3, 4], P::difference($a, $b));
     }
-
-    public function test_it_is_curried()
-    {
-        $diff = P::difference(range(1, 100));
-        $expected = range(1, 49);
-
-        $this->assertEquals($expected, $diff(range(50, 100)));
-    }
 }

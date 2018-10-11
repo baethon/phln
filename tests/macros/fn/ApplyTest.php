@@ -12,13 +12,4 @@ class ApplyTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(42, P::apply($f, [40, 2]));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::apply(function ($a, $b) {
-            return $a + $b;
-        });
-
-        $this->assertEquals(42, $f([40, 2]));
-    }
 }

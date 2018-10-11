@@ -35,23 +35,6 @@ class GroupByTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expected, P::groupBy($this->getScoreFn(), $list));
     }
 
-    public function test_it_is_curried()
-    {
-        $f = P::groupBy($this->getScoreFn());
-
-        $list = [
-            ['name' => 'Jon', 'score' => 70],
-        ];
-
-        $expected = [
-            'C' => [
-                ['name' => 'Jon', 'score' => 70],
-            ],
-        ];
-
-        $this->assertEquals($expected, $f($list));
-    }
-
     private function getScoreFn()
     {
         $scoresTable = [

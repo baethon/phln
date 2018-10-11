@@ -9,10 +9,4 @@ class DefaultToTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(42, P::defaultTo(42, null));
         $this->assertEquals('foo', P::defaultTo(42, 'foo'));
     }
-
-    public function test_it_is_curried()
-    {
-        $defaultTo42 = P::defaultTo(42);
-        $this->assertEquals(42, $defaultTo42(null));
-    }
 }

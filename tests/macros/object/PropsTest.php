@@ -25,11 +25,4 @@ class PropsTest extends \PHPUnit\Framework\TestCase
         $object = ['a' => 1, 'b' => 2, 'c' => 3];
         $this->assertEquals([2, null, 1], P::props(['b', 'd', 'a'], $object));
     }
-
-    public function test_it_is_curried()
-    {
-        $getProps = P::props(['a', 'b']);
-        $object = ['a' => 1, 'b' => 2, 'c' => 3];
-        $this->assertEquals([1, 2], $getProps($object));
-    }
 }

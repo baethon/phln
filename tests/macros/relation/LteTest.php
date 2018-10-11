@@ -10,13 +10,4 @@ class LteTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(P::lte(1, 2));
         $this->assertFalse(P::lte(3, 2));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::lte(1);
-
-        $this->assertTrue($f(2));
-        $this->assertTrue($f(1));
-        $this->assertFalse($f(-1));
-    }
 }

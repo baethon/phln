@@ -20,10 +20,4 @@ class EqPropsTest extends \PHPUnit\Framework\TestCase
             [(object) ['a' => 1]],
         ];
     }
-
-    public function test_it_is_curried()
-    {
-        $eq = P::eqProps('a', ['a' => 1]);
-        $this->assertTrue($eq(['a' => 1]));
-    }
 }

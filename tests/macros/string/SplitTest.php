@@ -10,12 +10,6 @@ class SplitTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['a', 'b'], P::split('/', 'a/b'));
     }
 
-    public function test_it_is_curried()
-    {
-        $split = P::split('/');
-        $this->assertEquals(['a', 'b'], $split('a/b'));
-    }
-
     public function test_it_splits_by_regex()
     {
         $this->assertEquals(['a', 'b'], P::split(RegExp::fromString('|'), 'a|b'));

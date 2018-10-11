@@ -34,14 +34,4 @@ class WhereTest extends \PHPUnit\Framework\TestCase
             ],
         ];
     }
-
-    public function test_it_is_curried()
-    {
-        $where = P::where([
-            'a' => P::equals('foo'),
-            'b' => P::contains('foo'),
-        ]);
-
-        $this->assertTrue($where(['a' => 'foo', 'b' => ['foo']]));
-    }
 }

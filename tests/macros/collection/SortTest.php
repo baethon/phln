@@ -42,13 +42,4 @@ class SortTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals([3, 1, 2], $list);
     }
-
-    public function test_it_is_curried()
-    {
-        $sort = P::sort(function ($a, $b) {
-            return $a - $b;
-        });
-
-        $this->assertEquals([1, 2, 3], $sort([3, 2, 1]));
-    }
 }

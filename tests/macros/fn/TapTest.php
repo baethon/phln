@@ -15,15 +15,4 @@ class TapTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('foo', P::tap($fn, 'foo'));
         $this->assertEquals('foo', $argument);
     }
-
-    public function test_it_is_curried()
-    {
-        $called = false;
-        $f = P::tap(function () use (& $called) {
-            $called = true;
-        });
-
-        $this->assertEquals('foo', $f('foo'));
-        $this->assertTrue($called);
-    }
 }

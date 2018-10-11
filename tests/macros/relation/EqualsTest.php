@@ -9,10 +9,4 @@ class EqualsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(P::equals(1, 1));
         $this->assertFalse(P::equals(1, '1'));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::equals(1);
-        $this->assertTrue($f(1));
-    }
 }

@@ -21,20 +21,6 @@ class EitherTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($f(9));
     }
 
-    public function test_it_is_curried()
-    {
-        $p2 = function ($i) {
-            return 0 === $i % 2;
-        };
-
-        $f = P::either(function ($i) {
-            return $i > 10;
-        });
-
-        $this->assertTrue($f($p2)(11));
-        $this->assertTrue($f($p2)(2));
-    }
-
     public function test_it_supports_primitives()
     {
         $this->assertTrue(P::either(true, true));

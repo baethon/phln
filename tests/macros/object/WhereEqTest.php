@@ -31,14 +31,4 @@ class WhereEqTest extends \PHPUnit\Framework\TestCase
             ],
         ];
     }
-
-    public function test_it_is_curried()
-    {
-        $whereEq = P::whereEq([
-            'firstName' => 'Jon',
-            'lastName' => 'Snow',
-        ]);
-
-        $this->assertTrue($whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']));
-    }
 }

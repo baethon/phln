@@ -14,13 +14,4 @@ class AllTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(P::all($predicate, $list));
         $this->assertFalse(P::all($predicate, [2, 4, 5]));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::all(function ($i) {
-            return $i % 2 === 0;
-        });
-
-        $this->assertTrue($f([2, 4, 6, 8]));
-    }
 }

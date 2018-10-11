@@ -8,10 +8,4 @@ class ObjOfTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(['foo' => 'bar'], P::objOf('foo', 'bar'));
     }
-
-    public function test_it_is_curried()
-    {
-        $makeFoo = P::objOf('foo');
-        $this->assertEquals(['foo' => 'bar'], $makeFoo('bar'));
-    }
 }

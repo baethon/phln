@@ -13,13 +13,4 @@ class NoneTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(P::none($p, [1, 2]));
         $this->assertFalse(P::none($p, [1, 2, 3]));
     }
-
-    public function test_it_is_curried()
-    {
-        $p = function ($i) {
-            return $i > 2;
-        };
-        $g = P::none($p);
-        $this->assertTrue($g([1, 2]));
-    }
 }

@@ -19,12 +19,6 @@ class IsTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse(P::is('array', new stdClass()));
     }
 
-    public function test_it_is_curried()
-    {
-        $isString = P::is('string');
-        $this->assertTrue($isString('asd'));
-    }
-
     public function isDataProvider()
     {
         return [

@@ -12,13 +12,4 @@ class FlatMapTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals([1, 1, 2, 2], P::flatMap($duplicate, [1, 2]));
     }
-
-    public function test_it_is_curried()
-    {
-        $map = P::flatMap(function ($i) {
-            return [$i, $i];
-        });
-
-        $this->assertEquals([1, 1, 2, 2], $map([1, 2]));
-    }
 }

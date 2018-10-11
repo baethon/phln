@@ -12,13 +12,4 @@ class ReduceTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(-10, P::reduce($f, 0, [1, 2, 3, 4]));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::reduce(function ($a, $b) {
-            return $a - $b;
-        }, 0);
-
-        $this->assertEquals(-10, $f([1, 2, 3, 4]));
-    }
 }

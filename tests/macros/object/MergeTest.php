@@ -21,13 +21,4 @@ class MergeTest extends \PHPUnit\Framework\TestCase
             [(object) ['a' => 1], ['b' => 2]],
         ];
     }
-
-    public function test_it_is_curried()
-    {
-        $left = ['a' => 1];
-        $right = ['b' => 2];
-        $merge = P::merge($left);
-
-        $this->assertEquals(array_merge($left, $right), $merge($right));
-    }
 }

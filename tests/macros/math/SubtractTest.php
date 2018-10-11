@@ -8,10 +8,4 @@ class SubtractTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(4, P::subtract(7, 3));
     }
-
-    public function test_it_is_curried()
-    {
-        $complementaryAngle = P::subtract(90);
-        $this->assertEquals(30, $complementaryAngle(60));
-    }
 }

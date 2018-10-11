@@ -25,10 +25,4 @@ class PropTest extends \PHPUnit\Framework\TestCase
             [(object) ['a' => 1]],
         ];
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::prop('a');
-        $this->assertEquals(1, $f(['a' => 1]));
-    }
 }

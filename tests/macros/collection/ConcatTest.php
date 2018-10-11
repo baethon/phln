@@ -14,12 +14,6 @@ class ConcatTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('ABCD', P::concat('AB', 'CD'));
     }
 
-    public function test_it_is_curried()
-    {
-        $appendToA = P::concat(['A']);
-        $this->assertEquals(['A', 'B'], $appendToA(['B']));
-    }
-
     /**
      * @dataProvider exceptionsDataProvider
      */

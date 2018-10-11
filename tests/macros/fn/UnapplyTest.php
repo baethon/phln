@@ -10,11 +10,4 @@ class UnapplyTest extends \PHPUnit\Framework\TestCase
         $result = P::unapply('\\json_encode', ...$args);
         $this->assertEquals(json_encode($args), $result);
     }
-
-    public function test_it_is_curried()
-    {
-        $args = [1, 2, 3];
-        $f = P::unapply('\\json_encode');
-        $this->assertEquals(json_encode($args), $f(...$args));
-    }
 }

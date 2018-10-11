@@ -29,10 +29,4 @@ class PathTest extends \PHPUnit\Framework\TestCase
         $this->assertNull(P::path('a.b.c.d', $object));
         $this->assertNull(P::path('a.b.e', $object));
     }
-
-    public function test_it_is_curried()
-    {
-        $getC = P::path('a.b.c');
-        $this->assertEquals('foo', $getC(['a' => ['b' => ['c' => 'foo']]]));
-    }
 }

@@ -10,10 +10,4 @@ class RangeTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([4, 3, 2, 1], P::range(4, 0));
         $this->assertEquals([], P::range(1, 1));
     }
-
-    public function test_it_is_curried()
-    {
-        $f = P::range(0);
-        $this->assertEquals([0, 1, 2, 3, 4], $f(5));
-    }
 }

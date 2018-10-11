@@ -18,10 +18,4 @@ class PathOrTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(0, P::pathOr('a.b', 'foo', ['a' => ['b' => 0]]));
     }
-
-    public function test_it_is_curried()
-    {
-        $path = P::pathOr('a.b.c', 'foo');
-        $this->assertEquals('foo', $path(['a' => ['b' => 1]]));
-    }
 }
