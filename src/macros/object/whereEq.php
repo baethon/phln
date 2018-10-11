@@ -1,38 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\object;
+use Baethon\Phln\Phln as P;
+use function Baethon\Phln\assertObject;
 
-use const phln\relation\equals;
-use function phln\collection\map;
-use function phln\fn\curryN;
-
-const whereEq = '\\phln\\object\\whereEq';
-const 𝑓whereEq = '\\phln\\object\\𝑓whereEq';
-
-/**
- * Takes a spec object and a test object; returns `true` if the test satisfies the spec, false otherwise. An object satisfies the spec if, for each of the spec's properties, accessing that property of the object gives the same value (in `\phln\relation\equals()` terms) as accessing that property of the spec.
- *
- * @phlnSignature {String: *} -> {String: *} -> Boolean
- * @phlnCategory object
- * @param array $predicates
- * @param array|object $object
- * @return \Closure|bool
- * @example
- *      $verifyJon = \phln\object\whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
- *      $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
- */
-function whereEq(array $predicates = [], $object = [])
-{
-    return curryN(2, 𝑓whereEq, func_get_args());
-}
-
-function 𝑓whereEq(array $predicates, $object): bool
-{
+P::macro('whereEq', function (array $predicates, $object): bool {
     assertObject($object);
 
-    return where(
-        map(equals, $predicates),
+    return P::where(
+        P::map(P::equals(), $predicates),
         $object
     );
-}
+});

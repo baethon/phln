@@ -1,21 +1,15 @@
 <?php
 
-use const phln\object\props;
+use Baethon\Phln\Phln as P;
 
-class PropsTest extends \Phln\Build\PhpUnit\TestCase
+class PropsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return props;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_returns_defined_props($object)
+    public function test_it_returns_defined_props($object)
     {
-        $this->assertEquals([2, 3, 1], $this->callFn(['b', 'c', 'a'], $object));
+        $this->assertEquals([2, 3, 1], P::props(['b', 'c', 'a'], $object));
     }
 
     public function objectsProvider()
@@ -26,17 +20,15 @@ class PropsTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_return_undefined_values()
+    public function test_it_return_undefined_values()
     {
         $object = ['a' => 1, 'b' => 2, 'c' => 3];
-        $this->assertEquals([2, null, 1], $this->callFn(['b', 'd', 'a'], $object));
+        $this->assertEquals([2, null, 1], P::props(['b', 'd', 'a'], $object));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $getProps = $this->callFn(['a', 'b']);
+        $getProps = P::props(['a', 'b']);
         $object = ['a' => 1, 'b' => 2, 'c' => 3];
         $this->assertEquals([1, 2], $getProps($object));
     }

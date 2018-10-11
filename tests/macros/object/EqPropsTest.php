@@ -1,22 +1,16 @@
 <?php
 
-use const phln\object\eqProps;
+use Baethon\Phln\Phln as P;
 
-class EqPropsTest extends \Phln\Build\PhpUnit\TestCase
+class EqPropsTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return eqProps;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_checks_if_props_are_equal($a)
+    public function test_it_checks_if_props_are_equal($a)
     {
-        $this->assertTrue($this->callFn('a', $a, ['a' => 1]));
-        $this->assertFalse($this->callFn('a', $a, ['a' => 2]));
+        $this->assertTrue(P::eqProps('a', $a, ['a' => 1]));
+        $this->assertFalse(P::eqProps('a', $a, ['a' => 2]));
     }
 
     public function objectsProvider()
@@ -27,10 +21,9 @@ class EqPropsTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $eq = $this->callFn('a', ['a' => 1]);
+        $eq = P::eqProps('a', ['a' => 1]);
         $this->assertTrue($eq(['a' => 1]));
     }
 }

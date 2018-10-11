@@ -1,31 +1,23 @@
 <?php
 
-use phln\RegExp;
-use const phln\string\split;
+use Baethon\Phln\RegExp;
+use Baethon\Phln\Phln as P;
 
-class SplitTest extends \Phln\Build\PhpUnit\TestCase
+class SplitTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_splits_text_by_separator()
     {
-        return split;
+        $this->assertEquals(['a', 'b'], P::split('/', 'a/b'));
     }
 
-    /** @test */
-    public function it_splits_text_by_separator()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(['a', 'b'], $this->callFn('/', 'a/b'));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $split = $this->callFn('/');
+        $split = P::split('/');
         $this->assertEquals(['a', 'b'], $split('a/b'));
     }
 
-    /** @test */
-    public function it_splits_by_regex()
+    public function test_it_splits_by_regex()
     {
-        $this->assertEquals(['a', 'b'], $this->callFn(RegExp::fromString('|'), 'a|b'));
+        $this->assertEquals(['a', 'b'], P::split(RegExp::fromString('|'), 'a|b'));
     }
 }

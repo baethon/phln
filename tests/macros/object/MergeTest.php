@@ -1,21 +1,15 @@
 <?php
 
-use const phln\object\merge;
+use Baethon\Phln\Phln as P;
 
-class MergeTest extends \Phln\Build\PhpUnit\TestCase
+class MergeTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return merge;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_merges_two_objects($left, $right)
+    public function test_it_merges_two_objects($left, $right)
     {
-        $this->assertEquals(['a' => 1, 'b' => 2], $this->callFn($left, $right));
+        $this->assertEquals(['a' => 1, 'b' => 2], P::merge($left, $right));
     }
 
     public function objectsProvider()
@@ -28,20 +22,12 @@ class MergeTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $left = ['a' => 1];
         $right = ['b' => 2];
-        $merge = $this->callFn($left);
+        $merge = P::merge($left);
 
         $this->assertEquals(array_merge($left, $right), $merge($right));
-    }
-
-    /** @test */
-    public function it_can_be_used_as_callback()
-    {
-        $reset = \phln\fn\partial($this->getResolvedFn(), [\phln\fn\__, ['x' => 0]]);
-        $this->assertEquals(['x' => 0, 'y' => 1], $reset(['x' => 2, 'y' => 1]));
     }
 }

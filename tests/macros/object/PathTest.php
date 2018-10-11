@@ -1,22 +1,16 @@
 <?php
 
-use const phln\object\path;
+use Baethon\Phln\Phln as P;
 
-class PathTest extends \Phln\Build\PhpUnit\TestCase
+class PathTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return path;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_retuns_value_using_dot_notation($object)
+    public function test_it_retuns_value_using_dot_notation($object)
     {
-        $this->assertEquals('foo', $this->callFn('a.b.c', $object));
-        $this->assertEquals(['c' => 'foo'], (array) $this->callFn('a.b', $object));
+        $this->assertEquals('foo', P::path('a.b.c', $object));
+        $this->assertEquals(['c' => 'foo'], (array) P::path('a.b', $object));
     }
 
     public function objectsProvider()
@@ -29,18 +23,16 @@ class PathTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_returns_null_for_invalid_path()
+    public function test_it_returns_null_for_invalid_path()
     {
         $object = ['a' => ['b' => ['c' => 1]]];
-        $this->assertNull($this->callFn('a.b.c.d', $object));
-        $this->assertNull($this->callFn('a.b.e', $object));
+        $this->assertNull(P::path('a.b.c.d', $object));
+        $this->assertNull(P::path('a.b.e', $object));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $getC = $this->callFn('a.b.c');
+        $getC = P::path('a.b.c');
         $this->assertEquals('foo', $getC(['a' => ['b' => ['c' => 'foo']]]));
     }
 }

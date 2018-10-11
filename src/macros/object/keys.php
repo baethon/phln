@@ -1,24 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\object;
+use Baethon\Phln\Phln as P;
+use function Baethon\Phln\assertObject;
 
-const keys = '\\phln\\object\\keys';
-
-/**
- * Returns a list containing the names of array keys.
- *
- * @phlnSignature {k: v} -> [k]
- * @phlnCategory object
- * @param array|object $object
- * @return array
- * @see \array_keys()
- * @see \get_object_vars()
- * @example
- *      \phln\object\keys(['a' => 1, 'b' => 1]); // ['a', 'b']
- */
-function keys($object): array
-{
+P::macro('keys', function ($object): array {
     assertObject($object);
 
     $value = is_object($object)
@@ -26,4 +12,4 @@ function keys($object): array
         : $object;
 
     return array_keys($value);
-}
+});

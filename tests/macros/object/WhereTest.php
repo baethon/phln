@@ -1,28 +1,22 @@
 <?php
 
-use const phln\object\where;
+use Baethon\Phln\Phln as P;
 
-class WhereTest extends \Phln\Build\PhpUnit\TestCase
+class WhereTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return where;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_validates_if_object_passes_predicates($a, $b, $c)
+    public function test_it_validates_if_object_passes_predicates($a, $b, $c)
     {
         $predicates = [
-            'a' => \phln\relation\equals('foo'),
-            'b' => \phln\collection\contains('foo'),
+            'a' => P::equals('foo'),
+            'b' => P::contains('foo'),
         ];
 
-        $this->assertTrue($this->callFn($predicates, $a));
-        $this->assertTrue($this->callFn($predicates, $b));
-        $this->assertFalse($this->callFn($predicates, $c));
+        $this->assertTrue(P::where($predicates, $a));
+        $this->assertTrue(P::where($predicates, $b));
+        $this->assertFalse(P::where($predicates, $c));
     }
 
     public function objectsProvider()
@@ -41,12 +35,11 @@ class WhereTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $where = $this->callFn([
-            'a' => \phln\relation\equals('foo'),
-            'b' => \phln\collection\contains('foo'),
+        $where = P::where([
+            'a' => P::equals('foo'),
+            'b' => P::contains('foo'),
         ]);
 
         $this->assertTrue($where(['a' => 'foo', 'b' => ['foo']]));

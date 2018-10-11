@@ -1,6 +1,6 @@
 <?php
 
-use phln\RegExp;
+use Baethon\Phln\RegExp;
 
 class RegExpTest extends \PHPUnit\Framework\TestCase
 {

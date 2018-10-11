@@ -1,21 +1,15 @@
 <?php
 
-use const phln\object\omit;
+use Baethon\Phln\Phln as P;
 
-class OmitTest extends \Phln\Build\PhpUnit\TestCase
+class OmitTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return omit;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_omits_given_keys($object)
+    public function test_it_omits_given_keys($object)
     {
-        $this->assertEquals(['b' => 2], $this->callFn(['a', 'c'], $object));
+        $this->assertEquals(['b' => 2], P::omit(['a', 'c'], $object));
     }
 
     public function objectsProvider()
@@ -26,11 +20,10 @@ class OmitTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
         $object = ['a' => 1, 'b' => 2, 'c' => 3];
-        $removeAC = $this->callFn(['a', 'c']);
+        $removeAC = P::omit(['a', 'c']);
         $this->assertEquals(['b' => 2], $removeAC($object));
     }
 }

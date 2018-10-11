@@ -1,24 +1,17 @@
 <?php
 
-use const phln\object\objOf;
+use Baethon\Phln\Phln as P;
 
-class ObjOfTest extends \Phln\Build\PhpUnit\TestCase
+class ObjOfTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_creates_object()
     {
-        return objOf;
+        $this->assertEquals(['foo' => 'bar'], P::objOf('foo', 'bar'));
     }
 
-    /** @test  */
-    public function it_creates_object()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(['foo' => 'bar'], $this->callFn('foo', 'bar'));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $makeFoo = $this->callFn('foo');
+        $makeFoo = P::objOf('foo');
         $this->assertEquals(['foo' => 'bar'], $makeFoo('bar'));
     }
 }

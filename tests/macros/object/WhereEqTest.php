@@ -1,27 +1,21 @@
 <?php
 
-use const phln\object\whereEq;
+use Baethon\Phln\Phln as P;
 
-class WhereEqTest extends \Phln\Build\PhpUnit\TestCase
+class WhereEqTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return whereEq;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_validates_object($a, $b)
+    public function test_it_validates_object($a, $b)
     {
         $predicates = [
             'firstName' => 'Jon',
             'lastName' => 'Snow',
         ];
 
-        $this->assertTrue($this->callFn($predicates, $a));
-        $this->assertFalse($this->callFn($predicates, $b));
+        $this->assertTrue(P::whereEq($predicates, $a));
+        $this->assertFalse(P::whereEq($predicates, $b));
     }
 
     public function objectsProvider()
@@ -38,10 +32,9 @@ class WhereEqTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $whereEq = $this->callFn([
+        $whereEq = P::whereEq([
             'firstName' => 'Jon',
             'lastName' => 'Snow',
         ]);

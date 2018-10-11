@@ -1,21 +1,15 @@
 <?php
 
-use const phln\object\pick;
+use Baethon\Phln\Phln as P;
 
-class PickTest extends \Phln\Build\PhpUnit\TestCase
+class PickTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return pick;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_picks_given_keys($object)
+    public function test_it_picks_given_keys($object)
     {
-        $this->assertEquals(['b' => 2], $this->callFn(['b'], $object));
+        $this->assertEquals(['b' => 2], P::pick(['b'], $object));
     }
 
     public function objectsProvider()
@@ -26,16 +20,14 @@ class PickTest extends \Phln\Build\PhpUnit\TestCase
         ];
     }
 
-    /** @test */
-    public function it_skips_undefined_keys()
+    public function test_it_skips_undefined_keys()
     {
-        $this->assertEquals([], $this->callFn(['c'], ['a' => 1]));
+        $this->assertEquals([], P::pick(['c'], ['a' => 1]));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $pickA = $this->callFn(['a']);
+        $pickA = P::pick(['a']);
         $this->assertEquals(['a' => 1], $pickA(['a' => 1, 'b' => 2]));
     }
 }

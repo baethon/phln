@@ -1,41 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace phln\object;
+use Baethon\Phln\Phln as P;
 
-use const phln\fn\nil;
-use const phln\relation\equals;
-use function phln\collection\map;
-use function phln\fn\{
-    apply, curryN, pipe
-};
-
-const eqProps = '\\phln\\object\\eqProps';
-const 𝑓eqProps = '\\phln\\object\\𝑓eqProps';
-
-/**
- * Reports whether two objects have the same value, in `\phln\relation\equals` terms, for the specified property.
- *
- * @phlnSignature k -> {k: v} -> {k: v} -> Boolean
- * @phlnCategory object
- * @param string $prop
- * @param array|object $a
- * @param array|object $b
- * @return \Closure|mixed
- * @example
- *      \phln\object\eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
- */
-function eqProps(string $prop = '', $a = [], $b = [])
-{
-    return curryN(3, 𝑓eqProps, func_get_args());
-}
-
-function 𝑓eqProps(string $prop, $a, $b): bool
-{
-    $f = pipe([
-        map(prop($prop)),
-        apply(equals),
-    ]);
-
-    return $f([$a, $b]);
-}
+P::macro('eqProps', function (string $prop, $left, $right): bool {
+    return P::apply(
+        P::pipe([
+            P::map(P::prop($prop)),
+            P::apply(P::ref('equals')),
+        ]),
+        [[$left, $right]]
+    );
+});

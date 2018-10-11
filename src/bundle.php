@@ -71,21 +71,20 @@ load_macro('math', 'multiply');
 load_macro('math', 'product');
 load_macro('math', 'subtract');
 load_macro('math', 'sum');
-/* load_macro('object', 'assertObject'); */
-/* load_macro('object', 'eqProps'); */
-/* load_macro('object', 'keys'); */
-/* load_macro('object', 'merge'); */
-/* load_macro('object', 'objOf'); */
-/* load_macro('object', 'omit'); */
-/* load_macro('object', 'path'); */
-/* load_macro('object', 'pathOr'); */
-/* load_macro('object', 'pick'); */
+load_macro('object', 'eqProps');
+load_macro('object', 'keys');
+load_macro('object', 'merge');
+load_macro('object', 'objOf');
+load_macro('object', 'omit');
+load_macro('object', 'path');
+load_macro('object', 'pathOr');
+load_macro('object', 'pick');
 load_macro('object', 'prop');
-/* load_macro('object', 'props'); */
-/* load_macro('object', 'toPairs'); */
+load_macro('object', 'props');
+load_macro('object', 'toPairs');
 load_macro('object', 'values');
-/* load_macro('object', 'where'); */
-/* load_macro('object', 'whereEq'); */
+load_macro('object', 'where');
+load_macro('object', 'whereEq');
 /* load_macro('relation', 'clamp'); */
 /* load_macro('relation', 'difference'); */
 load_macro('relation', 'equals');
@@ -101,7 +100,7 @@ load_macro('relation', 'max');
 /* load_macro('string', 'match'); */
 /* load_macro('string', 'regexp'); */
 /* load_macro('string', 'replace'); */
-/* load_macro('string', 'split'); */
+load_macro('string', 'split');
 /* load_macro('string', 'test'); */
 load_macro('type', 'is');
 load_macro('type', 'typeCond');
