@@ -3,26 +3,15 @@ declare(strict_types=1);
 
 namespace Phln\Build\Command;
 
-use Illuminate\Console\Command;
+use Baethon\Phln\Phln as P;
 use Illuminate\View\Factory;
+use Illuminate\Console\Command;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use const phln\fn\T;
-use const phln\object\keys;
-use function phln\string\match;
-use function phln\collection\{
-    filter
-};
-use function phln\fn\{
-    compose, pipe
-};
-use function phln\object\{
-    prop
-};
 
-class CreateFunctionCommand extends Command
+class CreateMacroCommand extends Command
 {
-    protected $signature = 'create:fn {ns} {name}';
+    protected $signature = 'create:macro {ns} {name}';
 
     /**
      * @var Factory
@@ -58,24 +47,19 @@ class CreateFunctionCommand extends Command
 
     private function validateFunctionName($name)
     {
-        $collisions = pipe([
-            compose([keys, prop('user'), '\\get_defined_constants', T]),
-            filter(match("/^phln\\\\.+\\\\${name}$/"))
-        ])($name);
-
-        if (false === empty($collisions)) {
+        if (P::hasMacro($name)) {
             throw new \Exception("Name [{$name}] is in use");
         }
     }
 
     private function createFunctionSource($ns, $name)
     {
-        return $this->generateFile('function', 'src', $ns, $name);
+        return $this->generateFile('function', 'src/macros', $ns, $name);
     }
 
     private function createTestSource($ns, $name)
     {
-        return $this->generateFile('function-test', 'tests', $ns, $name, ucfirst($name).'Test');
+        return $this->generateFile('function-test', 'tests/macros', $ns, $name, ucfirst($name).'Test');
     }
 
     private function generateFile($template, $location, $ns, $name, $fileName = null)
@@ -104,7 +88,7 @@ class CreateFunctionCommand extends Command
 
     private function reloadBundlesFile()
     {
-        $finder = Finder::create()->in([__DIR__.'/../../src'])
+        $finder = Finder::create()->in([__DIR__.'/../../src/macros'])
             ->name('*.php')
             ->depth(1);
 
@@ -113,7 +97,10 @@ class CreateFunctionCommand extends Command
                 $pathname = $file->getRelativePathname();
                 list ($ns, $name) = explode(DIRECTORY_SEPARATOR, $pathname);
 
-                return compact('ns', 'name');
+                return [
+                    'ns' => $ns,
+                    'name' => pathinfo($name, PATHINFO_FILENAME),
+                ];
             })
             ->values()
             ->sort(function ($a, $b) {
