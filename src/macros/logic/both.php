@@ -24,7 +24,7 @@ P::macro('both', call_user_func(function () {
     $both = P::cond([
         [$allPrimitives, $compareBooleans],
         [$allCallables, $bothPredicate],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
     ]);
 
     return function ($left, $right) use ($both) {

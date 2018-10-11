@@ -12,7 +12,7 @@ P::macro('append', function ($value, $collection) {
     $f = P::typeCond([
         ['array', $pushToArray],
         ['string', P::partial('\\sprintf', ['%s%s', P::__, $value])],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)]
+        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])]
     ]);
 
     return $f($collection);

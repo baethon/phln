@@ -4,27 +4,30 @@ use Baethon\Phln\Phln as P;
 
 class ThrowExceptionTest extends \PHPUnit\Framework\TestCase
 {
-    public function test_it_returns_callback_which_throws_exception()
+    /**
+     * @dataProvider exceptionProvider
+     */
+    public function test_it_throws_exception(string $className, array $args)
     {
-        $this->expectException(\Exception::class);
-        $f = P::throwException();
+        if (true === isset($args[0])) {
+            $this->expectExceptionMessage($args[0]);
+        }
 
-        $f();
+        if (true === isset($args[1])) {
+            $this->expectExceptionCode($args[1]);
+        }
+
+        $this->expectException($className);
+
+        P::throwException($className, $args)();
     }
 
-    public function test_it_supports_custom_exception_class()
+    public function exceptionProvider()
     {
-        $this->expectException(\LogicException::class);
-        $f = P::throwException(\LogicException::class);
-        $f();
-    }
-
-    public function test_it_supports_exception_constructor_args()
-    {
-        $this->expectExceptionMessage('foo');
-        $this->expectExceptionCode(100);
-
-        $f = P::throwException(\Exception::class, ['foo', 100]);
-        $f();
+        return [
+            [\Exception::class, []],
+            [\InvalidArgumentException::class, []],
+            [\Exception::class, ['foo', 100]]
+        ];
     }
 }

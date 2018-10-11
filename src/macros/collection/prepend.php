@@ -13,7 +13,7 @@ P::macro('prepend', function ($value, $collection) {
         P::typeCond([
             ['array', $arrayPrepend],
             ['string', P::curryN(3, '\\sprintf', ['%s%s', $value])],
-            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
         ]),
         [$collection]
     );

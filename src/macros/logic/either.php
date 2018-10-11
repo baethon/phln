@@ -23,7 +23,7 @@ P::macro('either', call_user_func(function () {
     $either = P::cond([
         [$allPrimitives, $compareBooleans],
         [$allCallables, $eitherPredicate],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
     ]);
 
     return function ($left, $right) use ($either) {

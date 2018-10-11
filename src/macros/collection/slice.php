@@ -8,7 +8,7 @@ P::macro('slice', function (int $offset, int $length, $collection) {
         P::typeCond([
             ['array', P::partialRight('\\array_slice', [$offset, $length])],
             ['string', P::partialRight('\\substr', [$offset, $length])],
-            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
         ]),
         [$collection]
     );

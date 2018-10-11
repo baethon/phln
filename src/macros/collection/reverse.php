@@ -8,7 +8,7 @@ P::macro('reverse', function ($collection) {
         P::typeCond([
             ['array', '\\array_reverse'],
             ['string', '\\strrev'],
-            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
         ]),
         [$collection]
     );

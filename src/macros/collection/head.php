@@ -19,7 +19,7 @@ P::macro('head', function ($collection) {
         P::typeCond([
             ['array', $headOfArray],
             ['string', $headOfString],
-            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+            [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
         ]),
         [$collection]
     );

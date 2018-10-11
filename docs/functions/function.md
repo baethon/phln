@@ -224,14 +224,14 @@ $dump('foo'); // var_dumps('foo'); returns 'foo'
 ```
 
 ## throwException
-`(String, [*]) -> (*... -> Null)`
+`String -> [*] -> (*... -> Null)`
 
 Returns callback which throws given exception.
 
 *Note:* exceptions are considered as side-efects. Use it with caution.
 
 ```php
-$break = P::throwException(\LogicException::class);
+$break = P::throwException(\LogicException::class, []);
 $break(); // -> throw new \LogicException()
 ```
 

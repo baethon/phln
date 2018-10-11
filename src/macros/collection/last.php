@@ -13,7 +13,7 @@ P::macro('last', function ($list) {
     $f = P::typeCond([
         ['array', $lastOfArray],
         ['string', $lastElement],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class)],
+        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
     ]);
 
     return $f($list);
