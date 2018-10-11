@@ -1,17 +1,12 @@
 <?php
 
-use const phln\string\regexp;
+use Baethon\Phln\RegExp;
+use Baethon\Phln\Phln as P;
 
-class RegexpFnTest extends \Phln\Build\PhpUnit\TestCase
+class RegexpFnTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_works()
     {
-        return regexp;
-    }
-
-    /** @test  */
-    public function it_works()
-    {
-        $this->assertEquals(new \phln\RegExp('/foo/', 'ig'), $this->callFn('/foo/ig'));
+        $this->assertEquals(new RegExp('/foo/', 'ig'), P::regexp('/foo/ig'));
     }
 }

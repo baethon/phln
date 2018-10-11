@@ -97,10 +97,10 @@ load_macro('relation', 'max');
 load_macro('relation', 'min');
 load_macro('relation', 'pathEq');
 load_macro('relation', 'propEq');
-/* load_macro('string', 'match'); */
-/* load_macro('string', 'regexp'); */
-/* load_macro('string', 'replace'); */
+load_macro('string', 'match');
+load_macro('string', 'regexp');
+load_macro('string', 'replace');
 load_macro('string', 'split');
-/* load_macro('string', 'test'); */
+load_macro('string', 'test');
 load_macro('type', 'is');
 load_macro('type', 'typeCond');
