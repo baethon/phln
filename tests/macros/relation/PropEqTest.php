@@ -1,22 +1,16 @@
 <?php
 
-use const phln\relation\propEq;
+use Baethon\Phln\Phln as P;
 
-class PropEqTest extends \Phln\Build\PhpUnit\TestCase
+class PropEqTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return propEq;
-    }
-
     /**
-     * @test
      * @dataProvider objectsProvider
      */
-    public function it_checks_value($object)
+    public function test_it_checks_value($object)
     {
-        $this->assertTrue($this->callFn('name', 'Jon', $object));
-        $this->assertFalse($this->callFn('name', 'Arrya', $object));
+        $this->assertTrue(P::propEq('name', 'Jon', $object));
+        $this->assertFalse(P::propEq('name', 'Arrya', $object));
     }
 
     public function objectsProvider()
@@ -25,12 +19,5 @@ class PropEqTest extends \Phln\Build\PhpUnit\TestCase
             [['name' => 'Jon']],
             [(object)['name' => 'Jon']],
         ];
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn('name', 'Jon');
-        $this->assertTrue($f(['name' => 'Jon']));
     }
 }

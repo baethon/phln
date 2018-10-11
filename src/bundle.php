@@ -85,18 +85,18 @@ load_macro('object', 'toPairs');
 load_macro('object', 'values');
 load_macro('object', 'where');
 load_macro('object', 'whereEq');
-/* load_macro('relation', 'clamp'); */
-/* load_macro('relation', 'difference'); */
+load_macro('relation', 'clamp');
+load_macro('relation', 'difference');
 load_macro('relation', 'equals');
-/* load_macro('relation', 'gt'); */
-/* load_macro('relation', 'gte'); */
-/* load_macro('relation', 'intersection'); */
-/* load_macro('relation', 'lt'); */
+load_macro('relation', 'gt');
+load_macro('relation', 'gte');
+load_macro('relation', 'intersection');
+load_macro('relation', 'lt');
 load_macro('relation', 'lte');
 load_macro('relation', 'max');
-/* load_macro('relation', 'min'); */
-/* load_macro('relation', 'pathEq'); */
-/* load_macro('relation', 'propEq'); */
+load_macro('relation', 'min');
+load_macro('relation', 'pathEq');
+load_macro('relation', 'propEq');
 /* load_macro('string', 'match'); */
 /* load_macro('string', 'regexp'); */
 /* load_macro('string', 'replace'); */

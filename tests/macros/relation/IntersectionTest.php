@@ -1,27 +1,20 @@
 <?php
 
-use const phln\relation\intersection;
+use Baethon\Phln\Phln as P;
 
-class IntersectionTest extends \Phln\Build\PhpUnit\TestCase
+class IntersectionTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return intersection;
-    }
-
-    /** @test */
-    public function it_calculates_intersection()
+    public function test_it_calculates_intersection()
     {
         $a = [1, 2, 3, 4, 5];
         $b = [5, 2, 7];
 
-        $this->assertEquals([2, 5], $this->callFn($a, $b));
+        $this->assertEquals([2, 5], P::intersection($a, $b));
     }
 
-    /** @test */
-    public function it_is_curried()
+    public function test_it_is_curried()
     {
-        $f = $this->callFn([1, 2, 3, 4]);
+        $f = P::intersection([1, 2, 3, 4]);
         $this->assertEquals([4], $f([6, 7, 8, 4]));
     }
 }

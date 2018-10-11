@@ -1,26 +1,12 @@
 <?php
 
-use const phln\relation\pathEq;
+use Baethon\Phln\Phln as P;
 
-class PathEqTest extends \Phln\Build\PhpUnit\TestCase
+class PathEqTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
-    {
-        return pathEq;
-    }
-
-    /** @test */
-    public function it_checks_value()
+    public function test_it_checks_value()
     {
         $foo = ['bar' => ['baz' => 1]];
-        $this->assertTrue($this->callFn('bar.baz', 1, $foo));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $foo = ['bar' => ['baz' => 1]];
-        $f = $this->callFn('bar.baz', 1);
-        $this->assertTrue($f($foo));
+        $this->assertTrue(P::pathEq('bar.baz', 1, $foo));
     }
 }

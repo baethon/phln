@@ -1,28 +1,21 @@
 <?php
 
-use const phln\relation\clamp;
+use Baethon\Phln\Phln as P;
 
-class ClampTest extends \Phln\Build\PhpUnit\TestCase
+class ClampTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_restricts_values_to_range()
     {
-        return clamp;
+        $this->assertEquals(-1, P::clamp(-1, 1, -100));
+        $this->assertEquals(1, P::clamp(-1, 1, 100));
+        $this->assertEquals(0, P::clamp(-1, 1, 0));
+        $this->assertEquals(-1, P::clamp(-1, 1, -1));
+        $this->assertEquals(1, P::clamp(-1, 1, 1));
     }
 
-    /** @test */
-    public function it_restricts_values_to_range()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(-1, $this->callFn(-1, 1, -100));
-        $this->assertEquals(1, $this->callFn(-1, 1, 100));
-        $this->assertEquals(0, $this->callFn(-1, 1, 0));
-        $this->assertEquals(-1, $this->callFn(-1, 1, -1));
-        $this->assertEquals(1, $this->callFn(-1, 1, 1));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(-1, 1);
+        $f = P::clamp(-1, 1);
 
         $this->assertEquals(0, $f(0));
         $this->assertEquals(1, $f(100));

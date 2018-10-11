@@ -1,25 +1,18 @@
 <?php
 
-use const phln\relation\min;
+use Baethon\Phln\Phln as P;
 
-class MinTest extends \Phln\Build\PhpUnit\TestCase
+class MinTest extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_returns_smaller_value()
     {
-        return min;
+        $this->assertEquals(-1, P::min(-1, 1));
+        $this->assertEquals(-1, P::min(1, -1));
     }
 
-    /** @test */
-    public function it_returns_smaller_value()
+    public function test_it_is_curried()
     {
-        $this->assertEquals(-1, $this->callFn(-1, 1));
-        $this->assertEquals(-1, $this->callFn(1, -1));
-    }
-
-    /** @test */
-    public function it_is_curried()
-    {
-        $f = $this->callFn(1);
+        $f = P::min(1);
         $this->assertEquals(-1, $f(-1));
     }
 }
