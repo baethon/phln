@@ -296,29 +296,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#about-function-references" title="About function references" class="md-nav__link">
-    About function references
+  <a href="#using-methods-as-references" title="Using methods as references" class="md-nav__link">
+    Using methods as references
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prefixed-functions" title="Prefixed functions" class="md-nav__link">
-    Prefixed functions
+  <a href="#extending" title="Extending" class="md-nav__link">
+    Extending
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#f-function" title="𝑓 function" class="md-nav__link">
-    𝑓 function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -331,6 +318,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" title="Testing" class="md-nav__link">
+    Testing
+  </a>
   
 </li>
       
@@ -362,16 +356,28 @@
       
 
 
+  <li class="md-nav__item">
+    <a href="methods/" title="Methods" class="md-nav__link">
+      Methods
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-3">
-      Functions
+    <label class="md-nav__link" for="nav-4">
+      Macros
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Functions
+      <label class="md-nav__title" for="nav-4">
+        Macros
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -382,7 +388,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/collection/" title="Collection" class="md-nav__link">
+    <a href="macros/collection/" title="Collection" class="md-nav__link">
       Collection
     </a>
   </li>
@@ -394,7 +400,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/function/" title="Function" class="md-nav__link">
+    <a href="macros/function/" title="Function" class="md-nav__link">
       Function
     </a>
   </li>
@@ -406,7 +412,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/logic/" title="Logic" class="md-nav__link">
+    <a href="macros/logic/" title="Logic" class="md-nav__link">
       Logic
     </a>
   </li>
@@ -418,7 +424,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/math/" title="Math" class="md-nav__link">
+    <a href="macros/math/" title="Math" class="md-nav__link">
       Math
     </a>
   </li>
@@ -430,7 +436,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/object/" title="Object" class="md-nav__link">
+    <a href="macros/object/" title="Object" class="md-nav__link">
       Object
     </a>
   </li>
@@ -442,7 +448,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/relation/" title="Relation" class="md-nav__link">
+    <a href="macros/relation/" title="Relation" class="md-nav__link">
       Relation
     </a>
   </li>
@@ -454,7 +460,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/string/" title="String" class="md-nav__link">
+    <a href="macros/string/" title="String" class="md-nav__link">
       String
     </a>
   </li>
@@ -466,7 +472,7 @@
 
 
   <li class="md-nav__item">
-    <a href="functions/type/" title="Type" class="md-nav__link">
+    <a href="macros/type/" title="Type" class="md-nav__link">
       Type
     </a>
   </li>
@@ -534,29 +540,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#about-function-references" title="About function references" class="md-nav__link">
-    About function references
+  <a href="#using-methods-as-references" title="Using methods as references" class="md-nav__link">
+    Using methods as references
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prefixed-functions" title="Prefixed functions" class="md-nav__link">
-    Prefixed functions
+  <a href="#extending" title="Extending" class="md-nav__link">
+    Extending
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#f-function" title="𝑓 function" class="md-nav__link">
-    𝑓 function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -569,6 +562,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" title="Testing" class="md-nav__link">
+    Testing
+  </a>
   
 </li>
       
@@ -599,22 +599,7 @@
 </code></pre>
 
 <h2 id="example-usage">Example usage</h2>
-<p><code>phln</code> defines set of functions which can be used individualy:</p>
-<pre><code class="php">use const phln\fn\T;
-use function phln\fn\always;
-use function phln\logic\cond;
-use function phln\relation\euqals;
-
-$fooBars = cond([
-    [equals(5), always('foo')],
-    [T, always('bar')],
-]);
-
-$fooBars(5); // foo
-</code></pre>
-
-<p>... or through <code>phln\Phln</code> static wrapper:</p>
-<pre><code class="php">use phln\Phln as P;
+<pre><code class="php">use Baethon\Phln\Phln as P;
 
 $fooBars = P::cond([
     [P::equals(5), P::always('foo')],
@@ -622,9 +607,9 @@ $fooBars = P::cond([
 ]);
 </code></pre>
 
-<p>Later in docs every <code>P::</code> reference will be used as a mental shortcut to <code>phln\Phln::</code>.</p>
+<p>Later in docs every <code>P::</code> reference will be used as a mental shortcut to <code>Baethon\Phln\Phln::</code>.</p>
 <h3 id="currying">Currying</h3>
-<p>By default <strong>most</strong> of functions defined in <code>phln</code> namespace are loosely curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.</p>
+<p><code>Phln</code> methods are loosely curried. A <code>N-ary</code> method will return a function until all arguments are provided.</p>
 <pre><code class="php">$foo = P::curryN(2, function ($left, $right) {
     return $left + $right;
 });
@@ -644,62 +629,50 @@ $mapFoos(function ($f) {
 </code></pre>
 
 <h3 id="function-composition">Function composition</h3>
-<p>For basic function composition <code>phln</code> provides <code>pipe()</code> and <code>compose()</code> functions.</p>
+<p>For function composition <code>Phln</code> provides <code>pipe()</code> and <code>compose()</code> functions.</p>
 <pre><code class="php">$allFoos = P::pipe([
     P::filter(P::lte(5)),
     P::map(P::always('foo')),
 ]);
 
-$firstFoo = P::compose([P::head, $allFoos]);
+$firstFoo = P::compose([P::ref('head'), $allFoos]);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
 </code></pre>
 
-<h3 id="about-function-references">About function references</h3>
-<p>Many of <code>phln</code> functions accept <code>callable</code> type. PHP does not allow to pass imported function as a callable reference. Instead it's required to pass a string reference (functions fully qualified name) as a "callback":</p>
-<pre><code class="php">use function phln\math\sum;
+<h3 id="using-methods-as-references">Using methods as references</h3>
+<p>Some of <code>Phln</code> methods accept <code>callable</code> as an argument.</p>
+<p>There're two ways of passing <code>Phln</code> methods as references:</p>
+<ul>
+<li>by using <code>P::ref()</code> - this will return <strong>uncurried</strong> version of a method</li>
+<li>by calling the method without any arguments - works only for methods with arity <code>&gt;0</code></li>
+</ul>
+<pre><code class="php">use Baethon\Phln\Phln as P;
 
 $collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // WRONG
-array_reduce($collection, 'phln\\math\\sum'); // 10
+array_reduce($collection, P::ref('sum')); // 10
 </code></pre>
 
-<p><code>phln</code> covers this problem by exporting string constants "pointing" to corresponding functions:</p>
-<pre><code class="php">use const phln\math\sum; // Notice `const` keyword
+<h3 id="extending">Extending</h3>
+<p><code>Phln</code> is <em>macroable</em>. This means that it can be extened using <code>P::macro()</code> method:</p>
+<pre><code class="php">use Baethon\Phln\Phln as P;
 
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
+P::macro('foo', function () {
+    return 'foo';
+});
+
+P::foo(); // 'foo'
 </code></pre>
 
-<p>It's possible to import <em>both</em> function and constant:</p>
-<pre><code class="php">use const phln\math\sum;
-use function phln\math\sum;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
-
-sum(4, 3); // 7
-</code></pre>
-
-<p>Unfortunatelly this approach generates overhead of import statements. For this reason I suggest using <code>phln\Phln</code> static wrapper.</p>
-<pre><code class="php">use phln\Phln as P;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, P::sum); // 10
-
-P::sum(4, 3); // 7
-</code></pre>
-
-<h3 id="prefixed-functions">Prefixed functions</h3>
-<p>Due to internal organization and some PHP limitations <code>phln</code> exports functions and consts with special prefixes.</p>
-<h4 id="f-function">𝑓 function</h4>
-<p>Those are uncurried versions of functions used internally by <code>phln</code>. They contain the main logic of the function and proper typehinting.</p>
 <h3 id="note-about-objects">Note about objects</h3>
 <p>The library takes terminology from Ramda. In most cases, it's perfectly fine, until one gets to the concept of <em>object</em>.</p>
 <p>Ramda treats <em>objects</em> as dictionaries. In JavaScript, there's only one type which can act as a dictionary. It's ... <code>object</code>.</p>
 <p>In PHP things get complicated. It's possible to use arrays and objects as dictionaries. This way <code>Phln</code> has to treat both of those types as an <em>object</em>.</p>
 <p>For compatibility reason, all functions which return <em>object</em> will return <code>array</code>.</p>
+<h2 id="testing">Testing</h2>
+<pre><code class="bash">./vendor/bin/phpunit
+</code></pre>
                 
                   
                 
