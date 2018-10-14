@@ -21,8 +21,7 @@
             "Baethon\\Phln\\": "src"
         },
         "files": [
-            "src/assertObject.php",
-            "src/load_macro.php",
+            "src/functions.php",
             "src/bundle.php"
         ]
     },

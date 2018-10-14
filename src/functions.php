@@ -14,7 +14,7 @@ namespace Baethon\Phln;
  * @throws \Exception
  * @internal
  */
-function assertObject($value)
+function assert_object($value)
 {
     $type = gettype($value);
 
@@ -22,4 +22,9 @@ function assertObject($value)
         is_object($value) || is_array($value),
         new \Exception("[{$type}] is not a valid object")
     );
+}
+
+function load_macro(string $ns, string $name)
+{
+    require_once(__DIR__."/macros/{$ns}/{$name}.php");
 }

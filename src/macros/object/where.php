@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
-use function Baethon\Phln\assertObject;
+use function Baethon\Phln\assert_object;
 
 P::macro('where', function (array $predicates, $object): bool {
-    assertObject($object);
+    assert_object($object);
 
     $keys = P::keys($predicates);
 

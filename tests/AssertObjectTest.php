@@ -1,6 +1,6 @@
 <?php
 
-use function Baethon\Phln\assertObject;
+use function Baethon\Phln\assert_object;
 
 class AssertObjectTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_passes_on_valid_object($value)
     {
-        $this->assertNull(assertObject($value));
+        $this->assertNull(assert_object($value));
     }
 
     public function objectsProvider()
@@ -29,7 +29,7 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
         $error = null;
 
         try {
-            assertObject($value);
+            assert_object($value);
         } catch (\Throwable $e) {
             $error = $e;
         }
