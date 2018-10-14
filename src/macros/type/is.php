@@ -8,23 +8,23 @@ P::macro('is', function (string $type, $value): bool {
     $expectedType = strtolower($type);
 
     switch ($expectedType) {
-    case 'object':
-        return 'object' === $typeOfValue;
+        case 'object':
+            return 'object' === $typeOfValue;
 
-    case 'bool':
-    case 'boolean':
-        return 'boolean' === $typeOfValue;
+        case 'bool':
+        case 'boolean':
+            return 'boolean' === $typeOfValue;
 
-    case 'double':
-    case 'float':
-        return 'double' === $typeOfValue;
+        case 'double':
+        case 'float':
+            return 'double' === $typeOfValue;
 
-    case 'callable':
-    case 'function':
-        return is_callable($value);
+        case 'callable':
+        case 'function':
+            return is_callable($value);
 
-    default:
-        return (is_object($value) && $value instanceof $type) ||
-            $typeOfValue === $expectedType;
+        default:
+            return (is_object($value) && $value instanceof $type) ||
+                $typeOfValue === $expectedType;
     }
 });

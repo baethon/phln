@@ -12,7 +12,8 @@
         "symfony/process": "^3.3",
         "phpdocumentor/reflection-docblock": "^3.1",
         "phpunit/phpunit": "^6.5",
-        "doctrine/instantiator": "~1.0.5"
+        "doctrine/instantiator": "~1.0.5",
+        "squizlabs/php_codesniffer": "^3.3"
     },
     "autoload": {
         "psr-4": {

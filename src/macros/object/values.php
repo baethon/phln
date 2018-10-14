@@ -9,4 +9,3 @@ P::macro('values', function ($object): array {
 
     return array_values((array) $object);
 });
-

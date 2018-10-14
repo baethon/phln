@@ -6,4 +6,3 @@ use Baethon\Phln\Phln as P;
 P::macro('F', function (): bool {
     return false;
 });
-

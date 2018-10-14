@@ -25,6 +25,7 @@ install:
   - composer install
 
 script:
+  - vendor/bin/phpcs --standard=psr2 src
   - vendor/bin/phpunit
 
 jobs:

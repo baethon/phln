@@ -8,4 +8,3 @@ P::macro('T', function (): bool {
 });
 
 P::alias('otherwise', 'T');
-
