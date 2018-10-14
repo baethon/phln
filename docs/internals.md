@@ -1,99 +1,46 @@
-## Function file
+## Macros
 
-Function should be defined in it's own file. In fact this file stores definition of two functions:
+All macros are located in `src/macros` directory. They're segregated by a namespace - a general "field" of their responsibility.
 
-1. *main function* (the one which is exprted) - a simple wrapper for curried version of *𝑓 function*
-2. *𝑓 function* - holds the main logic and typehinting of the function.
+Each macro should be defined in a separated file. It's allowed to define macros _aliases_.
+Macros are not namespaced so it's required that they don't leave any global variables declarations.
 
-This structure is maintened only for *𝑓 function* with arity > 1.
-
-For example, definition of `sum()` could look like this:
+This shouldn't happen:
 
 ```php
-function sum(int $a = null, int $b = null)
-{
-    return curryN(2, 𝑓sum, func_get_args());
-}
+use Baethon\Phln\Phln as P;
 
-function 𝑓sum(int $a, int $b): int
-{
-    return $a + $b;
-}
+$fn = function () {};
+
+P::macro('foo', function () use ($fn) {
+    return $fn;
+});
 ```
 
-Example has missing function constants. In such case there are also two defined constants:
-
-1. *main const* - points to the wrapper
-2. *𝑓 const* - points to *𝑓 function*; it's used mostly internally
+yet it's allowed to "scope" macro's definition by using self-calling closures:
 
 ```php
-const sum = '\\phln\\math\\sum';
-const 𝑓sum = '\\phln\\math\\𝑓sum';
+use Baethon\Phln\Phln as P;
+
+call_user_func(function () {
+    $fn = function () {};
+
+    P::macro('foo', function () use ($fn) {
+        return $fn;
+    });
+});
 ```
 
-## Adding new function - build pipeline
+Every new macro should be added to `bundle.php` file which is responsible for loading them.
 
-### Creating new function
+## CLI generator
 
-First step is to create a new function. It can be done using `create:fn` command.
+It's possible to scaffold new macro by using `create:macro` command.
 
 ```bash
-./bin/console.php create:fn namespace fnName
+./bin/console.php create:macro math power
 ```
 
-This command will generate from template function with test case.
-Name of the function has to be unique in scope of all `phln` functions.
+## Docs
 
-### Generating static wrapper
-
-When function is done it should be added to `phln\Phln` class.
-This class is result of `create:bundle` command so I suggest to use it to add newly created function.
-
-```php
-./bin/console.php create:bundle
-```
-
-### Generating docs
-
-Some parts of docs are compiled from PHPDocs of functions defined in `phln\Phln` class.
-To compile new version of docs (once the class is created) use `create:docs` command.
-
-```php
-./bin/console.php create:docs
-```
-
-## Testing
-
-`phln` uses PHPUnit to run tests.
-
-### About `Phln\Build\PhpUnit\TestCase`
-
-`Phln\Build\PhpUnit\TestCase` allows to run test case in two different "contexts". By default it runs tests using main function. Combined with `TestBundleListener` it will be executed once again with "context" of `phln\Phln` class (test case will use appropriate method defined in `Phln`).
-
-It exposes two methods:
-1. `callFn(...$args)` - calls function from a given context and returns it's result
-2. `getResolvedFn()` - returns "reference" for function from a given context
-
-It's requires to define `getTestedFn()` method which should return "reference" to main function.
-
-Due to some restrictions in PHPUnit `TestBundleListener` will generate, slightly odd, report:
-
-```
-...............................................................  63 / 250 ( 25%)
-............................................................... 126 / 250 ( 50%)
-............................................................... 189 / 250 ( 75%)
-.............................................................   250 / 250 (100%).. 252 / 250 (100%)
-............................................................... 315 / 250 (126%)
-............................................................... 378 / 250 (151%)
-............................................................... 441 / 250 (176%)
-............................................
-```
-
-## Structure of PHPDoc
-
-Every main function should have PHPDoc. Later it will be used to generate package documentation files.
-
-It should contain summary (title), `@phlnSignature` and `@phlnCategory` tags.
-Description and `@example` tag are optional, yet I suggest strongly to provide `@example`
-
-`@phlnSignature` is [Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system) definition
+Every new macro should be documented in Markdown docs located in `docs/` directory.

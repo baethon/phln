@@ -36,21 +36,8 @@ $foo(); // 'foo'
 
 Applies function `fn` to the argument list. This is useful for creating a fixed-arity function from a variadic function.
 
-
-
 ```php
 P::apply(P::sum, [1, 2]); // 3
-```
-
-## arity
-`(*... -> *) -> Number`
-
-Takes a function and returns its arity.
-
-
-
-```php
-P::arity('var_dump'); // 1
 ```
 
 ## compose
@@ -61,30 +48,6 @@ Performs left-to-right function composition.
 The leftmost function may have any arity; the remaining functions must be unary.
 
 **Note**: The result of pipe is not automatically curried.
-
-## curry
-`(* → a) → (* → a)`
-
-Returns a curried equivalent of the provided function.
-
-Curried function doesn't require providing arguments one at a time.
-If `f` is a ternary function and `g` is `P::curry(f)`, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)
-
-## curryN
-`Number -> (* → a) → (* → a)`
-
-Returns a curried equivalent of the provided function, with the specified arity.
-
-Curried function doesn't require providing arguments one at a time.
-If `f` is a ternary function and `g` is `P::curryN(3, f)`, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)
 
 ## identity
 `a -> a`
