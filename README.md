@@ -12,26 +12,8 @@ composer require baethon/phln
 
 ## Example usage
 
-`phln` defines set of functions which can be used individualy:
-
 ```php
-use const phln\fn\T;
-use function phln\fn\always;
-use function phln\logic\cond;
-use function phln\relation\euqals;
-
-$fooBars = cond([
-    [equals(5), always('foo')],
-    [T, always('bar')],
-]);
-
-$fooBars(5); // foo
-```
-
-... or through `phln\Phln` static wrapper:
-
-```php
-use phln\Phln as P;
+use Baethon\Phln\Phln as P;
 
 $fooBars = P::cond([
     [P::equals(5), P::always('foo')],
@@ -39,11 +21,11 @@ $fooBars = P::cond([
 ]);
 ```
 
-Later in docs every `P::` reference will be used as a mental shortcut to `phln\Phln::`.
+Later in docs every `P::` reference will be used as a mental shortcut to `Baethon\Phln\Phln::`.
 
 ### Currying
 
-By default **most** of functions defined in `phln` namespace are loosely curried. Functions are unary, however it's possible to pass to them more then one argument. Those arguments will be passed to the returned functions.
+`Phln` methods are loosely curried. A `N-ary` method will return a function until all arguments are provided.
 
 ```php
 $foo = P::curryN(2, function ($left, $right) {
@@ -69,7 +51,7 @@ $mapFoos(function ($f) {
 
 ### Function composition
 
-For basic function composition `phln` provides `pipe()` and `compose()` functions.
+For function composition `Phln` provides `pipe()` and `compose()` functions.
 
 ```php
 $allFoos = P::pipe([
@@ -77,64 +59,41 @@ $allFoos = P::pipe([
     P::map(P::always('foo')),
 ]);
 
-$firstFoo = P::compose([P::head, $allFoos]);
+$firstFoo = P::compose([P::ref('head'), $allFoos]);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
 ```
 
-### About function references
+### Using methods as references
 
-Many of `phln` functions accept `callable` type. PHP does not allow to pass imported function as a callable reference. Instead it's required to pass a string reference (functions fully qualified name) as a "callback":
+Some of `Phln` methods accept `callable` as an argument.
 
-```php
-use function phln\math\sum;
+There're two ways of passing `Phln` methods as references:
 
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // WRONG
-array_reduce($collection, 'phln\\math\\sum'); // 10
-```
-
-`phln` covers this problem by exporting string constants "pointing" to corresponding functions:
+* by using `P::ref()` - this will return **uncurried** version of a method
+* by calling the method without any arguments - works only for methods with arity `>0`
 
 ```php
-use const phln\math\sum; // Notice `const` keyword
+use Baethon\Phln\Phln as P;
 
 $collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
+array_reduce($collection, P::ref('sum')); // 10
 ```
 
-It's possible to import *both* function and constant:
+### Extending
+
+`Phln` is _macroable_. This means that it can be extened using `P::macro()` method:
 
 ```php
-use const phln\math\sum;
-use function phln\math\sum;
+use Baethon\Phln\Phln as P;
 
-$collection = [1, 2, 3, 4];
-array_reduce($collection, sum); // 10
+P::macro('foo', function () {
+    return 'foo';
+});
 
-sum(4, 3); // 7
+P::foo(); // 'foo'
 ```
-
-Unfortunatelly this approach generates overhead of import statements. For this reason I suggest using `phln\Phln` static wrapper.
-
-```php
-use phln\Phln as P;
-
-$collection = [1, 2, 3, 4];
-array_reduce($collection, P::sum); // 10
-
-P::sum(4, 3); // 7
-```
-
-
-### Prefixed functions
-
-Due to internal organization and some PHP limitations `phln` exports functions and consts with special prefixes.
-
-#### 𝑓 function
-
-Those are uncurried versions of functions used internally by `phln`. They contain the main logic of the function and proper typehinting.
 
 ### Note about objects
 
@@ -145,3 +104,9 @@ Ramda treats _objects_ as dictionaries. In JavaScript, there's only one type whi
 In PHP things get complicated. It's possible to use arrays and objects as dictionaries. This way `Phln` has to treat both of those types as an _object_.
 
 For compatibility reason, all functions which return _object_ will return `array`.
+
+## Testing
+
+```bash
+./vendor/bin/phpunit
+```

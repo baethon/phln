@@ -1,5 +1,7 @@
 {!! '<?'.'php' !!}
 
+use function Baethon\Phln\load_macro;
+
 @foreach($files as $item)
-require __DIR__.'/{{$item['ns']}}/{{$item['name']}}';
+load_macro('{{$item['ns']}}', '{{$item['name']}}');
 @endforeach

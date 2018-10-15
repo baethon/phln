@@ -1,17 +1,11 @@
 {!! '<?'.'php' !!}
 
-use const phln\{{$ns}}\{{$name}};
+use Baethon\Phln\Phln as P;
 
-class {{ ucfirst("{$name}Test") }} extends \Phln\Build\PhpUnit\TestCase
+class {{ ucfirst("{$name}Test") }} extends \PHPUnit\Framework\TestCase
 {
-    public function getTestedFn(): string
+    public function test_it_works()
     {
-        return {{$name}};
-    }
-
-    /** @test */
-    public function it_works()
-    {
-        $this->assertTrue($this->callFn());
+        $this->assertTrue(P::{{$name}}());
     }
 }

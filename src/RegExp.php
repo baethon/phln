@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace phln;
+namespace Baethon\Phln;
 
-use function \phln\collection\𝑓flatMap as flatMap;
+use Baethon\Phln\Phln as P;
 
 final class RegExp
 {
@@ -116,7 +116,7 @@ final class RegExp
                 : $list;
         };
 
-        return flatMap($slice, $matches);
+        return P::flatMap($slice, $matches);
     }
 
     public function test(string $string): bool

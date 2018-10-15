@@ -19,8 +19,5 @@
         </whitelist>
     </filter>
     <listeners>
-        <listener class="Phln\Build\PhpUnit\Listener\TestBundleListener"
-                  file="build/PhpUnit/Listener/TestBundleListener.php">
-        </listener>
     </listeners>
 </phpunit>
