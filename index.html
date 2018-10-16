@@ -635,7 +635,7 @@ $mapFoos(function ($f) {
     P::map(P::always('foo')),
 ]);
 
-$firstFoo = P::compose([P::ref('head'), $allFoos]);
+$firstFoo = P::compose([P::head(), $allFoos]);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
@@ -643,17 +643,14 @@ $firstFoo([4, 5, 6]); // 'foo'
 
 <h3 id="using-methods-as-references">Using methods as references</h3>
 <p>Some of <code>Phln</code> methods accept <code>callable</code> as an argument.</p>
-<p>There're two ways of passing <code>Phln</code> methods as references:</p>
-<ul>
-<li>by using <code>P::ref()</code> - this will return <strong>uncurried</strong> version of a method</li>
-<li>by calling the method without any arguments - works only for methods with arity <code>&gt;0</code></li>
-</ul>
+<p>To pass another macro as a <em>reference</em> call it without any arguments.</p>
 <pre><code class="php">use Baethon\Phln\Phln as P;
 
 $collection = [1, 2, 3, 4];
-array_reduce($collection, P::ref('sum')); // 10
+P::reduce(P::sum(), $collection); // 10
 </code></pre>
 
+<p>Also, you can use <code>P::raw()</code> method wich returns uncurried macro, or pointer to <code>Phln</code> method.</p>
 <h3 id="extending">Extending</h3>
 <p><code>Phln</code> is <em>macroable</em>. This means that it can be extened using <code>P::macro()</code> method:</p>
 <pre><code class="php">use Baethon\Phln\Phln as P;

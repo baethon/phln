@@ -339,13 +339,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#t_1" title="T" class="md-nav__link">
-    T
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#always" title="always" class="md-nav__link">
     always
   </a>
@@ -446,6 +439,27 @@
         <li class="md-nav__item">
   <a href="#unapply" title="unapply" class="md-nav__link">
     unapply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nary" title="nAry" class="md-nav__link">
+    nAry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unary" title="unary" class="md-nav__link">
+    unary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary" title="binary" class="md-nav__link">
+    binary
   </a>
   
 </li>
@@ -571,13 +585,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#t_1" title="T" class="md-nav__link">
-    T
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#always" title="always" class="md-nav__link">
     always
   </a>
@@ -682,6 +689,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nary" title="nAry" class="md-nav__link">
+    nAry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unary" title="unary" class="md-nav__link">
+    unary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary" title="binary" class="md-nav__link">
+    binary
+  </a>
+  
+</li>
+      
       
       
       
@@ -704,14 +732,11 @@
                   <h1>Function</h1>
                 
                 <h2 id="f">F</h2>
-<p><code>* -&gt; Boolean</code></p>
-<p>A function that always returns <code>false</code>. Any passed in parameters are ignored.</p>
+<p><code>* -&gt; (* -&gt; Boolean)</code></p>
+<p>Returns a function that always returns <code>false</code>.</p>
 <h2 id="t">T</h2>
-<p><code>* -&gt; Boolean</code></p>
-<p>A function that always returns <code>true</code>. Any passed in parameters are ignored.</p>
-<h2 id="t_1">T</h2>
-<p><code>* -&gt; Boolean</code></p>
-<p>A function that always returns <code>true</code>. Any passed in parameters are ignored.</p>
+<p><code>* -&gt; (* -&gt; Boolean)</code></p>
+<p>Returns a function that always returns <code>true</code>.</p>
 <h2 id="always">always</h2>
 <p><code>a -&gt; (* -&gt; a)</code></p>
 <p>Returns a function that always returns the given value.</p>
@@ -835,6 +860,30 @@ $break(); // -&gt; throw new \LogicException()
 </em> passes these arguments to <code>fn</code> as an array and returns the result</p>
 <p>In other words, <code>P::unapply</code> derives a variadic function from a function which takes an array. <code>P::unapply</code> is the inverse of <code>P::apply</code>.</p>
 <pre><code class="php">P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
+</code></pre>
+
+<h2 id="nary">nAry</h2>
+<p><code>Number -&gt; (* -&gt; a) -&gt; (* -&gt; a)</code></p>
+<p>Wraps a function of any arity (including nullary) in a function that accepts exactly n parameters. Any extraneous parameters will not be passed to the supplied function.</p>
+<pre><code class="php">P::nAry(2, function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1, 2]
+</code></pre>
+
+<h2 id="unary">unary</h2>
+<p><code>Number -&gt; (* -&gt; b) -&gt; (a -&gt; b)</code></p>
+<p>Wraps a function of any arity (including nullary) in a function that accepts exactly 1 parameter. Any extraneous parameters will not be passed to the supplied function.</p>
+<pre><code class="php">P::unary(function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1]
+</code></pre>
+
+<h2 id="binary">binary</h2>
+<p><code>Number -&gt; (* -&gt; c) -&gt; ((a, b) -&gt; c)</code></p>
+<p>Wraps a function of any arity (including nullary) in a function that accepts exactly 2 parameters. Any extraneous parameters will not be passed to the supplied function.</p>
+<pre><code class="php">P::binary(function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1, 2]
 </code></pre>
                 
                   
