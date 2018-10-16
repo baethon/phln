@@ -7,13 +7,13 @@ P::macro('last', function ($list) {
     $lastElement = P::slice(-1, 1);
     $lastOfArray = P::pipe([
         $lastElement,
-        P::ifElse(P::ref('isEmpty'), P::always(null), '\\current'),
+        P::ifElse(P::isEmpty(), P::always(null), '\\current'),
     ]);
 
     $f = P::typeCond([
         ['array', $lastOfArray],
         ['string', $lastElement],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
+        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
     ]);
 
     return $f($list);

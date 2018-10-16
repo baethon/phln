@@ -9,8 +9,8 @@ P::macro('contains', function ($value, $collection): bool {
     return P::apply(
         P::typeCond([
             ['array', P::any(P::equals($value))],
-            ['string', P::both(P::ref('T'), $stringContains)],
-            [P::ref('otherwise'), P::ref('F')]
+            ['string', P::both(P::T(), $stringContains)],
+            [P::otherwise(), P::F()]
         ]),
         [$collection]
     );

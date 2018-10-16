@@ -10,7 +10,7 @@ class TypeCondTest extends \PHPUnit\Framework\TestCase
             ['array', P::always('A')],
             ['integer', P::always('I')],
             [stdClass::class, P::always('STD')],
-            [P::ref('T'), P::ref('identity')],
+            [P::T(), P::identity()],
         ]);
 
         $this->assertEquals('A', $f([]));

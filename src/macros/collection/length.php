@@ -8,7 +8,7 @@ P::macro('length', function ($collection): int {
         P::cond([
             ['\\is_countable', '\\count'],
             [P::is('string'), '\\mb_strlen'],
-            [P::ref('otherwise'), P::throwException(
+            [P::otherwise(), P::throwException(
                 \InvalidArgumentException::class,
                 ['Unable to return length of given collection']
             )],

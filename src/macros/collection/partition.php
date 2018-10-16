@@ -18,7 +18,7 @@ P::macro('partition', function (callable $predicate, array $collection): array {
                 },
                 ['left' => [], 'right' => []]
             ),
-            P::ref('values')
+            P::values()
         ]),
         [$collection]
     );

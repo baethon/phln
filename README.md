@@ -59,7 +59,7 @@ $allFoos = P::pipe([
     P::map(P::always('foo')),
 ]);
 
-$firstFoo = P::compose([P::ref('head'), $allFoos]);
+$firstFoo = P::compose([P::head(), $allFoos]);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
@@ -69,17 +69,16 @@ $firstFoo([4, 5, 6]); // 'foo'
 
 Some of `Phln` methods accept `callable` as an argument.
 
-There're two ways of passing `Phln` methods as references:
-
-* by using `P::ref()` - this will return **uncurried** version of a method
-* by calling the method without any arguments - works only for methods with arity `>0`
+To pass another macro as a _reference_ call it without any arguments.
 
 ```php
 use Baethon\Phln\Phln as P;
 
 $collection = [1, 2, 3, 4];
-array_reduce($collection, P::ref('sum')); // 10
+P::reduce(P::sum(), $collection); // 10
 ```
+
+Also, you can use `P::raw()` method wich returns uncurried macro, or pointer to `Phln` method.
 
 ### Extending
 

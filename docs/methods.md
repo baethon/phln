@@ -1,4 +1,4 @@
-Below is list of `Phln` methods which are not considered as a macro. They cannot be referenced using `P::ref()` and they're not curried.
+Below is list of `Phln` methods which are not considered as a macro.
 
 ## alias
 `(String, String) -> Null`
@@ -11,15 +11,17 @@ P::alias('falsey', 'F');
 P::falsey(); // false
 ```
 
-## ref
+## raw
 `String -> (*... -> *)`
 
-Returns an uncurried version of a macro.
+Returns an uncurried version of a macro or a reference to one of `Phln` methods.
 
 ```php
-$sum = P::ref('sum');
+$sum = P::raw('sum');
+$arity = P::raw('arity');
 
 $sum(1, 2); // 3
+$arity($sum); // 2
 ```
 
 ## arity

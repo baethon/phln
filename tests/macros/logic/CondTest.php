@@ -8,8 +8,8 @@ class CondTest extends \PHPUnit\Framework\TestCase
     {
         $f = P::cond([
             [P::equals('foo'), P::always('bar')],
-            [P::is('bool'), P::ref('identity')],
-            [P::ref('T'), P::always('none')],
+            [P::is('bool'), P::identity()],
+            [P::T(), P::always('none')],
         ]);
 
         $this->assertEquals('bar', $f('foo'));
@@ -20,7 +20,7 @@ class CondTest extends \PHPUnit\Framework\TestCase
     public function test_it_returns_null_when_no_match()
     {
         $f = P::cond([
-            [P::ref('F'), P::always('foo')],
+            [P::F(), P::always('foo')],
         ]);
 
         $this->assertNull($f('bar'));

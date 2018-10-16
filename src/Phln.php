@@ -21,16 +21,16 @@ final class Phln
      */
     public static function alias(string $macroName, string $targetMacro)
     {
-        static::macro($macroName, static::ref($targetMacro));
+        static::macro($macroName, static::raw($targetMacro));
     }
 
     /**
-     * Returns "reference" to one of Phln macros
+     * Returns "reference" to one of Phln macros or methods
      *
      * @param string $macroName
      * @return callable
      */
-    public static function ref(string $macroName): callable
+    public static function raw(string $macroName): callable
     {
         return static::hasMacro($macroName)
             ? static::$macros[$macroName]

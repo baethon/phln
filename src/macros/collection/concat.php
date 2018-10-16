@@ -13,7 +13,7 @@ P::macro('concat', function ($a, $b) {
         P::cond([
             [$matchesType('string'), P::curryN(3, '\\sprintf', ['%s%s'])],
             [$matchesType('array'), P::curryN(2, '\\array_merge')],
-            [P::ref('otherwise'), P::throwException(
+            [P::otherwise(), P::throwException(
                 \InvalidArgumentException::class,
                 ['Passed arguments are not supported']
             )]

@@ -21,7 +21,7 @@ class AllPassTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_curries_to_highest_arity()
     {
-        $p = P::allPass([P::ref('lte'), P::equals(1)]);
+        $p = P::allPass([P::lte(), P::equals(1)]);
 
         $this->assertTrue(is_callable($p(1)));
         $this->assertTrue($p(1)(2));

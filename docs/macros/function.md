@@ -1,23 +1,12 @@
 ## F
-`* -> Boolean`
+`* -> (* -> Boolean)`
 
-A function that always returns `false`. Any passed in parameters are ignored.
-
-
+Returns a function that always returns `false`.
 
 ## T
-`* -> Boolean`
+`* -> (* -> Boolean)`
 
-A function that always returns `true`. Any passed in parameters are ignored.
-
-
-
-## T
-`* -> Boolean`
-
-A function that always returns `true`. Any passed in parameters are ignored.
-
-
+Returns a function that always returns `true`.
 
 ## always
 `a -> (* -> a)`

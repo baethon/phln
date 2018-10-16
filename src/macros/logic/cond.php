@@ -5,7 +5,7 @@ use Baethon\Phln\Phln as P;
 
 P::macro('cond', function (array $pairs): \Closure {
     return function (... $args) use ($pairs) {
-        $callPredicate = P::partialRight(P::ref('apply'), [$args]);
+        $callPredicate = P::partialRight(P::apply(), [$args]);
         $pairMatchingArgs = P::compose([$callPredicate, P::nth(0)]);
         $getTransformer = P::pipe([
             P::find($pairMatchingArgs),
@@ -14,7 +14,7 @@ P::macro('cond', function (array $pairs): \Closure {
 
         $pairsWithFallback = array_merge(
             $pairs,
-            [[P::ref('T'), P::always(null)]]
+            [[P::T(), P::always(null)]]
         );
 
         return $getTransformer($pairsWithFallback)(...$args);

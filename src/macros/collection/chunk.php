@@ -7,7 +7,7 @@ P::macro('chunk', function (int $size, $collection) {
     $f = P::typeCond([
         ['array', P::partialRight('\\array_chunk', [$size])],
         ['string', P::partialRight('\\str_split', [$size])],
-        [P::ref('otherwise'), P::throwException(\InvalidArgumentException::class, [])],
+        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
     ]);
 
     return $f($collection);

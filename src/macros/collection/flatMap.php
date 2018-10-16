@@ -7,7 +7,7 @@ P::macro('flatMap', function (callable $mapper, array $list): array {
     return P::apply(
         P::pipe([
             P::map($mapper),
-            P::ref('collapse'),
+            P::collapse(),
         ]),
         [$list]
     );
