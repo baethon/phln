@@ -39,21 +39,19 @@ final class Phln
 
     public static function arity(callable $fn): int
     {
-        return (new \ReflectionFunction($fn))->getNumberOfParameters();
+        return ($fn instanceof CurriedFn)
+            ? $fn->getArity()
+            : (new \ReflectionFunction($fn))->getNumberOfParameters();
     }
 
     public static function curry(callable $fn, array $args = [])
     {
-        return Phln::curryN(Phln::arity($fn), $fn, $args);
+        return CurriedFn::of($fn)(...$args);
     }
 
     public static function curryN(int $n, callable $fn, array $args = [])
     {
-        return (count($args) >= $n)
-            ? $fn(...$args)
-            : function (...$innerArgs) use ($n, $fn, $args) {
-                return Phln::curryN($n, $fn, array_merge($args, $innerArgs));
-            };
+        return CurriedFn::ofN($n, $fn)(...$args);
     }
 
     public static function macro(string $name, callable $macro)

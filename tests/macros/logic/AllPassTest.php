@@ -23,7 +23,7 @@ class AllPassTest extends \PHPUnit\Framework\TestCase
     {
         $p = P::allPass([P::ref('lte'), P::equals(1)]);
 
-        $this->assertInstanceOf(\Closure::class, $p(1));
+        $this->assertTrue(is_callable($p(1)));
         $this->assertTrue($p(1)(2));
         $this->assertTrue($p(1, 2));
     }
