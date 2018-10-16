@@ -39,7 +39,7 @@ final class Phln
 
     public static function arity(callable $fn): int
     {
-        return ($fn instanceof CurriedFn)
+        return ($fn instanceof FixedArityInterface)
             ? $fn->getArity()
             : (new \ReflectionFunction($fn))->getNumberOfParameters();
     }

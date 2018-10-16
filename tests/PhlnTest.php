@@ -2,6 +2,7 @@
 
 use Baethon\Phln\Phln as P;
 use Baethon\Phln\CurriedFn;
+use Baethon\Phln\FixedArityInterface;
 
 class PhlnTest extends \PHPUnit\Framework\TestCase
 {
@@ -33,10 +34,21 @@ class PhlnTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(2, P::arity(function ($a, ...$b) {}));
     }
 
-    public function test_it_returns_arity_of_curried_fn()
+    public function test_it_returns_arity_of_fixed_arity_fn()
     {
         $fn = function ($a, $b, $c) {};
         $this->assertEquals(3, P::arity(CurriedFn::of($fn)));
+        $this->assertEquals(3, P::arity(
+            new class () implements FixedArityInterface
+            {
+                public function getArity(): int
+                {
+                    return 3;
+                }
+
+                public function __invoke() {}
+            }
+        ));
     }
 
     public function test_curry_with_known_arity()

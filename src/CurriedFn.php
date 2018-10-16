@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Baethon\Phln;
 
-final class CurriedFn
+final class CurriedFn implements FixedArityInterface
 {
     /**
      * @type callable
