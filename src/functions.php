@@ -24,7 +24,13 @@ function assert_object($value)
     );
 }
 
-function load_macro(string $ns, string $name)
+function load_macro(string $ns, $name)
 {
-    require_once(__DIR__."/macros/{$ns}/{$name}.php");
+    $names = is_array($name)
+        ? $name
+        : [$name];
+
+    foreach ($names as $filename) {
+        require_once(__DIR__."/macros/{$ns}/{$filename}.php");
+    }
 }
