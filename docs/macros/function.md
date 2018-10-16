@@ -200,3 +200,36 @@ In other words, `P::unapply` derives a variadic function from a function which t
 P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
 ```
 
+## nAry
+`Number -> (* -> a) -> (* -> a)`
+
+Wraps a function of any arity (including nullary) in a function that accepts exactly n parameters. Any extraneous parameters will not be passed to the supplied function.
+
+```php
+P::nAry(2, function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1, 2]
+```
+
+## unary
+`Number -> (* -> b) -> (a -> b)`
+
+Wraps a function of any arity (including nullary) in a function that accepts exactly 1 parameter. Any extraneous parameters will not be passed to the supplied function.
+
+```php
+P::unary(function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1]
+```
+
+## binary
+`Number -> (* -> c) -> ((a, b) -> c)`
+
+Wraps a function of any arity (including nullary) in a function that accepts exactly 2 parameters. Any extraneous parameters will not be passed to the supplied function.
+
+
+```php
+P::binary(function (...$args) {
+    return $args;
+})(1, 2, 3, 4); // [1, 2]
+```
