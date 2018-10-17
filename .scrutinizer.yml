@@ -4,5 +4,10 @@ filter:
   dependency_paths:
     - vendor/
   excluded_paths:
-    - src/Phln.php
     - src/bundle.php
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - phpcs-run --standard=psr2 src/
