@@ -27,9 +27,8 @@ install:
   - composer install
 
 script:
-  - vendor/bin/phpcs --standard=psr2 src
-  - phpstan analyse
-  - vendor/bin/phpunit
+  - composer lint
+  - composer test
 
 jobs:
   include:

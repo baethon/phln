@@ -36,5 +36,14 @@
             "name": "Radoslaw Mejer",
             "email": "radmen@radmen.info"
         }
-    ]
+    ],
+    "scripts": {
+        "lint": [
+          "./vendor/bin/phpcs --standard=psr2 src",
+          "phpstan analyse"
+        ],
+        "test": [
+            "./vendor/bin/phpunit"
+        ]
+    }
 }
