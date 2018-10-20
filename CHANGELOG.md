@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- support for macros in `Phln`
+- `P::nAry()` / `P::unary()` / `P::binary()`
+- `Baethon\Phln\CurriedFn`
+- `Baethon\Phln\FixedArityInterface` (supported by `P::arity()`)
+- `P::raw()`
+
+### Changed
+
+- converted standalone functions to macros
+- `P::T()` / `P::F()` returns a function (which returns boolean)
+- `P::curry()` returns instance of `Baethon\Phln\CurriedFn`
+
+### Removed
+
+- **support for PHP 7.0**
+- standalone functions (eg. `phln\math\sum`) and their constant references
+
+## [1.2.0] - 2018-10-20
+
+### Added
+
 - `object\objOf()` ([338519c](https://github.com/baethon/phln/commit/338519c772aead989252dadab68f94bbe2edab06))
 - `object\toParis()` ([e3e93a5](https://github.com/baethon/phln/commit/e3e93a542cb49890ac9eb57ae66e0a178e092cd3))
 - `collection\fromPairs()` ([e3e93a5](https://github.com/baethon/phln/commit/e3e93a542cb49890ac9eb57ae66e0a178e092cd3))
@@ -51,5 +72,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `phln\logic\ƛand()`
 - `phln\logic\ƛor()`
 
-[Unreleased]: https://github.com/baethon/phln/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/baethon/phln/compare/1.2.0...HEAD
 [1.1.0]: https://github.com/baethon/phln/compare/1.0.0...1.1.0
+[1.2.0]: https://github.com/baethon/phln/compare/1.1.0...1.2.0
