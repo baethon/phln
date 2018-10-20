@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('map', function (callable $fn = null, array $list = []) {
-    return array_map($fn, $list);
-});
+load_macro('fn', 'nAry');
+
+P::macro('map', P::nAry(2, '\\array_map'));
