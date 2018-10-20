@@ -36,7 +36,7 @@ final class RegExp
 
     public function __toString(): string
     {
-        return $this->pattern.$this->modifiers;
+        return $this->pattern . $this->modifiers;
     }
 
     private function wrapInDelimiters(string $pattern): string

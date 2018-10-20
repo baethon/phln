@@ -31,6 +31,6 @@ function load_macro(string $ns, $name)
         : [$name];
 
     foreach ($names as $filename) {
-        require_once(__DIR__."/macros/{$ns}/{$filename}.php");
+        require_once(__DIR__ . "/macros/{$ns}/{$filename}.php");
     }
 }
