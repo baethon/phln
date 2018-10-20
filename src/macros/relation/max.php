@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('max', function ($a, $b) {
-    return max($a, $b);
-});
+load_macro('fn', 'binary');
+
+P::macro('max', P::binary('\\max'));
