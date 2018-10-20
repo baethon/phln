@@ -30,6 +30,8 @@ before_script:
   - export PATH="$PATH:/home/travis/.composer/vendor/bin"
 
 script:
+  - echo $PATH
+  - ls /home/travis/.composer/vendor/bin
   - composer lint
   - composer test
 
