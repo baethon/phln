@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
-P::macro('partial', function (callable $fn, array $args): \Closure {
+P::macro('partial', call_user_func(function () {
     $mergeArguments = function (array $args, array $innerArgs) {
         $mapped = [];
 
@@ -18,7 +18,9 @@ P::macro('partial', function (callable $fn, array $args): \Closure {
         return array_merge($mapped, $innerArgs);
     };
 
-    return function (...$innerArgs) use ($fn, $args, $mergeArguments) {
-        return $fn(...$mergeArguments($args, $innerArgs));
+    return function (callable $fn, array $args) use ($mergeArguments): callable {
+        return function (...$innerArgs) use ($fn, $args, $mergeArguments) {
+            return $fn(...$mergeArguments($args, $innerArgs));
+        };
     };
-});
+}));
