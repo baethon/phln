@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('min', function ($left, $right) {
-    return \min($left, $right);
-});
+load_macro('fn', 'binary');
+
+P::macro('min', P::binary('\\min'));
