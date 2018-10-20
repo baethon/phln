@@ -39,7 +39,7 @@
     ],
     "scripts": {
         "lint": [
-          "./vendor/bin/phpcs --standard=psr2 src",
+          "./vendor/bin/phpcs",
           "phpstan analyse"
         ],
         "test": [

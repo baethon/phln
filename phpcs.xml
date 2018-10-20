@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+    <description>The coding standard for Phln.</description>
+
+    <file>src</file>
+
+    <arg name="basepath" value="."/>
+
+    <rule ref="PSR2"/>
+</ruleset>
