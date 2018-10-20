@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('difference', function (array $left, array $right): array {
-    return P::compose([P::values(), '\\array_diff'])($left, $right);
-});
+load_macro('fn', 'binary');
+
+P::macro('difference', P::compose([P::values(), P::binary('\\array_diff')]));
