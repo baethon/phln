@@ -27,7 +27,7 @@ install:
   - composer install
 
 before_script:
-  - export PATH="$PATH:~/.composer/vendor/bin"
+  - export PATH="$PATH:/home/travis/.composer/vendor/bin"
 
 script:
   - composer lint
