@@ -26,6 +26,9 @@ install:
   - composer global require phpstan/phpstan
   - composer install
 
+before_script:
+  - export PATH="$PATH:~/.composer/vendor/bin"
+
 script:
   - composer lint
   - composer test
