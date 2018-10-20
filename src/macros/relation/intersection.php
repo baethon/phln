@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+use function Baethon\Phln\load_macro;
 
-P::macro('intersection', function (array $left, array $right): array {
-    return P::compose([P::values(), '\\array_intersect'])($left, $right);
-});
+load_macro('fn', 'binary');
+
+P::macro('intersection', P::compose([P::values(), P::binary('\\array_intersect')]));
