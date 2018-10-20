@@ -10,7 +10,7 @@ P::macro('where', function (array $predicates, $object): bool {
     $keys = P::keys($predicates);
 
     return P::all(
-        function ($key) use ($keys, $object, $predicates) {
+        function ($key) use ($object, $predicates) {
             $value = P::prop($key, $object);
             return $predicates[$key]($value);
         },

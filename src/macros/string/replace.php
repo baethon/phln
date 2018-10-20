@@ -8,5 +8,12 @@ P::macro('replace', function ($regexp, string $replacement, string $text): strin
     $r = RegExp::of($regexp);
     $limit = $r->isGlobal() ? -1 : 1;
 
-    return preg_replace((string) $r, $replacement, $text, $limit);
+    $result = preg_replace((string) $r, $replacement, $text, $limit);
+    $error = preg_last_error();
+
+    if ($error !== \PREG_NO_ERROR) {
+        throw new \RuntimeException("PCRE regex execution error (code: {$error})");
+    }
+
+    return "{$result}";
 });

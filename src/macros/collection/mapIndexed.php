@@ -7,5 +7,5 @@ P::macro('mapIndexed', function (callable $fn, array $list): array {
     $keys = array_keys($list);
     $mapped = array_map($fn, $list, $keys);
 
-    return array_combine($keys, $mapped);
+    return array_combine($keys, $mapped) ?: [];
 });

@@ -1,0 +1,7 @@
+parameters:
+    level: 7
+    paths:
+        - src/
+    ignoreErrors:
+        - '#Call to an undefined static method Baethon\\Phln\\Phln::#'
+        - '#Parameter \#1 \$name of class ReflectionFunction constructor expects Closure\|string, callable given#'

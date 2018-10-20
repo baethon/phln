@@ -23,10 +23,12 @@ cache:
     - $HOME/.composer/cache
 
 install:
+  - composer global require phpstan/phpstan
   - composer install
 
 script:
   - vendor/bin/phpcs --standard=psr2 src
+  - phpstan analyse
   - vendor/bin/phpunit
 
 jobs:

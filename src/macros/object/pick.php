@@ -6,5 +6,5 @@ use function Baethon\Phln\assert_object;
 
 P::macro('pick', function (array $useKeys, $object): array {
     assert_object($object);
-    return array_intersect_key((array) $object, array_combine($useKeys, $useKeys));
+    return array_intersect_key((array) $object, array_combine($useKeys, $useKeys) ?: []);
 });
