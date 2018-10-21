@@ -3,6 +3,7 @@
     "description": "A practical functional library for PHP developers",
     "type": "library",
     "require": {
+        "php": ">=7.1",
         "ayesh/is_countable-polyfill": "^1.0"
     },
     "require-dev": {
