@@ -1,6 +1,8 @@
 ## allPass
 `[(*... -> Boolean) -> *... -> Boolean`
 
+Added in: v1.0
+
 Takes a list of predicates and returns a predicate that returns `true` for a given list of arguments if every one of the provided predicates is satisfied by those arguments.
 
 The function returned is a curried function whose arity matches that of the highest-arity predicate.
@@ -13,8 +15,10 @@ $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
 ```
 
 ## both
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)` 
 `Boolean -> Boolean -> Boolean`
+
+Added in: v1.0
 
 Returns `true` when both of two provided values are truthy.
 
@@ -33,9 +37,9 @@ P::both(true, false); // false
 ## cond
 `[[(*… → Boolean),(*… → *)]] → (*… → *)`
 
-Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
+Added in: v1.0
 
-.. logic. `P::cond` takes a list of [`predicate`, `transformer`] pairs. All of the arguments to `fn` are applied to each of the `predicates` in turn until one returns a truth-y value, at which point `fn` returns the result of applying its arguments to the corresponding `transformer`. If none of the `predicates` matches, `fn` returns null.
+Returns a function, `fn`, which encapsulates `if/else`, `if/else` logic. `P::cond` takes a list of [`predicate`, `transformer`] pairs. All of the arguments to `fn` are applied to each of the `predicates` in turn until one returns a truth-y value, at which point `fn` returns the result of applying its arguments to the corresponding `transformer`. If none of the `predicates` matches, `fn` returns null.
 
 ```php
 $fn = P::cond([
@@ -54,9 +58,9 @@ $fn(100); //=> 'water boils at 100°C'
 ## defaultTo
 `a -> b -> b | a`
 
+Added in: v1.0
+
 Returns the second argument if it is not `null`; otherwise the first argument is returned.
-
-
 
 ```php
 P::defaultTo(42, null); // 42
@@ -64,8 +68,10 @@ P::defaultTo(42, 'life'); // 'life'
 ```
 
 ## either
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)` 
 `Boolean -> Boolean -> Boolean`
+
+Added in: v1.0
 
 Returns `true` when one of two provided values is truthy.
 
@@ -86,9 +92,9 @@ P::either(true, false); // true
 ## ifElse
 `(*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)`
 
+Added in: v1.0
+
 Creates a function that will process either the `onTrue` or the `onFalse` function depending upon the result of the condition predicate.
-
-
 
 ```php
 $modulo15 = P::swap(P::modulo)(15);
@@ -104,6 +110,8 @@ $fizzbuzz(1); // 1
 
 ## isEmpty
 `a -> Boolean`
+
+Added in: v1.0
 
 Returns `true` if the given value is its type's empty value; `false` otherwise.
 
@@ -122,12 +130,11 @@ P::isEmpty(true); // false
 ## not
 `* -> Boolean`
 
+Added in: v1.0
+
 A function that returns the `!` of its argument. It will return `true` when passed false-y value, and `false` when passed a truth-y one.
-
-
 
 ```php
 P::not(0); // true
 P::not(true); // false
 ```
-
