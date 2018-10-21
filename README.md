@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/baethon/phln.svg?branch=master)](https://travis-ci.org/baethon/phln) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/baethon/phln/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/baethon/phln/?branch=master)
+
+---
+
 # baethon/phln
 
 A practical functional library for PHP developers.
