@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -565,6 +565,7 @@
                 
                 <h2 id="allpass">allPass</h2>
 <p><code>[(*... -&gt; Boolean) -&gt; *... -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Takes a list of predicates and returns a predicate that returns <code>true</code> for a given list of arguments if every one of the provided predicates is satisfied by those arguments.</p>
 <p>The function returned is a curried function whose arity matches that of the highest-arity predicate.</p>
 <pre><code class="php">$ace = P::propEq('rank', 'A');
@@ -574,8 +575,9 @@ $aceOfSpades(['rank' =&gt; 'A', 'suit' =&gt; '♠︎']); // true
 </code></pre>
 
 <h2 id="both">both</h2>
-<p><code>(*... -&gt; Boolean) -&gt; (*... -&gt; Boolean) -&gt; (*... -&gt; Boolean)</code>
+<p><code>(*... -&gt; Boolean) -&gt; (*... -&gt; Boolean) -&gt; (*... -&gt; Boolean)</code> 
 <code>Boolean -&gt; Boolean -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> when both of two provided values are truthy.</p>
 <p>This function is polymorphic and supports two cases:
 1. when both values are predicates it will return wrapper function which call to the two functions in an <code>&amp;&amp;</code> operation, returning <code>true</code> if both of the functions will return truthy value.
@@ -589,8 +591,8 @@ P::both(true, false); // false
 
 <h2 id="cond">cond</h2>
 <p><code>[[(*… → Boolean),(*… → *)]] → (*… → *)</code></p>
-<p>Returns a function, <code>fn</code>, which encapsulates <code>if/else</code>, <code>if/else</code>, .</p>
-<p>.. logic. <code>P::cond</code> takes a list of [<code>predicate</code>, <code>transformer</code>] pairs. All of the arguments to <code>fn</code> are applied to each of the <code>predicates</code> in turn until one returns a truth-y value, at which point <code>fn</code> returns the result of applying its arguments to the corresponding <code>transformer</code>. If none of the <code>predicates</code> matches, <code>fn</code> returns null.</p>
+<p>Added in: v1.0</p>
+<p>Returns a function, <code>fn</code>, which encapsulates <code>if/else</code>, <code>if/else</code> logic. <code>P::cond</code> takes a list of [<code>predicate</code>, <code>transformer</code>] pairs. All of the arguments to <code>fn</code> are applied to each of the <code>predicates</code> in turn until one returns a truth-y value, at which point <code>fn</code> returns the result of applying its arguments to the corresponding <code>transformer</code>. If none of the <code>predicates</code> matches, <code>fn</code> returns null.</p>
 <pre><code class="php">$fn = P::cond([
     [P::equals(0), P::always('water freezes at 0°C')],
     [P::equals(100), P::always('water boils at 100°C')],
@@ -606,14 +608,16 @@ $fn(100); //=&gt; 'water boils at 100°C'
 
 <h2 id="defaultto">defaultTo</h2>
 <p><code>a -&gt; b -&gt; b | a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the second argument if it is not <code>null</code>; otherwise the first argument is returned.</p>
 <pre><code class="php">P::defaultTo(42, null); // 42
 P::defaultTo(42, 'life'); // 'life'
 </code></pre>
 
 <h2 id="either">either</h2>
-<p><code>(*... -&gt; Boolean) -&gt; (*... -&gt; Boolean) -&gt; (*... -&gt; Boolean)</code>
+<p><code>(*... -&gt; Boolean) -&gt; (*... -&gt; Boolean) -&gt; (*... -&gt; Boolean)</code> 
 <code>Boolean -&gt; Boolean -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> when one of two provided values is truthy.</p>
 <p>This function is polymorphic and supports two cases:
 1. when both values are predicates it will return wrapper function which call to the two functions in an <code>||</code> operation, returning <code>true</code> if at least one of the functions will return truthy value.
@@ -629,6 +633,7 @@ P::either(true, false); // true
 
 <h2 id="ifelse">ifElse</h2>
 <p><code>(*... -&gt; Boolean) -&gt; (*... -&gt; *) -&gt; (*... -&gt; *) -&gt; (*... -&gt; *)</code></p>
+<p>Added in: v1.0</p>
 <p>Creates a function that will process either the <code>onTrue</code> or the <code>onFalse</code> function depending upon the result of the condition predicate.</p>
 <pre><code class="php">$modulo15 = P::swap(P::modulo)(15);
 $fizzbuzz = P::ifElse(
@@ -643,6 +648,7 @@ $fizzbuzz(1); // 1
 
 <h2 id="isempty">isEmpty</h2>
 <p><code>a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the given value is its type's empty value; <code>false</code> otherwise.</p>
 <p><em>Note</em> unlike <code>\empty()</code> this function will consider numbers, booleans and NULL as non-empty.</p>
 <pre><code class="php">P::isEmpty(''); // true
@@ -656,6 +662,7 @@ P::isEmpty(true); // false
 
 <h2 id="not">not</h2>
 <p><code>* -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>A function that returns the <code>!</code> of its argument. It will return <code>true</code> when passed false-y value, and <code>false</code> when passed a truth-y one.</p>
 <pre><code class="php">P::not(0); // true
 P::not(true); // false

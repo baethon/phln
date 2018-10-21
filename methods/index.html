@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href=".." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -550,6 +550,7 @@
                 <p>Below is list of <code>Phln</code> methods which are not considered as a macro.</p>
 <h2 id="alias">alias</h2>
 <p><code>(String, String) -&gt; Null</code></p>
+<p>Added in: v2.0</p>
 <p>Creates an alias of a macro.</p>
 <pre><code class="php">P::alias('falsey', 'F');
 
@@ -558,6 +559,7 @@ P::falsey(); // false
 
 <h2 id="raw">raw</h2>
 <p><code>String -&gt; (*... -&gt; *)</code></p>
+<p>Added in: v2.0</p>
 <p>Returns an uncurried version of a macro or a reference to one of <code>Phln</code> methods.</p>
 <pre><code class="php">$sum = P::raw('sum');
 $arity = P::raw('arity');
@@ -568,6 +570,7 @@ $arity($sum); // 2
 
 <h2 id="arity">arity</h2>
 <p><code>(*... -&gt; *) -&gt; Number</code></p>
+<p>Added in: v1.0</p>
 <p>Takes a function and returns its arity.</p>
 <pre><code class="php">P::arity('var_dump'); // 1
 </code></pre>
@@ -575,6 +578,7 @@ $arity($sum); // 2
 <p>For curried macros this method will always return <code>1</code>.</p>
 <h2 id="curry">curry</h2>
 <p><code>(* → a) → (* → a)</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a curried equivalent of the provided function.</p>
 <p>Curried function doesn't require providing arguments one at a time.
 If <code>f</code> is a ternary function and <code>g</code> is <code>P::curry(f)</code>, the following are equivalent.
@@ -584,6 +588,7 @@ If <code>f</code> is a ternary function and <code>g</code> is <code>P::curry(f)<
      * g(1, 2, 3)</p>
 <h2 id="curryn">curryN</h2>
 <p><code>(Number, (* → a)) → (* → a)</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a curried equivalent of the provided function, with the specified arity.</p>
 <p>Curried function doesn't require providing arguments one at a time.
 If <code>f</code> is a ternary function and <code>g</code> is <code>P::curryN(3, f)</code>, the following are equivalent.
@@ -593,9 +598,11 @@ If <code>f</code> is a ternary function and <code>g</code> is <code>P::curryN(3,
      * g(1, 2, 3)</p>
 <h2 id="macro">macro</h2>
 <p><code>(String, (* -&gt; a)) -&gt; Null</code></p>
+<p>Added in: v2.0</p>
 <p>Adds new macro to <code>Phln</code>.</p>
 <h2 id="hasmacro">hasMacro</h2>
 <p><code>String -&gt; Boolean</code></p>
+<p>Added in: v2.0</p>
 <p>Checks if given macro (or it's alias) is defined.</p>
                 
                   

@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -621,6 +621,7 @@
                 
                 <h2 id="clamp">clamp</h2>
 <p><code>Number a =&gt; a -&gt; a -&gt; a -&gt; a</code></p>
+<p>Added in: v1.0</p>
 <p>Restricts a number to be within a range.</p>
 <pre><code class="php">P::clamp(-1, 1, -100); // -1
 P::clamp(-1, 1, 100); // 1
@@ -629,12 +630,14 @@ P::clamp(-1, 1, 0); // 0
 
 <h2 id="difference">difference</h2>
 <p><code>[*] -&gt; [*] -&gt; [*]</code></p>
+<p>Added in: v1.0</p>
 <p>Finds the set (i.e. no duplicates) of all elements in the first list not contained in the second list.</p>
 <pre><code class="php">P::difference([1, 2, 3, 4], [3, 4, 5, 6]); // [1, 2]
 </code></pre>
 
 <h2 id="equals">equals</h2>
 <p><code>a -&gt; b -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if its arguments are equivalent, <code>false</code> otherwise.</p>
 <pre><code class="php">P::equals(1, 1); // true
 P::equals(1, '1'); // false
@@ -643,12 +646,14 @@ P::equals(1, 2); // false
 
 <h2 id="gt">gt</h2>
 <p><code>Ord a =&gt; a -&gt; a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the first argument is greater than the second; <code>false</code> otherwise.</p>
 <pre><code class="php">P::gt(2, 1); // true
 </code></pre>
 
 <h2 id="gte">gte</h2>
 <p><code>Ord a =&gt; a -&gt; a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the first argument is greater than or equal to the second; <code>false</code> otherwise.</p>
 <pre><code class="php">P::gte(2, 1); // true
 P::gte(2, 2); // true
@@ -657,12 +662,14 @@ P::gte(2, 3); // false
 
 <h2 id="intersection">intersection</h2>
 <p><code>[*] -&gt; [*] -&gt; [*]</code></p>
+<p>Added in: v1.0</p>
 <p>Combines two lists into a set composed of those elements common to both lists.</p>
 <pre><code class="php">P::intersection([1, 2, 3, 4], [6, 4, 5]); // [4]
 </code></pre>
 
 <h2 id="lt">lt</h2>
 <p><code>Ord a =&gt; a -&gt; a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the first argument is less than the second; <code>false</code> otherwise.</p>
 <pre><code class="php">P::lt(1, 2); // true
 P::lt(3, 2); // false
@@ -671,27 +678,32 @@ P::lt(2, 2); // false
 
 <h2 id="lte">lte</h2>
 <p><code>Ord a =&gt; a -&gt; a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the first argument is less than or equal to the second; <code>false</code> otherwise.</p>
 <pre><code class="php">P::lte(1, 2); // true
 </code></pre>
 
 <h2 id="max">max</h2>
 <p><code>a -&gt; a -&gt; a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the larger of its two arguments.</p>
 <h2 id="min">min</h2>
 <p><code>a -&gt; a -&gt; a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the smaller of its two arguments.</p>
 <pre><code class="php">P::min(1, -1); // -1
 </code></pre>
 
 <h2 id="patheq">pathEq</h2>
 <p><code>String -&gt; a -&gt; {a} -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Determines whether a nested path on an object has a specific value, in <code>equals()</code> terms.</p>
 <pre><code class="php">P::pathEq('foo.bar', 1, ['foo' =&gt; ['bar' =&gt; 1]]); // true
 </code></pre>
 
 <h2 id="propeq">propEq</h2>
 <p><code>k -&gt; a -&gt; {k: a} -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the specified object property is equal, in <code>equals()</code> terms, to the given value; <code>false</code> otherwise.</p>
 <pre><code class="php">P::propEq('name', 'Jon', ['name' =&gt; 'Jon']); // true
 </code></pre>

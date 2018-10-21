@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -481,6 +481,7 @@
                 
                 <h2 id="is">is</h2>
 <p><code>String -&gt; a -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>See if <code>value</code> is of given <code>type</code>.</p>
 <p>Internally this function uses <code>\gettype()</code> with few support of few aliases:
 <em> <code>bool</code> - alias for <code>boolean</code> type
@@ -495,6 +496,7 @@ P::is(float, 1.1); // true
 
 <h2 id="typecond">typeCond</h2>
 <p><code>[[String, (*... -&gt; *)]] -&gt; (*... -&gt; *)</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a function, <code>fn</code>, which encapsulates <code>if/else</code>, <code>if/else</code>, .</p>
 <p>.. logic. <code>P::typeCond</code> takes a list of [<code>type</code>, <code>transformer</code>] pairs. Type is converted to <code>predicate</code> matching type of variable (in terms of <code>P::is()</code>). All of the arguments to <code>fn</code> are applied to each of the <code>predicates</code> in turn until one returns a truth-y value, at which point <code>fn</code> returns the result of applying its arguments to the corresponding <code>transformer</code>. If none of the <code>predicates</code> matches, <code>fn</code> returns null.</p>
 <pre><code class="php">$count = P::typeCond([

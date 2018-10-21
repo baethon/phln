@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -524,6 +524,7 @@
                 <h2 id="match">match</h2>
 <p><code>RegExp -&gt; String -&gt; String|Null</code>
 <code>RegExp -&gt; String -&gt; [String]</code></p>
+<p>Added in: v1.0</p>
 <p>Tests a regular expression against a String. Returns found string, or <code>NULL</code>. When regular expression has 'global' modifier function will return array of found strings.</p>
 <p>If regular expression contains groups <code>match()</code> will return only matching groups (in an order defined in regular expression).</p>
 <pre><code class="php">P::match('/([a-z](o))/i', 'Lorem ipsum dolor'); // 'Lo'
@@ -533,12 +534,14 @@ P::match('/return (\w)/', 'return integer'); // 'integer'
 
 <h2 id="regexp">regexp</h2>
 <p><code>String -&gt; RegExp</code></p>
+<p>Added in: v1.0</p>
 <p>Converts given string to RegExp object</p>
 <pre><code class="php">P::regexp('/foo/ig'); // =&gt; new \phln\RegExp('/foo/', 'ig');
 </code></pre>
 
 <h2 id="replace">replace</h2>
 <p><code>RegExp -&gt; String -&gt; String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Replace a regex match in a string with a replacement.</p>
 <p>When regular expression has 'global' modifier all matching strings will be replaced.
 Otherwise only first matching string will be replaced.</p>
@@ -549,6 +552,7 @@ P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
 <h2 id="split">split</h2>
 <p><code>String -&gt; String -&gt; [String]</code>
 <code>RegExp -&gt; String -&gt; [String]</code></p>
+<p>Added in: v1.0</p>
 <p>Splits a string into an array of strings based on the given regular expression or separator.</p>
 <p>It's possible to split string</p>
 <pre><code class="php">P::split('/', 'a/b'); // ['a', 'b']
@@ -557,6 +561,7 @@ P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
 <h2 id="test">test</h2>
 <p><code>RegExp -&gt; String -&gt; Bool</code>
 <code>String -&gt; String -&gt; Bool</code></p>
+<p>Added in: v1.2</p>
 <p>Determines whether a given string matches a given regular expression.</p>
 <pre><code class="php">P::test('/foo/', 'foobar'); // true
 </code></pre>

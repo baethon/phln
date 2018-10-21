@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -915,6 +915,7 @@
                 
                 <h2 id="all">all</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if all elements of array match the predicate, <code>false</code> otherwise.</p>
 <pre><code class="php">$onlyTwos = P::all(P::equals(2));
 $onlyTwos([1, 2, 2]); // false
@@ -922,6 +923,7 @@ $onlyTwos([1, 2, 2]); // false
 
 <h2 id="any">any</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if at least one of array elements match the predicate, <code>false</code> otherwise.</p>
 <pre><code class="php">$hasTwos = P::any(P::equals(2));
 $hasTwos([1, 2, 3, 4]); // true
@@ -930,6 +932,7 @@ $hasTwos([1, 2, 3, 4]); // true
 <h2 id="append">append</h2>
 <p><code>a -&gt; [a] -&gt; [a]</code>
 <code>String -&gt; String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a new list containing the contents of the given list or string, followed by the given element.</p>
 <pre><code class="php">P::append(3, [1, 2]); // [1, 2, 3]
 P::append([3], [1, 2]); // [1, 2, [3]]
@@ -939,6 +942,7 @@ P::append('foo', 'bar'); // 'barfoo'
 <h2 id="chunk">chunk</h2>
 <p><code>Number -&gt; [a] -&gt; [[a]]</code>
 <code>Number -&gt; String -&gt; [String]</code></p>
+<p>Added in: v1.0</p>
 <p>Chunks an array or string into arrays with <code>size</code> elements.</p>
 <p>The last chunk may contain less than <code>size</code> elements.</p>
 <pre><code class="php">P::chunk(2, [1, 2, 3, 4]); // [[1, 2], [3, 4]]
@@ -947,10 +951,12 @@ P::chunk(2, 'hello'); // ['he', 'll', 'o']
 
 <h2 id="collapse">collapse</h2>
 <p><code>[[*], [*]] -&gt; [*, *]</code></p>
+<p>Added in: v1.0</p>
 <p>Flattens array elements by one level</p>
 <h2 id="concat">concat</h2>
 <p><code>[a] -&gt; [a] -&gt; [a]</code>
 <code>String -&gt; String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the result of concatenating the given lists or strings.</p>
 <p>Note: <code>P::concat</code> expects both arguments to be of the same type, otherwise it will throw an exception.</p>
 <pre><code class="php">P::concat([1, 2], [3]); // [1, 2, 3]
@@ -960,6 +966,7 @@ P::concat('foo', 'bar'); // 'foobar'
 <h2 id="contains">contains</h2>
 <p><code>a -&gt; [a] -&gt; Boolean</code>
 <code>String -&gt; String -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the specified value is equal, <code>P::equals</code> terms,
 to at least one element of the given collection; <code>false</code> otherwise.</p>
 <pre><code class="php">P::contains(1, [1, 2, 3]); // true
@@ -968,12 +975,14 @@ P::contains('foo', 'foobar'); // true
 
 <h2 id="filter">filter</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Filters elements of an array using a callback function</p>
 <pre><code class="php">P::filter(equals(1), [1, 2, 3]); // [1]
 </code></pre>
 
 <h2 id="find">find</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the first element of the list which matches the predicate,
 or <code>null</code> if no element matches.</p>
 <pre><code class="php">$xs = [['a' =&gt; 1], ['a' =&gt; 2], ['a' =&gt; 3]];
@@ -982,6 +991,7 @@ P::find(equals(['a' =&gt; 1]), $xs); // ['a' =&gt; 1]
 
 <h2 id="flatmap">flatMap</h2>
 <p><code>(a -&gt; b) -&gt; [a] -&gt; [b]</code></p>
+<p>Added in: v1.0</p>
 <p>Maps a function over list and concatenates results</p>
 <pre><code class="php">$duplicateElements = P::flatMap(function ($i) {
     return [$i, $i];
@@ -992,12 +1002,14 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 
 <h2 id="frompairs">fromPairs</h2>
 <p><code>[[k, v]] -&gt; {k: v}</code></p>
+<p>Added in: v1.2</p>
 <p>Creates a new key =&gt; value object from list of pairs.</p>
 <pre><code class="php">P::fromPairs([['foo', 1], ['bar', 2]]); // [ 'foo' =&gt; 1, 'bar' =&gt; 2 ]
 </code></pre>
 
 <h2 id="groupby">groupBy</h2>
 <p><code>(a -&gt; String) -&gt; [a] -&gt; { String: [a] }</code></p>
+<p>Added in: v1.2</p>
 <p>Splits a list into sub-lists stored in an object, based on the result of calling a String-returning function on each element, and grouping the results according to values returned.</p>
 <pre><code class="php">P::groupBy(
     function (int $i) {
@@ -1012,6 +1024,7 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 <h2 id="head">head</h2>
 <p><code>[a] -&gt; a | Null</code>
 <code>String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the first element of a given list or string</p>
 <pre><code class="php">P::head([1, 2, 3]); // 1
 P::head([]); // null
@@ -1022,6 +1035,7 @@ P::head('f'); // ''
 <h2 id="init">init</h2>
 <p><code>[a] -&gt; [a]</code>
 <code>String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns all but the last element of the given array or string.</p>
 <pre><code class="php">P::init([1, 2, 3]); // [1, 2]
 P::init([1, 2]); // [1]
@@ -1036,14 +1050,16 @@ P::init(''); // ''
 
 <h2 id="join">join</h2>
 <p><code>String -&gt; [a] -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a string made by inserting the separator between each element and concatenating all the elements into a single string.</p>
 <pre><code class="php">$spacer = P::join(' ');
 $spacer([1, 2, 3]); // '1 2 3'
 </code></pre>
 
 <h2 id="last">last</h2>
-<p><code>[a] -&gt; a</code>
+<p><code>[a] -&gt; a</code> 
 <code>String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the last element of the given list or string.</p>
 <pre><code class="php">P::last([1, 2, 3]); // 3
 P::last([]); // null
@@ -1052,21 +1068,25 @@ P::last('f'); // 'f'
 </code></pre>
 
 <h2 id="length">length</h2>
-<p><code>[a] -&gt; Number</code>
+<p><code>[a] -&gt; Number</code> 
 <code>String -&gt; Number</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the number of elements in the array or string</p>
 <pre><code class="php">P::length('lorem'); // 5
 </code></pre>
 
 <h2 id="map">map</h2>
 <p><code>(a -&gt; b) -&gt; [a] -&gt; [b]</code></p>
+<p>Added in: v1.0</p>
 <p>Applies the callback to the elements of the given arrays</p>
 <h2 id="mapindexed">mapIndexed</h2>
 <p><code>((a, i) -&gt; b) -&gt; [a] -&gt; [b]</code></p>
+<p>Added in: v1.0</p>
 <p>Applies the callback to the elements of the given arrays</p>
 <p>Callback will receive index of iterated value as a second argument.</p>
 <h2 id="none">none</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Returns <code>true</code> if no elements of the list match the predicate, <code>false</code> otherwise.</p>
 <pre><code class="php">$isEven = function ($i) {
     return $i % 2 === 0;
@@ -1078,6 +1098,7 @@ P::none($isEven, [1, 3, 5, 6]); // false
 
 <h2 id="nth">nth</h2>
 <p><code>Number -&gt; [a] -&gt; a | Null</code></p>
+<p>Added in: v1.0</p>
 <p>Returns the nth element of the given list or string.</p>
 <p>If n is negative the element at index length - n is returned.</p>
 <pre><code class="php">P::nth(1, [1, 2, 3]); // 2
@@ -1086,6 +1107,7 @@ P::nth(-1, [1, 2, 3]); // 3
 
 <h2 id="partition">partition</h2>
 <p><code>(a -&gt; Bool) -&gt; [a] -&gt; [[a], [a]]</code></p>
+<p>Added in: v1.2</p>
 <p>Takes a predicate and a collection and returns the pair of filterable objects of the same type of elements which do and do not satisfy, the predicate, respectively.</p>
 <pre><code class="php">P::partition(
     P::contains('foo'),
@@ -1095,14 +1117,16 @@ P::nth(-1, [1, 2, 3]); // 3
 
 <h2 id="pluck">pluck</h2>
 <p><code>k -&gt; [{k: v}] -&gt; v</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a new list by plucking the same named property off all objects in the list supplied.</p>
 <pre><code class="php">$list = [['a' =&gt; 1], ['a' =&gt; 2]];
 P::pluck('a', $list); // [1, 2]
 </code></pre>
 
 <h2 id="prepend">prepend</h2>
-<p><code>a -&gt; [a] -&gt; [a]</code>
+<p><code>a -&gt; [a] -&gt; [a]</code> 
 <code>String -&gt; String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a new collection with the given element at the front, followed by the contents of the list or string.</p>
 <pre><code class="php">P::prepend(3, [1, 2]); // [3, 1, 2]
 P::prepend([3], [1, 2]); // [[3], 1, 2]
@@ -1111,12 +1135,14 @@ P::prepend('foo', 'bar'); // [[3], 1, 2]
 
 <h2 id="range">range</h2>
 <p><code>Integer a =&gt; a -&gt; a -&gt; [a]</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a list of numbers from <code>from</code> (inclusive) to <code>to</code> (exclusive).</p>
 <pre><code class="php">P::range(0, 3); // [0, 1, 2]
 </code></pre>
 
 <h2 id="reduce">reduce</h2>
 <p><code>((a, b) -&gt; a) -&gt; a -&gt; [b] -&gt; a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a single item by iterating through the list, successively calling the iterator function and passing it an accumulator value and the current value from the array, and then passing the result to the next call.</p>
 <p>The iterator function receives two values: (<code>acc</code>, <code>value</code>).</p>
 <pre><code class="php">P::reduce(P::subtract, 0, [1, 2, 3, 4]);
@@ -1125,6 +1151,7 @@ P::prepend('foo', 'bar'); // [[3], 1, 2]
 
 <h2 id="reject">reject</h2>
 <p><code>(a -&gt; Boolean) -&gt; [a] -&gt; [a]</code></p>
+<p>Added in: v1.0</p>
 <p>The negation of <code>filter</code>.</p>
 <pre><code class="php">$isOdd = function ($i) {
     return $i % 2 === 1;
@@ -1133,16 +1160,18 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 </code></pre>
 
 <h2 id="reverse">reverse</h2>
-<p><code>[a] -&gt; [a]</code>
+<p><code>[a] -&gt; [a]</code> 
 <code>String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a new list or string with the elements in reverse order.</p>
 <pre><code class="php">P::reverse([1, 2, 3]); // [3, 2, 1]
 P::reverse('foo'); // 'oof'
 </code></pre>
 
 <h2 id="slice">slice</h2>
-<p><code>Integer -&gt; Integer -&gt; [a] -&gt; [a]</code>
+<p><code>Integer -&gt; Integer -&gt; [a] -&gt; [a]</code> 
 <code>Integer -&gt; Integer -&gt; String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Extracts a slice of the array or string</p>
 <pre><code class="php">$takeTwo = P::slice(0, 2);
 $takeTwo([1, 2, 3]); // [1, 2]
@@ -1150,6 +1179,7 @@ $takeTwo([1, 2, 3]); // [1, 2]
 
 <h2 id="sort">sort</h2>
 <p><code>((a, a) -&gt; Number) -&gt; [a] -&gt; [a]</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a copy of the list, sorted according to the comparator function, which should accept two values at a time and return a negative number if the first value is smaller, a positive number if it's larger, and zero if they are equal.</p>
 <pre><code class="php">$diff = function ($a, $b) {
     return $a - $b;
@@ -1160,6 +1190,7 @@ P::sort($diff, [3, 2, 1]); // [1, 2, 3]
 
 <h2 id="sortby">sortBy</h2>
 <p><code>(a -&gt; b) -&gt; [a] -&gt; [a]</code></p>
+<p>Added in: v1.0</p>
 <p>Sorts the list according to the supplied function.</p>
 <pre><code class="php">$alice = ['name' =&gt; 'alice'];
 $bob = ['name' =&gt; 'bob'];
@@ -1170,8 +1201,9 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 </code></pre>
 
 <h2 id="tail">tail</h2>
-<p><code>[a] -&gt; [a]</code>
+<p><code>[a] -&gt; [a]</code> 
 <code>String -&gt; String</code></p>
+<p>Added in: v1.0</p>
 <p>Returns all but the first element of the given array or string</p>
 <pre><code class="php">P::tail([1, 2, 3]); // [2, 3]
 P::tail([1]); // []
@@ -1183,6 +1215,7 @@ P::tail(''); // ''
 
 <h2 id="unique">unique</h2>
 <p><code>[a] -&gt; [a]</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a new list containing only one copy of each element in the original list. Strict comparision is used to determine equality.</p>
 <pre><code class="php">P::unique([3, 2, 1, 1, 3, 2]); // [3, 2, 1]
 </code></pre>

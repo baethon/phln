@@ -2,57 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/internals/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/methods/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/collection/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/function/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/logic/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/math/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/object/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/relation/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/string/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/macros/type/</loc>
-     <lastmod>2018-10-20</lastmod>
+     <lastmod>2018-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="baethon/phln" class="md-nav__link">
-      baethon/phln
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -649,18 +649,21 @@
                 
                 <h2 id="eqprops">eqProps</h2>
 <p><code>k -&gt; {k: v} -&gt; {k: v} -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Reports whether two objects have the same value, in <code>P::equals</code> terms, for the specified property.</p>
 <pre><code class="php">P::eqProps('name', ['name' =&gt; 'Jon'], ['name' =&gt; 'Jon']); // true
 </code></pre>
 
 <h2 id="keys">keys</h2>
 <p><code>{k: v} -&gt; [k]</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a list containing the names of array keys.</p>
 <pre><code class="php">P::keys(['a' =&gt; 1, 'b' =&gt; 1]); // ['a', 'b']
 </code></pre>
 
 <h2 id="merge">merge</h2>
 <p><code>{k: v} -&gt; {k: v} -&gt; {k: v}</code></p>
+<p>Added in: v1.0</p>
 <p>Create a new object with the keys of the first object merged with the keys of the second object. If a key exists in both objects, the value from the second object will be used.</p>
 <pre><code class="php">$toDefaults = P::partial(P::merge, [P::__, ['x' =&gt; 0]);
 $toDefaults(['x' =&gt; 2, 'y' =&gt; 1]); // ['x' =&gt; 0, 'y' =&gt; 1]
@@ -668,18 +671,21 @@ $toDefaults(['x' =&gt; 2, 'y' =&gt; 1]); // ['x' =&gt; 0, 'y' =&gt; 1]
 
 <h2 id="objof">objOf</h2>
 <p><code>String -&gt; a -&gt; { String: a }</code></p>
+<p>Added in: v1.2</p>
 <p>Creates an object containing a single key:value pair.</p>
 <pre><code class="php">P::objOf('foo', 'bar'); // ['foo' =&gt; 'bar']
 </code></pre>
 
 <h2 id="omit">omit</h2>
 <p><code>[String] -&gt; {String: *} -&gt; {String: *}</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a partial copy of an object omitting the keys specified.</p>
 <pre><code class="php">P::omit(['a', 'c'], ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3]); // ['b' =&gt; 2]
 </code></pre>
 
 <h2 id="path">path</h2>
 <p><code>String -&gt; {k: v} -&gt; v|Null</code></p>
+<p>Added in: v1.0</p>
 <p>Returns nested value using "dot notation".</p>
 <pre><code class="php">P::path('a.b', ['a' =&gt; ['b' =&gt; 'foo']]); // 'foo'
 P::path('a.b.c', ['a' =&gt; ['b' =&gt; 'foo']]); // null
@@ -687,6 +693,7 @@ P::path('a.b.c', ['a' =&gt; ['b' =&gt; 'foo']]); // null
 
 <h2 id="pathor">pathOr</h2>
 <p><code>String -&gt; a -&gt; {k: v} -&gt; v | a</code></p>
+<p>Added in: v1.0</p>
 <p>Returns nested value using "dot notation". If key is not defined, or value is NULL default value will be returned.</p>
 <pre><code class="php">P::pathOr('a.b', 'foo', ['a' =&gt; ['b' =&gt; 1]]); // 1
 P::pathOr('a.b', 'foo', ['a' =&gt; ['b' =&gt; 0]]); // 0
@@ -696,15 +703,18 @@ P::pathOr('a.b', 'foo', ['a' =&gt; 1]); // 'foo'
 
 <h2 id="pick">pick</h2>
 <p><code>[String] -&gt; {String: *} -&gt; {String: *}</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a partial copy of an object containing only the keys specified. If the key does not exist, the property is ignored.</p>
 <pre><code class="php">P::pick(['a'], ['a' =&gt; 1, 'b' =&gt; 2]); // ['a' =&gt; 1]
 </code></pre>
 
 <h2 id="prop">prop</h2>
 <p><code>k -&gt; {k: v} -&gt; v</code></p>
+<p>Added in: v1.0</p>
 <p>Returns a function that when supplied an array returns the indicated key of that key, if it exists.</p>
 <h2 id="props">props</h2>
 <p><code>[k] -&gt; {k: v} -&gt; [v]</code></p>
+<p>Added in: v1.0</p>
 <p>Acts as multiple <code>prop</code>: array of keys in, array of values out. Preserves order.</p>
 <pre><code class="php">$fullName = P::compose(P::join(' '), P::props(['firstName', 'lastName']));
 $fullName(['lastName' =&gt; 'Snow', 'firstName' =&gt; 'Jon']); // 'Jon Snow'
@@ -712,6 +722,7 @@ $fullName(['lastName' =&gt; 'Snow', 'firstName' =&gt; 'Jon']); // 'Jon Snow'
 
 <h2 id="topairs">toPairs</h2>
 <p><code>String k =&gt; { k: v } -&gt; [[k, v]]</code></p>
+<p>Added in: v1.2</p>
 <p>Converts an object into an array of key-value arrays.</p>
 <p>Note that order of output is not guaranteed.</p>
 <pre><code class="php">P::toPairs(['foo' =&gt; 1, 'bar' =&gt; 2]); // [['foo', 1], ['bar', 2]]
@@ -719,9 +730,11 @@ $fullName(['lastName' =&gt; 'Snow', 'firstName' =&gt; 'Jon']); // 'Jon Snow'
 
 <h2 id="values">values</h2>
 <p><code>{k: v} -&gt; [v]</code></p>
+<p>Added in: v1.0</p>
 <p>Returns values of supplied object</p>
 <h2 id="where">where</h2>
 <p><code>{String: (* -&gt; Boolean)} -&gt; {String: *} -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Takes a spec object and a test object; returns <code>true</code> if the test satisfies the spec. Each of the spec's properties must be a predicate function. Each predicate is applied to the value of the corresponding property of the test object. where returns <code>true</code> if all the predicates return true, false otherwise.</p>
 <p><code>where</code> is well suited to declaratively expressing constraints for other functions such as <code>filter</code> and <code>find</code>.</p>
 <pre><code class="php">$verifyJon = P::where([
@@ -734,6 +747,7 @@ $verifyJon(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow', 'house' =&gt; 'Sta
 
 <h2 id="whereeq">whereEq</h2>
 <p><code>{String: *} -&gt; {String: *} -&gt; Boolean</code></p>
+<p>Added in: v1.0</p>
 <p>Takes a spec object and a test object; returns <code>true</code> if the test satisfies the spec, false otherwise. An object satisfies the spec if, for each of the spec's properties, accessing that property of the object gives the same value (in <code>P::equals()</code> terms) as accessing that property of the spec.</p>
 <pre><code class="php">$verifyJon = P::whereEq(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow']);
 $verifyJon(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow']); // true
