@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Baethon\Phln\Structures;
+namespace Baethon\Phln\Structure;
 
-interface FunctorInterface
+interface Functor
 {
     public function map(callable $fn);
 }
