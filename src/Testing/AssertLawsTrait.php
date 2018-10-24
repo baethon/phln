@@ -60,7 +60,7 @@ trait AssertLawsTrait
 
         $this->shouldCheckType(function () use ($v) {
             $v->ap(new class() implements Apply {
-                public function ap($_)
+                public function ap(Apply $_)
                 {
                 }
 
