@@ -225,7 +225,7 @@ P::last('f'); // 'f'
 
 Added in: v1.0
 
-Returns the number of elements in the array or string
+Returns the number of elements in the array or string.
 
 
 ```php
@@ -233,11 +233,17 @@ P::length('lorem'); // 5
 ```
 
 ## map
-`(a -> b) -> [a] -> [b]`
+`(a -> b) -> [a] -> [b]` 
+`Functor f => (a -> b) -> f a -> f b`
 
 Added in: v1.0
 
-Applies the callback to the elements of the given arrays
+Applies the callback to the elements of the given array. 
+It's possible to pass instance of `Functor` instead of an array. `map()` will apply callback to functors value and return a functor of a same type.
+
+**Changelog:**
+
+* v2.1 - added support for `Functor`
 
 ## mapIndexed
 `((a, i) -> b) -> [a] -> [b]`
