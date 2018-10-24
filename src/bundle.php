@@ -19,6 +19,7 @@ load_macro('collection', 'init');
 load_macro('collection', 'join');
 load_macro('collection', 'last');
 load_macro('collection', 'length');
+load_macro('collection', 'lensIndex');
 load_macro('collection', 'map');
 load_macro('collection', 'mapIndexed');
 load_macro('collection', 'none');
