@@ -19,7 +19,7 @@ class Constant implements Functor
 
     public function map(callable $fn)
     {
-        return new static($fn($this->value));
+        return new static($this->value);
     }
 
     public function extract()
