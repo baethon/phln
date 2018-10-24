@@ -441,3 +441,14 @@ Returns a new list containing only one copy of each element in the original list
 ```php
 P::unique([3, 2, 1, 1, 3, 2]); // [3, 2, 1]
 ```
+
+## update
+`Integer -> a -> [a] -> [a]`
+
+Added in: v2.1
+
+Returns a new copy of the array with the element at the provided index replaced with the given value.
+
+```php
+P::update(1, 'foo', ['foo', 'bar']); // ['foo', 'foo']
+```

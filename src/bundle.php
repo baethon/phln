@@ -35,6 +35,7 @@ load_macro('collection', 'sort');
 load_macro('collection', 'sortBy');
 load_macro('collection', 'tail');
 load_macro('collection', 'unique');
+load_macro('collection', 'update');
 load_macro('fn', 'F');
 load_macro('fn', 'T');
 load_macro('fn', 'always');
