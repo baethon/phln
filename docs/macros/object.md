@@ -1,3 +1,14 @@
+## assoc
+`String -> a -> {k: v} -> {k: v}`
+
+Added in: v2.1
+
+Makes a shallow clone of an object, setting or overriding the specified property with the given value. All non-primitive properties are copied by reference.
+
+```php
+P::assoc('b', 2, ['a' => 1]); // ['a' => 1, 'b' => 2]
+```
+
 ## eqProps
 `k -> {k: v} -> {k: v} -> Boolean`
 
