@@ -9,6 +9,10 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_passes_on_valid_object($value)
     {
+        if (false === $this->assertionsEnabled()) {
+            $this->markTestSkipped('Assertions are not enabled');
+        }
+
         $this->assertNull(assert_object($value));
     }
 
@@ -25,6 +29,10 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_fails_on_non_objects($value)
     {
+        if (false === $this->assertionsEnabled()) {
+            $this->markTestSkipped('Assertions are not enabled');
+        }
+
         $type = gettype($value);
         $error = null;
 
@@ -44,5 +52,17 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
             [1],
             [null],
         ];
+    }
+
+    private function assertionsEnabled(): bool
+    {
+        $exceptions = ini_get('assert.exception');
+        $assertions = ini_get('zend.assertions');
+
+        if ('0' === $exceptions || '0' === $assertions) {
+            return false;
+        }
+
+        return true;
     }
 }
