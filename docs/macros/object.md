@@ -20,6 +20,15 @@ Reports whether two objects have the same value, in `P::equals` terms, for the s
 P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
 ```
 
+## has
+`k -> {k: v} -> Boolean`
+
+Returns whether or not an object has a property with the specified name.
+
+```php
+P::has('foo', ['foo' => 1]); // true
+```
+
 ## keys
 `{k: v} -> [k]`
 
