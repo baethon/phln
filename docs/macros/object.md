@@ -9,6 +9,22 @@ Makes a shallow clone of an object, setting or overriding the specified property
 P::assoc('b', 2, ['a' => 1]); // ['a' => 1, 'b' => 2]
 ```
 
+## assocPath
+
+`String -> a -> {k: v} -> {k: v}`
+
+Added in: v2.1
+
+Makes a shallow clone of an object, setting or overriding the nodes required to create the given path, and placing the specific value at the tail end of that path. Note that this makes shallow copy of each node of the given path. For missing nodes `assocPath` will create an array.
+
+```php
+P::assocPath(
+    'a.b.c',
+    'foo',
+    ['a' => []]
+); // ['a' => ['b' => ['c' => 'foo']]]
+```
+
 ## eqProps
 `k -> {k: v} -> {k: v} -> Boolean`
 

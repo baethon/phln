@@ -52,7 +52,7 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
                 'a.b.c',
                 1,
                 new stdClass,
-                (object)['a' => (object)['b' => (object)['c' => 1]]],
+                (object)['a' => ['b' => ['c' => 1]]],
             ],
             [
                 'a.b.c',
@@ -64,7 +64,7 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
                 'a.b.c',
                 3,
                 ['a' => new stdClass],
-                ['a' => (object)['b' => (object)['c' => 3]]],
+                ['a' => (object)['b' => ['c' => 3]]],
             ],
         ];
     }
