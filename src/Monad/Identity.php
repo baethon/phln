@@ -3,16 +3,11 @@ declare(strict_types = 1);
 
 namespace Baethon\Phln\Monad;
 
-use Baethon\Phln\Structure\Monad;
-use Baethon\Phln\Structure\Apply;
-use Baethon\Phln\Structure\Setoid;
-
-final class Identity implements
-    Monad,
-    Setoid
+final class Identity
 {
-    use AssertsSameTypeTrait;
-
+    /**
+     * @var mixed
+     */
     private $value;
 
     private function __construct($value)
@@ -20,45 +15,18 @@ final class Identity implements
         $this->value = $value;
     }
 
-    public function map(callable $fn)
+    public function map(callable $fn): Identity
     {
         return Identity::of($fn($this->value));
     }
 
-    public static function of($value)
+    public static function of($value): Identity
     {
         return new static($value);
-    }
-
-    public function ap(Apply $a)
-    {
-        $this->assertSameType($a);
-
-        return $a->map(function ($f) {
-            return $f($this->value);
-        });
-    }
-
-    public function chain(callable $fn)
-    {
-        $result = $fn($this->value);
-
-        $this->assertSameType($result);
-
-        return $result;
     }
 
     public function extract()
     {
         return $this->value;
-    }
-
-    public function equals(Setoid $other): bool
-    {
-        if (! $other instanceof self) {
-            return false;
-        }
-
-        return $this->value === $other->value;
     }
 }

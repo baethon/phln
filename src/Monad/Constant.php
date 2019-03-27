@@ -3,9 +3,7 @@ declare(strict_types = 1);
 
 namespace Baethon\Phln\Monad;
 
-use Baethon\Phln\Structure\Functor;
-
-class Constant implements Functor
+final class Constant
 {
     /**
      * @var mixed
@@ -17,9 +15,14 @@ class Constant implements Functor
         $this->value = $value;
     }
 
-    public function map(callable $fn)
+    public function map(callable $fn): Constant
     {
         return new static($this->value);
+    }
+
+    public static function of($value): Constant
+    {
+        return new static($value);
     }
 
     public function extract()

@@ -1,7 +1,7 @@
 <?php
 
 use Baethon\Phln\Phln as P;
-use Baethon\Phln\Structure\Functor;
+use Baethon\Phln\Monad\Identity;
 
 class MapTest extends \PHPUnit\Framework\TestCase
 {
@@ -25,17 +25,7 @@ class MapTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_works_with_functors()
     {
-        $a = new class('foo') implements Functor {
-            public function __construct($value)
-            {
-                $this->value = $value;
-            }
-
-            public function map(callable $fn)
-            {
-                return new static($fn($this->value));
-            }
-        };
+        $a = Identity::of('foo');
 
         $fn = function ($value) {
             return "${value}_foo";

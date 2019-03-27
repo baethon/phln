@@ -1,24 +1,20 @@
 <?php
 
 use Baethon\Phln\Monad\Identity;
-use Baethon\Phln\Testing\AssertLawsTrait;
 
 class MonadIdentityTest extends \PHPUnit\Framework\TestCase
 {
-    use AssertLawsTrait;
-
-    public function test_laws()
-    {
-        $v = Identity::of('test');
-        $this->assertFunctor($v);
-        $this->assertApply($v);
-        $this->assertChain($v);
-        $this->assertApplicative($v);
-        $this->assertSetoid($v);
-    }
-
     public function test_it_extracts_value()
     {
         $this->assertEquals('test', Identity::of('test')->extract());
+    }
+
+    public function test_it_maps_value()
+    {
+        $fn = function ($string) {
+            return "{$string}_foo";
+        };
+
+        $this->assertEquals(Identity::of('test_foo'), Identity::of('test')->map($fn));
     }
 }

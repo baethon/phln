@@ -1,7 +1,6 @@
 <?php
 
 use Baethon\Phln\Phln as P;
-use Baethon\Phln\Monad\Constant;
 
 class LensIndexTest extends \PHPUnit\Framework\TestCase
 {
