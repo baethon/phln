@@ -196,6 +196,25 @@ $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
 $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
 ```
 
+
+## lens
+```
+(s -> a) -> ((a, s) -> s) -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens for the given getter and setter functions. The getter "gets" the value of the focus; the setter "sets" the value of the focus. The setter should not mutate the data structure.
+
+```php
+$xLens = P::lens(P::prop('x'), P::assoc('x'));
+
+P::view($xLens, ['x' => 1, 'y' => 2]); // 1
+P::set($xLens, 4, ['x' => 1, 'y' => 2]); // ['x' => 4, 'y' => 2]
+P::over($xLens, P::inc(), ['x' => 1, 'y' => 2]); // ['x' => 2, 'y' => 2]
+```
+
 ## lensPath
 ```
 String -> Lens s a

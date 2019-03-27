@@ -458,3 +458,23 @@ Returns a new copy of the array with the element at the provided index replaced 
 ```php
 P::update(1, 'foo', ['foo', 'bar']); // ['foo', 'foo']
 ```
+
+## lensIndex
+
+```
+Number -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens whose focus is the specified index.
+
+```php
+$lens = P::lensIndex(2);
+$input = [1, 2, 3, 4, 5];
+
+P::view($lens, $input); // 3
+P::over($lens, P::inc(), $input); // [1, 2, 4, 4, 5]
+P::set($lens, 0, $input); // [1, 2, 0, 4, 5]
+```
