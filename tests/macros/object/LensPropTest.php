@@ -19,7 +19,6 @@ class LensPropTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_sets_value()
     {
-        $this->markTestIncomplete('Missing P::set() macro');
         $lens = P::lensProp('name');
         $this->assertEquals(['name' => 'Jon'], P::set($lens, 'Jon', ['name' => '']));
     }

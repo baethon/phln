@@ -93,6 +93,7 @@ load_macro('object', 'pathOr');
 load_macro('object', 'pick');
 load_macro('object', 'prop');
 load_macro('object', 'props');
+load_macro('object', 'set');
 load_macro('object', 'toPairs');
 load_macro('object', 'values');
 load_macro('object', 'view');

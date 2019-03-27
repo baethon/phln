@@ -22,7 +22,6 @@ class LensIndexTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_sets_value()
     {
-        $this->markTestIncomplete('Missing P::set() macro');
         $input = [1, 2, 3, 4, 5];
         $lens = P::lensIndex(0);
 

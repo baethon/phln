@@ -32,7 +32,6 @@ class LensPathTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_sets_value()
     {
-        $this->markTestIncomplete('Missing P::set() macro');
         $lens = P::lensPath('house.name');
         $expected = array_merge($this->input, [
             'house' => [
