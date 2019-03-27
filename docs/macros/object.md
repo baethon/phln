@@ -214,3 +214,23 @@ P::view($lens, $input); // 1
 P::over($lens, P::inc(), $input); // ['foo' => ['bar' => 2]]
 P::set($lens, 2, $input); // ['foo' => ['bar' => 2]]
 ```
+
+## lensProp
+```
+String -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+
+Returns a lens whose focus is the specified property.
+
+```php
+$lens = P::lensProp('name');
+$input = ['name' => 'Jon'];
+
+P::view($lens, $input); // 'Jon'
+P::over($lens, P::always('Array'), $input); // ['name' => 'Array']
+P::set($lens, 'Array', $input); // ['name' => 'Array']
+```
