@@ -195,3 +195,22 @@ Takes a spec object and a test object; returns `true` if the test satisfies the 
 $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
 $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
 ```
+
+## lensPath
+```
+String -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens whose focus is the specified path.
+
+```php
+$lens = P::lensPath('foo.bar');
+$input = ['foo' => ['bar' => 1]];
+
+P::view($lens, $input); // 1
+P::over($lens, P::inc(), $input); // ['foo' => ['bar' => 2]]
+P::set($lens, 2, $input); // ['foo' => ['bar' => 2]]
+```

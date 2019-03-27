@@ -82,6 +82,7 @@ load_macro('object', 'eqProps');
 load_macro('object', 'has');
 load_macro('object', 'keys');
 load_macro('object', 'lens');
+load_macro('object', 'lensPath');
 load_macro('object', 'merge');
 load_macro('object', 'objOf');
 load_macro('object', 'omit');
