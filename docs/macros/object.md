@@ -242,7 +242,6 @@ Lens s a = Functor f => (a -> f a) -> s -> f s
 
 Added in: v2.1
 
-
 Returns a lens whose focus is the specified property.
 
 ```php
@@ -252,4 +251,54 @@ $input = ['name' => 'Jon'];
 P::view($lens, $input); // 'Jon'
 P::over($lens, P::always('Array'), $input); // ['name' => 'Array']
 P::set($lens, 'Array', $input); // ['name' => 'Array']
+```
+
+## set
+```
+Lens s a -> a -> s -> s
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns the result of "setting" the portion of the given data structure focused by the given lens to the given value.
+
+```php
+$xLens = P::lensProp('x');
+
+P::set($xLens, 4, ['x' => 1, 'y' => 2]);  // ['x' => 4, 'y' => 2]
+P::set($xLens, 8, ['x' => 1, 'y' => 2]);  // ['x' => 8, 'y' => 2]
+```
+
+## view
+```
+Lens s a -> s -> a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a "view" of the given data structure, determined by the given lens. The lens's focus determines which portion of the data structure is visible.
+
+```php
+$xLens = P::lensProp('x');
+
+P::view($xLens, ['x' => 1, 'y' => 2]);  // 1
+P::view($xLens, ['x' => 4, 'y' => 2]);  // 4
+```
+
+## over
+```
+Lens s a -> (a -> a) -> s -> s
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns the result of "setting" the portion of the given data structure focused by the given lens to the result of applying the given function to the focused value.
+
+```php
+$headLens = P::lensIndex(0);
+
+P::over($headLens, P::always('FOO'), ['foo', 'bar', 'baz']); // ['FOO', 'bar', 'baz']
 ```
