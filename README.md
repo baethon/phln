@@ -21,7 +21,7 @@ use Baethon\Phln\Phln as P;
 
 $fooBars = P::cond([
     [P::equals(5), P::always('foo')],
-    [P::T, P::always('bar')],
+    [P::T(), P::always('bar')],
 ]);
 ```
 
