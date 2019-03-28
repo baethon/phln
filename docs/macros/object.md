@@ -1,3 +1,30 @@
+## assoc
+`String -> a -> {k: v} -> {k: v}`
+
+Added in: v2.1
+
+Makes a shallow clone of an object, setting or overriding the specified property with the given value. All non-primitive properties are copied by reference.
+
+```php
+P::assoc('b', 2, ['a' => 1]); // ['a' => 1, 'b' => 2]
+```
+
+## assocPath
+
+`String -> a -> {k: v} -> {k: v}`
+
+Added in: v2.1
+
+Makes a shallow clone of an object, setting or overriding the nodes required to create the given path, and placing the specific value at the tail end of that path. Note that this makes shallow copy of each node of the given path. For missing nodes `assocPath` will create an array.
+
+```php
+P::assocPath(
+    'a.b.c',
+    'foo',
+    ['a' => []]
+); // ['a' => ['b' => ['c' => 'foo']]]
+```
+
 ## eqProps
 `k -> {k: v} -> {k: v} -> Boolean`
 
@@ -7,6 +34,15 @@ Reports whether two objects have the same value, in `P::equals` terms, for the s
 
 ```php
 P::eqProps('name', ['name' => 'Jon'], ['name' => 'Jon']); // true
+```
+
+## has
+`k -> {k: v} -> Boolean`
+
+Returns whether or not an object has a property with the specified name.
+
+```php
+P::has('foo', ['foo' => 1]); // true
 ```
 
 ## keys
@@ -158,4 +194,111 @@ Takes a spec object and a test object; returns `true` if the test satisfies the 
 ```php
 $verifyJon = P::whereEq(['firstName' => 'Jon', 'lastName' => 'Snow']);
 $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
+```
+
+
+## lens
+```
+(s -> a) -> ((a, s) -> s) -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens for the given getter and setter functions. The getter "gets" the value of the focus; the setter "sets" the value of the focus. The setter should not mutate the data structure.
+
+```php
+$xLens = P::lens(P::prop('x'), P::assoc('x'));
+
+P::view($xLens, ['x' => 1, 'y' => 2]); // 1
+P::set($xLens, 4, ['x' => 1, 'y' => 2]); // ['x' => 4, 'y' => 2]
+P::over($xLens, P::inc(), ['x' => 1, 'y' => 2]); // ['x' => 2, 'y' => 2]
+```
+
+## lensPath
+```
+String -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens whose focus is the specified path.
+
+```php
+$lens = P::lensPath('foo.bar');
+$input = ['foo' => ['bar' => 1]];
+
+P::view($lens, $input); // 1
+P::over($lens, P::inc(), $input); // ['foo' => ['bar' => 2]]
+P::set($lens, 2, $input); // ['foo' => ['bar' => 2]]
+```
+
+## lensProp
+```
+String -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens whose focus is the specified property.
+
+```php
+$lens = P::lensProp('name');
+$input = ['name' => 'Jon'];
+
+P::view($lens, $input); // 'Jon'
+P::over($lens, P::always('Array'), $input); // ['name' => 'Array']
+P::set($lens, 'Array', $input); // ['name' => 'Array']
+```
+
+## set
+```
+Lens s a -> a -> s -> s
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns the result of "setting" the portion of the given data structure focused by the given lens to the given value.
+
+```php
+$xLens = P::lensProp('x');
+
+P::set($xLens, 4, ['x' => 1, 'y' => 2]);  // ['x' => 4, 'y' => 2]
+P::set($xLens, 8, ['x' => 1, 'y' => 2]);  // ['x' => 8, 'y' => 2]
+```
+
+## view
+```
+Lens s a -> s -> a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a "view" of the given data structure, determined by the given lens. The lens's focus determines which portion of the data structure is visible.
+
+```php
+$xLens = P::lensProp('x');
+
+P::view($xLens, ['x' => 1, 'y' => 2]);  // 1
+P::view($xLens, ['x' => 4, 'y' => 2]);  // 4
+```
+
+## over
+```
+Lens s a -> (a -> a) -> s -> s
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns the result of "setting" the portion of the given data structure focused by the given lens to the result of applying the given function to the focused value.
+
+```php
+$headLens = P::lensIndex(0);
+
+P::over($headLens, P::always('FOO'), ['foo', 'bar', 'baz']); // ['FOO', 'bar', 'baz']
 ```

@@ -20,7 +20,7 @@ function assert_object($value)
 
     assert(
         is_object($value) || is_array($value),
-        new \Exception("[{$type}] is not a valid object")
+        "[{$type}] is not a valid object"
     );
 }
 

@@ -225,7 +225,7 @@ P::last('f'); // 'f'
 
 Added in: v1.0
 
-Returns the number of elements in the array or string
+Returns the number of elements in the array or string.
 
 
 ```php
@@ -233,11 +233,17 @@ P::length('lorem'); // 5
 ```
 
 ## map
-`(a -> b) -> [a] -> [b]`
+`(a -> b) -> [a] -> [b]` 
+`Functor f => (a -> b) -> f a -> f b`
 
 Added in: v1.0
 
-Applies the callback to the elements of the given arrays
+Applies the callback to the elements of the given array. 
+It's possible to pass instance of `Functor` instead of an array. `map()` will apply callback to functors value and return a functor of a same type.
+
+**Changelog:**
+
+* v2.1 - added support for `Functor`
 
 ## mapIndexed
 `((a, i) -> b) -> [a] -> [b]`
@@ -440,4 +446,35 @@ Returns a new list containing only one copy of each element in the original list
 
 ```php
 P::unique([3, 2, 1, 1, 3, 2]); // [3, 2, 1]
+```
+
+## update
+`Integer -> a -> [a] -> [a]`
+
+Added in: v2.1
+
+Returns a new copy of the array with the element at the provided index replaced with the given value.
+
+```php
+P::update(1, 'foo', ['foo', 'bar']); // ['foo', 'foo']
+```
+
+## lensIndex
+
+```
+Number -> Lens s a
+Lens s a = Functor f => (a -> f a) -> s -> f s
+```
+
+Added in: v2.1
+
+Returns a lens whose focus is the specified index.
+
+```php
+$lens = P::lensIndex(2);
+$input = [1, 2, 3, 4, 5];
+
+P::view($lens, $input); // 3
+P::over($lens, P::inc(), $input); // [1, 2, 4, 4, 5]
+P::set($lens, 0, $input); // [1, 2, 0, 4, 5]
 ```

@@ -1,9 +1,13 @@
 <?php
 declare(strict_types=1);
 
+use Baethon\Phln\Duck;
 use Baethon\Phln\Phln as P;
-use function Baethon\Phln\load_macro;
 
-load_macro('fn', 'nAry');
+P::macro('map', function (callable $fn, $collection) {
+    assert(is_array($collection) || Duck::isFunctor($collection));
 
-P::macro('map', P::nAry(2, '\\array_map'));
+    return is_array($collection)
+        ? array_map($fn, $collection)
+        : $collection->map($fn);
+});
