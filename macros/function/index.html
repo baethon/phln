@@ -873,8 +873,8 @@ $break(); // -&gt; throw new \LogicException()
 <p><code>([*...] -&gt; a) -&gt; (*... -&gt; a)</code></p>
 <p>Added in: v1.0</p>
 <p>Takes a function <code>fn</code>, which takes a single array argument, and returns a function which:
-<em> takes any number of positional arguments;
-</em> passes these arguments to <code>fn</code> as an array and returns the result</p>
+* takes any number of positional arguments;
+* passes these arguments to <code>fn</code> as an array and returns the result</p>
 <p>In other words, <code>P::unapply</code> derives a variadic function from a function which takes an array. <code>P::unapply</code> is the inverse of <code>P::apply</code>.</p>
 <pre><code class="php">P::unapply('\\json_encode')(1, 2, 3); // [1,2,3]
 </code></pre>

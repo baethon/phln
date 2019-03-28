@@ -90,7 +90,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#eqprops" tabindex="1" class="md-skip">
+      <a href="#assoc" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -361,8 +361,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#assoc" title="assoc" class="md-nav__link">
+    assoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assocpath" title="assocPath" class="md-nav__link">
+    assocPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eqprops" title="eqProps" class="md-nav__link">
     eqProps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#has" title="has" class="md-nav__link">
+    has
   </a>
   
 </li>
@@ -454,6 +475,48 @@
         <li class="md-nav__item">
   <a href="#whereeq" title="whereEq" class="md-nav__link">
     whereEq
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lens" title="lens" class="md-nav__link">
+    lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lenspath" title="lensPath" class="md-nav__link">
+    lensPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lensprop" title="lensProp" class="md-nav__link">
+    lensProp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" title="view" class="md-nav__link">
+    view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#over" title="over" class="md-nav__link">
+    over
   </a>
   
 </li>
@@ -529,8 +592,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#assoc" title="assoc" class="md-nav__link">
+    assoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assocpath" title="assocPath" class="md-nav__link">
+    assocPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eqprops" title="eqProps" class="md-nav__link">
     eqProps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#has" title="has" class="md-nav__link">
+    has
   </a>
   
 </li>
@@ -626,6 +710,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lens" title="lens" class="md-nav__link">
+    lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lenspath" title="lensPath" class="md-nav__link">
+    lensPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lensprop" title="lensProp" class="md-nav__link">
+    lensProp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" title="view" class="md-nav__link">
+    view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#over" title="over" class="md-nav__link">
+    over
+  </a>
+  
+</li>
+      
       
       
       
@@ -647,11 +773,35 @@
                 
                   <h1>Object</h1>
                 
-                <h2 id="eqprops">eqProps</h2>
+                <h2 id="assoc">assoc</h2>
+<p><code>String -&gt; a -&gt; {k: v} -&gt; {k: v}</code></p>
+<p>Added in: v2.1</p>
+<p>Makes a shallow clone of an object, setting or overriding the specified property with the given value. All non-primitive properties are copied by reference.</p>
+<pre><code class="php">P::assoc('b', 2, ['a' =&gt; 1]); // ['a' =&gt; 1, 'b' =&gt; 2]
+</code></pre>
+
+<h2 id="assocpath">assocPath</h2>
+<p><code>String -&gt; a -&gt; {k: v} -&gt; {k: v}</code></p>
+<p>Added in: v2.1</p>
+<p>Makes a shallow clone of an object, setting or overriding the nodes required to create the given path, and placing the specific value at the tail end of that path. Note that this makes shallow copy of each node of the given path. For missing nodes <code>assocPath</code> will create an array.</p>
+<pre><code class="php">P::assocPath(
+    'a.b.c',
+    'foo',
+    ['a' =&gt; []]
+); // ['a' =&gt; ['b' =&gt; ['c' =&gt; 'foo']]]
+</code></pre>
+
+<h2 id="eqprops">eqProps</h2>
 <p><code>k -&gt; {k: v} -&gt; {k: v} -&gt; Boolean</code></p>
 <p>Added in: v1.0</p>
 <p>Reports whether two objects have the same value, in <code>P::equals</code> terms, for the specified property.</p>
 <pre><code class="php">P::eqProps('name', ['name' =&gt; 'Jon'], ['name' =&gt; 'Jon']); // true
+</code></pre>
+
+<h2 id="has">has</h2>
+<p><code>k -&gt; {k: v} -&gt; Boolean</code></p>
+<p>Returns whether or not an object has a property with the specified name.</p>
+<pre><code class="php">P::has('foo', ['foo' =&gt; 1]); // true
 </code></pre>
 
 <h2 id="keys">keys</h2>
@@ -751,6 +901,88 @@ $verifyJon(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow', 'house' =&gt; 'Sta
 <p>Takes a spec object and a test object; returns <code>true</code> if the test satisfies the spec, false otherwise. An object satisfies the spec if, for each of the spec's properties, accessing that property of the object gives the same value (in <code>P::equals()</code> terms) as accessing that property of the spec.</p>
 <pre><code class="php">$verifyJon = P::whereEq(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow']);
 $verifyJon(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow']); // true
+</code></pre>
+
+<h2 id="lens">lens</h2>
+<pre><code>(s -&gt; a) -&gt; ((a, s) -&gt; s) -&gt; Lens s a
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns a lens for the given getter and setter functions. The getter "gets" the value of the focus; the setter "sets" the value of the focus. The setter should not mutate the data structure.</p>
+<pre><code class="php">$xLens = P::lens(P::prop('x'), P::assoc('x'));
+
+P::view($xLens, ['x' =&gt; 1, 'y' =&gt; 2]); // 1
+P::set($xLens, 4, ['x' =&gt; 1, 'y' =&gt; 2]); // ['x' =&gt; 4, 'y' =&gt; 2]
+P::over($xLens, P::inc(), ['x' =&gt; 1, 'y' =&gt; 2]); // ['x' =&gt; 2, 'y' =&gt; 2]
+</code></pre>
+
+<h2 id="lenspath">lensPath</h2>
+<pre><code>String -&gt; Lens s a
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns a lens whose focus is the specified path.</p>
+<pre><code class="php">$lens = P::lensPath('foo.bar');
+$input = ['foo' =&gt; ['bar' =&gt; 1]];
+
+P::view($lens, $input); // 1
+P::over($lens, P::inc(), $input); // ['foo' =&gt; ['bar' =&gt; 2]]
+P::set($lens, 2, $input); // ['foo' =&gt; ['bar' =&gt; 2]]
+</code></pre>
+
+<h2 id="lensprop">lensProp</h2>
+<pre><code>String -&gt; Lens s a
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns a lens whose focus is the specified property.</p>
+<pre><code class="php">$lens = P::lensProp('name');
+$input = ['name' =&gt; 'Jon'];
+
+P::view($lens, $input); // 'Jon'
+P::over($lens, P::always('Array'), $input); // ['name' =&gt; 'Array']
+P::set($lens, 'Array', $input); // ['name' =&gt; 'Array']
+</code></pre>
+
+<h2 id="set">set</h2>
+<pre><code>Lens s a -&gt; a -&gt; s -&gt; s
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns the result of "setting" the portion of the given data structure focused by the given lens to the given value.</p>
+<pre><code class="php">$xLens = P::lensProp('x');
+
+P::set($xLens, 4, ['x' =&gt; 1, 'y' =&gt; 2]);  // ['x' =&gt; 4, 'y' =&gt; 2]
+P::set($xLens, 8, ['x' =&gt; 1, 'y' =&gt; 2]);  // ['x' =&gt; 8, 'y' =&gt; 2]
+</code></pre>
+
+<h2 id="view">view</h2>
+<pre><code>Lens s a -&gt; s -&gt; a
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns a "view" of the given data structure, determined by the given lens. The lens's focus determines which portion of the data structure is visible.</p>
+<pre><code class="php">$xLens = P::lensProp('x');
+
+P::view($xLens, ['x' =&gt; 1, 'y' =&gt; 2]);  // 1
+P::view($xLens, ['x' =&gt; 4, 'y' =&gt; 2]);  // 4
+</code></pre>
+
+<h2 id="over">over</h2>
+<pre><code>Lens s a -&gt; (a -&gt; a) -&gt; s -&gt; s
+Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
+</code></pre>
+
+<p>Added in: v2.1</p>
+<p>Returns the result of "setting" the portion of the given data structure focused by the given lens to the result of applying the given function to the focused value.</p>
+<pre><code class="php">$headLens = P::lensIndex(0);
+
+P::over($headLens, P::always('FOO'), ['foo', 'bar', 'baz']); // ['FOO', 'bar', 'baz']
 </code></pre>
                 
                   

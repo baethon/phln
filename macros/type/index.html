@@ -484,10 +484,10 @@
 <p>Added in: v1.0</p>
 <p>See if <code>value</code> is of given <code>type</code>.</p>
 <p>Internally this function uses <code>\gettype()</code> with few support of few aliases:
-<em> <code>bool</code> - alias for <code>boolean</code> type
-</em> <code>float</code> - alias for <code>double</code> type
-<em> <code>callable</code> - checks if $value is valid callback
-</em> <code>function</code> - same as <code>callable</code>
+* <code>bool</code> - alias for <code>boolean</code> type
+* <code>float</code> - alias for <code>double</code> type
+* <code>callable</code> - checks if $value is valid callback
+* <code>function</code> - same as <code>callable</code>
 * class FQN - will check if supplied object is instance of given class</p>
 <pre><code class="php">P::is('bool', true); // true
 P::is(\stdClass::class, new \stdClass); // true
