@@ -6,6 +6,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.1.0]
+
+### Added
+
+- macros:
+    * `lens()`
+    * `lensIndex()`
+    * `lensPath()`
+    * `lensProp()`
+    * `update()`
+    * `assoc()`
+    * `assocPath()`
+    * `has()`
+    * `over()`
+    * `set()`
+    * `view()`
+- `Constant` monad
+- `Identity` monad
+- `Duck` type matcher
+
+### Changed
+
+- `map()` will support functors
+
+### Fixed
+
+- Tests: check if assertions are enabled
+
 ## [2.0.0]
 
 ### Added
@@ -74,7 +102,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `phln\logic\ƛand()`
 - `phln\logic\ƛor()`
 
-[Unreleased]: https://github.com/baethon/phln/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/baethon/phln/compare/2.1.0...HEAD
 [1.1.0]: https://github.com/baethon/phln/compare/1.0.0...1.1.0
 [1.2.0]: https://github.com/baethon/phln/compare/1.1.0...1.2.0
 [2.0.0]: https://github.com/baethon/phln/compare/1.2.0...2.0.0
+[2.1.0]: https://github.com/baethon/phln/compare/2.0.0...2.1.0
