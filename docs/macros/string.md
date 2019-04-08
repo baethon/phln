@@ -1,5 +1,5 @@
 ## match
-`RegExp -> String -> String|Null`
+`RegExp -> String -> String|Null`  
 `RegExp -> String -> [String]`
 
 Added in: v1.0
@@ -41,7 +41,7 @@ P::replace('/foo/g', 'bar', 'foo foo foo'); // 'bar bar bar'
 ```
 
 ## split
-`String -> String -> [String]`
+`String -> String -> [String]`  
 `RegExp -> String -> [String]`
 
 Added in: v1.0
@@ -55,7 +55,7 @@ P::split('/', 'a/b'); // ['a', 'b']
 ```
 
 ## test
-`RegExp -> String -> Bool`
+`RegExp -> String -> Bool`  
 `String -> String -> Bool`
 
 Added in: v1.2

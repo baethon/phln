@@ -5,8 +5,6 @@ Added in: v1.0
 
 Returns `true` if all elements of array match the predicate, `false` otherwise.
 
-
-
 ```php
 $onlyTwos = P::all(P::equals(2));
 $onlyTwos([1, 2, 2]); // false
@@ -25,7 +23,7 @@ $hasTwos([1, 2, 3, 4]); // true
 ```
 
 ## append
-`a -> [a] -> [a]`
+`a -> [a] -> [a]`  
 `String -> String -> String`
 
 Added in: v1.0
@@ -39,7 +37,7 @@ P::append('foo', 'bar'); // 'barfoo'
 ```
 
 ## chunk
-`Number -> [a] -> [[a]]`
+`Number -> [a] -> [[a]]`  
 `Number -> String -> [String]`
 
 Added in: v1.0
@@ -61,7 +59,7 @@ Added in: v1.0
 Flattens array elements by one level
 
 ## concat
-`[a] -> [a] -> [a]`
+`[a] -> [a] -> [a]`  
 `String -> String -> String`
 
 Added in: v1.0
@@ -76,7 +74,7 @@ P::concat('foo', 'bar'); // 'foobar'
 ```
 
 ## contains
-`a -> [a] -> Boolean`
+`a -> [a] -> Boolean`  
 `String -> String -> Boolean`
 
 Added in: v1.0
@@ -158,7 +156,7 @@ P::groupBy(
 ```
 
 ## head
-`[a] -> a | Null`
+`[a] -> a | Null`  
 `String -> String`
 
 Added in: v1.0
@@ -173,7 +171,7 @@ P::head('f'); // ''
 ```
 
 ## init
-`[a] -> [a]`
+`[a] -> [a]`  
 `String -> String`
 
 Added in: v1.0
@@ -205,7 +203,7 @@ $spacer([1, 2, 3]); // '1 2 3'
 ```
 
 ## last
-`[a] -> a` 
+`[a] -> a`  
 `String -> String`
 
 Added in: v1.0
@@ -220,7 +218,7 @@ P::last('f'); // 'f'
 ```
 
 ## length
-`[a] -> Number` 
+`[a] -> Number`  
 `String -> Number`
 
 Added in: v1.0
@@ -233,8 +231,10 @@ P::length('lorem'); // 5
 ```
 
 ## map
-`(a -> b) -> [a] -> [b]` 
-`Functor f => (a -> b) -> f a -> f b`
+```
+(a -> b) -> [a] -> [b]  
+Functor f => (a -> b) -> f a -> f b
+```
 
 Added in: v1.0
 
@@ -311,7 +311,7 @@ P::pluck('a', $list); // [1, 2]
 ```
 
 ## prepend
-`a -> [a] -> [a]` 
+`a -> [a] -> [a]`  
 `String -> String -> String`
 
 Added in: v1.0
@@ -364,7 +364,7 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 ```
 
 ## reverse
-`[a] -> [a]` 
+`[a] -> [a]`  
 `String -> String`
 
 Added in: v1.0
@@ -377,7 +377,7 @@ P::reverse('foo'); // 'oof'
 ```
 
 ## slice
-`Integer -> Integer -> [a] -> [a]` 
+`Integer -> Integer -> [a] -> [a]`  
 `Integer -> Integer -> String -> String`
 
 Added in: v1.0
@@ -421,7 +421,7 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 ```
 
 ## tail
-`[a] -> [a]` 
+`[a] -> [a]`  
 `String -> String`
 
 Added in: v1.0
@@ -460,11 +460,8 @@ P::update(1, 'foo', ['foo', 'bar']); // ['foo', 'foo']
 ```
 
 ## lensIndex
-
-```
-Number -> Lens s a
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`Number -> Lens s a`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 

@@ -45,8 +45,8 @@ Added in: v1.0
 Returns the median of the given list of numbers.
 
 ```php
-\\phln\\math\\median([7, 2, 9]) // 7
-\\phln\\math\\median([7, 2, 10, 9]) // 8
+P::median([7, 2, 9]) // 7
+P::median([7, 2, 10, 9]) // 8
 ```
 
 ## modulo
@@ -57,7 +57,7 @@ Added in: v1.0
 Divides the first parameter by the second and returns the remainder.
 
 ```php
-\\phln\\math\\modulo(1, 2) // 1
+P::modulo(1, 2) // 1
 ```
 
 ## multiply

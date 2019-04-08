@@ -31,7 +31,7 @@ Returns a function, `fn`, which encapsulates `if/else`, `if/else`, .
 $count = P::typeCond([
     ['string', '\\mb_strlen'],
     ['array', '\\count'],
-    [P::T, P::always(0)],
+    [P::T(), P::always(0)],
 ]);
 $count('foo'); // 3
 $count(['f', 'o', 'o']); // 3

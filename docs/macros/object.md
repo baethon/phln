@@ -198,10 +198,8 @@ $verifyJon(['firstName' => 'Jon', 'lastName' => 'Snow']); // true
 
 
 ## lens
-```
-(s -> a) -> ((a, s) -> s) -> Lens s a
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`(s -> a) -> ((a, s) -> s) -> Lens s a`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 
@@ -216,10 +214,8 @@ P::over($xLens, P::inc(), ['x' => 1, 'y' => 2]); // ['x' => 2, 'y' => 2]
 ```
 
 ## lensPath
-```
-String -> Lens s a
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`String -> Lens s a`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 
@@ -235,10 +231,8 @@ P::set($lens, 2, $input); // ['foo' => ['bar' => 2]]
 ```
 
 ## lensProp
-```
-String -> Lens s a
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`String -> Lens s a`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 
@@ -254,10 +248,8 @@ P::set($lens, 'Array', $input); // ['name' => 'Array']
 ```
 
 ## set
-```
-Lens s a -> a -> s -> s
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`Lens s a -> a -> s -> s`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 
@@ -271,10 +263,8 @@ P::set($xLens, 8, ['x' => 1, 'y' => 2]);  // ['x' => 8, 'y' => 2]
 ```
 
 ## view
-```
-Lens s a -> s -> a
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`Lens s a -> s -> a`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 
@@ -288,10 +278,8 @@ P::view($xLens, ['x' => 4, 'y' => 2]);  // 4
 ```
 
 ## over
-```
-Lens s a -> (a -> a) -> s -> s
-Lens s a = Functor f => (a -> f a) -> s -> f s
-```
+`Lens s a -> (a -> a) -> s -> s`  
+`Lens s a = Functor f => (a -> f a) -> s -> f s`
 
 Added in: v2.1
 

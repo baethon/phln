@@ -15,7 +15,7 @@ $aceOfSpades(['rank' => 'A', 'suit' => '♠︎']); // true
 ```
 
 ## both
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)` 
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
 `Boolean -> Boolean -> Boolean`
 
 Added in: v1.0
@@ -68,7 +68,7 @@ P::defaultTo(42, 'life'); // 'life'
 ```
 
 ## either
-`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)` 
+`(*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)`  
 `Boolean -> Boolean -> Boolean`
 
 Added in: v1.0

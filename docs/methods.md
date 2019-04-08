@@ -50,10 +50,11 @@ Returns a curried equivalent of the provided function.
 
 Curried function doesn't require providing arguments one at a time.
 If `f` is a ternary function and `g` is `P::curry(f)`, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)
+
+* `g(1)(2)(3)`
+* `g(1)(2, 3)`
+* `g(1, 2)(3)`
+* `g(1, 2, 3)`
 
 ## curryN
 `(Number, (* → a)) → (* → a)`
@@ -64,10 +65,11 @@ Returns a curried equivalent of the provided function, with the specified arity.
 
 Curried function doesn't require providing arguments one at a time.
 If `f` is a ternary function and `g` is `P::curryN(3, f)`, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)
+
+* `g(1)(2)(3)`
+* `g(1)(2, 3)`
+* `g(1, 2)(3)`
+* `g(1, 2, 3)`
 
 ## macro
 `(String, (* -> a)) -> Null`
