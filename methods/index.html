@@ -581,21 +581,25 @@ $arity($sum); // 2
 <p>Added in: v1.0</p>
 <p>Returns a curried equivalent of the provided function.</p>
 <p>Curried function doesn't require providing arguments one at a time.
-If <code>f</code> is a ternary function and <code>g</code> is <code>P::curry(f)</code>, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)</p>
+If <code>f</code> is a ternary function and <code>g</code> is <code>P::curry(f)</code>, the following are equivalent.</p>
+<ul>
+<li><code>g(1)(2)(3)</code></li>
+<li><code>g(1)(2, 3)</code></li>
+<li><code>g(1, 2)(3)</code></li>
+<li><code>g(1, 2, 3)</code></li>
+</ul>
 <h2 id="curryn">curryN</h2>
 <p><code>(Number, (* → a)) → (* → a)</code></p>
 <p>Added in: v1.0</p>
 <p>Returns a curried equivalent of the provided function, with the specified arity.</p>
 <p>Curried function doesn't require providing arguments one at a time.
-If <code>f</code> is a ternary function and <code>g</code> is <code>P::curryN(3, f)</code>, the following are equivalent.
-     * g(1)(2)(3)
-     * g(1)(2, 3)
-     * g(1, 2)(3)
-     * g(1, 2, 3)</p>
+If <code>f</code> is a ternary function and <code>g</code> is <code>P::curryN(3, f)</code>, the following are equivalent.</p>
+<ul>
+<li><code>g(1)(2)(3)</code></li>
+<li><code>g(1)(2, 3)</code></li>
+<li><code>g(1, 2)(3)</code></li>
+<li><code>g(1, 2, 3)</code></li>
+</ul>
 <h2 id="macro">macro</h2>
 <p><code>(String, (* -&gt; a)) -&gt; Null</code></p>
 <p>Added in: v2.0</p>

@@ -958,7 +958,7 @@ $hasTwos([1, 2, 3, 4]); // true
 </code></pre>
 
 <h2 id="append">append</h2>
-<p><code>a -&gt; [a] -&gt; [a]</code>
+<p><code>a -&gt; [a] -&gt; [a]</code><br />
 <code>String -&gt; String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns a new list containing the contents of the given list or string, followed by the given element.</p>
@@ -968,7 +968,7 @@ P::append('foo', 'bar'); // 'barfoo'
 </code></pre>
 
 <h2 id="chunk">chunk</h2>
-<p><code>Number -&gt; [a] -&gt; [[a]]</code>
+<p><code>Number -&gt; [a] -&gt; [[a]]</code><br />
 <code>Number -&gt; String -&gt; [String]</code></p>
 <p>Added in: v1.0</p>
 <p>Chunks an array or string into arrays with <code>size</code> elements.</p>
@@ -982,7 +982,7 @@ P::chunk(2, 'hello'); // ['he', 'll', 'o']
 <p>Added in: v1.0</p>
 <p>Flattens array elements by one level</p>
 <h2 id="concat">concat</h2>
-<p><code>[a] -&gt; [a] -&gt; [a]</code>
+<p><code>[a] -&gt; [a] -&gt; [a]</code><br />
 <code>String -&gt; String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns the result of concatenating the given lists or strings.</p>
@@ -992,7 +992,7 @@ P::concat('foo', 'bar'); // 'foobar'
 </code></pre>
 
 <h2 id="contains">contains</h2>
-<p><code>a -&gt; [a] -&gt; Boolean</code>
+<p><code>a -&gt; [a] -&gt; Boolean</code><br />
 <code>String -&gt; String -&gt; Boolean</code></p>
 <p>Added in: v1.0</p>
 <p>Returns <code>true</code> if the specified value is equal, <code>P::equals</code> terms,
@@ -1050,7 +1050,7 @@ $duplicateElements([1, 2]); // [1, 1, 2, 2]
 </code></pre>
 
 <h2 id="head">head</h2>
-<p><code>[a] -&gt; a | Null</code>
+<p><code>[a] -&gt; a | Null</code><br />
 <code>String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns the first element of a given list or string</p>
@@ -1061,7 +1061,7 @@ P::head('f'); // ''
 </code></pre>
 
 <h2 id="init">init</h2>
-<p><code>[a] -&gt; [a]</code>
+<p><code>[a] -&gt; [a]</code><br />
 <code>String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns all but the last element of the given array or string.</p>
@@ -1085,7 +1085,7 @@ $spacer([1, 2, 3]); // '1 2 3'
 </code></pre>
 
 <h2 id="last">last</h2>
-<p><code>[a] -&gt; a</code> 
+<p><code>[a] -&gt; a</code><br />
 <code>String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns the last element of the given list or string.</p>
@@ -1096,7 +1096,7 @@ P::last('f'); // 'f'
 </code></pre>
 
 <h2 id="length">length</h2>
-<p><code>[a] -&gt; Number</code> 
+<p><code>[a] -&gt; Number</code><br />
 <code>String -&gt; Number</code></p>
 <p>Added in: v1.0</p>
 <p>Returns the number of elements in the array or string.</p>
@@ -1104,8 +1104,10 @@ P::last('f'); // 'f'
 </code></pre>
 
 <h2 id="map">map</h2>
-<p><code>(a -&gt; b) -&gt; [a] -&gt; [b]</code> 
-<code>Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</code></p>
+<pre><code>(a -&gt; b) -&gt; [a] -&gt; [b]  
+Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</code></pre>
+
 <p>Added in: v1.0</p>
 <p>Applies the callback to the elements of the given array. 
 It's possible to pass instance of <code>Functor</code> instead of an array. <code>map()</code> will apply callback to functors value and return a functor of a same type.</p>
@@ -1158,7 +1160,7 @@ P::pluck('a', $list); // [1, 2]
 </code></pre>
 
 <h2 id="prepend">prepend</h2>
-<p><code>a -&gt; [a] -&gt; [a]</code> 
+<p><code>a -&gt; [a] -&gt; [a]</code><br />
 <code>String -&gt; String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns a new collection with the given element at the front, followed by the contents of the list or string.</p>
@@ -1194,7 +1196,7 @@ P::reject($isOdd, [1, 2, 3, 4]); // [2, 4]
 </code></pre>
 
 <h2 id="reverse">reverse</h2>
-<p><code>[a] -&gt; [a]</code> 
+<p><code>[a] -&gt; [a]</code><br />
 <code>String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns a new list or string with the elements in reverse order.</p>
@@ -1203,7 +1205,7 @@ P::reverse('foo'); // 'oof'
 </code></pre>
 
 <h2 id="slice">slice</h2>
-<p><code>Integer -&gt; Integer -&gt; [a] -&gt; [a]</code> 
+<p><code>Integer -&gt; Integer -&gt; [a] -&gt; [a]</code><br />
 <code>Integer -&gt; Integer -&gt; String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Extracts a slice of the array or string</p>
@@ -1235,7 +1237,7 @@ P::soryBy(P::prop('name'), $people); // [$alice, $bob, $clara]
 </code></pre>
 
 <h2 id="tail">tail</h2>
-<p><code>[a] -&gt; [a]</code> 
+<p><code>[a] -&gt; [a]</code><br />
 <code>String -&gt; String</code></p>
 <p>Added in: v1.0</p>
 <p>Returns all but the first element of the given array or string</p>
@@ -1262,10 +1264,8 @@ P::tail(''); // ''
 </code></pre>
 
 <h2 id="lensindex">lensIndex</h2>
-<pre><code>Number -&gt; Lens s a
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>Number -&gt; Lens s a</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns a lens whose focus is the specified index.</p>
 <pre><code class="php">$lens = P::lensIndex(2);

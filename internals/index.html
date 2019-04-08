@@ -493,28 +493,14 @@
                 
                 <h2 id="macros">Macros</h2>
 <p>All macros are located in <code>src/macros</code> directory. They're segregated by a namespace - a general "field" of their responsibility.</p>
-<p>Each macro should be defined in a separated file. It's allowed to define macros <em>aliases</em>.
-Macros are not namespaced so it's required that they don't leave any global variables declarations.</p>
-<p>This shouldn't happen:</p>
+<p>Each macro should be defined in a separated file. It's allowed to define macros <em>aliases</em>.</p>
 <pre><code class="php">use Baethon\Phln\Phln as P;
 
-$fn = function () {};
-
-P::macro('foo', function () use ($fn) {
-    return $fn;
+P::macro('foo', function () {
+    return 'foo';
 });
-</code></pre>
 
-<p>yet it's allowed to "scope" macro's definition by using self-calling closures:</p>
-<pre><code class="php">use Baethon\Phln\Phln as P;
-
-call_user_func(function () {
-    $fn = function () {};
-
-    P::macro('foo', function () use ($fn) {
-        return $fn;
-    });
-});
+P::alias('bar', 'foo');
 </code></pre>
 
 <p>Every new macro should be added to <code>bundle.php</code> file which is responsible for loading them.</p>

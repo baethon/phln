@@ -904,10 +904,8 @@ $verifyJon(['firstName' =&gt; 'Jon', 'lastName' =&gt; 'Snow']); // true
 </code></pre>
 
 <h2 id="lens">lens</h2>
-<pre><code>(s -&gt; a) -&gt; ((a, s) -&gt; s) -&gt; Lens s a
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>(s -&gt; a) -&gt; ((a, s) -&gt; s) -&gt; Lens s a</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns a lens for the given getter and setter functions. The getter "gets" the value of the focus; the setter "sets" the value of the focus. The setter should not mutate the data structure.</p>
 <pre><code class="php">$xLens = P::lens(P::prop('x'), P::assoc('x'));
@@ -918,10 +916,8 @@ P::over($xLens, P::inc(), ['x' =&gt; 1, 'y' =&gt; 2]); // ['x' =&gt; 2, 'y' =&gt
 </code></pre>
 
 <h2 id="lenspath">lensPath</h2>
-<pre><code>String -&gt; Lens s a
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>String -&gt; Lens s a</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns a lens whose focus is the specified path.</p>
 <pre><code class="php">$lens = P::lensPath('foo.bar');
@@ -933,10 +929,8 @@ P::set($lens, 2, $input); // ['foo' =&gt; ['bar' =&gt; 2]]
 </code></pre>
 
 <h2 id="lensprop">lensProp</h2>
-<pre><code>String -&gt; Lens s a
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>String -&gt; Lens s a</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns a lens whose focus is the specified property.</p>
 <pre><code class="php">$lens = P::lensProp('name');
@@ -948,10 +942,8 @@ P::set($lens, 'Array', $input); // ['name' =&gt; 'Array']
 </code></pre>
 
 <h2 id="set">set</h2>
-<pre><code>Lens s a -&gt; a -&gt; s -&gt; s
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>Lens s a -&gt; a -&gt; s -&gt; s</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns the result of "setting" the portion of the given data structure focused by the given lens to the given value.</p>
 <pre><code class="php">$xLens = P::lensProp('x');
@@ -961,10 +953,8 @@ P::set($xLens, 8, ['x' =&gt; 1, 'y' =&gt; 2]);  // ['x' =&gt; 8, 'y' =&gt; 2]
 </code></pre>
 
 <h2 id="view">view</h2>
-<pre><code>Lens s a -&gt; s -&gt; a
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>Lens s a -&gt; s -&gt; a</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns a "view" of the given data structure, determined by the given lens. The lens's focus determines which portion of the data structure is visible.</p>
 <pre><code class="php">$xLens = P::lensProp('x');
@@ -974,10 +964,8 @@ P::view($xLens, ['x' =&gt; 4, 'y' =&gt; 2]);  // 4
 </code></pre>
 
 <h2 id="over">over</h2>
-<pre><code>Lens s a -&gt; (a -&gt; a) -&gt; s -&gt; s
-Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s
-</code></pre>
-
+<p><code>Lens s a -&gt; (a -&gt; a) -&gt; s -&gt; s</code><br />
+<code>Lens s a = Functor f =&gt; (a -&gt; f a) -&gt; s -&gt; f s</code></p>
 <p>Added in: v2.1</p>
 <p>Returns the result of "setting" the portion of the given data structure focused by the given lens to the result of applying the given function to the focused value.</p>
 <pre><code class="php">$headLens = P::lensIndex(0);
