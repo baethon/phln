@@ -4,7 +4,7 @@
 
 # baethon/phln
 
-A practical functional library for PHP developers.
+Set of small utility functions.
 
 Heavily inspired by [Ramda.js](http://ramdajs.com/), adapted for PHP needs.
 
@@ -19,13 +19,14 @@ composer require baethon/phln
 ```php
 use Baethon\Phln\Phln as P;
 
-$fooBars = P::cond([
-    [P::equals(5), P::always('foo')],
-    [P::T(), P::always('bar')],
-]);
+$aboveMinPoints = P::compose([P::lte(50), P::prop('score')]);
+$onlyPhp = P::pathEq('language.name', 'PHP');
+
+$topScores = collect($users)
+    ->filter(P::both($aboveMinPoints, $onlyPhp));
 ```
 
-Later in docs every `P::` reference will be used as a mental shortcut to `Baethon\Phln\Phln::`.
+_Note_: in the docs `P` will be used as an alias to `Baethon\Phln\Phln`.
 
 ### Currying
 
@@ -55,7 +56,7 @@ $mapFoos(function ($f) {
 
 ### Function composition
 
-For function composition `Phln` provides `pipe()` and `compose()` functions.
+For function composition `phln` provides `pipe()` and `compose()` functions.
 
 ```php
 $allFoos = P::pipe([
@@ -71,13 +72,11 @@ $firstFoo([4, 5, 6]); // 'foo'
 
 ### Using methods as references
 
-Some of `Phln` methods accept `callable` as an argument.
+Some of `phln` methods accept `callable` as an argument.
 
 To pass another macro as a _reference_ call it without any arguments.
 
 ```php
-use Baethon\Phln\Phln as P;
-
 $collection = [1, 2, 3, 4];
 P::reduce(P::sum(), $collection); // 10
 ```
@@ -86,11 +85,9 @@ Also, you can use `P::raw()` method wich returns uncurried macro, or pointer to 
 
 ### Extending
 
-`Phln` is _macroable_. This means that it can be extened using `P::macro()` method:
+`Baethon\Phln\Phln` is _macroable_. This means that it can be extened using `macro()` method:
 
 ```php
-use Baethon\Phln\Phln as P;
-
 P::macro('foo', function () {
     return 'foo';
 });

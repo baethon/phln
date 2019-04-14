@@ -1,6 +1,6 @@
 {
     "name": "baethon/phln",
-    "description": "A practical functional library for PHP developers",
+    "description": "Set of small utility functions. Inspired by Ramda.",
     "type": "library",
     "require": {
         "php": ">=7.1",
