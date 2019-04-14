@@ -28,12 +28,6 @@ class ComposeTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($f(2, 3), $g(2, 3));
     }
 
-    public function test_it_fails_when_composing_without_functions()
-    {
-        $this->expectException(\UnderflowException::class);
-        P::compose([]);
-    }
-
     public function test_it_supports_variadics()
     {
         $f = function ($i) {

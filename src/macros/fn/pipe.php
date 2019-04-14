@@ -11,9 +11,7 @@ P::macro('pipe', function (...$fns): \Closure {
         $fnsCount = count($fns);
     }
 
-    if (0 === $fnsCount) {
-        throw new \UnderflowException('pipe requires at least one argument');
-    }
+    assert(0 === $fnsCount, new \UnderflowException('pipe requires at least one argument'));
 
     return function (...$args) use ($fns) {
         $head = $fns[0];

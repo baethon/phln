@@ -14,8 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - refactored docs
-- support for variadics in `compose()`
-- support for variadics in `pipe()`
+- support for variadics in `compose()` and `pipe()`
+- check for args length using `assert()` in `compose()` and `pipe()`
 
 ## [2.1.0]
 

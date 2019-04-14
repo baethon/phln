@@ -14,9 +14,7 @@ P::macro('compose', function (...$fns): \Closure {
         $fnsCount = count($fns);
     }
 
-    if (0 === $fnsCount) {
-        throw new \UnderflowException('compose requires at least one argument');
-    }
+    assert(0 === $fnsCount, new \UnderflowException('compose requires at least one argument'));
 
     return P::pipe(array_reverse($fns));
 });
