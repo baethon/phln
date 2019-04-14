@@ -8,6 +8,9 @@ filter:
 build:
   nodes:
     analysis:
+      environment:
+        php:
+          version: 7.1
       tests:
         override:
           - phpcs-run --standard=psr2 src/
