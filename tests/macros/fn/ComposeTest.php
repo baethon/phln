@@ -33,4 +33,18 @@ class ComposeTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\UnderflowException::class);
         P::compose([]);
     }
+
+    public function test_it_supports_variadics()
+    {
+        $f = function ($i) {
+            return $i * 2;
+        };
+        $g = function ($a, $b) {
+            return $a + $b;
+        };
+        $h = P::compose($f, $g);
+
+        $expected = $f($g(2, 3));
+        $this->assertEquals($expected, $h(2, 3));
+    }
 }

@@ -6,8 +6,15 @@ use function Baethon\Phln\load_macro;
 
 load_macro('fn', 'pipe');
 
-P::macro('compose', function (array $fns): \Closure {
-    if (0 === count($fns)) {
+P::macro('compose', function (...$fns): \Closure {
+    $fnsCount = count($fns);
+
+    if (1 === $fnsCount && is_array($fns[0])) {
+        $fns = $fns[0];
+        $fnsCount = count($fns);
+    }
+
+    if (0 === $fnsCount) {
         throw new \UnderflowException('compose requires at least one argument');
     }
 

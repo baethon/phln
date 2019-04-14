@@ -38,7 +38,8 @@ P::apply(P::sum, [1, 2]); // 3
 ```
 
 ## compose
-`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`
+`[((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)] -> (a, b, ..., n) -> z)`  
+`((a, b, ..., n) -> o, (o -> p), ..., (x -> y), (y -> z)) -> (a, b, ..., n) ->z)`
 
 Added in: v1.0
 
@@ -47,6 +48,10 @@ Performs left-to-right function composition.
 The leftmost function may have any arity; the remaining functions must be unary.
 
 **Note**: The result of pipe is not automatically curried.
+
+**Changelog:**
+
+* v2.2 - added support for variadic arguments
 
 ## identity
 `a -> a`
