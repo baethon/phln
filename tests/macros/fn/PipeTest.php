@@ -33,4 +33,18 @@ class PipeTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\UnderflowException::class);
         P::pipe([]);
     }
+
+    public function test_it_supports_variadics()
+    {
+        $f = function ($a, $b) {
+            return $a + $b;
+        };
+        $g = function ($i) {
+            return $i * 2;
+        };
+        $h = P::pipe($f, $g);
+
+        $expected = $g($f(2, 3));
+        $this->assertEquals($expected, $h(2, 3));
+    }
 }
