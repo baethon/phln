@@ -259,3 +259,25 @@ P::binary(function (...$args) {
     return $args;
 })(1, 2, 3, 4); // [1, 2]
 ```
+
+## trampoline
+`(* -> *) -> (* -> *)`
+
+Added in: 2.2.0
+
+Creates a stack-safe tail recurrent function.
+
+As long as wrapped function returns _thunk_ (function which calls the recursive function) trampoline will loop over its results.  
+Calling `$this()` inside the function will return its _thunk_.
+
+Wrapped function should not return instance of `Closure` as an end-result (it will trigger next loop iteration).
+
+```php
+$fib = P::trampoline(function ($n, $accum1 = 1, $accum2 = 1) {
+    return $n < 2
+        ? $accum1
+        : $this($n - 1, $accum1 + $accum2, $accum1);
+});
+
+$fib(4); // 5
+```

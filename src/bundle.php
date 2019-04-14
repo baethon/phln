@@ -55,6 +55,7 @@ load_macro('fn', 'pipe');
 load_macro('fn', 'swap');
 load_macro('fn', 'tap');
 load_macro('fn', 'throwException');
+load_macro('fn', 'trampoline');
 load_macro('fn', 'unapply');
 load_macro('fn', 'unary');
 load_macro('logic', 'allPass');
