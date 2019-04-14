@@ -12,7 +12,7 @@ load_macro('collection', ['slice', 'length', 'nth']);
 
 P::macro('head', call_user_func(function () {
     $sliceFirst = P::slice(0, 1);
-    $moreThanZero = P::compose([P::lte(1), P::length()]);
+    $moreThanZero = P::compose(P::lte(1), P::length());
     $headOfArray = P::cond([
         [$moreThanZero, P::nth(0)],
         [P::otherwise(), P::always(null)],

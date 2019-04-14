@@ -6,11 +6,11 @@ use Baethon\Phln\Phln as P;
 P::macro('cond', function (array $pairs): \Closure {
     return function (... $args) use ($pairs) {
         $callPredicate = P::partialRight(P::apply(), [$args]);
-        $pairMatchingArgs = P::compose([$callPredicate, P::nth(0)]);
-        $getTransformer = P::pipe([
+        $pairMatchingArgs = P::compose($callPredicate, P::nth(0));
+        $getTransformer = P::pipe(
             P::find($pairMatchingArgs),
-            P::nth(1),
-        ]);
+            P::nth(1)
+        );
 
         $pairsWithFallback = array_merge(
             $pairs,

@@ -8,10 +8,10 @@ P::macro('propEq', function (string $prop, $value, $object): bool {
     assert_object($object);
 
     return P::apply(
-        P::pipe([
+        P::pipe(
             P::prop($prop),
-            P::equals($value),
-        ]),
+            P::equals($value)
+        ),
         [$object]
     );
 });

@@ -13,8 +13,8 @@ P::macro('typeCond', call_user_func(function () {
         return [$p, $row[1]];
     };
 
-    return P::pipe([
+    return P::pipe(
         P::map($mapRow),
         P::cond()
-    ]);
+    );
 }));

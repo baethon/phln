@@ -7,10 +7,10 @@ use function Baethon\Phln\load_macro;
 load_macro('relation', 'max');
 
 P::macro('allPass', call_user_func(function () {
-    $getArity = P::pipe([
+    $getArity = P::pipe(
         P::map(P::raw('arity')),
-        P::reduce(P::max(), 0),
-    ]);
+        P::reduce(P::max(), 0)
+    );
 
     return function (array $predicates) use ($getArity): callable {
         return P::curryN($getArity($predicates), function (...$values) use ($predicates) {

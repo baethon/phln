@@ -19,7 +19,7 @@ composer require baethon/phln
 ```php
 use Baethon\Phln\Phln as P;
 
-$aboveMinPoints = P::compose([P::lte(50), P::prop('score')]);
+$aboveMinPoints = P::compose(P::lte(50), P::prop('score'));
 $onlyPhp = P::pathEq('language.name', 'PHP');
 
 $topScores = collect($users)
@@ -59,12 +59,12 @@ $mapFoos(function ($f) {
 For function composition `phln` provides `pipe()` and `compose()` functions.
 
 ```php
-$allFoos = P::pipe([
+$allFoos = P::pipe(
     P::filter(P::lte(5)),
-    P::map(P::always('foo')),
-]);
+    P::map(P::always('foo'))
+);
 
-$firstFoo = P::compose([P::head(), $allFoos]);
+$firstFoo = P::compose(P::head(), $allFoos);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'

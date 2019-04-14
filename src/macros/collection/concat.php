@@ -12,7 +12,7 @@ load_macro('fn', ['T', 'unapply', 'compose', 'throwException']);
 P::macro('concat', call_user_func(function () {
     $argsToTypes = P::unapply(P::map('\\gettype'));
     $matchesType = function (string $type) use ($argsToTypes) {
-        return P::compose([P::equals([$type, $type]), $argsToTypes]);
+        return P::compose(P::equals([$type, $type]), $argsToTypes);
     };
 
     return P::curryN(2, P::cond([

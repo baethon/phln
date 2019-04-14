@@ -5,10 +5,10 @@ use Baethon\Phln\Phln as P;
 
 P::macro('clamp', function ($min, $max, $value) {
     return P::apply(
-        P::pipe([
+        P::pipe(
             P::min($max),
-            P::max($min),
-        ]),
+            P::max($min)
+        ),
         [$value]
     );
 });

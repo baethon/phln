@@ -5,10 +5,10 @@ use Baethon\Phln\Phln as P;
 
 P::macro('flatMap', function (callable $mapper, array $list): array {
     return P::apply(
-        P::pipe([
+        P::pipe(
             P::map($mapper),
-            P::collapse(),
-        ]),
+            P::collapse()
+        ),
         [$list]
     );
 });
