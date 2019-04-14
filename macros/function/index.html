@@ -464,6 +464,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trampoline" title="trampoline" class="md-nav__link">
+    trampoline
+  </a>
+  
+</li>
+      
       
       
       
@@ -710,6 +717,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trampoline" title="trampoline" class="md-nav__link">
+    trampoline
+  </a>
+  
+</li>
+      
       
       
       
@@ -904,6 +918,22 @@ $break(); // -&gt; throw new \LogicException()
 <pre><code class="php">P::binary(function (...$args) {
     return $args;
 })(1, 2, 3, 4); // [1, 2]
+</code></pre>
+
+<h2 id="trampoline">trampoline</h2>
+<p><code>(* -&gt; *) -&gt; (* -&gt; *)</code></p>
+<p>Added in: 2.2.0</p>
+<p>Creates a stack-safe tail recurrent function.</p>
+<p>As long as wrapped function returns <em>thunk</em> (function which calls the recursive function) trampoline will loop over its results.<br />
+Calling <code>$this()</code> inside the function will return its <em>thunk</em>.</p>
+<p>Wrapped function should not return instance of <code>Closure</code> as an end-result (it will trigger next loop iteration).</p>
+<pre><code class="php">$fib = P::trampoline(function ($n, $accum1 = 1, $accum2 = 1) {
+    return $n &lt; 2
+        ? $accum1
+        : $this($n - 1, $accum1 + $accum2, $accum1);
+});
+
+$fib(4); // 5
 </code></pre>
                 
                   
