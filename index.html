@@ -594,7 +594,7 @@
                 <p><a href="https://travis-ci.org/baethon/phln"><img alt="Build Status" src="https://travis-ci.org/baethon/phln.svg?branch=master" /></a> <a href="https://scrutinizer-ci.com/g/baethon/phln/?branch=master"><img alt="Scrutinizer Code Quality" src="https://scrutinizer-ci.com/g/baethon/phln/badges/quality-score.png?b=master" /></a></p>
 <hr />
 <h1 id="baethonphln">baethon/phln</h1>
-<p>A practical functional library for PHP developers.</p>
+<p>Set of small utility functions.</p>
 <p>Heavily inspired by <a href="http://ramdajs.com/">Ramda.js</a>, adapted for PHP needs.</p>
 <h2 id="installation">Installation</h2>
 <pre><code class="bash">composer require baethon/phln
@@ -603,13 +603,14 @@
 <h2 id="example-usage">Example usage</h2>
 <pre><code class="php">use Baethon\Phln\Phln as P;
 
-$fooBars = P::cond([
-    [P::equals(5), P::always('foo')],
-    [P::T(), P::always('bar')],
-]);
+$aboveMinPoints = P::compose(P::lte(50), P::prop('score'));
+$onlyPhp = P::pathEq('language.name', 'PHP');
+
+$topScores = collect($users)
+    -&gt;filter(P::both($aboveMinPoints, $onlyPhp));
 </code></pre>
 
-<p>Later in docs every <code>P::</code> reference will be used as a mental shortcut to <code>Baethon\Phln\Phln::</code>.</p>
+<p><em>Note</em>: in the docs <code>P</code> will be used as an alias to <code>Baethon\Phln\Phln</code>.</p>
 <h3 id="currying">Currying</h3>
 <p><code>Phln</code> methods are loosely curried. A <code>N-ary</code> method will return a function until all arguments are provided.</p>
 <pre><code class="php">$foo = P::curryN(2, function ($left, $right) {
@@ -631,33 +632,29 @@ $mapFoos(function ($f) {
 </code></pre>
 
 <h3 id="function-composition">Function composition</h3>
-<p>For function composition <code>Phln</code> provides <code>pipe()</code> and <code>compose()</code> functions.</p>
-<pre><code class="php">$allFoos = P::pipe([
+<p>For function composition <code>phln</code> provides <code>pipe()</code> and <code>compose()</code> functions.</p>
+<pre><code class="php">$allFoos = P::pipe(
     P::filter(P::lte(5)),
-    P::map(P::always('foo')),
-]);
+    P::map(P::always('foo'))
+);
 
-$firstFoo = P::compose([P::head(), $allFoos]);
+$firstFoo = P::compose(P::head(), $allFoos);
 
 $allFoos([4, 5, 6]); // ['foo', 'foo']
 $firstFoo([4, 5, 6]); // 'foo'
 </code></pre>
 
 <h3 id="using-methods-as-references">Using methods as references</h3>
-<p>Some of <code>Phln</code> methods accept <code>callable</code> as an argument.</p>
+<p>Some of <code>phln</code> methods accept <code>callable</code> as an argument.</p>
 <p>To pass another macro as a <em>reference</em> call it without any arguments.</p>
-<pre><code class="php">use Baethon\Phln\Phln as P;
-
-$collection = [1, 2, 3, 4];
+<pre><code class="php">$collection = [1, 2, 3, 4];
 P::reduce(P::sum(), $collection); // 10
 </code></pre>
 
 <p>Also, you can use <code>P::raw()</code> method wich returns uncurried macro, or pointer to <code>Phln</code> method.</p>
 <h3 id="extending">Extending</h3>
-<p><code>Phln</code> is <em>macroable</em>. This means that it can be extened using <code>P::macro()</code> method:</p>
-<pre><code class="php">use Baethon\Phln\Phln as P;
-
-P::macro('foo', function () {
+<p><code>Baethon\Phln\Phln</code> is <em>macroable</em>. This means that it can be extened using <code>macro()</code> method:</p>
+<pre><code class="php">P::macro('foo', function () {
     return 'foo';
 });
 

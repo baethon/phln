@@ -770,11 +770,16 @@ $foo(); // 'foo'
 </code></pre>
 
 <h2 id="compose">compose</h2>
-<p><code>[((a, b, ..., n) -&gt; o), (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)] -&gt; (a, b, ..., n) -&gt; z)</code></p>
+<p><code>[((a, b, ..., n) -&gt; o), (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)] -&gt; (a, b, ..., n) -&gt; z)</code><br />
+<code>((a, b, ..., n) -&gt; o, (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)) -&gt; (a, b, ..., n) -&gt;z)</code></p>
 <p>Added in: v1.0</p>
 <p>Performs left-to-right function composition.</p>
 <p>The leftmost function may have any arity; the remaining functions must be unary.</p>
 <p><strong>Note</strong>: The result of pipe is not automatically curried.</p>
+<p><strong>Changelog:</strong></p>
+<ul>
+<li>v2.2 - added support for variadic arguments</li>
+</ul>
 <h2 id="identity">identity</h2>
 <p><code>a -&gt; a</code></p>
 <p>Added in: v1.0</p>
@@ -851,11 +856,16 @@ $f('Hello'); // 'Hello, Jon Stark'
 </code></pre>
 
 <h2 id="pipe">pipe</h2>
-<p><code>[((a, b, ..., n) -&gt; o), (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)] -&gt; (a, b, ..., n) -&gt; z)</code></p>
+<p><code>[((a, b, ..., n) -&gt; o), (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)] -&gt; (a, b, ..., n) -&gt; z)</code> 
+<code>(((a, b, ..., n) -&gt; o), (o -&gt; p), ..., (x -&gt; y), (y -&gt; z)) -&gt; (a, b, ..., n) -&gt; z)</code></p>
 <p>Added in: v1.0</p>
 <p>Performs left-to-right function composition.</p>
 <p>The leftmost function may have any arity; the remaining functions must be unary.</p>
 <p><strong>Note</strong>: The result of pipe is not automatically curried.</p>
+<p><strong>Changelog:</strong></p>
+<ul>
+<li>v2.2 - added support for variadic arguments</li>
+</ul>
 <h2 id="swap">swap</h2>
 <p><code>(a -&gt; b -&gt; c -&gt; ... -&gt; z) -&gt; (b -&gt; a -&gt; c -&gt; ... -&gt; z)</code></p>
 <p>Added in: v1.0</p>
