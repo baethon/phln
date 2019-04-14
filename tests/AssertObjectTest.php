@@ -56,13 +56,8 @@ class AssertObjectTest extends \PHPUnit\Framework\TestCase
 
     private function assertionsEnabled(): bool
     {
-        $exceptions = ini_get('assert.exception');
         $assertions = ini_get('zend.assertions');
 
-        if ('0' === $exceptions || '0' === $assertions) {
-            return false;
-        }
-
-        return true;
+        return '1' === $assertions;
     }
 }
