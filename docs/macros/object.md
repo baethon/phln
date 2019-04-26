@@ -45,6 +45,16 @@ Returns whether or not an object has a property with the specified name.
 P::has('foo', ['foo' => 1]); // true
 ```
 
+## hasMethod
+`String -> Object -> Boolean`
+
+Checks if given object has a method. Returs `true` only when method is defined and public.  
+Opposite to `method_exists()` and `is_callable()` macro will not treat `__call()` as a valid method.
+
+```php
+P::hasMethod('test', new stdClass()); // false
+```
+
 ## keys
 `{k: v} -> [k]`
 

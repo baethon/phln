@@ -81,6 +81,7 @@ load_macro('object', 'assoc');
 load_macro('object', 'assocPath');
 load_macro('object', 'eqProps');
 load_macro('object', 'has');
+load_macro('object', 'hasMethod');
 load_macro('object', 'keys');
 load_macro('object', 'lens');
 load_macro('object', 'lensPath');
