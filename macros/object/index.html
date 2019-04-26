@@ -389,6 +389,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hasmethod" title="hasMethod" class="md-nav__link">
+    hasMethod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#keys" title="keys" class="md-nav__link">
     keys
   </a>
@@ -620,6 +627,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hasmethod" title="hasMethod" class="md-nav__link">
+    hasMethod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#keys" title="keys" class="md-nav__link">
     keys
   </a>
@@ -802,6 +816,13 @@
 <p><code>k -&gt; {k: v} -&gt; Boolean</code></p>
 <p>Returns whether or not an object has a property with the specified name.</p>
 <pre><code class="php">P::has('foo', ['foo' =&gt; 1]); // true
+</code></pre>
+
+<h2 id="hasmethod">hasMethod</h2>
+<p><code>String -&gt; Object -&gt; Boolean</code></p>
+<p>Checks if given object has a method. Returs <code>true</code> only when method is defined and public.<br />
+Opposite to <code>method_exists()</code> and <code>is_callable()</code> macro will not treat <code>__call()</code> as a valid method.</p>
+<pre><code class="php">P::hasMethod('test', new stdClass()); // false
 </code></pre>
 
 <h2 id="keys">keys</h2>
