@@ -4,57 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85854aae1c3d92b2bebf0cfe624deb81",
-    "packages": [
-        {
-            "name": "ayesh/is_countable-polyfill",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpwatch/is_countable-polyfill.git",
-                "reference": "9db25a739123600f134b8cb6a120725a8dab4e33"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpwatch/is_countable-polyfill/zipball/9db25a739123600f134b8cb6a120725a8dab4e33",
-                "reference": "9db25a739123600f134b8cb6a120725a8dab4e33",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/is_countable.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT and GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Ayesh Karunaratne",
-                    "email": "ayesh@ayesh.me"
-                }
-            ],
-            "description": "A trivial but working polyfill for PHP 7.3 is_countable function. Supports PHP versions >= 5.3",
-            "keywords": [
-                "compat",
-                "compatibility",
-                "php73",
-                "polyfill",
-                "port",
-                "portable",
-                "shim"
-            ],
-            "time": "2018-06-17T13:33:43+00:00"
-        }
-    ],
+    "content-hash": "cad7d4f051986704a1f8b7cdec855ba2",
+    "packages": [],
     "packages-dev": [
         {
             "name": "doctrine/inflector",
@@ -1360,6 +1311,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-01-06T05:45:45+00:00"
         },
         {
@@ -2457,7 +2409,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=7.4"
     },
     "platform-dev": []
 }

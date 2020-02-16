@@ -3,8 +3,7 @@
     "description": "Set of small utility functions. Inspired by Ramda.",
     "type": "library",
     "require": {
-        "php": ">=7.4",
-        "ayesh/is_countable-polyfill": "^1.0"
+        "php": ">=7.4"
     },
     "require-dev": {
         "symfony/console": "^3.2",
