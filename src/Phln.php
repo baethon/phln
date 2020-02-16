@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Baethon\Phln;
 
 final class Phln
 {
-    const __ = '_phln_fn_partial_placeholder';
+    public const __ = '_phln_fn_partial_placeholder';
 
     /**
      * @var \Closure[] $macros

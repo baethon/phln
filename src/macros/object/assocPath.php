@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
+
 use function Baethon\Phln\assert_object;
 
 $clone = function ($object) {
@@ -10,7 +12,7 @@ $clone = function ($object) {
         : $object;
 };
 
-$assoc = function & ($key, $value, & $anchor) {
+$assoc = function & ($key, $value, &$anchor) {
     assert_object($anchor);
 
     if (is_object($anchor)) {
