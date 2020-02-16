@@ -3,7 +3,7 @@
     "description": "Set of small utility functions. Inspired by Ramda.",
     "type": "library",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "ayesh/is_countable-polyfill": "^1.0"
     },
     "require-dev": {

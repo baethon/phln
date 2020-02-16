@@ -4,19 +4,19 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d550f14712978ca1c745afb3800488cc",
+    "content-hash": "85854aae1c3d92b2bebf0cfe624deb81",
     "packages": [
         {
             "name": "ayesh/is_countable-polyfill",
             "version": "v1.0.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Ayesh/is_countable-polyfill.git",
+                "url": "https://github.com/phpwatch/is_countable-polyfill.git",
                 "reference": "9db25a739123600f134b8cb6a120725a8dab4e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ayesh/is_countable-polyfill/zipball/9db25a739123600f134b8cb6a120725a8dab4e33",
+                "url": "https://api.github.com/repos/phpwatch/is_countable-polyfill/zipball/9db25a739123600f134b8cb6a120725a8dab4e33",
                 "reference": "9db25a739123600f134b8cb6a120725a8dab4e33",
                 "shasum": ""
             },
@@ -1970,16 +1970,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.2",
+            "version": "3.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
+                "reference": "dceec07328401de6211037abbb18bda423677e26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dceec07328401de6211037abbb18bda423677e26",
+                "reference": "dceec07328401de6211037abbb18bda423677e26",
                 "shasum": ""
             },
             "require": {
@@ -2012,12 +2012,12 @@
                 }
             ],
             "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-09-23T23:08:17+00:00"
+            "time": "2020-01-30T22:20:29+00:00"
         },
         {
             "name": "symfony/console",
@@ -2456,6 +2456,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.1"
+    },
     "platform-dev": []
 }
