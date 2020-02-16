@@ -7,9 +7,9 @@ filter:
     - src/bundle.php
 build:
   environment:
-    php: 7.1.28
+    php: 7.4
   nodes:
     analysis:
       tests:
         override:
-          - phpcs-run --standard=psr2 src/
+          - phpcs-run --standard=psr12 src/
