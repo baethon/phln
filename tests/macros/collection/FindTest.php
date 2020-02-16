@@ -11,6 +11,6 @@ class FindTest extends \PHPUnit\Framework\TestCase
         };
 
         $this->assertEquals(['id' => 1], P::find($p, [['id' => 1], ['id' => 2]]));
-        $this->assertNull(P::find($p, ['id' => 3]));
+        $this->assertNull(P::find($p, [['id' => 3]]));
     }
 }

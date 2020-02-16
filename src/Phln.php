@@ -9,7 +9,7 @@ final class Phln
     public const __ = '_phln_fn_partial_placeholder';
 
     /**
-     * @var \Closure[] $macros
+     * @var callable[] $macros
      */
     protected static array $macros = [];
 
@@ -33,9 +33,9 @@ final class Phln
      * Returns "reference" to one of Phln macros or methods
      *
      * @param string $macroName
-     * @return \Closure
+     * @return callable
      */
-    public static function raw(string $macroName): \Closure
+    public static function raw(string $macroName): callable
     {
         if (static::hasMacro($macroName)) {
             return static::$macros[$macroName];
@@ -44,7 +44,7 @@ final class Phln
         /** @var callable $callable */
         $callable = sprintf('%s::%s', static::class, $macroName);
 
-        return \Closure::fromCallable($callable);
+        return $callable;
     }
 
     public static function arity(callable $fn): int
@@ -77,7 +77,7 @@ final class Phln
 
     public static function macro(string $name, callable $macro): void
     {
-        static::$macros[$name] = \Closure::fromCallable($macro);
+        static::$macros[$name] = $macro;
     }
 
     public static function hasMacro(string $name): bool

@@ -9,4 +9,10 @@ class MinTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(-1, P::min(-1, 1));
         $this->assertEquals(-1, P::min(1, -1));
     }
+
+    public function test_it_is_curried()
+    {
+        $n = P::min(1);
+        $this->assertEquals(-1, $n(-1));
+    }
 }

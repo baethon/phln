@@ -8,12 +8,15 @@ final class FixedArityFn implements FixedArityInterface
 {
     private int $arity;
 
-    private \Closure $fn;
+    /**
+     * @var callable
+     */
+    private $fn;
 
     private function __construct(int $arity, callable $fn)
     {
         $this->arity = $arity;
-        $this->fn = \Closure::fromCallable($fn);
+        $this->fn = $fn;
     }
 
     public function getArity(): int
