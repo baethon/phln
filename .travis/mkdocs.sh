@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo pip3 install --upgrade pyopenssl ndg-httpsclient pyasn1 pip
-sudo pip3 install -r ./pip_requirements.txt
+sudo python3 -m pip install --upgrade pyopenssl ndg-httpsclient pyasn1 pip
+sudo python3 -m pip install -r ./pip_requirements.txt
 
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
