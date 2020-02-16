@@ -1,5 +1,8 @@
 #!/bin/sh
 
+sudo apt-get update
+sudo apt-get install python3
+
 sudo pip3 install --upgrade pyopenssl ndg-httpsclient pyasn1 pip
 sudo pip3 install -r ./pip_requirements.txt
 
