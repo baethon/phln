@@ -10,6 +10,9 @@ final class Identity
      */
     private $value;
 
+    /**
+     * @param mixed $value
+     */
     private function __construct($value)
     {
         $this->value = $value;
@@ -20,11 +23,17 @@ final class Identity
         return Identity::of($fn($this->value));
     }
 
+    /**
+     * @param mixed $value
+     */
     public static function of($value): Identity
     {
         return new static($value);
     }
 
+    /**
+     * @return mixed
+     */
     public function extract()
     {
         return $this->value;

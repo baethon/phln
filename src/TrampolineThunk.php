@@ -5,10 +5,7 @@ namespace Baethon\Phln;
 
 class TrampolineThunk
 {
-    /**
-     * @var \Closure
-     */
-    private $fn;
+    private \Closure $fn;
 
     public function __construct(callable $fn)
     {
@@ -16,7 +13,11 @@ class TrampolineThunk
             ->bindTo($this);
     }
 
-    public function __invoke(...$args)
+    /**
+     * @param array<int, mixed> ...$args
+     * @retun \Closure
+     */
+    public function __invoke(...$args): \Closure
     {
         $fn = $this->fn;
 

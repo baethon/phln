@@ -98,13 +98,24 @@ final class RegExp
         return new static($pattern, $modifiers);
     }
 
+    /**
+     * @param string|RegExp $regexp
+     * @return RegExp
+     */
     public static function of($regexp): RegExp
     {
-        return ($regexp instanceof static)
-            ? $regexp
-            : static::fromString($regexp);
+        if ($regexp instanceof static) {
+            return $regexp;
+        }
+
+        /** @var string $regexp */
+        return static::fromString($regexp);
     }
 
+    /**
+     * @param string $test
+     * @return string[]
+     */
     public function matchAll(string $test): array
     {
         $matches = [];

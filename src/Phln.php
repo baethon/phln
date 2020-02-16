@@ -7,7 +7,10 @@ final class Phln
 {
     const __ = '_phln_fn_partial_placeholder';
 
-    protected static $macros = [];
+    /**
+     * @var \Closure[] $macros
+     */
+    protected static array $macros = [];
 
     private function __construct()
     {
@@ -18,8 +21,9 @@ final class Phln
      *
      * @param string $macroName
      * @param string $targetMacro
+     * @return void
      */
-    public static function alias(string $macroName, string $targetMacro)
+    public static function alias(string $macroName, string $targetMacro): void
     {
         static::macro($macroName, static::raw($targetMacro));
     }
@@ -28,13 +32,18 @@ final class Phln
      * Returns "reference" to one of Phln macros or methods
      *
      * @param string $macroName
-     * @return callable
+     * @return \Closure
      */
-    public static function raw(string $macroName): callable
+    public static function raw(string $macroName): \Closure
     {
-        return static::hasMacro($macroName)
-            ? static::$macros[$macroName]
-            : sprintf('%s::%s', static::class, $macroName);
+        if (static::hasMacro($macroName)) {
+            return static::$macros[$macroName];
+        }
+
+        /** @var callable $callable */
+        $callable = sprintf('%s::%s', static::class, $macroName);
+
+        return \Closure::fromCallable($callable);
     }
 
     public static function arity(callable $fn): int
@@ -44,19 +53,30 @@ final class Phln
             : (new \ReflectionFunction($fn))->getNumberOfParameters();
     }
 
+    /**
+     * @param callable $fn
+     * @param array<int, mixed> $args
+     * @return CurriedFn|mixed
+     */
     public static function curry(callable $fn, array $args = [])
     {
         return CurriedFn::of($fn)(...$args);
     }
 
+    /**
+     * @param int $n
+     * @param callable $fn
+     * @param array<int, mixed> $args
+     * @return CurriedFn|mixed
+     */
     public static function curryN(int $n, callable $fn, array $args = [])
     {
         return CurriedFn::ofN($n, $fn)(...$args);
     }
 
-    public static function macro(string $name, callable $macro)
+    public static function macro(string $name, callable $macro): void
     {
-        static::$macros[$name] = $macro;
+        static::$macros[$name] = \Closure::fromCallable($macro);
     }
 
     public static function hasMacro(string $name): bool
@@ -64,6 +84,11 @@ final class Phln
         return isset(static::$macros[$name]);
     }
 
+    /**
+     * @param string $method
+     * @param mixed[] $parameters
+     * @return mixed
+     */
     public static function __callStatic($method, $parameters)
     {
         if (! static::hasMacro($method)) {

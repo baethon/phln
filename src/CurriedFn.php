@@ -5,25 +5,24 @@ namespace Baethon\Phln;
 
 final class CurriedFn implements FixedArityInterface
 {
-    /**
-     * @type callable
-     */
-    private $fn;
+    private \Closure $fn;
+
+    private int $arity;
 
     /**
-     * @type integer
+     * @var array<int, mixed> $args
      */
-    private $arity;
+    private array $args = [];
 
     /**
-     * @type array
+     * @param int $arity
+     * @param callable $fn,
+     * @param mixed[] $args
      */
-    private $args = [];
-
     private function __construct(int $arity, callable $fn, array $args = [])
     {
         $this->arity = $arity;
-        $this->fn = $fn;
+        $this->fn = \Closure::fromCallable($fn);
         $this->args = $args;
     }
 
@@ -39,6 +38,10 @@ final class CurriedFn implements FixedArityInterface
         return new static($arity, $fn);
     }
 
+    /**
+     * @param array<int, mixed> ...$args
+     * @return CurriedFn|mixed
+     */
     public function __invoke(...$args)
     {
         $allArgs = array_merge($this->args, $args);

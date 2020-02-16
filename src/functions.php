@@ -24,7 +24,12 @@ function assert_object($value)
     );
 }
 
-function load_macro(string $ns, $name)
+/**
+ * @param string $ns
+ * @param string|string[] $name
+ * @return void
+ */
+function load_macro(string $ns, $name): void
 {
     $names = is_array($name)
         ? $name

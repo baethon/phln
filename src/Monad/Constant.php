@@ -10,6 +10,9 @@ final class Constant
      */
     private $value;
 
+    /**
+     * @param mixed $value
+     */
     public function __construct($value)
     {
         $this->value = $value;
@@ -20,11 +23,17 @@ final class Constant
         return new static($this->value);
     }
 
+    /**
+     * @param mixed $value
+     */
     public static function of($value): Constant
     {
         return new static($value);
     }
 
+    /**
+     * @return mixed
+     */
     public function extract()
     {
         return $this->value;
