@@ -18,6 +18,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - support for variadics in `compose()` and `pipe()`
 - check for args length using `assert()` in `compose()` and `pipe()`
 
+### Fixed
+
+- PHPStan errors
+- PSR12 incompatibilities
+
+### Removed
+
+- Support for PHP 7.1, 7.2, 7.3
+
 ## [2.1.0]
 
 ### Added
