@@ -1,9 +1,5 @@
 #!/bin/sh
 
-sudo python3 -m pip install --upgrade pip setuptools
-sudo python3 -m pip install --upgrade pyopenssl ndg-httpsclient pyasn1
-sudo python3 -m pip install -r ./pip_requirements.txt
-
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
@@ -13,4 +9,5 @@ git fetch upstream
 git checkout upstream/gh-pages
 git checkout -
 
-mkdocs gh-deploy -r upstream
+docker run --rm -v "$PWD:/docs" squidfunk/mkdocs-material build
+docker run --rm -v "$PWD:/docs" squidfunk/mkdocs-material gh-deploy -r upstream
