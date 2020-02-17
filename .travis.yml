@@ -8,8 +8,6 @@ stages:
 php:
   - 7.4
 
-sudo: false
-
 addons:
   apt:
     packages:
@@ -28,12 +26,10 @@ install:
 before_script:
   - export PATH="$PATH:/home/travis/.composer/vendor/bin"
 
-script:
-  - composer lint
-  - composer test
-
 jobs:
   include:
+    - stage: test
+      script: composer lint
+    - script: composer test
     - stage: deploy
       script: .travis/mkdocs.sh
-      sudo: required
