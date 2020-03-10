@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.2.0]
+
 ### Added
 
 - macros:
@@ -25,7 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- Support for PHP 7.1, 7.2, 7.3
+- **Support for PHP 7.1, 7.2, 7.3**
 
 ## [2.1.0]
 
@@ -128,3 +130,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [1.2.0]: https://github.com/baethon/phln/compare/1.1.0...1.2.0
 [2.0.0]: https://github.com/baethon/phln/compare/1.2.0...2.0.0
 [2.1.0]: https://github.com/baethon/phln/compare/2.0.0...2.1.0
+[2.2.0]: https://github.com/baethon/phln/compare/2.1.0...2.2.0
