@@ -18,6 +18,4 @@
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
-    <listeners>
-    </listeners>
 </phpunit>
