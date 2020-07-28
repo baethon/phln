@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const unary = 'baethon\\phln\\unary';
+const unary = 'Baethon\\Phln\\unary';
 
 /**
  * Wraps a function of any arity (including nullary) in a function that accepts exactly 1 parameter. Any extraneous parameters will not be passed to the supplied function.

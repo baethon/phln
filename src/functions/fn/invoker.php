@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const invoker = 'baethon\\phln\\invoker';
+const invoker = 'Baethon\\Phln\\invoker';
 
 /**
  * Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.

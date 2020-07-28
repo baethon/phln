@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const apply = 'baethon\\phln\\apply';
+const apply = 'Baethon\\Phln\\apply';
 
 /**
  * Applies function `fn` to the argument list

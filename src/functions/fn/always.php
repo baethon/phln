@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const always = 'baethon\\phln\\always';
+const always = 'Baethon\\Phln\\always';
 
 /**
  * Returns a function that always returns the given value.

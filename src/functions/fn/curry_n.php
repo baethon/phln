@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
 use Baethon\Phln\CurriedFn;
 
-const curry_n = 'baethon\\phln\\curry_n';
+const curry_n = 'Baethon\\Phln\\curry_n';
 
 /**
  * Curry given funciton of N-arity

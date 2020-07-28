@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const pipe = 'baethon\\phln\\pipe';
+const pipe = 'Baethon\\Phln\\pipe';
 
 /**
  * Performs left-to-right function composition

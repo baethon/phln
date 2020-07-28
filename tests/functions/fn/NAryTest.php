@@ -1,6 +1,6 @@
 <?php
 
-use baethon\phln as p;
+use Baethon\Phln as p;
 use Baethon\Phln\FixedArityInterface;
 
 class NAryTest extends \PHPUnit\Framework\TestCase

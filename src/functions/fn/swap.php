@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const swap = 'baethon\\phln\\swap';
+const swap = 'Baethon\\Phln\\swap';
 
 /**
  * Returns a new function much like the supplied one, except that the first two arguments' order is reversed.

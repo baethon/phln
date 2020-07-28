@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const tap = 'baethon\\phln\\tap';
+const tap = 'Baethon\\Phln\\tap';
 
 /**
  * Runs the given function with the supplied object, then returns the object.

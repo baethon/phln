@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
 use Baethon\Phln\TrampolineThunk;
 
-const trampoline = 'baethon\\phln\\trampoline';
+const trampoline = 'Baethon\\Phln\\trampoline';
 
 /**
  * Creates a stack-safe tail recurrent function.

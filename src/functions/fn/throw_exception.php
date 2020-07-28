@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const throw_exception = 'baethon\\phln\\throw_exception';
+const throw_exception = 'Baethon\\Phln\\throw_exception';
 
 /**
  * Returns callback which throws given exception.

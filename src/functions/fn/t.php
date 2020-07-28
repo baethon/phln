@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const t = 'baethon\\phln\\t';
+const t = 'Baethon\\Phln\\t';
 
 /**
  * Always return true
@@ -16,7 +16,7 @@ function t(): bool
     return true;
 }
 
-const otherwise = 'baethon\\phln\\otherwise';
+const otherwise = 'Baethon\\Phln\\otherwise';
 
 function otherwise(): bool
 {

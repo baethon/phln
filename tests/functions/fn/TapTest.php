@@ -1,6 +1,6 @@
 <?php
 
-use baethon\phln as p;
+use Baethon\Phln as p;
 
 class TapTest extends \PHPUnit\Framework\TestCase
 {

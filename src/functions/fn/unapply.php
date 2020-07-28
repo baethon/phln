@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const unapply = 'baethon\\phln\\unapply';
+const unapply = 'Baethon\\Phln\\unapply';
 
 /**
  * Takes a function `fn`, which takes a single array argument, and returns a function which:

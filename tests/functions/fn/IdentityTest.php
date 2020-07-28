@@ -1,6 +1,6 @@
 <?php
 
-use baethon\phln as p;
+use Baethon\Phln as p;
 
 class IdentityTest extends \PHPUnit\Framework\TestCase
 {

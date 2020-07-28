@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
 use Baethon\Phln\FixedArityFn;
 
-const n_ary = 'baethon\\phln\\n_ary';
+const n_ary = 'Baethon\\Phln\\n_ary';
 
 function n_ary (int $n, callable $fn): callable {
     return FixedArityFn::of($n, $fn);

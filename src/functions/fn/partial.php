@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const partial = 'baethon\\phln\\partial';
+const partial = 'Baethon\\Phln\\partial';
 
 /**
  * Takes a function `f` and a list of arguments, and returns a function `g`.

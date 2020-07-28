@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const f = 'baethon\\phln\\f';
+const f = 'Baethon\\Phln\\f';
 
 function f(): bool
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
 /**
  * Immediately Invoked Function Expression

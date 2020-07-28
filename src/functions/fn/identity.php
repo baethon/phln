@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace baethon\phln;
+namespace Baethon\Phln;
 
-const identity = 'baethon\\phln\\identity';
+const identity = 'Baethon\\Phln\\identity';
 
 /**
  * A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.

@@ -1,6 +1,6 @@
 <?php
 
-use baethon\phln as p;
+use Baethon\Phln as p;
 
 class PartialTest extends \PHPUnit\Framework\TestCase
 {
