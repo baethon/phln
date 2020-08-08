@@ -18,11 +18,12 @@ function compose (...$fns): callable {
     $fnsCount = count($fns);
 
     if (1 === $fnsCount && is_array($fns[0])) {
+        /** @psalm-var array<int,callable> */
         $fns = $fns[0];
         $fnsCount = count($fns);
     }
 
     assert($fnsCount > 0, new \UnderflowException('compose requires at least one argument'));
 
-    return pipe(array_reverse($fns));
+    return pipe(...array_reverse($fns));
 };

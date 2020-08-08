@@ -13,7 +13,7 @@ const curry_n = 'Baethon\\Phln\\curry_n';
  *
  * @param int $arity
  * @param callable $fn
- * @param array $args
+ * @param array<mixed> $args
  * @return CurriedFn|mixed
  */
 function curry_n (int $arity, callable $fn, array $args = []) {

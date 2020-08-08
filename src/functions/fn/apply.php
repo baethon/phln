@@ -12,7 +12,7 @@ const apply = 'Baethon\\Phln\\apply';
  * This is useful for creating a fixed-arity function from a variadic function.
  *
  * @param callable $fn
- * @param array $arguments
+ * @param array<mixed> $arguments
  * @return mixed
  */
 function apply (callable $fn, array $arguments) {
