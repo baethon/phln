@@ -24,6 +24,8 @@ require_once __DIR__.'/functions/fn/curry.php';
 require_once __DIR__.'/functions/fn/binary.php';
 require_once __DIR__.'/functions/fn/unary.php';
 
+require_once __DIR__.'/functions/type/is_stringable.php';
+
 /* use function Baethon\Phln\load_macro; */
 
 /* load_macro('collection', 'all'); */
