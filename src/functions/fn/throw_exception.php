@@ -11,7 +11,7 @@ const throw_exception = 'Baethon\\Phln\\throw_exception';
  *
  * *Note:* exceptions are considered as side-efects. Use it with caution.
  *
- * @param string $exception
+ * @param class-string<\Throwable> $exception
  * @param array $args
  * @return callable
  */
