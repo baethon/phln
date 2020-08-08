@@ -2,14 +2,31 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('chunk', function (int $size, $collection) {
-    $f = P::typeCond([
-        ['array', P::partialRight('\\array_chunk', [$size])],
-        ['string', P::partialRight('\\str_split', [$size])],
-        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-    ]);
+const chunk = 'Baethon\\Phln\\chunk';
 
-    return $f($collection);
-});
+/**
+ * @param mixed $collection
+ * @param int $size
+ * @return array<int,mixed>
+ * @throws \InvalidArgumentException
+ * @psalm-immutable
+ */
+function chunk ($collection, int $size): array {
+    if ($size < 1) {
+        throw new \InvalidArgumentException('Size must be >= 1');
+    }
+
+    if (is_array($collection)) {
+        /** @var array $collection */
+        return array_chunk($collection, $size);
+    }
+
+    if (is_stringable($collection)) {
+        /** @var string $collection */
+        return str_split("{$collection}", $size) ?: [];
+    }
+
+    throw new \InvalidArgumentException('Unsupported collection type');
+};

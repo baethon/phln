@@ -2,8 +2,17 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('filter', function (callable $predicate, array $list): array {
+const filter = 'Baethon\\Phln\\filter';
+
+/**
+ * Use predicate to keep elements in the array
+ *
+ * @param array<mixed> $list
+ * @param callable(mixed):bool $predicate
+ * @return array<mixed>
+ */
+function filter (array $list, callable $predicate): array {
     return array_values(array_filter($list, $predicate));
-});
+}

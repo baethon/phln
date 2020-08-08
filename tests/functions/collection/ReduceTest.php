@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class ReduceTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,6 +10,6 @@ class ReduceTest extends \PHPUnit\Framework\TestCase
             return $a - $b;
         };
 
-        $this->assertEquals(-10, P::reduce($f, 0, [1, 2, 3, 4]));
+        $this->assertEquals(-10, p\reduce([1, 2, 3, 4], $f, 0));
     }
 }

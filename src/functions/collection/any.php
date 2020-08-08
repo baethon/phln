@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('any', function (callable $predicate, array $list): bool {
+const any = 'Baethon\\Phln\\any';
+
+function any (array $list, callable $predicate): bool {
     foreach ($list as $value) {
         if (true === $predicate($value)) {
             return true;
@@ -12,4 +14,4 @@ P::macro('any', function (callable $predicate, array $list): bool {
     }
 
     return false;
-});
+};

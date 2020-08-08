@@ -1,17 +1,17 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class ConcatTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_concatenates_two_arrays()
     {
-        $this->assertEquals([1, 2], P::concat([1], [2]));
+        $this->assertEquals([1, 2], p\concat([1], [2]));
     }
 
     public function test_it_concatenates_two_strings()
     {
-        $this->assertEquals('ABCD', P::concat('AB', 'CD'));
+        $this->assertEquals('ABCD', p\concat('AB', 'CD'));
     }
 
     /**
@@ -20,7 +20,7 @@ class ConcatTest extends \PHPUnit\Framework\TestCase
     public function test_it_throws_exception($a, $b)
     {
         $this->expectException(\InvalidArgumentException::class);
-        P::concat($a, $b);
+        p\concat($a, $b);
     }
 
     public function exceptionsDataProvider()

@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class FindTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class FindTest extends \PHPUnit\Framework\TestCase
             return $i['id'] === 1;
         };
 
-        $this->assertEquals(['id' => 1], P::find($p, [['id' => 1], ['id' => 2]]));
-        $this->assertNull(P::find($p, [['id' => 3]]));
+        $this->assertEquals(['id' => 1], p\find([['id' => 1], ['id' => 2]], $p));
+        $this->assertNull(p\find([['id' => 3]], $p));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class AllTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,7 +11,7 @@ class AllTest extends \PHPUnit\Framework\TestCase
             return $i % 2 === 0;
         };
 
-        $this->assertTrue(P::all($predicate, $list));
-        $this->assertFalse(P::all($predicate, [2, 4, 5]));
+        $this->assertTrue(p\all($list, $predicate));
+        $this->assertFalse(p\all([2, 4, 5], $predicate));
     }
 }

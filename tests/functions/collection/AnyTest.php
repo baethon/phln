@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class AnyTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class AnyTest extends \PHPUnit\Framework\TestCase
             return $i > 4;
         };
 
-        $this->assertTrue(P::any($predicate, [1, 2, 4, 5]));
-        $this->assertFalse(P::any($predicate, [1, 2]));
+        $this->assertTrue(p\any([1, 2, 4, 5], $predicate));
+        $this->assertFalse(p\any([1, 2], $predicate));
     }
 }

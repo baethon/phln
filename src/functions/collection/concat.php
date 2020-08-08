@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const concat = 'Baethon\\Phln\\concat';
 
-load_macro('logic', 'cond');
-load_macro('collection', 'map');
-load_macro('relation', 'equals');
-load_macro('fn', ['T', 'unapply', 'compose', 'throwException']);
+/**
+ * @param mixed $left
+ * @param mixed $right
+ * @return array<mixed>|string
+ * @throws \InvalidArgumentException
+ * @psalm-immutable
+ */
+function concat ($left, $right) {
+    if (is_array($left) && is_array($right)) {
+        return array_merge($left, $right);
+    }
 
-P::macro('concat', call_user_func(function () {
-    $argsToTypes = P::unapply(P::map('\\gettype'));
-    $matchesType = function (string $type) use ($argsToTypes) {
-        return P::compose(P::equals([$type, $type]), $argsToTypes);
-    };
+    if (is_stringable($left) && is_stringable($right)) {
+        /** @var string $left */
+        /** @var string $right */
+        return "{$left}{$right}";
+    }
 
-    return P::curryN(2, P::cond([
-        [$matchesType('string'), P::curryN(3, '\\sprintf', ['%s%s'])],
-        [$matchesType('array'), P::curryN(2, '\\array_merge')],
-        [P::otherwise(), P::throwException(
-            \InvalidArgumentException::class,
-            ['Passed arguments are not supported']
-        )]
-    ]));
-}));
+    throw new \InvalidArgumentException('Unsupported collection type');
+}

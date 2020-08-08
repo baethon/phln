@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class FilterTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,6 +10,6 @@ class FilterTest extends \PHPUnit\Framework\TestCase
             return $i > 2;
         };
 
-        $this->assertEquals([3, 4], P::filter($p, [1, 2, 3, 4]));
+        $this->assertEquals([3, 4], p\filter([1, 2, 3, 4], $p));
     }
 }

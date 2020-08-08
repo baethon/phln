@@ -23,22 +23,24 @@ require_once __DIR__.'/functions/fn/curry_n.php';
 require_once __DIR__.'/functions/fn/curry.php';
 require_once __DIR__.'/functions/fn/binary.php';
 require_once __DIR__.'/functions/fn/unary.php';
+require_once __DIR__.'/functions/collection/all.php';
+require_once __DIR__.'/functions/collection/any.php';
+require_once __DIR__.'/functions/collection/append.php';
+require_once __DIR__.'/functions/collection/chunk.php';
+require_once __DIR__.'/functions/collection/concat.php';
+require_once __DIR__.'/functions/collection/contains.php';
+require_once __DIR__.'/functions/collection/filter.php';
+require_once __DIR__.'/functions/collection/find.php';
+require_once __DIR__.'/functions/collection/from_pairs.php';
+require_once __DIR__.'/functions/collection/reduce.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
+require_once __DIR__.'/functions/relation/equals.php';
 
 /* use function Baethon\Phln\load_macro; */
 
-/* load_macro('collection', 'all'); */
-/* load_macro('collection', 'any'); */
-/* load_macro('collection', 'append'); */
-/* load_macro('collection', 'chunk'); */
 /* load_macro('collection', 'collapse'); */
-/* load_macro('collection', 'concat'); */
-/* load_macro('collection', 'contains'); */
-/* load_macro('collection', 'filter'); */
-/* load_macro('collection', 'find'); */
 /* load_macro('collection', 'flatMap'); */
-/* load_macro('collection', 'fromPairs'); */
 /* load_macro('collection', 'groupBy'); */
 /* load_macro('collection', 'head'); */
 /* load_macro('collection', 'init'); */
@@ -54,7 +56,6 @@ require_once __DIR__.'/functions/type/is_stringable.php';
 /* load_macro('collection', 'pluck'); */
 /* load_macro('collection', 'prepend'); */
 /* load_macro('collection', 'range'); */
-/* load_macro('collection', 'reduce'); */
 /* load_macro('collection', 'reject'); */
 /* load_macro('collection', 'reverse'); */
 /* load_macro('collection', 'slice'); */
@@ -108,7 +109,6 @@ require_once __DIR__.'/functions/type/is_stringable.php';
 /* load_macro('object', 'whereEq'); */
 /* load_macro('relation', 'clamp'); */
 /* load_macro('relation', 'difference'); */
-/* load_macro('relation', 'equals'); */
 /* load_macro('relation', 'gt'); */
 /* load_macro('relation', 'gte'); */
 /* load_macro('relation', 'intersection'); */

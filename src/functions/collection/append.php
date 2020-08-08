@@ -2,19 +2,31 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('append', function ($value, $collection) {
-    $pushToArray = function (array $copy) use ($value) {
-        array_push($copy, $value);
-        return $copy;
-    };
+const append = 'Baethon\\Phln\\append';
 
-    $f = P::typeCond([
-        ['array', $pushToArray],
-        ['string', P::partial('\\sprintf', ['%s%s', P::__, $value])],
-        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])]
-    ]);
+/**
+ * @param mixed $collection
+ * @param mixed $value
+ * @return array<mixed>|string
+ * @throws \InvalidArgumentException
+ * @psalm-immutable
+ */
+function append ($collection, $value) {
+    $collectionType = gettype($collection);
 
-    return $f($collection);
-});
+    if ($collectionType === 'array') {
+        /** @var array<mixed> $collection */
+        $collection[] = $value;
+        return $collection;
+    }
+
+    if (is_stringable($collection) && is_stringable($value)) {
+        /** @var string $collection */
+        /** @var string $value */
+        return "{$collection}{$value}";
+    }
+
+    throw new \InvalidArgumentException('Unsupported collection type');
+};

@@ -2,8 +2,16 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('reduce', function (callable $reducer, $initialValue, array $list) {
+const reduce = 'Baethon\\Phln\\reduce';
+
+/**
+ * @param array<mixed> $list
+ * @param callable(mixed, mixed):mixed $reducer
+ * @param mixed $initialValue
+ * @return mixed
+ */
+function reduce (array $list, callable $reducer, $initialValue = null) {
     return array_reduce($list, $reducer, $initialValue);
-});
+};

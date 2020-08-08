@@ -2,8 +2,20 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('equals', function ($a, $b): bool {
-    return $a === $b;
-});
+const equals = 'Baethon\\Phln\\equals';
+
+/**
+ * Check if given values are equal.
+ *
+ * Uses strict comparision.
+ *
+ * @template T
+ * @param T $left
+ * @param T $right
+ * @return bool
+ */
+function equals ($left, $right): bool {
+    return $left === $right;
+}
