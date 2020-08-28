@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class PartitionTest extends \PHPUnit\Framework\TestCase
 {
@@ -17,6 +17,6 @@ class PartitionTest extends \PHPUnit\Framework\TestCase
             ['abc', 'jon', 'snow'],
         ];
 
-        $this->assertEquals($expected, P::partition($p, $collection));
+        $this->assertEquals($expected, p\partition($collection, $p));
     }
 }

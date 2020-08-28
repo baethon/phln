@@ -2,24 +2,27 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const last = 'Baethon\\Phln\\last';
 
-load_macro('logic', 'isEmpty');
+/**
+ * @param mixed $collection
+ * @return mixed
+ * @throws \InvalidArgumentException
+ */
+function last ($collection) {
+    if (is_array($collection)) {
+        /** @var array<mixed> $collection */
+        return ($collection === [])
+            ? null
+            : array_slice($collection, -1, 1)[0];
+    }
 
-P::macro('last', call_user_func(function () {
-    $lastElement = P::slice(-1, 1);
-    $lastOfArray = P::pipe(
-        $lastElement,
-        P::ifElse(P::isEmpty(), P::always(null), '\\current')
-    );
+    if (is_stringable($collection)) {
+        /** @var string $collection */
+        return substr($collection, -1, 1);
+    }
 
-    return P::unary(
-        P::typeCond([
-            ['array', $lastOfArray],
-            ['string', $lastElement],
-            [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-        ])
-    );
-}));
+    throw new \InvalidArgumentException('Unsupported collection type');
+}

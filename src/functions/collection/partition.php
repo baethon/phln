@@ -2,25 +2,27 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('partition', function (callable $predicate, array $collection): array {
-    return P::apply(
-        P::pipe(
-            P::reduce(
-                function ($carry, $item) use ($predicate) {
-                    $key = $predicate($item)
-                        ? 'left'
-                        : 'right';
+const partition = 'Baethon\\Phln\\partition';
 
-                    return array_merge($carry, [
-                        $key => P::append($item, $carry[$key]),
-                    ]);
-                },
-                ['left' => [], 'right' => []]
-            ),
-            P::values()
-        ),
-        [$collection]
-    );
-});
+/**
+ * @param array<mixed> $collection
+ * @param callable(mixed):bool $predicate
+ * @return array{array<mixed>, array<mixed>}
+ */
+function partition (array $collection, callable $predicate): array
+{
+    return pipe_first($collection, [
+        _(reduce, function ($carry, $item) use ($predicate) {
+            $key = $predicate($item)
+                ? 'left'
+                : 'right';
+
+            return array_merge($carry, [
+                $key => append($carry[$key], $item),
+            ]);
+        }, ['left' => [], 'right' => []]),
+        values
+    ]);
+};

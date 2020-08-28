@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 use Baethon\Phln\Monad\Identity;
 
 class MapTest extends \PHPUnit\Framework\TestCase
@@ -11,7 +11,7 @@ class MapTest extends \PHPUnit\Framework\TestCase
             return $i * 100;
         };
 
-        $this->assertEquals([100, 200], P::map($fn, [1, 2]));
+        $this->assertEquals([100, 200], p\map([1, 2], $fn));
     }
 
     public function test_it_passes_only_value()
@@ -20,7 +20,7 @@ class MapTest extends \PHPUnit\Framework\TestCase
             return compact('a', 'b');
         };
 
-        $this->assertEquals([['a' => 1, 'b' => null]], P::map($fn, [1]));
+        $this->assertEquals([['a' => 1, 'b' => null]], p\map([1], $fn));
     }
 
     public function test_it_works_with_functors()
@@ -33,6 +33,6 @@ class MapTest extends \PHPUnit\Framework\TestCase
 
         $expected = $a->map($fn);
 
-        $this->assertEquals($expected, P::map($fn, $a));
+        $this->assertEquals($expected, p\map($a, $fn));
     }
 }

@@ -15,7 +15,7 @@ namespace Baethon\Phln;
  * @throws \Exception
  * @internal
  */
-function assert_object($value)
+function assert_object($value): void
 {
     $type = gettype($value);
 
@@ -23,20 +23,4 @@ function assert_object($value)
         is_object($value) || is_array($value),
         "[{$type}] is not a valid object"
     );
-}
-
-/**
- * @param string $ns
- * @param string|string[] $name
- * @return void
- */
-function load_macro(string $ns, $name): void
-{
-    $names = is_array($name)
-        ? $name
-        : [$name];
-
-    foreach ($names as $filename) {
-        require_once(__DIR__ . "/macros/{$ns}/{$filename}.php");
-    }
 }

@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('join', '\\join');
+const join = 'Baethon\\Phln\\join';
+
+/**
+ * @param array<mixed> $collection
+ * @param string $glue
+ * @return string
+ */
+function join (array $collection, string $glue): string {
+    return \join($glue, $collection);
+}

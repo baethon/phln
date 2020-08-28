@@ -2,8 +2,16 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('none', function (callable $predicate, array $list): bool {
-    return P::all(P::negate($predicate), $list);
-});
+const none = 'Baethon\\Phln\\none';
+
+/**
+ * @param array<mixed> $list
+ * @param callable(mixed):bool $predicate
+ * @return bool
+ */
+function none (array $list, callable $predicate): bool
+{
+    return all($list, negate($predicate));
+}

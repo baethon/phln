@@ -2,18 +2,23 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const collapse = 'Baethon\\Phln\\collapse';
 
-load_macro('collection', 'append');
-load_macro('collection', 'reduce');
-
-P::macro('collapse', P::reduce(
-    function ($carry, $item) {
-        return is_array($item)
-            ? array_merge($carry, $item)
-            : P::append($item, $carry);
-    },
-    []
-));
+/**
+ * @param array<mixed> $collection
+ * @return array<mixed>
+ */
+function collapse (array $collection): array
+{
+    return reduce(
+        $collection,
+        function ($carry, $item) {
+            return is_array($item)
+                ? array_merge($carry, $item)
+                : append($carry, $item);
+        },
+        []
+    );
+}

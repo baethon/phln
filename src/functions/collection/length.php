@@ -2,13 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('length', P::cond([
-    ['\\is_countable', '\\count'],
-    [P::is('string'), '\\mb_strlen'],
-    [P::otherwise(), P::throwException(
-        \InvalidArgumentException::class,
-        ['Unable to return length of given collection']
-    )],
-]));
+const length = 'Baethon\\Phln\\length';
+
+/**
+ * @param \Countable|array<mixed>|string $collection
+ * @return int
+ */
+function length ($collection): int
+{
+    assert(is_countable($collection) or is_string($collection));
+
+    return is_countable($collection)
+        ? count($collection)
+        : mb_strlen($collection);
+}

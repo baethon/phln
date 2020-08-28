@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class FlatMapTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,6 +10,6 @@ class FlatMapTest extends \PHPUnit\Framework\TestCase
             return [$i, $i];
         };
 
-        $this->assertEquals([1, 1, 2, 2], P::flatMap($duplicate, [1, 2]));
+        $this->assertEquals([1, 1, 2, 2], p\flat_map([1, 2], $duplicate));
     }
 }

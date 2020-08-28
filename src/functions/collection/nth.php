@@ -2,10 +2,17 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('nth', function (int $n, array $list) {
+const nth = 'Baethon\\Phln\\nth';
+
+/**
+ * @param array<mixed> $list
+ * @param int $n
+ * @return mixed
+ */
+function nth (array $list, int $n)
+{
     $index = $n < 0 ? count($list) + $n : $n;
-
     return isset($list[$index]) ? $list[$index] : null;
-});
+};

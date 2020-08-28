@@ -2,12 +2,16 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const values = 'Baethon\\Phln\\values';
 
-P::macro('values', function ($object): array {
+/**
+ * @param array<mixed>|object $object
+ * @return array<mixed>
+ */
+function values ($object): array
+{
     assert_object($object);
-
     return array_values((array) $object);
-});
+};

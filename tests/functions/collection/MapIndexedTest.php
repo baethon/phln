@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class MapIndexedTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,6 +11,6 @@ class MapIndexedTest extends \PHPUnit\Framework\TestCase
         };
 
         $expected = [['i' => 1, 'k' => 0]];
-        $this->assertEquals($expected, P::mapIndexed($fn, [1]));
+        $this->assertEquals($expected, p\map_indexed([1], $fn));
     }
 }

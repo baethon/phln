@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/functions/assert/assert_object.php';
+
 require_once __DIR__.'/functions/fn/iife.php';
 require_once __DIR__.'/functions/fn/t.php';
 require_once __DIR__.'/functions/fn/f.php';
@@ -7,6 +9,7 @@ require_once __DIR__.'/functions/fn/always.php';
 require_once __DIR__.'/functions/fn/apply.php';
 require_once __DIR__.'/functions/fn/compose.php';
 require_once __DIR__.'/functions/fn/pipe.php';
+require_once __DIR__.'/functions/fn/pipe_first.php';
 require_once __DIR__.'/functions/fn/identity.php';
 require_once __DIR__.'/functions/fn/swap.php';
 require_once __DIR__.'/functions/fn/tap.php';
@@ -33,26 +36,25 @@ require_once __DIR__.'/functions/collection/filter.php';
 require_once __DIR__.'/functions/collection/find.php';
 require_once __DIR__.'/functions/collection/from_pairs.php';
 require_once __DIR__.'/functions/collection/reduce.php';
+require_once __DIR__.'/functions/collection/group_by.php';
+require_once __DIR__.'/functions/collection/head.php';
+require_once __DIR__.'/functions/collection/init.php';
+require_once __DIR__.'/functions/collection/join.php';
+require_once __DIR__.'/functions/collection/last.php';
+require_once __DIR__.'/functions/collection/collapse.php';
+require_once __DIR__.'/functions/collection/flat_map.php';
+require_once __DIR__.'/functions/collection/map.php';
+require_once __DIR__.'/functions/collection/length.php';
+require_once __DIR__.'/functions/collection/map_indexed.php';
+require_once __DIR__.'/functions/collection/none.php';
+require_once __DIR__.'/functions/collection/nth.php';
+require_once __DIR__.'/functions/collection/partition.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
+require_once __DIR__.'/functions/object/values.php';
 
-/* use function Baethon\Phln\load_macro; */
-
-/* load_macro('collection', 'collapse'); */
-/* load_macro('collection', 'flatMap'); */
-/* load_macro('collection', 'groupBy'); */
-/* load_macro('collection', 'head'); */
-/* load_macro('collection', 'init'); */
-/* load_macro('collection', 'join'); */
-/* load_macro('collection', 'last'); */
-/* load_macro('collection', 'length'); */
 /* load_macro('collection', 'lensIndex'); */
-/* load_macro('collection', 'map'); */
-/* load_macro('collection', 'mapIndexed'); */
-/* load_macro('collection', 'none'); */
-/* load_macro('collection', 'nth'); */
-/* load_macro('collection', 'partition'); */
 /* load_macro('collection', 'pluck'); */
 /* load_macro('collection', 'prepend'); */
 /* load_macro('collection', 'range'); */
@@ -103,7 +105,6 @@ require_once __DIR__.'/functions/relation/equals.php';
 /* load_macro('object', 'props'); */
 /* load_macro('object', 'set'); */
 /* load_macro('object', 'toPairs'); */
-/* load_macro('object', 'values'); */
 /* load_macro('object', 'view'); */
 /* load_macro('object', 'where'); */
 /* load_macro('object', 'whereEq'); */

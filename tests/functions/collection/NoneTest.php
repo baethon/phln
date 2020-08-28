@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class NoneTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class NoneTest extends \PHPUnit\Framework\TestCase
             return $i > 2;
         };
 
-        $this->assertTrue(P::none($p, [1, 2]));
-        $this->assertFalse(P::none($p, [1, 2, 3]));
+        $this->assertTrue(p\none([1, 2], $p));
+        $this->assertFalse(p\none([1, 2, 3], $p));
     }
 }

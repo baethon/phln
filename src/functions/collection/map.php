@@ -2,13 +2,21 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Duck;
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('map', function (callable $fn, $collection) {
+const map = 'Baethon\\Phln\\map';
+
+/**
+ * @template T
+ * @param T $collection
+ * @param callable(mixed):mixed $fn
+ * @return T
+ */
+function map ($collection, callable $fn)
+{
     assert(is_array($collection) || Duck::isFunctor($collection));
 
     return is_array($collection)
         ? array_map($fn, $collection)
         : $collection->map($fn);
-});
+}

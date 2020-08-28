@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class ValuesTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class ValuesTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_returns_values($object)
     {
-        $this->assertEquals([1, 2, 3], P::values($object));
+        $this->assertEquals([1, 2, 3], p\values($object));
     }
 
     public function objectsProvider()

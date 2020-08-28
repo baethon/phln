@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class GroupByTest extends \PHPUnit\Framework\TestCase
 {
@@ -32,7 +32,7 @@ class GroupByTest extends \PHPUnit\Framework\TestCase
             ],
         ];
 
-        $this->assertEquals($expected, P::groupBy($this->getScoreFn(), $list));
+        $this->assertEquals($expected, p\group_by($list, $this->getScoreFn()));
     }
 
     private function getScoreFn()

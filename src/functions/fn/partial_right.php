@@ -18,3 +18,17 @@ function partial_right (callable $fn, array $args): callable {
         return $fn(...array_merge($innerArgs, $args));
     };
 }
+
+/**
+ * Shorthand for partial_right
+ *
+ * @param callable $fn
+ * @param mixed ...$args
+ * @return callable(...mixed): mixed
+ */
+function _ (callable $fn, ...$args): callable
+{
+    return function (...$innerArgs) use ($fn, $args) {
+        return $fn(...array_merge($innerArgs, $args));
+    };
+}
