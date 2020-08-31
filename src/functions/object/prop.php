@@ -2,14 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const prop = 'Baethon\\Phln\\prop';
 
-P::macro('prop', function ($key, $object) {
+/**
+ * @param array<int|string, mixed>|object $object
+ * @param string $key
+ * @return mixed
+ */
+function prop ($object, $key) {
     assert_object($object);
 
     return is_object($object)
         ? ($object->{$key} ?? null)
         : ($object[$key] ?? null);
-});
+}

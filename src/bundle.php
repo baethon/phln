@@ -49,23 +49,24 @@ require_once __DIR__.'/functions/collection/map_indexed.php';
 require_once __DIR__.'/functions/collection/none.php';
 require_once __DIR__.'/functions/collection/nth.php';
 require_once __DIR__.'/functions/collection/partition.php';
+require_once __DIR__.'/functions/collection/pluck.php';
+require_once __DIR__.'/functions/collection/prepend.php';
+require_once __DIR__.'/functions/collection/range.php';
+require_once __DIR__.'/functions/collection/reject.php';
+require_once __DIR__.'/functions/collection/reverse.php';
+require_once __DIR__.'/functions/collection/slice.php';
+require_once __DIR__.'/functions/collection/sort.php';
+require_once __DIR__.'/functions/collection/sort_by.php';
+require_once __DIR__.'/functions/collection/tail.php';
+require_once __DIR__.'/functions/collection/unique.php';
+require_once __DIR__.'/functions/collection/update.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
 require_once __DIR__.'/functions/object/values.php';
+require_once __DIR__.'/functions/object/prop.php';
 
 /* load_macro('collection', 'lensIndex'); */
-/* load_macro('collection', 'pluck'); */
-/* load_macro('collection', 'prepend'); */
-/* load_macro('collection', 'range'); */
-/* load_macro('collection', 'reject'); */
-/* load_macro('collection', 'reverse'); */
-/* load_macro('collection', 'slice'); */
-/* load_macro('collection', 'sort'); */
-/* load_macro('collection', 'sortBy'); */
-/* load_macro('collection', 'tail'); */
-/* load_macro('collection', 'unique'); */
-/* load_macro('collection', 'update'); */
 /* load_macro('logic', 'allPass'); */
 /* load_macro('logic', 'both'); */
 /* load_macro('logic', 'cond'); */
@@ -101,7 +102,6 @@ require_once __DIR__.'/functions/object/values.php';
 /* load_macro('object', 'path'); */
 /* load_macro('object', 'pathOr'); */
 /* load_macro('object', 'pick'); */
-/* load_macro('object', 'prop'); */
 /* load_macro('object', 'props'); */
 /* load_macro('object', 'set'); */
 /* load_macro('object', 'toPairs'); */
@@ -122,7 +122,6 @@ require_once __DIR__.'/functions/object/values.php';
 /* load_macro('string', 'match'); */
 /* load_macro('string', 'regexp'); */
 /* load_macro('string', 'replace'); */
-/* load_macro('string', 'split'); */
-/* load_macro('string', 'test'); */
+/* load_macro('string', 'split'); */ /* load_macro('string', 'test'); */
 /* load_macro('type', 'is'); */
 /* load_macro('type', 'typeCond'); */

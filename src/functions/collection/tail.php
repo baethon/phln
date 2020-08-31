@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('tail', function ($collection) {
-    return P::slice(1, P::length($collection), $collection);
-});
+const tail = 'Baethon\\Phln\\tail';
+
+/**
+ * @param array<mixed>|string $collection
+ * @return array<mixed>|string
+ */
+function tail ($collection) {
+    return slice($collection, 1, length($collection));
+}

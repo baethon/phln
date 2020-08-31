@@ -2,10 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('reverse', P::typeCond([
-    ['array', '\\array_reverse'],
-    ['string', '\\strrev'],
-    [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-]));
+const reverse = 'Baethon\\Phln\\reverse';
+
+function reverse($collection)
+{
+    if (is_array($collection)) {
+        return array_reverse($collection);
+    }
+
+    if (is_stringable($collection)) {
+        return strrev($collection);
+    }
+
+    throw new \InvalidArgumentException('Unsupported collection type');
+}

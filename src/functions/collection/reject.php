@@ -2,8 +2,17 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('reject', function (callable $predicate, array $list): array {
-    return P::filter(P::negate($predicate), $list);
-});
+const reject = 'Baethon\\Phln\\reject';
+
+/**
+ * @template T
+ * @param array<T> $list
+ * @param callable(T):bool $predicate
+ * @return array<T>
+ */
+function reject (array $list, callable $predicate): array
+{
+    return filter($list, negate($predicate));
+}

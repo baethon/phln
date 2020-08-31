@@ -2,20 +2,26 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('prepend', function ($value, $collection) {
-    $arrayPrepend = function (array $copy) use ($value) {
-        array_unshift($copy, $value);
-        return $copy;
-    };
+const prepend = 'Baethon\\Phln\\prepend';
 
-    return P::apply(
-        P::typeCond([
-            ['array', $arrayPrepend],
-            ['string', P::curryN(3, '\\sprintf', ['%s%s', $value])],
-            [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-        ]),
-        [$collection]
-    );
-});
+/**
+ * @template T of <string|array>
+ * @param T $collection
+ * @return T
+ * @psalm-immutable
+ */
+function prepend ($collection, $value)
+{
+    if (is_array($collection)) {
+        array_unshift($collection, $value);
+        return $collection;
+    }
+
+    if (is_stringable($collection)) {
+        return "{$value}{$collection}";
+    }
+
+    throw new \InvalidArgumentException('Unsupported collection type');
+}

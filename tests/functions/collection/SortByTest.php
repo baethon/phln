@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class SortByTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,6 +13,6 @@ class SortByTest extends \PHPUnit\Framework\TestCase
             return strtolower($item['name']);
         };
 
-        $this->assertEquals([$alice, $bob, $clara], P::sortBy($f, [$clara, $bob, $alice]));
+        $this->assertEquals([$alice, $bob, $clara], p\sort_by([$clara, $bob, $alice], $f));
     }
 }

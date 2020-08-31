@@ -2,9 +2,18 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('sort', function (callable $comparator, array $list): array {
+const sort = 'Baethon\\Phln\\sort';
+
+/**
+ * @param array<mixed> $list
+ * @param callable(mixed, mixed): int $comparator
+ * @return array<mixed>
+ * @psalm-pure
+ */
+function sort (array $list, callable $comparator): array
+{
     usort($list, $comparator);
     return $list;
-});
+}

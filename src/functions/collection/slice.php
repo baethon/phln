@@ -2,15 +2,26 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('slice', function (int $offset, int $length, $collection) {
-    return P::apply(
-        P::typeCond([
-            ['array', P::partialRight('\\array_slice', [$offset, $length])],
-            ['string', P::partialRight('\\substr', [$offset, $length])],
-            [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-        ]),
-        [$collection]
-    );
-});
+const slice = 'Baethon\\Phln\\slice';
+
+/**
+ * @param array<mixed>|string $collection
+ * @param int $offset
+ * @param int $length
+ * @return array<mixed>|string
+ * @throws \InvalidArgumentException
+ */
+function slice ($collection, int $offset, int $length)
+{
+    if (is_array($collection)) {
+        return array_slice($collection, $offset, $length);
+    }
+
+    if (is_stringable($collection)) {
+        return substr($collection, $offset, $length) ?: '';
+    }
+
+    throw new \InvalidArgumentException('Unsupported collection type');
+}

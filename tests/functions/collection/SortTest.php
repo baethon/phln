@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class SortTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,7 +10,7 @@ class SortTest extends \PHPUnit\Framework\TestCase
             return $a - $b;
         };
 
-        $this->assertEquals([1, 2, 3], P::sort($f, [3, 1, 2]));
+        $this->assertEquals([1, 2, 3], p\sort([3, 1, 2], $f));
     }
 
     public function test_it_sorts_descending()
@@ -19,7 +19,7 @@ class SortTest extends \PHPUnit\Framework\TestCase
             return $b - $a;
         };
 
-        $this->assertEquals([3, 2, 1], P::sort($f, [1, 2, 3]));
+        $this->assertEquals([3, 2, 1], p\sort([1, 2, 3], $f));
     }
 
     public function test_it_doesnt_sort()
@@ -28,7 +28,7 @@ class SortTest extends \PHPUnit\Framework\TestCase
             return 0;
         };
 
-        $this->assertEquals([3, 1, 2], P::sort($f, [3, 1, 2]));
+        $this->assertEquals([3, 1, 2], p\sort([3, 1, 2], $f));
     }
 
     public function test_it_returns_array_copy()
@@ -38,7 +38,7 @@ class SortTest extends \PHPUnit\Framework\TestCase
         };
 
         $list = [3, 1, 2];
-        P::sort($f, $list);
+        p\sort($list, $f);
 
         $this->assertEquals([3, 1, 2], $list);
     }

@@ -2,10 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('update', function (int $index, $value, array $collection): array {
+const update = 'Baethon\\Phln\\update';
 
+/**
+ * @param array<mixed> $collection
+ * @param int $index
+ * @param mixed $value
+ * @return array<mixed>
+ * @psalm-pure
+ */
+function update (array $collection, int $index, $value): array
+{
     if (false === array_key_exists($index, $collection)) {
         return $collection;
     }
@@ -13,4 +22,4 @@ P::macro('update', function (int $index, $value, array $collection): array {
     $collection[$index] = $value;
 
     return $collection;
-});
+}
