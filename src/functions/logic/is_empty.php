@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('isEmpty', function ($value): bool {
+const is_empty = 'Baethon\\Phln\\is_empty';
+
+/**
+ * @param mixed $value
+ * @return bool
+ */
+function is_empty ($value): bool {
     switch (gettype($value)) {
         case 'array':
             return [] === $value;
@@ -15,4 +21,4 @@ P::macro('isEmpty', function ($value): bool {
         default:
             return false;
     }
-});
+};

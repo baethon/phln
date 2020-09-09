@@ -1,11 +1,11 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class DecTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_decrements_value()
     {
-        $this->assertEquals(1, P::dec(2));
+        $this->assertEquals(1, p\dec(2));
     }
 }

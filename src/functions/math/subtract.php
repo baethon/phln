@@ -2,8 +2,15 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('subtract', function ($a, $b) {
-    return $a - $b;
-});
+const subtract = 'Baethon\\Phln\\subtract';
+
+/**
+ * @param numeric $left
+ * @param numeric $right
+ * @return numeric
+ */
+function subtract ($left, $right) {
+    return $left - $right;
+}

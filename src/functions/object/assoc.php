@@ -2,19 +2,35 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const assoc = 'Baethon\\Phln\\assoc';
 
-P::macro('assoc', function (string $key, $value, $object) {
+/**
+ * @template T of object|array<string, mixed>
+ * @param T $object
+ * @param string $key
+ * @param mixed $value
+ * @return T
+ * @psalm-immutable
+ * @psalm-return (
+ *      T is object
+ *      ? object
+ *      : array<string, mixed>
+ * )
+ */
+function assoc ($object, string $key, $value) {
     assert_object($object);
 
     if (is_object($object)) {
+        /** @var object $object */
         $copy = clone $object;
         $copy->{$key} = $value;
 
         return $copy;
     }
 
-    return array_merge($object, [$key => $value]);
-});
+    $object[$key] = $value;
+
+    return $object;
+}

@@ -2,8 +2,18 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('add', function ($a, $b) {
-    return $a + $b;
-});
+const add = 'Baethon\\Phln\\add';
+
+/**
+ * @param int|float $left
+ * @param int|float $right
+ * @return int|float
+ */
+function add($left, $right) {
+    assert(is_numeric($left));
+    assert(is_numeric($right));
+
+    return $left + $right;
+}

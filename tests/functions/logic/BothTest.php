@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class BothTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,13 +13,13 @@ class BothTest extends \PHPUnit\Framework\TestCase
             return $i < 20;
         };
 
-        $this->assertTrue(P::both($p, $p2)(11));
-        $this->assertFalse(P::both($p, $p2)(10));
+        $this->assertTrue(p\both($p, $p2)(11));
+        $this->assertFalse(p\both($p, $p2)(10));
     }
 
     public function test_it_supports_primitives()
     {
-        $this->assertTrue(P::both(true, true));
-        $this->assertFalse(P::both(true, false));
+        $this->assertTrue(p\both(true, true));
+        $this->assertFalse(p\both(true, false));
     }
 }

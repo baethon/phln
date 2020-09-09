@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class NotTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,7 +11,7 @@ class NotTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_negates_passed_value($value, $expected)
     {
-        $this->assertEquals($expected, P::not($value));
+        $this->assertEquals($expected, p\not($value));
     }
 
     public function notValueProvider()

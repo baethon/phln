@@ -2,8 +2,15 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('multiply', function ($a, $b) {
-    return $a * $b;
-});
+const multiply = 'Baethon\\Phln\\multiply';
+
+/**
+ * @param numeric $left
+ * @param numeric $right
+ * @return numeric
+ */
+function multiply ($left, $right) {
+    return $left * $right;
+}

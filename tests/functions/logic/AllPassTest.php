@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class AllPassTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,18 +13,9 @@ class AllPassTest extends \PHPUnit\Framework\TestCase
             return $item['suit'] === '♠︎';
         };
 
-        $aceOfSpades = P::allPass([$ace, $spades]);
+        $aceOfSpades = p\_(p\all_pass, [$ace, $spades]);
 
         $this->assertTrue($aceOfSpades(['rank' => 'A', 'suit' => '♠︎']));
         $this->assertFalse($aceOfSpades(['rank' => 'Q', 'suit' => '♠︎']));
-    }
-
-    public function test_it_curries_to_highest_arity()
-    {
-        $p = P::allPass([P::lte(), P::equals(1)]);
-
-        $this->assertTrue(is_callable($p(1)));
-        $this->assertTrue($p(1)(2));
-        $this->assertTrue($p(1, 2));
     }
 }

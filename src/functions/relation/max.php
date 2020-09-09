@@ -2,10 +2,16 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const max = 'Baethon\\Phln\\max';
 
-load_macro('fn', 'binary');
-
-P::macro('max', P::binary('\\max'));
+/**
+ * @template T
+ * @param T $left
+ * @param T $right
+ * @return T
+ */
+function max($left, $right) {
+    return \max($left, $right);
+}

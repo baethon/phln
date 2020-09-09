@@ -60,33 +60,32 @@ require_once __DIR__.'/functions/collection/sort_by.php';
 require_once __DIR__.'/functions/collection/tail.php';
 require_once __DIR__.'/functions/collection/unique.php';
 require_once __DIR__.'/functions/collection/update.php';
+require_once __DIR__.'/functions/logic/all_pass.php';
+require_once __DIR__.'/functions/logic/both.php';
+//require_once __DIR__.'/functions/logic/cond.php';
+require_once __DIR__.'/functions/logic/default_to.php';
+require_once __DIR__.'/functions/logic/either.php';
+require_once __DIR__.'/functions/logic/if_else.php';
+require_once __DIR__.'/functions/logic/is_empty.php';
+require_once __DIR__.'/functions/logic/not.php';
+require_once __DIR__.'/functions/math/add.php';
+require_once __DIR__.'/functions/math/dec.php';
+require_once __DIR__.'/functions/math/divide.php';
+require_once __DIR__.'/functions/math/inc.php';
+require_once __DIR__.'/functions/math/mean.php';
+require_once __DIR__.'/functions/math/median.php';
+require_once __DIR__.'/functions/math/modulo.php';
+require_once __DIR__.'/functions/math/multiply.php';
+require_once __DIR__.'/functions/math/subtract.php';
+require_once __DIR__.'/functions/object/values.php';
+require_once __DIR__.'/functions/object/prop.php';
+require_once __DIR__.'/functions/object/assoc.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
-require_once __DIR__.'/functions/object/values.php';
-require_once __DIR__.'/functions/object/prop.php';
+require_once __DIR__.'/functions/relation/max.php';
 
 /* load_macro('collection', 'lensIndex'); */
-/* load_macro('logic', 'allPass'); */
-/* load_macro('logic', 'both'); */
-/* load_macro('logic', 'cond'); */
-/* load_macro('logic', 'defaultTo'); */
-/* load_macro('logic', 'either'); */
-/* load_macro('logic', 'ifElse'); */
-/* load_macro('logic', 'isEmpty'); */
-/* load_macro('logic', 'not'); */
-/* load_macro('math', 'add'); */
-/* load_macro('math', 'dec'); */
-/* load_macro('math', 'divide'); */
-/* load_macro('math', 'inc'); */
-/* load_macro('math', 'mean'); */
-/* load_macro('math', 'median'); */
-/* load_macro('math', 'modulo'); */
-/* load_macro('math', 'multiply'); */
-/* load_macro('math', 'product'); */
-/* load_macro('math', 'subtract'); */
-/* load_macro('math', 'sum'); */
-/* load_macro('object', 'assoc'); */
 /* load_macro('object', 'assocPath'); */
 /* load_macro('object', 'eqProps'); */
 /* load_macro('object', 'has'); */
@@ -115,7 +114,6 @@ require_once __DIR__.'/functions/object/prop.php';
 /* load_macro('relation', 'intersection'); */
 /* load_macro('relation', 'lt'); */
 /* load_macro('relation', 'lte'); */
-/* load_macro('relation', 'max'); */
 /* load_macro('relation', 'min'); */
 /* load_macro('relation', 'pathEq'); */
 /* load_macro('relation', 'propEq'); */

@@ -1,12 +1,12 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class IfElseTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_runs_callback_on_met_condition()
     {
-        $f = P::ifElse(
+        $f = p\if_else(
             function ($a, $b) {
                 return $a + $b === 6;
             },

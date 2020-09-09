@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('not', function ($value): bool {
+const not = 'Baethon\\Phln\\not';
+
+/**
+ * @param mixed $value
+ * @return bool
+ */
+function not($value): bool {
     return !$value;
-});
+}

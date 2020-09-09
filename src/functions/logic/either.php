@@ -2,33 +2,28 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const either = 'Baethon\\Phln\\either';
 
-load_macro('type', 'is');
-
-P::macro('either', call_user_func(function () {
-    $allPrimitives = P::unapply(P::all(P::is('bool')));
-    $allCallables = P::unapply(P::all(P::is('callable')));
-
-    $compareBooleans = function ($left, $right) {
-        return $left || $right;
-    };
-
-    $eitherPredicate = function ($left, $right) {
-        return function (...$args) use ($left, $right) {
-            return $left(...$args) || $right(...$args);
+/**
+ * @template T of callable|mixed
+ * @param T $left
+ * @param T $right
+ * @return mixed
+ * @psalm-return (
+ *      T is callable
+ *      ? callable(mixed): bool
+ *      : bool
+ * )
+ */
+function either ($left, $right)
+{
+    if (is_callable($left) && is_callable($right)) {
+        return function ($value) use ($left, $right) {
+            return $left($value) || $right($value);
         };
-    };
+    }
 
-    $either = P::cond([
-        [$allPrimitives, $compareBooleans],
-        [$allCallables, $eitherPredicate],
-        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-    ]);
-
-    return function ($left, $right) use ($either) {
-        return $either($left, $right);
-    };
-}));
+    return $left || $right;
+}

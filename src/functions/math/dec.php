@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('dec', function ($number) {
+const dec = 'Baethon\\Phln\\dec';
+
+/**
+ * @param int|float $number
+ * @return int|float
+ */
+function dec ($number) {
     return $number - 1;
-});
+}

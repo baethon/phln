@@ -2,34 +2,28 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const both = 'Baethon\\Phln\\both';
 
-load_macro('type', 'is');
-load_macro('logic', 'cond');
-
-P::macro('both', call_user_func(function () {
-    $allPrimitives = P::unapply(P::all(P::is('bool')));
-    $allCallables = P::unapply(P::all(P::is('callable')));
-
-    $bothPredicate = function ($left, $right) {
-        return function (...$args) use ($left, $right) {
-            return $left(...$args) && $right(...$args);
+/**
+ * @template T of callable|mixed
+ * @param T $left
+ * @param T $right
+ * @return mixed
+ * @psalm-return (
+ *      T is callable
+ *      ? callable(mixed): bool
+ *      : bool
+ * )
+ */
+function both ($left, $right)
+{
+    if (is_callable($left) && is_callable($right)) {
+        return static function ($value) use ($left, $right): bool {
+            return $left($value) && $right($value);
         };
-    };
+    }
 
-    $compareBooleans = function ($left, $right) {
-        return $left && $right;
-    };
-
-    $both = P::cond([
-        [$allPrimitives, $compareBooleans],
-        [$allCallables, $bothPredicate],
-        [P::otherwise(), P::throwException(\InvalidArgumentException::class, [])],
-    ]);
-
-    return function ($left, $right) use ($both) {
-        return $both($left, $right);
-    };
-}));
+    return $left && $right;
+}

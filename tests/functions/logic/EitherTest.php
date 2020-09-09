@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class EitherTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,7 +13,7 @@ class EitherTest extends \PHPUnit\Framework\TestCase
             return 0 === $i % 2;
         };
 
-        $f = P::either($p, $p2);
+        $f = p\either($p, $p2);
 
         $this->assertTrue($f(11));
         $this->assertTrue($f(2));
@@ -23,8 +23,8 @@ class EitherTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_supports_primitives()
     {
-        $this->assertTrue(P::either(true, true));
-        $this->assertTrue(P::either(true, false));
-        $this->assertFalse(P::either(false, false));
+        $this->assertTrue(p\either(true, true));
+        $this->assertTrue(p\either(true, false));
+        $this->assertFalse(p\either(false, false));
     }
 }

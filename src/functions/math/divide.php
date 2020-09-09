@@ -2,8 +2,15 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('divide', function ($a, $b) {
-    return $a / $b;
-});
+const divide = 'Baethon\\Phln\\divide';
+
+/**
+ * @param int|float $dividend
+ * @param int|float $divisor
+ * @return float
+ */
+function divide($dividend, $divisor): float {
+    return $dividend / $divisor;
+}

@@ -1,15 +1,15 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class CondTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_fn_which_encapsulates_if_else_logic()
     {
-        $f = P::cond([
-            [P::equals('foo'), P::always('bar')],
-            [P::is('bool'), P::identity()],
-            [P::T(), P::always('none')],
+        $f = p\cond([
+            [p\equals('foo'), p\always('bar')],
+            [p\is('bool'), p\identity()],
+            [p\T(), p\always('none')],
         ]);
 
         $this->assertEquals('bar', $f('foo'));
@@ -19,8 +19,8 @@ class CondTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_returns_null_when_no_match()
     {
-        $f = P::cond([
-            [P::F(), P::always('foo')],
+        $f = p\cond([
+            [p\F(), p\always('foo')],
         ]);
 
         $this->assertNull($f('bar'));
