@@ -2,14 +2,10 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const has = 'Baethon\\Phln\\has';
 
-P::macro('has', function (string $prop, $object) {
-    assert_object($object);
-
-    return is_object($object)
-        ? property_exists($object, $prop)
-        : array_key_exists($prop, $object);
-});
+function has ($object, string $prop): bool {
+    return ObjectWrapper::of($object)->has($prop);
+}

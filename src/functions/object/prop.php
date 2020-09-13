@@ -12,9 +12,5 @@ const prop = 'Baethon\\Phln\\prop';
  * @return mixed
  */
 function prop ($object, $key) {
-    assert_object($object);
-
-    return is_object($object)
-        ? ($object->{$key} ?? null)
-        : ($object[$key] ?? null);
+    return ObjectWrapper::of($object)[$key];
 }

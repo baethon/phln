@@ -12,6 +12,6 @@ const values = 'Baethon\\Phln\\values';
  */
 function values ($object): array
 {
-    assert_object($object);
-    return array_values((array) $object);
+    return ObjectWrapper::of($object)
+        ->values();
 };

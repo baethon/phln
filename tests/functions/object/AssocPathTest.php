@@ -1,6 +1,7 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
+use Baethon\Phln\ObjectWrapper;
 
 class AssocPathTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,10 +10,8 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_sets_value($path, $value, $object, $expected)
     {
-        $result = P::assocPath($path, $value, $object);
-
-        $this->assertEquals($expected, $result);
-        $this->assertNotSame($object, $result);
+        $result = p\assoc_path($object, $path, $value)->toArray();
+        $this->assertEquals(ObjectWrapper::of($expected)->toArray(), $result);
     }
 
     public function objectsProvider()
@@ -25,12 +24,6 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
                 ['a' => ['b' => ['c' => 3, 'd' => 4]]],
             ],
             [
-                'a.b.c',
-                3,
-                ['a' => ['b' => (object)['d' => 4]]],
-                ['a' => ['b' => (object)['c' => 3, 'd' => 4]]],
-            ],
-            [
                 'a',
                 1,
                 ['a' => 0],
@@ -40,7 +33,7 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
                 'a',
                 1,
                 (object)['a' => 0],
-                (object)['a' => 1],
+                ['a' => 1],
             ],
             [
                 'a.b.c',
@@ -52,19 +45,13 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
                 'a.b.c',
                 1,
                 new stdClass,
-                (object)['a' => ['b' => ['c' => 1]]],
+                ['a' => ['b' => ['c' => 1]]],
             ],
             [
                 'a.b.c',
                 3,
                 ['a' => []],
                 ['a' => ['b' => ['c' => 3]]],
-            ],
-            [
-                'a.b.c',
-                3,
-                ['a' => new stdClass],
-                ['a' => (object)['b' => ['c' => 3]]],
             ],
         ];
     }

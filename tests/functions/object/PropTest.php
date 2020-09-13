@@ -4,25 +4,19 @@ use Baethon\Phln as p;
 
 class PropTest extends \PHPUnit\Framework\TestCase
 {
-    public function test_it_returns_value_by_index()
-    {
-        $this->assertEquals(1, p\prop([0, 1], 1));
-    }
-
     /**
      * @dataProvider objectsProvider
      */
-    public function test_it_returns_value_by_key($value)
+    public function test_it_returns_defined_props($object)
     {
-        $this->assertEquals(1, p\prop($value, 'a'));
-        $this->assertNull(p\prop($value, 'b'));
+        $this->assertEquals(2, p\prop($object, 'b'));
     }
 
     public function objectsProvider()
     {
         return [
-            [['a' => 1]],
-            [(object) ['a' => 1]],
+            [['a' => 1, 'b' => 2, 'c' => 3]],
+            [(object) ['a' => 1, 'b' => 2, 'c' => 3]],
         ];
     }
 }

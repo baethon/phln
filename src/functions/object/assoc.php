@@ -11,26 +11,9 @@ const assoc = 'Baethon\\Phln\\assoc';
  * @param T $object
  * @param string $key
  * @param mixed $value
- * @return T
- * @psalm-immutable
- * @psalm-return (
- *      T is object
- *      ? object
- *      : array<string, mixed>
- * )
+ * @return ObjectWrapper
  */
-function assoc ($object, string $key, $value) {
-    assert_object($object);
-
-    if (is_object($object)) {
-        /** @var object $object */
-        $copy = clone $object;
-        $copy->{$key} = $value;
-
-        return $copy;
-    }
-
-    $object[$key] = $value;
-
-    return $object;
+function assoc ($object, string $key, $value): ObjectWrapper {
+    return ObjectWrapper::of($object)
+        ->assoc($key, $value);
 }

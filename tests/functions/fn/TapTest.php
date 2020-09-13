@@ -12,7 +12,7 @@ class TapTest extends \PHPUnit\Framework\TestCase
             return true;
         };
 
-        $this->assertEquals('foo', p\tap($fn, 'foo'));
+        $this->assertEquals('foo', p\tap('foo', $fn));
         $this->assertEquals('foo', $argument);
     }
 }

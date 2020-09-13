@@ -80,15 +80,15 @@ require_once __DIR__.'/functions/math/subtract.php';
 require_once __DIR__.'/functions/object/values.php';
 require_once __DIR__.'/functions/object/prop.php';
 require_once __DIR__.'/functions/object/assoc.php';
+require_once __DIR__.'/functions/object/assoc_path.php';
+require_once __DIR__.'/functions/object/has.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
 require_once __DIR__.'/functions/relation/max.php';
 
 /* load_macro('collection', 'lensIndex'); */
-/* load_macro('object', 'assocPath'); */
 /* load_macro('object', 'eqProps'); */
-/* load_macro('object', 'has'); */
 /* load_macro('object', 'hasMethod'); */
 /* load_macro('object', 'keys'); */
 /* load_macro('object', 'lens'); */

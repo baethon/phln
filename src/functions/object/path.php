@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Baethon\Phln\Phln as P;
 
+// @TODO add $default value
+
 P::macro('path', function (string $path, $object) {
     $keys = P::split('.', $path);
 
