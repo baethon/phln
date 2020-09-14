@@ -2,12 +2,17 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const omit = 'Baethon\\Phln\\omit';
 
-P::macro('omit', function (array $omitKeys, $object): array {
+/**
+ * @param object|array<string, mixed> $object
+ * @param array<string> $omitKeys
+ * @return array<string, mixed>
+ */
+function omit ($object, array $omitKeys): array
+{
     assert_object($object);
-
     return array_diff_key((array) $object, array_combine($omitKeys, $omitKeys) ?: []);
-});
+}

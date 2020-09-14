@@ -36,6 +36,7 @@ require_once __DIR__.'/functions/collection/filter.php';
 require_once __DIR__.'/functions/collection/find.php';
 require_once __DIR__.'/functions/collection/from_pairs.php';
 require_once __DIR__.'/functions/collection/reduce.php';
+require_once __DIR__.'/functions/collection/reduce_while.php';
 require_once __DIR__.'/functions/collection/group_by.php';
 require_once __DIR__.'/functions/collection/head.php';
 require_once __DIR__.'/functions/collection/init.php';
@@ -82,23 +83,20 @@ require_once __DIR__.'/functions/object/prop.php';
 require_once __DIR__.'/functions/object/assoc.php';
 require_once __DIR__.'/functions/object/assoc_path.php';
 require_once __DIR__.'/functions/object/has.php';
+require_once __DIR__.'/functions/object/keys.php';
+require_once __DIR__.'/functions/object/merge.php';
+require_once __DIR__.'/functions/object/omit.php';
+require_once __DIR__.'/functions/object/path.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
 require_once __DIR__.'/functions/relation/max.php';
 
 /* load_macro('collection', 'lensIndex'); */
-/* load_macro('object', 'eqProps'); */
-/* load_macro('object', 'hasMethod'); */
-/* load_macro('object', 'keys'); */
 /* load_macro('object', 'lens'); */
 /* load_macro('object', 'lensPath'); */
 /* load_macro('object', 'lensProp'); */
-/* load_macro('object', 'merge'); */
-/* load_macro('object', 'objOf'); */
-/* load_macro('object', 'omit'); */
 /* load_macro('object', 'over'); */
-/* load_macro('object', 'path'); */
 /* load_macro('object', 'pathOr'); */
 /* load_macro('object', 'pick'); */
 /* load_macro('object', 'props'); */

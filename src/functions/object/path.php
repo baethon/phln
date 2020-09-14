@@ -2,22 +2,25 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-// @TODO add $default value
+const path = 'Baethon\\Phln\\path';
 
-P::macro('path', function (string $path, $object) {
-    $keys = P::split('.', $path);
-
-    return P::reduce(
-        function ($carry, $key) {
-            if (false === is_array($carry) && false === is_object($carry)) {
-                return null;
+function path ($object, string $path, $default = null)
+{
+    return reduce_while(
+        explode('.', $path),
+        function ($carry, $key) use ($default) {
+            if (! ObjectWrapper::isObject($carry)) {
+                return ['halt', $default];
             }
 
-            return P::prop($key, $carry);
+            if ($prop = prop($carry, $key)) {
+                return ['cont', $prop];
+            }
+
+            return ['halt', $default];
         },
-        P::prop(P::head($keys), $object),
-        P::tail($keys)
+        $object
     );
-});
+}

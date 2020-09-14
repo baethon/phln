@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class KeysTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class KeysTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_returns_keys_from_array($value)
     {
-        $this->assertEquals(['a', 'b'], P::keys($value));
+        $this->assertEquals(['a', 'b'], p\keys($value));
     }
 
     public function objectsProvider()

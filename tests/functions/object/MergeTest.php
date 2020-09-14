@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class MergeTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class MergeTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_merges_two_objects($left, $right)
     {
-        $this->assertEquals(['a' => 1, 'b' => 2], P::merge($left, $right));
+        $this->assertEquals(['a' => 1, 'b' => 2], p\merge($left, $right));
     }
 
     public function objectsProvider()

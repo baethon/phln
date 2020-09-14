@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class OmitTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class OmitTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_omits_given_keys($object)
     {
-        $this->assertEquals(['b' => 2], P::omit(['a', 'c'], $object));
+        $this->assertEquals(['b' => 2], p\omit($object, ['a', 'c']));
     }
 
     public function objectsProvider()

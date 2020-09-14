@@ -2,13 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const merge = 'Baethon\\Phln\\merge';
 
-P::macro('merge', function ($left, $right): array {
+/**
+ * @param object|array<string, mixed> $left
+ * @param object|array<string, mixed> $right
+ * @return array<string, mixed>
+ */
+function merge ($left, $right): array
+{
     assert_object($left);
     assert_object($right);
 
     return array_merge((array) $left, (array) $right);
-});
+}

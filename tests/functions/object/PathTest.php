@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class PathTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,8 +9,8 @@ class PathTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_retuns_value_using_dot_notation($object)
     {
-        $this->assertEquals('foo', P::path('a.b.c', $object));
-        $this->assertEquals(['c' => 'foo'], (array) P::path('a.b', $object));
+        $this->assertEquals('foo', p\path($object, 'a.b.c'));
+        $this->assertEquals(['c' => 'foo'], (array) p\path($object, 'a.b'));
     }
 
     public function objectsProvider()
@@ -26,7 +26,8 @@ class PathTest extends \PHPUnit\Framework\TestCase
     public function test_it_returns_null_for_invalid_path()
     {
         $object = ['a' => ['b' => ['c' => 1]]];
-        $this->assertNull(P::path('a.b.c.d', $object));
-        $this->assertNull(P::path('a.b.e', $object));
+        $this->assertNull(p\path($object, 'a.b.c.d'));
+        $this->assertEquals('default', p\path($object, 'a.b.c.d', 'default'));
+        $this->assertNull(p\path($object, 'a.b.e'));
     }
 }
