@@ -61,9 +61,9 @@ require_once __DIR__.'/functions/collection/sort_by.php';
 require_once __DIR__.'/functions/collection/tail.php';
 require_once __DIR__.'/functions/collection/unique.php';
 require_once __DIR__.'/functions/collection/update.php';
+require_once __DIR__.'/functions/collection/zip.php';
 require_once __DIR__.'/functions/logic/all_pass.php';
 require_once __DIR__.'/functions/logic/both.php';
-//require_once __DIR__.'/functions/logic/cond.php';
 require_once __DIR__.'/functions/logic/default_to.php';
 require_once __DIR__.'/functions/logic/either.php';
 require_once __DIR__.'/functions/logic/if_else.php';
@@ -87,6 +87,10 @@ require_once __DIR__.'/functions/object/keys.php';
 require_once __DIR__.'/functions/object/merge.php';
 require_once __DIR__.'/functions/object/omit.php';
 require_once __DIR__.'/functions/object/path.php';
+require_once __DIR__.'/functions/object/pick.php';
+require_once __DIR__.'/functions/object/props.php';
+require_once __DIR__.'/functions/object/where.php';
+require_once __DIR__.'/functions/object/to_pairs.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
@@ -97,14 +101,8 @@ require_once __DIR__.'/functions/relation/max.php';
 /* load_macro('object', 'lensPath'); */
 /* load_macro('object', 'lensProp'); */
 /* load_macro('object', 'over'); */
-/* load_macro('object', 'pathOr'); */
-/* load_macro('object', 'pick'); */
-/* load_macro('object', 'props'); */
 /* load_macro('object', 'set'); */
-/* load_macro('object', 'toPairs'); */
 /* load_macro('object', 'view'); */
-/* load_macro('object', 'where'); */
-/* load_macro('object', 'whereEq'); */
 /* load_macro('relation', 'clamp'); */
 /* load_macro('relation', 'difference'); */
 /* load_macro('relation', 'gt'); */

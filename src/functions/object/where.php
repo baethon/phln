@@ -2,20 +2,26 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\assert_object;
+const where = 'Baethon\\Phln\\where';
 
-P::macro('where', function (array $predicates, $object): bool {
-    assert_object($object);
+/**
+ * @param object|array<string, mixed> $object
+ * @param array<string, callable(mixed):bool|mixed> $predicates
+ * @return bool
+ */
+function where ($object, array $predicates): bool
+{
+    $keys = keys($predicates);
+    $object = ObjectWrapper::of($object);
 
-    $keys = P::keys($predicates);
-
-    return P::all(
+    return all(
+        $keys,
         function ($key) use ($object, $predicates) {
-            $value = P::prop($key, $object);
-            return $predicates[$key]($value);
-        },
-        $keys
+            return is_callable($p = $predicates[$key])
+                ? $p($object->prop($key))
+                : $object->prop($key) === $p;
+        }
     );
-});
+}

@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class PickTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class PickTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_picks_given_keys($object)
     {
-        $this->assertEquals(['b' => 2], P::pick(['b'], $object));
+        $this->assertEquals(['b' => 2], p\pick($object, ['b']));
     }
 
     public function objectsProvider()
@@ -22,6 +22,6 @@ class PickTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_skips_undefined_keys()
     {
-        $this->assertEquals([], P::pick(['c'], ['a' => 1]));
+        $this->assertEquals([], p\pick(['a' => 1], ['c']));
     }
 }

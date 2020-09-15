@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class WhereTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,13 +10,13 @@ class WhereTest extends \PHPUnit\Framework\TestCase
     public function test_it_validates_if_object_passes_predicates($a, $b, $c)
     {
         $predicates = [
-            'a' => P::equals('foo'),
-            'b' => P::contains('foo'),
+            'a' => p\_(p\equals, 'foo'),
+            'b' => p\_(p\contains, 'foo'),
         ];
 
-        $this->assertTrue(P::where($predicates, $a));
-        $this->assertTrue(P::where($predicates, $b));
-        $this->assertFalse(P::where($predicates, $c));
+        $this->assertTrue(p\where($a, $predicates));
+        $this->assertTrue(p\where($b, $predicates));
+        $this->assertFalse(p\where($c, $predicates));
     }
 
     public function objectsProvider()
@@ -33,5 +33,10 @@ class WhereTest extends \PHPUnit\Framework\TestCase
                 (object) ['a' => 'bar', 'b' => ['foo'], 'c' => 2]
             ],
         ];
+    }
+
+    public function test_it_supports_scalars()
+    {
+        $this->assertTrue(p\where(['foo' => 'bar', 'baz' => 'bah'], ['foo' => 'bar']));
     }
 }

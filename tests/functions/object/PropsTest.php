@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class PropsTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,7 @@ class PropsTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_returns_defined_props($object)
     {
-        $this->assertEquals([2, 3, 1], P::props(['b', 'c', 'a'], $object));
+        $this->assertEquals([2, 3, 1], p\props($object, ['b', 'c', 'a']));
     }
 
     public function objectsProvider()
@@ -23,6 +23,6 @@ class PropsTest extends \PHPUnit\Framework\TestCase
     public function test_it_return_undefined_values()
     {
         $object = ['a' => 1, 'b' => 2, 'c' => 3];
-        $this->assertEquals([2, null, 1], P::props(['b', 'd', 'a'], $object));
+        $this->assertEquals([2, null, 1], p\props($object, ['b', 'd', 'a']));
     }
 }

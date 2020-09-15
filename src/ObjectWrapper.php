@@ -81,6 +81,11 @@ class ObjectWrapper implements \ArrayAccess
         return array_values($this->value);
     }
 
+    public function keys(): array
+    {
+        return array_keys($this->value);
+    }
+
     /**
      * Check if given property is defined
      *
