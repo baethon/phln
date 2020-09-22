@@ -7,8 +7,7 @@ namespace Baethon\Phln;
 const assoc = 'Baethon\\Phln\\assoc';
 
 /**
- * @template T of object|array<string, mixed>
- * @param T $object
+ * @param object|array<string, mixed> $object
  * @param string $key
  * @param mixed $value
  * @return ObjectWrapper

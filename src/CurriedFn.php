@@ -34,7 +34,7 @@ final class CurriedFn implements FixedArityInterface
     {
         return ($fn instanceof static)
             ? new static($fn->arity, $fn->fn, $fn->args)
-            : static::ofN(Phln::arity($fn), $fn);
+            : static::ofN(arity($fn), $fn);
     }
 
     public static function ofN(int $arity, callable $fn): self

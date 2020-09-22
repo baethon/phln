@@ -6,6 +6,12 @@ namespace Baethon\Phln;
 
 const assoc_path = 'Baethon\\Phln\\assoc_path';
 
+/**
+ * @param array<mixed>|object $object
+ * @param string $path
+ * @param mixed $value
+ * @return ObjectWrapper
+ */
 function assoc_path ($object, string $path, $value): ObjectWrapper
 {
     /** @var Zipper */

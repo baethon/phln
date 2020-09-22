@@ -6,6 +6,11 @@ namespace Baethon\Phln;
 
 const is = 'Baethon\\Phln\\is';
 
+/**
+ * @param mixed $value
+ * @param string $type
+ * @return bool
+ */
 function is ($value, string $type): bool
 {
     $typeOfValue = strtolower(gettype($value));

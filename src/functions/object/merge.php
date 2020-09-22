@@ -7,9 +7,9 @@ namespace Baethon\Phln;
 const merge = 'Baethon\\Phln\\merge';
 
 /**
- * @param object|array<string, mixed> $left
- * @param object|array<string, mixed> $right
- * @return array<string, mixed>
+ * @param object|array<mixed> $left
+ * @param object|array<mixed> $right
+ * @return array<mixed>
  */
 function merge ($left, $right): array
 {

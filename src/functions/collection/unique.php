@@ -7,8 +7,8 @@ namespace Baethon\Phln;
 const unique = 'Baethon\\Phln\\unique';
 
 /**
- * @param array $collection
- * @return array
+ * @param array<mixed> $collection
+ * @return array<mixed>
  * @psalm-pure
  */
 function unique (array $collection): array

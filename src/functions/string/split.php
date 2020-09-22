@@ -9,7 +9,7 @@ const split = 'Baethon\\Phln\\split';
 /**
  * @param string $text
  * @param string|RegExp $delimiter
- * @return array
+ * @return array<string>
  */
 function split (string $text, $delimiter): array
 {

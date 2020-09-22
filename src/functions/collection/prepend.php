@@ -7,10 +7,15 @@ namespace Baethon\Phln;
 const prepend = 'Baethon\\Phln\\prepend';
 
 /**
- * @template T of <string|array>
- * @param T $collection
- * @return T
- * @psalm-immutable
+ * @param string|array<mixed> $collection
+ * @param mixed $value
+ * @return string|array<mixed>
+ * @psalm-pure
+ * @psalm-return (
+ *      $collection is string
+ *      ? string
+ *      : array<mixed>
+ * )
  */
 function prepend ($collection, $value)
 {

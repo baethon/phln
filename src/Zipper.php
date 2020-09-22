@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Baethon\Phln;
 
-class Zipper
+final class Zipper
 {
     /**
      * @var Zipper|null
@@ -21,11 +21,18 @@ class Zipper
      */
     private $property;
 
+    /**
+     * @param ObjectWrapper|mixed $current
+     */
     private function __construct($current)
     {
         $this->current = $current;
     }
 
+    /**
+     * @param ObjectWrapper|mixed $current
+     * @return Zipper
+     */
     public static function of($current): Zipper
     {
         return new static(
@@ -47,6 +54,10 @@ class Zipper
         });
     }
 
+    /**
+     * @param mixed $value
+     * @return Zipper
+     */
     public function update($value): Zipper
     {
         return tap(clone $this, function (Zipper $copy) use ($value) {
@@ -77,7 +88,7 @@ class Zipper
         $thunk = trampoline(function (Zipper $zipper) {
             if ($zipper->parent) {
                 /** @psalm-suppress InvalidFunctionCall */
-                return $this($zipper->up());
+                return $this($zipper->up()); /** @phpstan-ignore-line */
             }
 
             return $zipper;
@@ -86,7 +97,10 @@ class Zipper
         return $thunk($this);
     }
 
-    public function toArray()
+    /**
+     * @return array<mixed>
+     */
+    public function toArray(): array
     {
         if ($this->current instanceof ObjectWrapper) {
             return $this->current->toArray();

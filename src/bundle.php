@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__.'/functions/assert/assert_object.php';
+require_once __DIR__.'/functions/fn/arity.php';
 require_once __DIR__.'/functions/fn/iife.php';
 require_once __DIR__.'/functions/fn/t.php';
 require_once __DIR__.'/functions/fn/f.php';

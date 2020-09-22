@@ -6,6 +6,12 @@ namespace Baethon\Phln;
 
 const path = 'Baethon\\Phln\\path';
 
+/**
+ * @param array<mixed>|object $object
+ * @param string $path
+ * @param mixed $default
+ * @return mixed
+ */
 function path ($object, string $path, $default = null)
 {
     return reduce_while(
