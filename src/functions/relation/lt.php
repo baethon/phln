@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('lt', function ($left, $right): bool {
+const lt = 'Baethon\\Phln\\lt';
+
+function lt ($left, $right): bool
+{
     return $left < $right;
-});
+}

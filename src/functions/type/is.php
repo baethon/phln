@@ -2,30 +2,33 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('is', function (string $type, $value): bool {
+const is = 'Baethon\\Phln\\is';
+
+function is ($value, string $type): bool
+{
     $typeOfValue = strtolower(gettype($value));
     $expectedType = strtolower($type);
 
     switch ($expectedType) {
-        case 'object':
-            return 'object' === $typeOfValue;
+    case 'object':
+        return 'object' === $typeOfValue;
 
-        case 'bool':
-        case 'boolean':
-            return 'boolean' === $typeOfValue;
+    case 'bool':
+    case 'boolean':
+        return 'boolean' === $typeOfValue;
 
-        case 'double':
-        case 'float':
-            return 'double' === $typeOfValue;
+    case 'double':
+    case 'float':
+        return 'double' === $typeOfValue;
 
-        case 'callable':
-        case 'function':
-            return is_callable($value);
+    case 'callable':
+    case 'function':
+        return is_callable($value);
 
-        default:
-            return (is_object($value) && $value instanceof $type) ||
-                $typeOfValue === $expectedType;
+    default:
+        return (is_object($value) && $value instanceof $type) ||
+            $typeOfValue === $expectedType;
     }
-});
+}

@@ -1,12 +1,12 @@
 <?php
 
 use Baethon\Phln\RegExp;
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
-class RegexpFnTest extends \PHPUnit\Framework\TestCase
+class RegexpTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_works()
     {
-        $this->assertEquals(new RegExp('/foo/', 'ig'), P::regexp('/foo/ig'));
+        $this->assertEquals(new RegExp('/foo/', 'ig'), p\regexp('/foo/ig'));
     }
 }

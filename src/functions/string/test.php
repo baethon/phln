@@ -2,9 +2,16 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\RegExp;
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('test', function ($regexp, string $string): bool {
+const test = 'Baethon\\Phln\\test';
+
+/**
+ * @param string $string
+ * @param string|RegExp $regexp
+ * @return bool
+ */
+function test (string $string, $regexp): bool
+{
     return RegExp::of($regexp)->test($string);
-});
+}

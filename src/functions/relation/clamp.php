@@ -2,14 +2,21 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('clamp', function ($min, $max, $value) {
-    return P::apply(
-        P::pipe(
-            P::min($max),
-            P::max($min)
-        ),
-        [$value]
-    );
-});
+const clamp = 'Baethon\\Phln\\clamp';
+
+/**
+ * @template T
+ * @param T $value
+ * @param T $min
+ * @param T $max
+ * @return T
+ */
+function clamp ($value, $min, $max)
+{
+    return pipe_first($value, [
+        _(min, $max),
+        _(max, $min)
+    ]);
+}

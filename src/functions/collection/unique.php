@@ -13,5 +13,17 @@ const unique = 'Baethon\\Phln\\unique';
  */
 function unique (array $collection): array
 {
-    return array_unique($collection);
+    return reduce(
+        $collection,
+        function (array $carry, $value) {
+            if (contains($carry, $value)) {
+                return $carry;
+            }
+
+            $carry[] = $value;
+
+            return $carry;
+        },
+        []
+    );
 }

@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__.'/functions/assert/assert_object.php';
-
 require_once __DIR__.'/functions/fn/iife.php';
 require_once __DIR__.'/functions/fn/t.php';
 require_once __DIR__.'/functions/fn/f.php';
@@ -98,24 +97,22 @@ require_once __DIR__.'/functions/lens/set.php';
 require_once __DIR__.'/functions/lens/lens_index.php';
 require_once __DIR__.'/functions/lens/lens_path.php';
 require_once __DIR__.'/functions/lens/lens_prop.php';
-
-require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
 require_once __DIR__.'/functions/relation/max.php';
-
-/* load_macro('relation', 'clamp'); */
-/* load_macro('relation', 'difference'); */
-/* load_macro('relation', 'gt'); */
-/* load_macro('relation', 'gte'); */
-/* load_macro('relation', 'intersection'); */
-/* load_macro('relation', 'lt'); */
-/* load_macro('relation', 'lte'); */
-/* load_macro('relation', 'min'); */
-/* load_macro('relation', 'pathEq'); */
-/* load_macro('relation', 'propEq'); */
-/* load_macro('string', 'match'); */
-/* load_macro('string', 'regexp'); */
-/* load_macro('string', 'replace'); */
-/* load_macro('string', 'split'); */ /* load_macro('string', 'test'); */
-/* load_macro('type', 'is'); */
-/* load_macro('type', 'typeCond'); */
+require_once __DIR__.'/functions/relation/min.php';
+require_once __DIR__.'/functions/relation/clamp.php';
+require_once __DIR__.'/functions/relation/difference.php';
+require_once __DIR__.'/functions/relation/gt.php';
+require_once __DIR__.'/functions/relation/gte.php';
+require_once __DIR__.'/functions/relation/intersection.php';
+require_once __DIR__.'/functions/relation/lt.php';
+require_once __DIR__.'/functions/relation/lte.php';
+require_once __DIR__.'/functions/relation/path_eq.php';
+require_once __DIR__.'/functions/relation/prop_eq.php';
+require_once __DIR__.'/functions/string/match.php';
+require_once __DIR__.'/functions/string/regexp.php';
+require_once __DIR__.'/functions/string/replace.php';
+require_once __DIR__.'/functions/string/split.php';
+require_once __DIR__.'/functions/string/test.php';
+require_once __DIR__.'/functions/type/is_stringable.php';
+require_once __DIR__.'/functions/type/is.php';

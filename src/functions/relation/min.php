@@ -2,10 +2,19 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const min = 'Baethon\\Phln\\min';
 
-load_macro('fn', 'binary');
-
-P::macro('min', P::binary(('\\min')));
+/**
+ * @template T
+ * @param T $left
+ * @param T $right
+ * @return T
+ */
+function min ($left, $right)
+{
+    return $left < $right
+        ? $left
+        : $right;
+}

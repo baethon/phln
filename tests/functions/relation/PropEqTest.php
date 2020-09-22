@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class PropEqTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,8 +9,8 @@ class PropEqTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_checks_value($object)
     {
-        $this->assertTrue(P::propEq('name', 'Jon', $object));
-        $this->assertFalse(P::propEq('name', 'Arrya', $object));
+        $this->assertTrue(p\prop_eq($object, 'name', 'Jon'));
+        $this->assertFalse(p\prop_eq($object, 'name', 'Arrya'));
     }
 
     public function objectsProvider()

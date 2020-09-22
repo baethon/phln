@@ -2,10 +2,18 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\RegExp;
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('replace', function ($regexp, string $replacement, string $text): string {
+const replace = 'Baethon\\Phln\\replace';
+
+/**
+ * @param string $text
+ * @param string|RegExp $regexp
+ * @param string $replacement
+ * @return string
+ */
+function replace (string $text, $regexp, string $replacement): string
+{
     $r = RegExp::of($regexp);
     $limit = $r->isGlobal() ? -1 : 1;
 
@@ -17,4 +25,4 @@ P::macro('replace', function ($regexp, string $replacement, string $text): strin
     }
 
     return "{$result}";
-});
+}

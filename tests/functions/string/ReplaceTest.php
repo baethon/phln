@@ -1,16 +1,16 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class ReplaceTest extends \PHPUnit\Framework\TestCase
 {
     public function test_it_replaces_first_matching_text()
     {
-        $this->assertEquals('bar foo foo', P::replace('/foo/', 'bar', 'foo foo foo'));
+        $this->assertEquals('bar foo foo', p\replace('foo foo foo', '/foo/', 'bar'));
     }
 
     public function test_it_replaces_all_matches()
     {
-        $this->assertEquals('bar bar bar', P::replace('/foo/g', 'bar', 'foo foo foo'));
+        $this->assertEquals('bar bar bar', p\replace('foo foo foo', '/foo/g', 'bar'));
     }
 }

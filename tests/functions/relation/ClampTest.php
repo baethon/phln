@@ -1,15 +1,25 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class ClampTest extends \PHPUnit\Framework\TestCase
 {
-    public function test_it_restricts_values_to_range()
+    /**
+     * @dataProvider clampValuesProvider
+     */
+    public function test_it_restricts_values_to_range($expected, $value, $min, $max)
     {
-        $this->assertEquals(-1, P::clamp(-1, 1, -100));
-        $this->assertEquals(1, P::clamp(-1, 1, 100));
-        $this->assertEquals(0, P::clamp(-1, 1, 0));
-        $this->assertEquals(-1, P::clamp(-1, 1, -1));
-        $this->assertEquals(1, P::clamp(-1, 1, 1));
+        $this->assertEquals($expected, p\clamp($value, $min, $max));
+    }
+
+    public function clampValuesProvider()
+    {
+        return [
+            [-1, -100, -1, 1],
+            [1, 100, -1, 1],
+            [0, 0, -1, 1],
+            [-1, -1, -1, 1],
+            [1, 1, -1, 1],
+        ];
     }
 }

@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const intersection = 'Baethon\\Phln\\intersection';
 
-load_macro('fn', 'binary');
-
-P::macro('intersection', P::compose(P::values(), P::binary('\\array_intersect')));
+function intersection (array $left, array $right): array
+{
+    $intersection = array_intersect($left, $right);
+    return values($intersection);
+}

@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\RegExp;
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('regexp', function (string $regexp): RegExp {
+const regexp = 'Baethon\\Phln\\regexp';
+
+function regexp (string $regexp): RegExp
+{
     return RegExp::fromString($regexp);
-});
+}

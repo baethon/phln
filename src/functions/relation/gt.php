@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-P::macro('gt', function ($a, $b): bool {
-    return $a > $b;
-});
+const gt = 'Baethon\\Phln\\gt';
+
+function gt ($left, $right): bool
+{
+    return $left > $right;
+}

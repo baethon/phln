@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class IsTest extends \PHPUnit\Framework\TestCase
 {
@@ -11,12 +11,12 @@ class IsTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_tests_given_type($type, $value)
     {
-        $this->assertTrue(P::is($type, $value));
+        $this->assertTrue(p\is($value, $type));
     }
 
     public function test_it_tests_object_type()
     {
-        $this->assertFalse(P::is('array', new stdClass()));
+        $this->assertFalse(p\is(new stdClass(), 'array'));
     }
 
     public function isDataProvider()

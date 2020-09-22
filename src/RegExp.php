@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Baethon\Phln;
 
-use Baethon\Phln\Phln as P;
-
 final class RegExp
 {
     /**
@@ -128,7 +126,7 @@ final class RegExp
                 : $list;
         };
 
-        return P::flatMap($slice, $matches);
+        return flat_map($matches, $slice);
     }
 
     public function test(string $string): bool

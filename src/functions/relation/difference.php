@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
 
-use function Baethon\Phln\load_macro;
+const difference = 'Baethon\\Phln\\difference';
 
-load_macro('fn', 'binary');
-
-P::macro('difference', P::compose(P::values(), P::binary('\\array_diff')));
+function difference (array $left, array $right): array
+{
+    $diff = array_diff($left, $right);
+    return values($diff);
+}
