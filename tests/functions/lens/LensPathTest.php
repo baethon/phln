@@ -1,6 +1,6 @@
 <?php
 
-use Baethon\Phln\Phln as P;
+use Baethon\Phln as p;
 
 class LensPathTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,32 +13,32 @@ class LensPathTest extends \PHPUnit\Framework\TestCase
 
     public function test_it_views_value()
     {
-        $lens = P::lensPath('house.name');
+        $lens = p\lens_path('house.name');
 
-        $this->assertEquals('Stark', P::view($lens, $this->input));
+        $this->assertEquals('Stark', p\view($this->input, $lens));
     }
 
     public function test_it_calls_fn_over_value()
     {
-        $lens = P::lensPath('house.name');
+        $lens = p\lens_path('house.name');
         $expected = array_merge($this->input, [
             'house' => [
                 'name' => 'HOUSE OF NO NAME',
             ],
         ]);
 
-        $this->assertEquals($expected, P::over($lens, P::always('HOUSE OF NO NAME'), $this->input));
+        $this->assertEquals($expected, p\over($this->input, $lens, p\always('HOUSE OF NO NAME')));
     }
 
     public function test_it_sets_value()
     {
-        $lens = P::lensPath('house.name');
+        $lens = p\lens_path('house.name');
         $expected = array_merge($this->input, [
             'house' => [
                 'name' => 'HOUSE OF NO NAME',
             ],
         ]);
 
-        $this->assertEquals($expected, P::set($lens, 'HOUSE OF NO NAME', $this->input));
+        $this->assertEquals($expected, p\set($this->input, $lens, 'HOUSE OF NO NAME'));
     }
 }

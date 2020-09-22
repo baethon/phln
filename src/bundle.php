@@ -91,18 +91,18 @@ require_once __DIR__.'/functions/object/pick.php';
 require_once __DIR__.'/functions/object/props.php';
 require_once __DIR__.'/functions/object/where.php';
 require_once __DIR__.'/functions/object/to_pairs.php';
+require_once __DIR__.'/functions/lens/lens.php';
+require_once __DIR__.'/functions/lens/view.php';
+require_once __DIR__.'/functions/lens/over.php';
+require_once __DIR__.'/functions/lens/set.php';
+require_once __DIR__.'/functions/lens/lens_index.php';
+require_once __DIR__.'/functions/lens/lens_path.php';
+require_once __DIR__.'/functions/lens/lens_prop.php';
 
 require_once __DIR__.'/functions/type/is_stringable.php';
 require_once __DIR__.'/functions/relation/equals.php';
 require_once __DIR__.'/functions/relation/max.php';
 
-/* load_macro('collection', 'lensIndex'); */
-/* load_macro('object', 'lens'); */
-/* load_macro('object', 'lensPath'); */
-/* load_macro('object', 'lensProp'); */
-/* load_macro('object', 'over'); */
-/* load_macro('object', 'set'); */
-/* load_macro('object', 'view'); */
 /* load_macro('relation', 'clamp'); */
 /* load_macro('relation', 'difference'); */
 /* load_macro('relation', 'gt'); */

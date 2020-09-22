@@ -2,14 +2,18 @@
 
 declare(strict_types=1);
 
-use Baethon\Phln\Phln as P;
+namespace Baethon\Phln;
+
 use Baethon\Phln\Monad\Constant;
 
-P::macro('view', function (callable $lens, $targetData) {
+const view = 'Baethon\\Phln\\view';
+
+function view ($targetData, callable $lens)
+{
     return $lens(
+        $targetData,
         function ($value) {
             return new Constant($value);
-        },
-        $targetData
+        }
     )->extract();
-});
+}
