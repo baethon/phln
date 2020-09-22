@@ -7,14 +7,14 @@ namespace Baethon\Phln;
 const pipe = 'Baethon\\Phln\\pipe';
 
 /**
- * Performs left-to-right function composition
+ * Performs left-to-right function composition.
  *
  * The leftmost function may have any arity; the remaining functions must be unary.
  *
  * @param callable ...$fns
- * @return callable
  */
-function pipe(...$fns): callable {
+function pipe(...$fns): callable
+{
     $fnsCount = count($fns);
 
     if (1 === $fnsCount && is_array($fns[0])) {
@@ -31,6 +31,6 @@ function pipe(...$fns): callable {
 
         return array_reduce($tail, function ($carry, callable $fn) {
             return $fn($carry);
-        }, $head(... $args));
+        }, $head(...$args));
     };
 };

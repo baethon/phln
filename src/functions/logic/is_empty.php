@@ -8,9 +8,9 @@ const is_empty = 'Baethon\\Phln\\is_empty';
 
 /**
  * @param mixed $value
- * @return bool
  */
-function is_empty ($value): bool {
+function is_empty($value): bool
+{
     switch (gettype($value)) {
         case 'array':
             return [] === $value;

@@ -8,11 +8,11 @@ const lt = 'Baethon\\Phln\\lt';
 
 /**
  * @template T
+ *
  * @param T $left
  * @param T $right
- * @return bool
  */
-function lt ($left, $right): bool
+function lt($left, $right): bool
 {
     return $left < $right;
 }

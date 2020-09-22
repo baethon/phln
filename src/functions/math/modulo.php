@@ -9,9 +9,11 @@ const modulo = 'Baethon\\Phln\\modulo';
 /**
  * @param numeric $divident
  * @param numeric $divisor
+ *
  * @return numeric
  */
-function modulo($divident, $divisor) {
+function modulo($divident, $divisor)
+{
     if (is_float($divident) || is_float($divisor)) {
         return fmod((float) $divident, (float) $divisor);
     }

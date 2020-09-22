@@ -8,7 +8,6 @@ class Duck
 {
     /**
      * @param object $object
-     * @return bool
      */
     public static function isFunctor($object): bool
     {

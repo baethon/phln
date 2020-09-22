@@ -8,8 +8,8 @@ const mean = 'Baethon\\Phln\\mean';
 
 /**
  * @param array<numeric> $numbers
- * @return float
  */
-function mean(array $numbers): float {
+function mean(array $numbers): float
+{
     return array_sum($numbers) / count($numbers);
 }

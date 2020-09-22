@@ -6,7 +6,8 @@ namespace Baethon\Phln;
 
 const negate = 'Baethon\\Phln\\negate';
 
-function negate (callable $predicate): callable {
+function negate(callable $predicate): callable
+{
     return function (...$args) use ($predicate) {
         return !$predicate(...$args);
     };

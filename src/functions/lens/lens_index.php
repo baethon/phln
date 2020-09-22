@@ -6,7 +6,7 @@ namespace Baethon\Phln;
 
 const lens_index = 'Baethon\\Phln\\lens_index';
 
-function lens_index (int $index): callable
+function lens_index(int $index): callable
 {
     return lens(
         _(nth, $index),

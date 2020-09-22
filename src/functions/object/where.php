@@ -7,11 +7,10 @@ namespace Baethon\Phln;
 const where = 'Baethon\\Phln\\where';
 
 /**
- * @param object|array<string, mixed> $object
+ * @param object|array<string, mixed>               $object
  * @param array<string, callable(mixed):bool|mixed> $predicates
- * @return bool
  */
-function where ($object, array $predicates): bool
+function where($object, array $predicates): bool
 {
     $keys = keys($predicates);
     $object = ObjectWrapper::of($object);

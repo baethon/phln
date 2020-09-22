@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Baethon\Phln;
 
-use Baethon\Phln\TrampolineThunk;
-
 const trampoline = 'Baethon\\Phln\\trampoline';
 
 /**
@@ -15,11 +13,9 @@ const trampoline = 'Baethon\\Phln\\trampoline';
  * Calling `$this()` inside the function will return its _thunk_.
  *
  * Wrapped function should not return instance of `Closure` as an end-result (it will trigger next loop iteration).
- *
- * @param callable $fn
- * @return callable
  */
-function trampoline (callable $fn): callable {
+function trampoline(callable $fn): callable
+{
     $wrapper = new TrampolineThunk($fn);
 
     return function (...$args) use ($wrapper) {

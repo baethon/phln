@@ -8,8 +8,10 @@ const either = 'Baethon\\Phln\\either';
 
 /**
  * @template T of callable|mixed
+ *
  * @param T $left
  * @param T $right
+ *
  * @return mixed
  * @psalm-return (
  *      T is callable
@@ -17,7 +19,7 @@ const either = 'Baethon\\Phln\\either';
  *      : bool
  * )
  */
-function either ($left, $right)
+function either($left, $right)
 {
     if (is_callable($left) && is_callable($right)) {
         return function ($value) use ($left, $right) {

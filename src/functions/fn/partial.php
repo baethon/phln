@@ -11,11 +11,10 @@ const partial = 'Baethon\\Phln\\partial';
  *
  * When applied, `g` returns the result of applying `f` to the arguments provided initially followed by the arguments provided to `g`.
  *
- * @param callable $fn
  * @param array<mixed> $args
- * @return callable
  */
-function partial (callable $fn, array $args): callable {
+function partial(callable $fn, array $args): callable
+{
     return function (...$otherArgs) use ($fn, $args) {
         return $fn(...$args, ...$otherArgs);
     };

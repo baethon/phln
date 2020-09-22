@@ -8,10 +8,11 @@ const unique = 'Baethon\\Phln\\unique';
 
 /**
  * @param array<mixed> $collection
+ *
  * @return array<mixed>
  * @psalm-pure
  */
-function unique (array $collection): array
+function unique(array $collection): array
 {
     return reduce(
         $collection,

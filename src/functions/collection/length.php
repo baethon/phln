@@ -8,9 +8,8 @@ const length = 'Baethon\\Phln\\length';
 
 /**
  * @param \Countable|array<mixed>|string $collection
- * @return int
  */
-function length ($collection): int
+function length($collection): int
 {
     assert(is_countable($collection) or is_string($collection));
 

@@ -1,6 +1,7 @@
 .idea
 _book
 site
+.php_cs.cache
 
 # Created by https://www.gitignore.io/api/vim,composer
 

@@ -8,11 +8,11 @@ const gte = 'Baethon\\Phln\\gte';
 
 /**
  * @template T
+ *
  * @param T $left
  * @param T $right
- * @return bool
  */
-function gte ($left, $right): bool
+function gte($left, $right): bool
 {
     return $left >= $right;
 }

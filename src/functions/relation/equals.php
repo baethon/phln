@@ -12,10 +12,11 @@ const equals = 'Baethon\\Phln\\equals';
  * Uses strict comparision.
  *
  * @template T
+ *
  * @param T $left
  * @param T $right
- * @return bool
  */
-function equals ($left, $right): bool {
+function equals($left, $right): bool
+{
     return $left === $right;
 }

@@ -9,11 +9,12 @@ use Baethon\Phln\Monad\Constant;
 const view = 'Baethon\\Phln\\view';
 
 /**
- * @param object|array<mixed> $targetData
+ * @param object|array<mixed>                            $targetData
  * @param callable(object|array<mixed>, callable): mixed $lens
+ *
  * @return mixed
  */
-function view ($targetData, callable $lens)
+function view($targetData, callable $lens)
 {
     return $lens(
         $targetData,

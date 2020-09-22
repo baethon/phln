@@ -8,8 +8,10 @@ const inc = 'Baethon\\Phln\\inc';
 
 /**
  * @param int|float $number
+ *
  * @return int|float
  */
-function inc ($number) {
+function inc($number)
+{
     return $number + 1;
 }

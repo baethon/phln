@@ -31,6 +31,7 @@ final class FixedArityFn implements FixedArityInterface
 
     /**
      * @param array<int, mixed> ...$args
+     *
      * @return mixed
      */
     public function __invoke(...$args)

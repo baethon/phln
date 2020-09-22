@@ -8,11 +8,13 @@ const map = 'Baethon\\Phln\\map';
 
 /**
  * @template T
- * @param T $collection
+ *
+ * @param T                     $collection
  * @param callable(mixed):mixed $fn
+ *
  * @return T
  */
-function map ($collection, callable $fn)
+function map($collection, callable $fn)
 {
     assert(is_array($collection) || Duck::isFunctor($collection));
 

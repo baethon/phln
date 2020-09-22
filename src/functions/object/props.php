@@ -8,10 +8,11 @@ const props = 'Baethon\\Phln\\props';
 
 /**
  * @param object|array<string, mixed> $object
- * @param array<string> $properties
+ * @param array<string>               $properties
+ *
  * @return array<mixed>
  */
-function props ($object, array $properties): array
+function props($object, array $properties): array
 {
     $object = ObjectWrapper::of($object);
 

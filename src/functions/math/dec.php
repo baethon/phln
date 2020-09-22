@@ -8,8 +8,10 @@ const dec = 'Baethon\\Phln\\dec';
 
 /**
  * @param int|float $number
+ *
  * @return int|float
  */
-function dec ($number) {
+function dec($number)
+{
     return $number - 1;
 }

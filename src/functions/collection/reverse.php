@@ -8,6 +8,7 @@ const reverse = 'Baethon\\Phln\\reverse';
 
 /**
  * @param array<mixed>|string $collection
+ *
  * @return array<mixed>|string
  * @psalm-pure
  * @psalm-return (

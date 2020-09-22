@@ -9,24 +9,23 @@ const partial_right = 'Baethon\\Phln\\partial_right';
 /**
  * Takes a function `f` and a list of arguments, and returns a function `g`. When applied, `g` returns the result of applying `f` to the arguments provided initially followed by the arguments provided to `g`.
  *
- * @param callable $fn
  * @param array<mixed> $args
- * @return callable
  */
-function partial_right (callable $fn, array $args): callable {
+function partial_right(callable $fn, array $args): callable
+{
     return function (...$innerArgs) use ($fn, $args) {
         return $fn(...array_merge($innerArgs, $args));
     };
 }
 
 /**
- * Shorthand for partial_right
+ * Shorthand for partial_right.
  *
- * @param callable $fn
  * @param mixed ...$args
+ *
  * @return callable(...mixed): mixed
  */
-function _ (callable $fn, ...$args): callable
+function _(callable $fn, ...$args): callable
 {
     return function (...$innerArgs) use ($fn, $args) {
         return $fn(...array_merge($innerArgs, $args));

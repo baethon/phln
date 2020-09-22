@@ -8,9 +8,10 @@ const collapse = 'Baethon\\Phln\\collapse';
 
 /**
  * @param array<mixed> $collection
+ *
  * @return array<mixed>
  */
-function collapse (array $collection): array
+function collapse(array $collection): array
 {
     return reduce(
         $collection,

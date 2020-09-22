@@ -8,10 +8,8 @@ const unary = 'Baethon\\Phln\\unary';
 
 /**
  * Wraps a function of any arity (including nullary) in a function that accepts exactly 1 parameter. Any extraneous parameters will not be passed to the supplied function.
- *
- * @param callable $fn
- * @return callable
  */
-function unary (callable $fn): callable {
+function unary(callable $fn): callable
+{
     return n_ary(1, $fn);
 }

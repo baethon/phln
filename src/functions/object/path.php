@@ -8,16 +8,16 @@ const path = 'Baethon\\Phln\\path';
 
 /**
  * @param array<mixed>|object $object
- * @param string $path
- * @param mixed $default
+ * @param mixed               $default
+ *
  * @return mixed
  */
-function path ($object, string $path, $default = null)
+function path($object, string $path, $default = null)
 {
     return reduce_while(
         explode('.', $path),
         function ($carry, $key) use ($default) {
-            if (! ObjectWrapper::isObject($carry)) {
+            if (!ObjectWrapper::isObject($carry)) {
                 return ['halt', $default];
             }
 

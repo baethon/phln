@@ -9,12 +9,13 @@ use Baethon\Phln\Monad\Identity;
 const over = 'Baethon\\Phln\\over';
 
 /**
- * @param object|array<mixed> $targetData
+ * @param object|array<mixed>                            $targetData
  * @param callable(object|array<mixed>, callable): mixed $lens
- * @param callable(mixed): mixed $fn
+ * @param callable(mixed): mixed                         $fn
+ *
  * @return object|array<mixed>
  */
-function over ($targetData, callable $lens, callable $fn)
+function over($targetData, callable $lens, callable $fn)
 {
     return $lens(
         $targetData,

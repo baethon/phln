@@ -8,11 +8,13 @@ const min = 'Baethon\\Phln\\min';
 
 /**
  * @template T
+ *
  * @param T $left
  * @param T $right
+ *
  * @return T
  */
-function min ($left, $right)
+function min($left, $right)
 {
     return $left < $right
         ? $left

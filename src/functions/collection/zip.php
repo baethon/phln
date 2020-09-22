@@ -9,9 +9,10 @@ const zip = 'Baethon\\Phln\\zip';
 /**
  * @param array<int, mixed> $left
  * @param array<int, mixed> $right
+ *
  * @return array<array{mixed, mixed}>
  */
-function zip (array $left, array $right): array
+function zip(array $left, array $right): array
 {
     return array_map(
         function ($left, $right) {

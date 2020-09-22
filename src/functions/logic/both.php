@@ -8,8 +8,10 @@ const both = 'Baethon\\Phln\\both';
 
 /**
  * @template T of callable|mixed
+ *
  * @param T $left
  * @param T $right
+ *
  * @return mixed
  * @psalm-return (
  *      T is callable
@@ -17,7 +19,7 @@ const both = 'Baethon\\Phln\\both';
  *      : bool
  * )
  */
-function both ($left, $right)
+function both($left, $right)
 {
     if (is_callable($left) && is_callable($right)) {
         return static function ($value) use ($left, $right): bool {

@@ -8,9 +8,10 @@ const keys = 'Baethon\\Phln\\keys';
 
 /**
  * @param object|array<string, mixed> $object
+ *
  * @return array<string>
  */
-function keys ($object): array
+function keys($object): array
 {
     assert_object($object);
 

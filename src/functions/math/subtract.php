@@ -9,8 +9,10 @@ const subtract = 'Baethon\\Phln\\subtract';
 /**
  * @param numeric $left
  * @param numeric $right
+ *
  * @return numeric
  */
-function subtract ($left, $right) {
+function subtract($left, $right)
+{
     return $left - $right;
 }

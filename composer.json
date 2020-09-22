@@ -3,7 +3,8 @@
     "description": "Set of small utility functions. Inspired by Ramda.",
     "type": "library",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.2",
@@ -32,8 +33,12 @@
     ],
     "scripts": {
         "lint": [
-          "./vendor/bin/phpcs",
-          "phpstan analyse"
+            "phpstan analyse",
+            "psalm",
+            "php-cs-fixer fix --rules=@PSR2 src --dry-run"
+        ],
+        "lint:fix": [
+            "php-cs-fixer fix --rules=@PSR2 src"
         ],
         "test": [
             "./vendor/bin/phpunit"

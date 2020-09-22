@@ -8,11 +8,9 @@ const assoc_path = 'Baethon\\Phln\\assoc_path';
 
 /**
  * @param array<mixed>|object $object
- * @param string $path
- * @param mixed $value
- * @return ObjectWrapper
+ * @param mixed               $value
  */
-function assoc_path ($object, string $path, $value): ObjectWrapper
+function assoc_path($object, string $path, $value): ObjectWrapper
 {
     /** @var Zipper */
     $zipper = reduce(

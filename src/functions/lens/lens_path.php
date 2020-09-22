@@ -6,7 +6,7 @@ namespace Baethon\Phln;
 
 const lens_path = 'Baethon\\Phln\\lens_path';
 
-function lens_path (string $path): callable
+function lens_path(string $path): callable
 {
     return lens(
         _(path, $path),

@@ -6,7 +6,7 @@ namespace Baethon\Phln;
 
 const lens_prop = 'Baethon\\Phln\\lens_prop';
 
-function lens_prop (string $prop): callable
+function lens_prop(string $prop): callable
 {
     return lens(
         _(prop, $prop),

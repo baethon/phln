@@ -35,7 +35,7 @@ final class RegExp
 
     public function __toString(): string
     {
-        return $this->pattern . $this->modifiers;
+        return $this->pattern.$this->modifiers;
     }
 
     private function wrapInDelimiters(string $pattern): string
@@ -47,10 +47,8 @@ final class RegExp
     }
 
     /**
-     * Checks if pattern has valid delimiter
+     * Checks if pattern has valid delimiter.
      *
-     * @param string $pattern
-     * @return bool
      * @see https://secure.php.net/manual/en/regexp.reference.delimiters.php
      */
     private function hasDelimiters(string $pattern): bool
@@ -77,8 +75,6 @@ final class RegExp
     /**
      * Creates RegExp instance based on passed regular expression.
      *
-     * @param string $regexp
-     * @return RegExp
      * @example
      *      RegExp::fromString('/foo/gi'); // -> new RegExp('/foo/', 'gi');
      */
@@ -100,20 +96,18 @@ final class RegExp
 
     /**
      * @param string|RegExp $regexp
-     * @return RegExp
      */
     public static function of($regexp): RegExp
     {
-        if ($regexp instanceof static) {
+        if ($regexp instanceof RegExp) {
             return $regexp;
         }
 
-        /** @var string $regexp */
+        /* @var string $regexp */
         return static::fromString($regexp);
     }
 
     /**
-     * @param string $test
      * @return string[]
      */
     public function matchAll(string $test): array

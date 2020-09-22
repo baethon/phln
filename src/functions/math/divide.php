@@ -9,8 +9,8 @@ const divide = 'Baethon\\Phln\\divide';
 /**
  * @param int|float $dividend
  * @param int|float $divisor
- * @return float
  */
-function divide($dividend, $divisor): float {
+function divide($dividend, $divisor): float
+{
     return $dividend / $divisor;
 }

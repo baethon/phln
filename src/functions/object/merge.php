@@ -9,9 +9,10 @@ const merge = 'Baethon\\Phln\\merge';
 /**
  * @param object|array<mixed> $left
  * @param object|array<mixed> $right
+ *
  * @return array<mixed>
  */
-function merge ($left, $right): array
+function merge($left, $right): array
 {
     assert_object($left);
     assert_object($right);

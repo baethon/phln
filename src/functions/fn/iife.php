@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Baethon\Phln;
 
 /**
- * Immediately Invoked Function Expression
- *
- * @param callable $fn
- * @return void
+ * Immediately Invoked Function Expression.
  */
-function iife (callable $fn): void {
+function iife(callable $fn): void
+{
     $fn();
 }

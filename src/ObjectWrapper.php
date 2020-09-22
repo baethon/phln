@@ -16,7 +16,7 @@ final class ObjectWrapper implements \ArrayAccess
      */
     private function __construct($value)
     {
-        if (! ObjectWrapper::isObject($value)) {
+        if (!ObjectWrapper::isObject($value)) {
             throw new \InvalidArgumentException('Value is not a valid object');
         }
 
@@ -27,7 +27,6 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param array<mixed>|object $value
-     * @return ObjectWrapper
      */
     public static function of($value = []): ObjectWrapper
     {
@@ -36,6 +35,7 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param string|int $offset
+     *
      * @return mixed
      */
     public function offsetGet($offset)
@@ -47,7 +47,7 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param string $offset
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function offsetSet($offset, $value)
     {
@@ -64,6 +64,7 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param string $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -73,6 +74,7 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param string $name
+     *
      * @return mixed
      */
     public function __get($name)
@@ -81,7 +83,6 @@ final class ObjectWrapper implements \ArrayAccess
     }
 
     /**
-     * @param string $name
      * @return mixed
      */
     public function prop(string $name)
@@ -103,9 +104,7 @@ final class ObjectWrapper implements \ArrayAccess
     }
 
     /**
-     * @param string $key
      * @param mixed $value
-     * @return ObjectWrapper
      */
     public function assoc(string $key, $value): ObjectWrapper
     {
@@ -131,10 +130,7 @@ final class ObjectWrapper implements \ArrayAccess
     }
 
     /**
-     * Check if given property is defined
-     *
-     * @param string $name
-     * @return bool
+     * Check if given property is defined.
      */
     public function has(string $name): bool
     {
@@ -143,7 +139,6 @@ final class ObjectWrapper implements \ArrayAccess
 
     /**
      * @param ObjectWrapper|array|object|mixed $value
-     * @return bool
      */
     public static function isObject($value): bool
     {

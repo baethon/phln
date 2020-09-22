@@ -7,11 +7,13 @@ namespace Baethon\Phln;
 const group_by = 'Baethon\\Phln\\group_by';
 
 /**
- * @param array<array<string, mixed>> $collection
+ * @param array<array<string, mixed>>            $collection
  * @param callable(array<string, mixed>): string $fn
+ *
  * @return array<string, array<string, mixed>>
  */
-function group_by (array $collection, callable $fn): array {
+function group_by(array $collection, callable $fn): array
+{
     return reduce(
         $collection,
         function ($carry, $item) use ($fn) {

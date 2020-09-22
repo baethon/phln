@@ -12,7 +12,6 @@ const always = 'Baethon\\Phln\\always';
  * For non-primitives the value returned is a reference to the original value.
  *
  * @param mixed $value
- * @return callable
  */
 function always($value): callable
 {

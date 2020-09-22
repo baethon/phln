@@ -8,12 +8,12 @@ const update = 'Baethon\\Phln\\update';
 
 /**
  * @param array<mixed> $collection
- * @param int $index
- * @param mixed $value
+ * @param mixed        $value
+ *
  * @return array<mixed>
  * @psalm-pure
  */
-function update (array $collection, int $index, $value): array
+function update(array $collection, int $index, $value): array
 {
     if (false === array_key_exists($index, $collection)) {
         return $collection;

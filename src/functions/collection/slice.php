@@ -8,12 +8,12 @@ const slice = 'Baethon\\Phln\\slice';
 
 /**
  * @param array<mixed>|string $collection
- * @param int $offset
- * @param int $length
+ *
  * @return array<mixed>|string
+ *
  * @throws \InvalidArgumentException
  */
-function slice ($collection, int $offset, int $length)
+function slice($collection, int $offset, int $length)
 {
     if (is_array($collection)) {
         return array_slice($collection, $offset, $length);

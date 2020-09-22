@@ -9,11 +9,13 @@ const tap = 'Baethon\\Phln\\tap';
 /**
  * Runs the given function with the supplied object, then returns the object.
  *
- * @param callable $fn
  * @param mixed $value
+ *
  * @return mixed
  */
-function tap ($value, callable $fn) {
+function tap($value, callable $fn)
+{
     $fn($value);
+
     return $value;
 }

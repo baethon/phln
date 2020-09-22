@@ -8,8 +8,8 @@ const not = 'Baethon\\Phln\\not';
 
 /**
  * @param mixed $value
- * @return bool
  */
-function not($value): bool {
+function not($value): bool
+{
     return !$value;
 }

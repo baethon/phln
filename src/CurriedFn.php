@@ -14,14 +14,13 @@ final class CurriedFn implements FixedArityInterface
     private int $arity;
 
     /**
-     * @var array<int, mixed> $args
+     * @var array<int, mixed>
      */
     private array $args = [];
 
     /**
-     * @param int $arity
      * @param callable $fn,
-     * @param mixed[] $args
+     * @param mixed[]  $args
      */
     private function __construct(int $arity, callable $fn, array $args = [])
     {
@@ -44,6 +43,7 @@ final class CurriedFn implements FixedArityInterface
 
     /**
      * @param array<int, mixed> ...$args
+     *
      * @return CurriedFn|mixed
      */
     public function __invoke(...$args)

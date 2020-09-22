@@ -7,10 +7,9 @@ namespace Baethon\Phln;
 const is_stringable = 'Baethon\\Phln\\is_stringable';
 
 /**
- * Check if given value is stringable
+ * Check if given value is stringable.
  *
  * @param mixed $value
- * @return bool
  * @psalm-pure
  */
 function is_stringable($value): bool

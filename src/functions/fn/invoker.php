@@ -10,12 +10,9 @@ const invoker = 'Baethon\\Phln\\invoker';
  * Turns a named method with a specified arity into a function that can be called directly supplied with arguments and a target object.
  *
  * The returned function is curried and accepts `arity + 1` parameters where the final parameter is the target object.
- *
- * @param int $arity
- * @param string $method
- * @return callable
  */
-function invoker (int $arity, string $method): callable {
+function invoker(int $arity, string $method): callable
+{
     $wrapper = function (...$args) use ($arity, $method) {
         $args = array_slice($args, 0, $arity + 1);
         $object = array_pop($args);

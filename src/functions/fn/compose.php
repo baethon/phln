@@ -12,9 +12,9 @@ const compose = 'Baethon\\Phln\\compose';
  * The leftmost function may have any arity; the remaining functions must be unary.
  *
  * @param callable ...$fns
- * @return callable
  */
-function compose (...$fns): callable {
+function compose(...$fns): callable
+{
     $fnsCount = count($fns);
 
     if (1 === $fnsCount && is_array($fns[0])) {

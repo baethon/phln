@@ -8,11 +8,10 @@ const assoc = 'Baethon\\Phln\\assoc';
 
 /**
  * @param object|array<string, mixed> $object
- * @param string $key
- * @param mixed $value
- * @return ObjectWrapper
+ * @param mixed                       $value
  */
-function assoc ($object, string $key, $value): ObjectWrapper {
+function assoc($object, string $key, $value): ObjectWrapper
+{
     return ObjectWrapper::of($object)
         ->assoc($key, $value);
 }

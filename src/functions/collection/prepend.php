@@ -8,7 +8,8 @@ const prepend = 'Baethon\\Phln\\prepend';
 
 /**
  * @param string|array<mixed> $collection
- * @param mixed $value
+ * @param mixed               $value
+ *
  * @return string|array<mixed>
  * @psalm-pure
  * @psalm-return (
@@ -17,10 +18,11 @@ const prepend = 'Baethon\\Phln\\prepend';
  *      : array<mixed>
  * )
  */
-function prepend ($collection, $value)
+function prepend($collection, $value)
 {
     if (is_array($collection)) {
         array_unshift($collection, $value);
+
         return $collection;
     }
 

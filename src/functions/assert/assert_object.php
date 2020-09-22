@@ -11,8 +11,9 @@ namespace Baethon\Phln;
  * or class instance.
  *
  * @param mixed $value
- * @return void
+ *
  * @throws \Exception
+ *
  * @internal
  */
 function assert_object($value): void

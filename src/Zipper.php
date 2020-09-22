@@ -31,7 +31,6 @@ final class Zipper
 
     /**
      * @param ObjectWrapper|mixed $current
-     * @return Zipper
      */
     public static function of($current): Zipper
     {
@@ -44,7 +43,7 @@ final class Zipper
 
     public function down(string $property): Zipper
     {
-        if (! ObjectWrapper::isObject($this->current)) {
+        if (!ObjectWrapper::isObject($this->current)) {
             throw new \RuntimeException('Impossible to go down tree');
         }
 
@@ -56,7 +55,6 @@ final class Zipper
 
     /**
      * @param mixed $value
-     * @return Zipper
      */
     public function update($value): Zipper
     {
@@ -67,7 +65,7 @@ final class Zipper
 
     public function up(): ?Zipper
     {
-        if (! $parent = $this->parent) {
+        if (!$parent = $this->parent) {
             return null;
         }
 
@@ -87,8 +85,11 @@ final class Zipper
     {
         $thunk = trampoline(function (Zipper $zipper) {
             if ($zipper->parent) {
-                /** @psalm-suppress InvalidFunctionCall */
-                return $this($zipper->up()); /** @phpstan-ignore-line */
+                /**
+                 * @psalm-suppress InvalidFunctionCall
+                 * @phpstan-ignore-next-line
+                 */
+                return $this($zipper->up());
             }
 
             return $zipper;

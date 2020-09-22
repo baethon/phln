@@ -7,9 +7,7 @@ namespace Baethon\Phln;
 const t = 'Baethon\\Phln\\t';
 
 /**
- * Always return true
- *
- * @return bool
+ * Always return true.
  */
 function t(): bool
 {

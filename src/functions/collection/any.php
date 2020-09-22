@@ -7,11 +7,11 @@ namespace Baethon\Phln;
 const any = 'Baethon\\Phln\\any';
 
 /**
- * @param array<mixed> $list
+ * @param array<mixed>          $list
  * @param callable(mixed): bool $predicate
- * @return bool
  */
-function any (array $list, callable $predicate): bool {
+function any(array $list, callable $predicate): bool
+{
     foreach ($list as $value) {
         if (true === $predicate($value)) {
             return true;
