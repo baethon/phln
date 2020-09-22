@@ -90,6 +90,7 @@ final class RegExp
             return new static($regexp);
         }
 
+        /** @var int */
         $endPosition = strrpos($regexp, $start);
         $pattern = substr($regexp, 0, $endPosition + 1);
         $modifiers = substr($regexp, $endPosition + 1);

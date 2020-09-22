@@ -8,7 +8,13 @@ const arity = 'Baethon\\Phln\\arity';
 
 function arity (callable $fn): int
 {
-    return ($fn instanceof FixedArityInterface)
-        ? $fn->getArity()
-        : (new \ReflectionFunction($fn))->getNumberOfParameters(); /* @phpstan-ignore-line */
+    if ($fn instanceof FixedArityInterface) {
+        return $fn->getArity();
+    }
+
+    /**
+     * @phpstan-ignore-next-line
+     * @psalm-suppress InvalidArgument
+     */
+    return (new \ReflectionFunction($fn))->getNumberOfParameters();
 }

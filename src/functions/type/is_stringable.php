@@ -11,6 +11,7 @@ const is_stringable = 'Baethon\\Phln\\is_stringable';
  *
  * @param mixed $value
  * @return bool
+ * @psalm-pure
  */
 function is_stringable($value): bool
 {

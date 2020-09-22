@@ -8,7 +8,7 @@ const to_pairs = 'Baethon\\Phln\\to_pairs';
 
 /**
  * @param object|array<string, mixed> $object
- * @return array<array{string, mixed}>
+ * @return array<array{mixed, mixed}>
  */
 function to_pairs ($object): array {
     $object = ObjectWrapper::of($object);

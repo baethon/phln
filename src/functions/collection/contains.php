@@ -14,6 +14,7 @@ const contains = 'Baethon\\Phln\\contains';
  * @param mixed $collection
  * @param mixed $value
  * @return bool
+ * @psalm-pure
  */
 function contains ($collection, $value): bool {
     if (is_array($collection)) {
