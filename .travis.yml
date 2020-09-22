@@ -18,7 +18,6 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - composer global require phpstan/phpstan
   - composer install
 
 before_script:
@@ -26,8 +25,7 @@ before_script:
 
 jobs:
   include:
-    - stage: test
-      script: composer lint
+    - script: composer lint
     - script: composer test
     - stage: deploy
       script: .travis/mkdocs.sh
