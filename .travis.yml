@@ -26,7 +26,8 @@ before_script:
 
 jobs:
   include:
-    - script: composer lint
-    - script: composer test
+    - script:
+        - composer lint
+        - composer test
     - stage: deploy
       script: .travis/mkdocs.sh
