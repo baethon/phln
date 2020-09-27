@@ -11,8 +11,7 @@ function lens_prop(string $prop): callable
     return lens(
         _(prop, $prop),
         function ($target, $value) use ($prop) {
-            return assoc($target, $prop, $value)
-                ->toArray();
+            return assoc($target, $prop, $value);
         }
     );
 }

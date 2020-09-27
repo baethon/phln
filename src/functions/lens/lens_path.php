@@ -11,8 +11,7 @@ function lens_path(string $path): callable
     return lens(
         _(path, $path),
         function ($target, $value) use ($path) {
-            return assoc_path($target, $path, $value)
-                ->toArray();
+            return assoc_path($target, $path, $value);
         }
     );
 }

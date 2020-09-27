@@ -1,7 +1,6 @@
 <?php
 
 use Baethon\Phln as p;
-use Baethon\Phln\ObjectWrapper;
 
 class AssocPathTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,8 +9,8 @@ class AssocPathTest extends \PHPUnit\Framework\TestCase
      */
     public function test_it_sets_value($path, $value, $object, $expected)
     {
-        $result = p\assoc_path($object, $path, $value)->toArray();
-        $this->assertEquals(ObjectWrapper::of($expected)->toArray(), $result);
+        $result = p\assoc_path($object, $path, $value);
+        $this->assertEquals($expected, $result);
     }
 
     public function objectsProvider()

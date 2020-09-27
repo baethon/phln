@@ -13,11 +13,8 @@ const keys = 'Baethon\\Phln\\keys';
  */
 function keys($object): array
 {
-    assert_object($object);
-
-    $value = is_object($object)
-        ? get_object_vars($object)
-        : $object;
-
-    return array_keys($value);
+    return pipe_first($object, [
+        hashmap,
+        '\array_keys'
+    ]);
 }

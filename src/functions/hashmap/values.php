@@ -13,6 +13,8 @@ const values = 'Baethon\\Phln\\values';
  */
 function values($object): array
 {
-    return ObjectWrapper::of($object)
-        ->values();
+    return pipe_first($object, [
+        hashmap,
+        '\array_values'
+    ]);
 };

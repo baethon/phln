@@ -12,7 +12,7 @@ final class Zipper
     private $parent;
 
     /**
-     * @var ObjectWrapper|mixed
+     * @var array<string, mixed>|mixed
      */
     private $current;
 
@@ -22,7 +22,7 @@ final class Zipper
     private $property;
 
     /**
-     * @param ObjectWrapper|mixed $current
+     * @param array<string, mixed>|mixed $current
      */
     private function __construct($current)
     {
@@ -30,24 +30,24 @@ final class Zipper
     }
 
     /**
-     * @param ObjectWrapper|mixed $current
+     * @param array<string, mixed>|mixed $current
      */
     public static function of($current): Zipper
     {
         return new static(
-            (ObjectWrapper::isObject($current) || is_null($current))
-                ? ObjectWrapper::of($current ?? [])
+            (is_hashmap($current) || is_null($current))
+                ? hashmap($current ?? [])
                 : $current
         );
     }
 
     public function down(string $property): Zipper
     {
-        if (!ObjectWrapper::isObject($this->current)) {
+        if (!is_hashmap($this->current)) {
             throw new \RuntimeException('Impossible to go down tree');
         }
 
-        return tap(Zipper::of($this->current->prop($property)), function (Zipper $newCurrent) use ($property) {
+        return tap(Zipper::of(prop($this->current, $property)), function (Zipper $newCurrent) use ($property) {
             $newCurrent->parent = $this;
             $newCurrent->property = $property;
         });
@@ -69,11 +69,10 @@ final class Zipper
             return null;
         }
 
-        $current = $parent->current->assoc(
+        $current = assoc(
+            $parent->current,
             $this->property,
-            ($this->current instanceof ObjectWrapper)
-                ? $this->current->toArray()
-                : $this->current
+            $this->current
         );
 
         return tap(clone $parent, function (Zipper $zipper) use ($current) {
@@ -103,15 +102,15 @@ final class Zipper
      */
     public function toArray(): array
     {
-        if ($this->current instanceof ObjectWrapper) {
-            return $this->current->toArray();
+        if (is_array($this->current)) {
+            return $this->current;
         }
 
         throw new \BadMethodCallException('Current value can\'t be converted to an array');
     }
 
     /**
-     * @return ObjectWrapper|mixed
+     * @return array<string, mixed>|mixed
      */
     public function current()
     {

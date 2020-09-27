@@ -17,7 +17,7 @@ function path($object, string $path, $default = null)
     return reduce_while(
         explode('.', $path),
         function ($carry, $key) use ($default) {
-            if (!ObjectWrapper::isObject($carry)) {
+            if (!is_hashmap($carry)) {
                 return ['halt', $default];
             }
 

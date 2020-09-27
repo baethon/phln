@@ -9,7 +9,7 @@ class AssocTest extends \PHPUnit\Framework\TestCase
         $input = ['a' => 1];
         $result = p\assoc($input, 'b', 2);
 
-        $this->assertEquals(['a' => 1, 'b' => 2], $result->toArray());
+        $this->assertEquals(['a' => 1, 'b' => 2], $result);
         $this->assertNotSame($input, $result);
     }
 
@@ -18,7 +18,7 @@ class AssocTest extends \PHPUnit\Framework\TestCase
         $input = (object)['a' => 1];
         $result = p\assoc($input, 'b', 2);
 
-        $this->assertEquals((object)['a' => 1, 'b' => 2], $result->toObject());
+        $this->assertEquals(['a' => 1, 'b' => 2], $result);
         $this->assertNotSame($input, $result);
     }
 }

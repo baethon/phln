@@ -9,9 +9,12 @@ const assoc = 'Baethon\\Phln\\assoc';
 /**
  * @param object|array<string, mixed> $object
  * @param mixed                       $value
+ * @return array<string, mixed>
  */
-function assoc($object, string $key, $value): ObjectWrapper
+function assoc($object, string $key, $value): array
 {
-    return ObjectWrapper::of($object)
-        ->assoc($key, $value);
+    $hashmap = hashmap($object);
+    $hashmap[$key] = $value;
+
+    return $hashmap;
 }

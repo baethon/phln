@@ -14,5 +14,9 @@ const prop = 'Baethon\\Phln\\prop';
  */
 function prop($object, $key)
 {
-    return ObjectWrapper::of($object)[$key];
+    $hashmap = hashmap($object);
+
+    return isset($hashmap[$key])
+        ? $hashmap[$key]
+        : null;
 }

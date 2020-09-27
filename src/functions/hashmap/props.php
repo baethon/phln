@@ -14,12 +14,10 @@ const props = 'Baethon\\Phln\\props';
  */
 function props($object, array $properties): array
 {
-    $object = ObjectWrapper::of($object);
+    $hashmap = hashmap($object);
 
     return map(
         $properties,
-        function (string $name) use ($object) {
-            return $object->prop($name);
-        }
+        partial(prop, [$hashmap])
     );
 }

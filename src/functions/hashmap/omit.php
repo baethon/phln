@@ -14,7 +14,8 @@ const omit = 'Baethon\\Phln\\omit';
  */
 function omit($object, array $omitKeys): array
 {
-    assert_object($object);
-
-    return array_diff_key((array) $object, array_combine($omitKeys, $omitKeys) ?: []);
+    return pipe_first($object, [
+        hashmap,
+        _('\array_diff_key', array_combine($omitKeys, $omitKeys) ?: []),
+    ]);
 }

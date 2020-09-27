@@ -13,14 +13,14 @@ const where = 'Baethon\\Phln\\where';
 function where($object, array $predicates): bool
 {
     $keys = keys($predicates);
-    $object = ObjectWrapper::of($object);
+    $hashmap = hashmap($object);
 
     return all(
         $keys,
-        function ($key) use ($object, $predicates) {
+        function ($key) use ($hashmap, $predicates) {
             return is_callable($p = $predicates[$key])
-                ? $p($object->prop($key))
-                : $object->prop($key) === $p;
+                ? $p(prop($hashmap, $key))
+                : prop($hashmap, $key) === $p;
         }
     );
 }

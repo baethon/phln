@@ -14,8 +14,8 @@ const merge = 'Baethon\\Phln\\merge';
  */
 function merge($left, $right): array
 {
-    assert_object($left);
-    assert_object($right);
-
-    return array_merge((array) $left, (array) $right);
+    return array_merge(
+        hashmap($left),
+        hashmap($right)
+    );
 }

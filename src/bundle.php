@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__.'/functions/assert/assert_object.php';
 require_once __DIR__.'/functions/fn/arity.php';
 require_once __DIR__.'/functions/fn/iife.php';
 require_once __DIR__.'/functions/fn/t.php';
@@ -78,6 +77,7 @@ require_once __DIR__.'/functions/math/median.php';
 require_once __DIR__.'/functions/math/modulo.php';
 require_once __DIR__.'/functions/math/multiply.php';
 require_once __DIR__.'/functions/math/subtract.php';
+require_once __DIR__.'/functions/hashmap/hashmap.php';
 require_once __DIR__.'/functions/hashmap/values.php';
 require_once __DIR__.'/functions/hashmap/prop.php';
 require_once __DIR__.'/functions/hashmap/assoc.php';
@@ -116,4 +116,5 @@ require_once __DIR__.'/functions/string/replace.php';
 require_once __DIR__.'/functions/string/split.php';
 require_once __DIR__.'/functions/string/test.php';
 require_once __DIR__.'/functions/type/is_stringable.php';
+require_once __DIR__.'/functions/type/is_hashmap.php';
 require_once __DIR__.'/functions/type/is.php';

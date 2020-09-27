@@ -11,5 +11,5 @@ const has = 'Baethon\\Phln\\has';
  */
 function has($object, string $prop): bool
 {
-    return ObjectWrapper::of($object)->has($prop);
+    return array_key_exists($prop, hashmap($object));
 }

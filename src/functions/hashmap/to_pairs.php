@@ -13,7 +13,6 @@ const to_pairs = 'Baethon\\Phln\\to_pairs';
  */
 function to_pairs($object): array
 {
-    $object = ObjectWrapper::of($object);
-
-    return zip($object->keys(), $object->values());
+    $hashmap = hashmap($object);
+    return zip(keys($hashmap), values($hashmap));
 }

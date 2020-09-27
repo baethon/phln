@@ -14,7 +14,8 @@ const pick = 'Baethon\\Phln\\pick';
  */
 function pick($object, array $useKeys): array
 {
-    assert_object($object);
-
-    return array_intersect_key((array) $object, array_combine($useKeys, $useKeys) ?: []);
+    return pipe_first($object, [
+        hashmap,
+        _('\array_intersect_key', array_combine($useKeys, $useKeys) ?: []),
+    ]);
 }
